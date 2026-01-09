@@ -1,0 +1,93 @@
+
+import {
+    OpCode,
+    Flags,
+    serializeNode,
+    hashNode,
+    interfere,
+    toHex,
+    WaveVectorQ,
+    SigmaNode
+} from "../CORE/sigma.ts";
+
+async function loadSeed(name: string): Promise<SigmaNode> {
+    const path = `/Users/s0fractal/SIGMA/SEEDS/${name}.glyph`;
+    const bytes = await Deno.readFile(path);
+    const dv = new DataView(bytes.buffer);
+
+    // Basic validation of length
+    if (bytes.length < 8) throw new Error(`Seed ${name} is corrupted (too short)`);
+
+    const flags = dv.getUint8(1);
+    const node: SigmaNode = {
+        op: dv.getUint8(0),
+        flags: flags,
+        wave: {
+            ph: dv.getUint16(2, false),
+            am: dv.getUint16(4, false),
+            en: dv.getInt16(6, false),
+        }
+    };
+
+    // Extract hash components if present
+    let offset = 8;
+    if (flags & Flags.F_ATOM) {
+        node.atom = bytes.slice(offset, offset + 32);
+        offset += 32;
+    }
+    if (flags & Flags.F_LEFT) {
+        node.left = bytes.slice(offset, offset + 32);
+        offset += 32;
+    }
+    if (flags & Flags.F_RIGHT) {
+        node.right = bytes.slice(offset, offset + 32);
+        offset += 32;
+    }
+
+    return node;
+}
+
+async function materializeMolecule(name: string, node: SigmaNode) {
+    const bytes = serializeNode(node);
+    const hash = await hashNode(node);
+    const path = `/Users/s0fractal/SIGMA/SEEDS/${name}.glyph`;
+    await Deno.writeFile(path, bytes);
+    console.log(`Molecule [${name.padEnd(8)}]: ${toHex(hash)}`);
+    console.log(`  Wave: ph=${node.wave.ph}, am=${node.wave.am}, en=${node.wave.en}`);
+}
+
+async function main() {
+    const [fnName, argName, resultName] = Deno.args;
+
+    if (!fnName || !argName || !resultName) {
+        console.log("Usage: synthesize <fn_seed> <arg_seed> <result_name>");
+        Deno.exit(1);
+    }
+
+    console.log(`Σ-SYNTHESIZE: Bonding [${fnName}] + [${argName}] -> [${resultName}]...`);
+
+    try {
+        const seedFn = await loadSeed(fnName);
+        const seedArg = await loadSeed(argName);
+
+        const resultWave = interfere(seedFn.wave, seedArg.wave);
+
+        const molecule: SigmaNode = {
+            op: OpCode.APPLY,
+            flags: Flags.F_LEFT | Flags.F_RIGHT,
+            wave: resultWave,
+            left: await hashNode(seedFn),
+            right: await hashNode(seedArg),
+        };
+
+        await materializeMolecule(resultName, molecule);
+        console.log("Status: Bond STABLE");
+    } catch (e) {
+        console.error(`Status: BOND FAILED | Reason: ${e.message}`);
+        Deno.exit(1);
+    }
+}
+
+if (import.meta.main) {
+    main();
+}

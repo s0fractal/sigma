@@ -1,0 +1,13 @@
+---
+GLYPH: json
+TYPE: virtual
+PATH: 'json/'
+HEX: '#F7DF1E'
+SYNTAX: json
+MUTE: ''
+LIFT: ''
+🪨MASS: 0.2
+🌀ENTROPY: 0.1
+IMPORT: '"%n": "%p"'
+---
+

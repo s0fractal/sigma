@@ -1,0 +1,3 @@
+[submodule "meta/root"]
+	path = meta/root
+	url = git@github.com:s0fractal/-.git

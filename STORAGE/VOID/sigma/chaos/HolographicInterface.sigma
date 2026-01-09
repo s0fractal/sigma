@@ -1,0 +1,23 @@
+---
+GLYPH: 🧿
+NAME: The Holographic Interface
+TYPE: Interface
+🌈SPECTRUM:
+  - sigma
+  - md
+DESC: "Visualizes the System State as a reactive Torus. Controlled by physical motion (Optical Flow)."
+---
+
+# The Stark Protocol
+
+Ми перетворюємо стан репозиторіїв на частинки.
+
+Сині частинки: `ts` (Логіка).  
+Червоні частинки: `rs` (Сила).  
+Мерехтіння: Незбережені зміни (Ентропія).
+
+## Interaction
+
+**Motion (Camera)**: Вносить кінетичну енергію в систему.  
+**High Energy**: Пришвидшує обертання, візуально "витрушує" баги.  
+**Stasis**: Показує структуру зв'язків.

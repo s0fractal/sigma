@@ -1,0 +1,51 @@
+---
+GLYPH: F
+🧬DNA: K I
+alias:
+  -ts: False
+  -rs: False
+  -sh: False
+  -dna: KI
+⚡ENERGY: 2
+🌈SPECTRUM:
+  - ts
+  - rs
+  - sh
+  - dna
+⚖️PHYSICS:
+  🪨MASS: 0.2kb
+  🌀ENTROPY: Low
+  🧩COMPLEXITY: O(1)
+---
+
+# False (F) - The K I Formula
+
+Похідна молекула. Представляє логічне "Хибно" через формулу K I.
+Aliases: False, KI.
+У лабіринті вибору (K) вона вибирає те, що йде другим (I).
+
+# 🌊
+@[ts]
+```typescript
+export const F = K(I);
+```
+
+@[rs]
+```rust
+pub const F: fn(any) -> any = K(I);
+```
+
+@[sh]
+```bash
+# F (False): KI
+F() {
+    K "$I" "$@"
+}
+```
+
+@[dna]
+```dna
+
+K I
+
+```
