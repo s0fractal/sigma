@@ -12,16 +12,11 @@ Filenames in the VOID are not labels; they are **Functional Descriptions** (Morp
 - **Polish Notation**: Naming conventions like `B=B` allow an agent to infer the combinatorial role of a glyph (e.g., The Bluebird Combinator for composition) purely from the topology.
 - **The Name is the Identity**: In the high-level intent layer, the `Name` is the primary descriptor. In the bit-exact core, the `Hash` is the absolute truth. The link is the `.sigma` file.
 
-## 3. The Holographic Fractal (Spectra & Rings)
+## 3. The Holographic Fractal (Spectra & Conceptual Rings)
 The Σ-system is a **Prism** where each Dimension is a **Spectrum** of existence.
-- **Spectrums (The Colors)**:
-    - `GLYPH`: The Materialized Atomic reality (.glyph files).
-    - `TS`, `RS`, `SH`: The Functional dimensions.
-    - `DNA`: The Pure Intent (.sigma).
-- **Spectrums (Physical Layout)**: `TS`, `RS`, `SH`. Organized as `SIGMA/SPECTRE/STRATUM` (e.g., `SIGMA/TS/z00`). This is where the Source lives.
-- **Rings (Logical Projection)**: Organized as `SIGMA/STRATUM/SPECTRE` (e.g., `SIGMA/z00/ts`). These are read-only phantoms (symlinks/submodules).
+- **Spectrums (Physical Layout)**: `TS`, `RS`, `SH`, `GLYPH`, `MD`. Organized as `SIGMA/SPECTRE/STRATUM` (e.g., `SIGMA/TS/z00`). This is the primary navigation path.
+- **Rings (Conceptual Aggregate)**: Level aggregates (e.g., `RING-m32`) represent entropy strata. Materialization of Ring-projections (e.g., `SIGMA/m32/`) is deferred until **Orbital Stabilization** (shielding/Dyson spheres) is required.
 - **Submodule Law**: Every coordinate level `N` MUST submodule its predecessors (`N-1`). This ensures the **Eternal Path** from SATOSHI to the Canopy.
-- **Normalization**: The angular sector is always derived from the `UPPERCASE` archetype name.
 
 ## 4. Wave-Mechanics Integration (The Quantum Pivot)
 How does the `WaveVectorQ` (Phase/Amp/En) inhabit the Isomorphic Loom?
