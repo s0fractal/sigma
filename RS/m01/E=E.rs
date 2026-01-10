@@ -4,4 +4,3 @@ where F: Fn(&T)
     f(&x);
     x
 }
-```

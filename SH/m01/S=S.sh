@@ -6,4 +6,3 @@ S() {
     local gz=$(eval "$g" "$z")
     eval "$f" "$z" "$gz"
 }
-```

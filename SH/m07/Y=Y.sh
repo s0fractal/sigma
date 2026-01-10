@@ -9,4 +9,3 @@ Y() {
         sleep 1
     done
 }
-```

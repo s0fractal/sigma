@@ -5,4 +5,3 @@ C() {
     local arg2="$3"
     eval "$f" "$arg2" "$arg1"
 }
-```

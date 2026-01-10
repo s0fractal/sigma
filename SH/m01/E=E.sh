@@ -3,4 +3,3 @@ E() {
     local cmd="$1"
     tee >(eval "$cmd" > /dev/null)
 }
-```

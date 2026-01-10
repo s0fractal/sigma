@@ -7,4 +7,3 @@ where
         Box::new(move |x| f(x)(y))
     }
 }
-```

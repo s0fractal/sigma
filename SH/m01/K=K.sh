@@ -3,4 +3,3 @@ K() {
     cat > /dev/null
     echo "$1"
 }
-```

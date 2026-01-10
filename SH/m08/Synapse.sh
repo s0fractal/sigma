@@ -45,4 +45,3 @@ echo "### VITAL SIGNS"
 echo ""
 
 echo "--- SYSTEM CONTEXT END ---"
-```

@@ -1,3 +1,4 @@
+``` ts
 import {
     OpCode,
     Flags,

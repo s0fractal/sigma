@@ -176,4 +176,3 @@ for dim in "${DIMS[@]}"; do
 done
 
 echo "Reactor: stable"
-```

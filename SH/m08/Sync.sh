@@ -23,4 +23,3 @@ for particle in "$REPO_ROOT/sigma"/*.sigma; do
 done
 
 echo "✅ Universe Synchronized."
-```

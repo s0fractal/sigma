@@ -5,4 +5,3 @@ where
 {
     f(x.clone())(x)
 }
-```

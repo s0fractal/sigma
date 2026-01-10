@@ -1,4 +1,3 @@
-
 /**
  * Σ-GLYPH Utilities
  */

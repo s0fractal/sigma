@@ -8,4 +8,3 @@ where F: Fn(T) -> T {
 }
 
 pub use lambda as function;
-```

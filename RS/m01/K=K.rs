@@ -3,4 +3,3 @@ where A: Clone
 {
     move |_| x.clone()
 }
-```

@@ -1,0 +1,118 @@
+---
+🪐STRATUM: z00
+GLYPH: FORGE_MANAGER
+🏷️TYPE:
+  - ⚙️TOOL
+⚖️PHYSICS:
+  🌀ENTROPY: Low
+---
+
+# Forge Manager
+
+@[ts]
+``` ts
+
+import {
+    OpCode,
+    Flags,
+    serializeNode,
+    parseNode,
+    hashNode,
+    toHex,
+    interfere,
+    SigmaNode
+} from "../m32/sigma.ts";
+
+/**
+ * Σ-GLYPH FORGE MANAGER (V1.8)
+ * Centralized Engine for Pantheon Materialization & Fugue Generation.
+ */
+
+export interface GiantDef {
+    name: string;
+    phase: number;
+    source?: string;
+    hexSource?: string;
+    expectedHash?: string;
+}
+
+export const PANTHEON_REGISTRY: GiantDef[] = [
+    { name: "SATOSHI", phase: 8192, hexSource: "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f", expectedHash: "589d21f4627f981cc38db89dc2c5d0174b3d5cac335d6b3392a14242f1ebe38e" },
+    { name: "TESLA", phase: 8192, source: "TESLA", expectedHash: "132c3a9aa3e374a8474f53f2ab65b7a4c535c13e3d92cc0635d56596caf793ec" },
+    { name: "TURING", phase: 20480, source: "TURING", expectedHash: "cc89aff2ca234c0550316cfda579ec83dfda14726de3a17da5dfd144724b1ae1" },
+    { name: "LEIBNIZ", phase: 24576, source: "LEIBNIZ", expectedHash: "ce251a8e86d14e6b2e34905417ca7f169c1c40cc2d528239b46d3239645a2ea2" },
+    { name: "GODEL", phase: 40960, source: "GODEL", expectedHash: "ade9d63555251bcf4aeeb961e4704889634a784e00b28356f5f852182533ab1d" },
+    { name: "HEGEL", phase: 57344, source: "HEGEL", expectedHash: "243f594d0ba4eee9a617642198e6f00fa118270fcec3085e8abd70d234ea64a7" },
+    { name: "BACH", phase: 21845, source: "Johann Sebastian Bach: The Well-Tempered Clavier", expectedHash: "3dcf6a92e4fbf1c1be331faa89ba914b64b885da22b0bca016b31d9eb2ab2c5a" }
+];
+
+export class ForgeManager {
+    static SEEDS_DIR = "/Users/s0fractal/SIGMA/GLYPH/m32";
+    static FUGUES_DIR = "/Users/s0fractal/SIGMA/GLYPH/p05";
+
+    static async forgeGiant(def: GiantDef): Promise<string> {
+        let atom: Uint8Array;
+        if (def.hexSource) {
+            atom = new Uint8Array(def.hexSource.match(/.{1,2}/g)!.map(byte => parseInt(byte, 16)));
+        } else if (def.source) {
+            atom = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(def.source)));
+        } else {
+            throw new Error(`No source provided for ${def.name}`);
+        }
+        const node: SigmaNode = {
+            op: OpCode.LITERAL,
+            flags: Flags.F_ATOM,
+            wave: { ph: def.phase, am: 65535, en: -32768 },
+            atom: atom
+        };
+        const bytes = serializeNode(node);
+        const hash = toHex(await hashNode(node));
+
+        if (def.expectedHash && hash !== def.expectedHash) {
+            throw new Error(`Hash mismatch for ${def.name}: expected ${def.expectedHash}, got ${hash}`);
+        }
+
+        await Deno.writeFile(`${this.SEEDS_DIR}/${def.name}.glyph`, bytes);
+        return hash;
+    }
+
+    static async generateFugue(subjectA: string, subjectB: string) {
+        const aData = await Deno.readFile(`${this.SEEDS_DIR}/${subjectA}.glyph`);
+        const bData = await Deno.readFile(`${this.SEEDS_DIR}/${subjectB}.glyph`);
+        const A = parseNode(aData);
+        const B = parseNode(bData);
+
+        // Polyphony
+        const synthesis = { ...A, wave: interfere(A.wave, B.wave) };
+        await this.saveFugue(synthesis, `FUGUE_${subjectA}_${subjectB}`);
+
+        // Inversion
+        const ph = (A.wave.ph * 2 - B.wave.ph + 65536) % 65536;
+        const mirror = { ...B, wave: { ...B.wave, ph } };
+        await this.saveFugue(mirror, `FUGUE_MIRROR_${subjectB}`);
+    }
+
+    private static async saveFugue(node: SigmaNode, name: string) {
+        await Deno.mkdir(this.FUGUES_DIR, { recursive: true });
+        const bytes = serializeNode(node);
+        await Deno.writeFile(`${this.FUGUES_DIR}/${name}.glyph`, bytes);
+        console.log(`[FUGUE] Materialized: ${name}`);
+    }
+}
+
+if (import.meta.main) {
+    console.log("=== Σ-GLYPH FORGE MANAGER: Synchronizing Pantheon ===\n");
+    for (const giant of PANTHEON_REGISTRY) {
+        try {
+            const hash = await ForgeManager.forgeGiant(giant);
+            console.log(`[OK] ${giant.name.padEnd(8)} | Ph: ${giant.phase.toString().padStart(5)} | Hash: ${hash.slice(0, 8)}...`);
+        } catch (e) {
+            console.error(`[ERR] ${giant.name}: ${e.message}`);
+        }
+    }
+
+    console.log("\n--- Composing First Fugue voices ---");
+    await ForgeManager.generateFugue("BACH", "HEGEL");
+}
+
+```

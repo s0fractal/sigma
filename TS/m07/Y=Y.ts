@@ -5,4 +5,3 @@ export const Y = <A, B>(f: RecursiveFunc<A, B>): Func<A, B> => {
   const g = (h: any) => (x: A) => f(h(h))(x);
   return g(g);
 };
-```

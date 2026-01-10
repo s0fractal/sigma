@@ -68,4 +68,3 @@ else
     echo "❌ Unknown and no fallback."
     exit 1
 fi
-```

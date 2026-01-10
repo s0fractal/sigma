@@ -5,4 +5,3 @@ where
 {
     move |x| f(g(x))
 }
-```

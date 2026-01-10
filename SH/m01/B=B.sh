@@ -4,4 +4,3 @@ B() {
     local g="$2"
     eval "$g" | eval "$f"
 }
-```

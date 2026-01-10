@@ -45,4 +45,3 @@ for ITEM in "${ITERABLE[@]}"; do
         echo ""
     fi
 done
-```

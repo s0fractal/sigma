@@ -96,4 +96,3 @@ case "$GLYPH" in
         git $GLYPH "$@"
         ;;
 esac
-```

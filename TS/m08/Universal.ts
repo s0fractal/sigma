@@ -26,5 +26,4 @@ export const λ = (x: any, f?: any, ...xs: any[]): any => {
     return f(x);
 };
 
-export const fn = λ; 
-```
+export const fn = λ;

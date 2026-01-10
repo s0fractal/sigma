@@ -1,4 +1,3 @@
-
 /**
  * Σ-LAMBDA: The Autonomous Orchestrator
  * This tool manages the project's life cycle independently.
@@ -32,7 +31,6 @@ async function main() {
     await runStep("Sensorium Feedback", ["sensorium.ts"]);
 
     // 3. EVOLUTION: Should we dream?
-    // In a real autonomous system, we might check Sensorium results first.
     console.log("\n[Σ-LAMBDA] Entering Dream State...");
     await runStep("Dream Cycle", ["dream.ts"]);
 

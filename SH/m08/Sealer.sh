@@ -68,4 +68,3 @@ echo "✅ Turn Complete. Entering next vibration."
 echo ""
 echo "   To verify this seal later:"
 echo "   λ verify $TURN_NAME"
-```

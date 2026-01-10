@@ -91,4 +91,3 @@ else
     echo -e "${RED}🔴 CRITICAL FRACTURES DETECTED.${NC}"
     exit 1
 fi
-```

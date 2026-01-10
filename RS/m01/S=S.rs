@@ -6,4 +6,3 @@ where
 {
     move |x| f(x.clone())(g(x))
 }
-```

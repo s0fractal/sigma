@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 
 # Σ-GLYPH MATERIALIZER: Unfolding DNA into Spectrums
-# Version: V1.0.0
+# Version: V1.1.0 (Self-Anchored)
 
 def repo_root() -> Path:
     cur = Path.cwd()
@@ -31,13 +31,27 @@ TAG_MAP = {
 
 # --- EXTRACTION ---
 def extract_block(text: str, tag: str) -> str | None:
-    # Pattern to match @[tag] followed by optional backticks and content
-    # Handles both @[tag] and @[tag]\n```lang\ncontent\n```
-    pattern = re.compile(rf"@\[{re.escape(tag)}\]\n(?:```\w*\n)?(.*?)(?:\n```)?(?=\n@\[|\Z)", re.DOTALL)
-    match = pattern.search(text)
-    if match:
-        return match.group(1).strip()
-    return None
+    # Match starting @[tag]
+    start_marker = f"@[{tag}]\n"
+    start_idx = text.find(start_marker)
+    if start_idx == -1:
+        return None
+    
+    # Text starting after the tag marker
+    remaining = text[start_idx + len(start_marker):]
+    
+    # End marker: either the next @[tag] or the end of the file
+    end_idx = remaining.find("\n@[")
+    block = remaining[:end_idx] if end_idx != -1 else remaining
+    
+    # Cleanup markdown backticks if present
+    content = block.strip()
+    if content.startswith("```"):
+        content = re.sub(r"^```\w*\n", "", content)
+    if content.endswith("```"):
+        content = content[:-3].strip()
+        
+    return content
 
 import sys
 
@@ -62,6 +76,10 @@ def main():
             print(f"   ❌ Error reading {rel_path}: {e}")
             continue
         
+        # Parse FOLDER tag if present
+        folder_match = re.search(r"📁FOLDER:\s*(\w+)", content)
+        folder = folder_match.group(1) if folder_match else None
+        
         materialized_any = False
         for tag in target_tags:
             if tag not in TAG_MAP:
@@ -74,8 +92,12 @@ def main():
                     print(f"🧬 Materializing: {rel_path}")
                     materialized_any = True
                 
-                # Target path keeps the relative structure but changes extension
-                target_path = target_base / rel_path.with_suffix(ext)
+                # If folder exists, we insert it into the projection path
+                if folder:
+                    target_path = target_base / rel_path.parent / folder / rel_path.with_suffix(ext).name
+                else:
+                    target_path = target_base / rel_path.with_suffix(ext)
+                    
                 target_path.parent.mkdir(parents=True, exist_ok=True)
                 
                 # Write the projection
