@@ -1,0 +1,13 @@
+# GLYPH Spectrum: Binary Crystallization
+
+The **GLYPH** spectrum is the final physical crystallization of a Sigma Intent. 
+While `.sigma` files are human-readable seeds, `.glyph` files are 40-byte binary atoms used by the machine for runtime resonance.
+
+### Binary Structure (40 bytes)
+1. **OP** (1 byte): Operation Code.
+2. **FLAGS** (1 byte): System flags.
+3. **PHASE** (2 bytes, BE): Topological phase-space coordinate.
+4. **AMPLITUDE** (2 bytes, BE): Harmonic gravity.
+5. **ENTROPY** (2 bytes, BE): Structural stability.
+6. **IDENTITY** (32 bytes): The "Atom" or cryptographic hash of the intent.
+```
