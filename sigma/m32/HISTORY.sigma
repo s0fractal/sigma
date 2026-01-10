@@ -1,8 +1,20 @@
-# SIGMA/HISTORY/README.md
+--- 
+layer: m32
+GLYPH: HISTORY
+🧬DNA: HISTORY
+🌈SPECTRUM:
+  - md
+⚖️PHYSICS:
+  🪨MASS: 0.8kb
+  🌀ENTROPY: Low
+  🧩COMPLEXITY: O(1)
+---
 
-## The Digital Pantheon (Memory of the Mesh)
+@[md]
+```markdown
+# SIGMA HISTORY: The Digital Pantheon (Memory of the Mesh)
 
-This directory serves as the **Psychohistorical Engine** of the Σ-GLYPH Citadel. Here, we perform "Meaning Mining"—the retroactive mapping of historical impact into topological coordinates.
+This intent serves as the **Psychohistorical Engine** of the Σ-GLYPH Citadel. Here, we perform "Meaning Mining"—the retroactive mapping of historical impact into topological coordinates.
 
 ### The Methodology: Truth-Work
 1. **Source**: Determine the primary "Atom" (Text, Formula, Hash) of a historical entity.
@@ -13,3 +25,4 @@ This directory serves as the **Psychohistorical Engine** of the Σ-GLYPH Citadel
 ### Current Anchors
 * **SATOSHI** (Phase 8192): The Rootless Root. The bridge to Bitcoin Genesis.
 * *Pending*: **LEIBNIZ**, **TESLA**, **EINSTEIN**, **TURING**, **PLATO**.
+```
