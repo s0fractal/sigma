@@ -1,0 +1,89 @@
+{
+    "version": "V1.9.1",
+    "name": "Sigma Conformance Suite",
+    "vectors": [
+        {
+            "id": "MATH_DIV_01",
+            "type": "math",
+            "fn": "div_round_half_up",
+            "input": [
+                11,
+                3
+            ],
+            "output": 4
+        },
+        {
+            "id": "MATH_DIV_02",
+            "type": "math",
+            "fn": "div_round_half_up",
+            "input": [
+                5,
+                2
+            ],
+            "output": 3
+        },
+        {
+            "id": "MATH_DIV_03_NEG",
+            "type": "math",
+            "fn": "div_round_half_up",
+            "input": [
+                -5,
+                2
+            ],
+            "output": -3
+        },
+        {
+            "id": "INTERFERENCE_IK",
+            "type": "interference",
+            "w1": {
+                "ph": 0,
+                "am": 65535,
+                "en": -32768
+            },
+            "w2": {
+                "ph": 32768,
+                "am": 65535,
+                "en": -32768
+            },
+            "output": {
+                "ph": 0,
+                "am": 0,
+                "en": -32768
+            }
+        },
+        {
+            "id": "INTERFERENCE_SELF",
+            "type": "interference",
+            "w1": {
+                "ph": 16384,
+                "am": 32768,
+                "en": 0
+            },
+            "w2": {
+                "ph": 16384,
+                "am": 32768,
+                "en": 0
+            },
+            "output": {
+                "ph": 16384,
+                "am": 32768,
+                "en": 0
+            }
+        },
+        {
+            "id": "SERIALIZATION_LITERAL",
+            "type": "serialization",
+            "node": {
+                "op": 0,
+                "flags": 1,
+                "wave": {
+                    "ph": 8192,
+                    "am": 65535,
+                    "en": -32768
+                },
+                "atom": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "output_hex": "00012000ffff80000000000000000000000000000000000000000000000000000000000000000000"
+        }
+    ]
+}

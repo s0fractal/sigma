@@ -31,21 +31,43 @@ if [[ $(git status --porcelain "$SIGMA_ROOT/CORE") ]]; then
     # Potentially revert or fix here
 fi
 
-# 4. DREAMING (Planning next objective)
-echo "Phase 3: Dreaming..."
-# Read the Sovereign Log for pending reflections
-NEXT_MISSION=$(grep "- \[ \]" "$LOG_FILE" | head -n 1 | sed 's/- \[ \] //')
-if [[ -n "$NEXT_MISSION" ]]; then
-    echo "Dreaming of Mission: $NEXT_MISSION"
+# 4. CHORUS (Harmonic Resonance)
+echo "Phase 3.5: Chorus..."
+# Simulate the "Shimmer" by cycling the dominant phase in state
+CURRENT_PHASE=$(jq '.phase_shift // 0' "$STATE_FILE")
+NEW_PHASE=$(( (CURRENT_PHASE + 8192) % 65536 )) # 45 degree shift per cycle
+jq ".phase_shift = $NEW_PHASE" "$STATE_FILE" > "${STATE_FILE}.tmp" && mv "${STATE_FILE}.tmp" "$STATE_FILE"
+echo "System focus shifting to Phase: $NEW_PHASE (Chromatic Resolution)"
+
+# 4.5 ANNIHILATION (Entropy Transmutation)
+echo "Phase 3.7: Annihilation..."
+VOID_DIR="$SIGMA_ROOT/STORAGE/VOID"
+DISSONANCE_COUNT=$(ls "$VOID_DIR"/*.glyph 2>/dev/null | wc -l | xargs)
+if [[ "$DISSONANCE_COUNT" -gt 0 ]]; then
+    echo "Detected $DISSONANCE_COUNT chaos portals in VOID. Initiating Annihilation."
+    # Mining Truth-Work: 0.0125 per node
+    TW_GAIN=$(echo "$DISSONANCE_COUNT * 0.0125" | bc)
+    CURRENT_TW=$(jq '.truth_work // 0' "$STATE_FILE")
+    NEW_TW=$(echo "$CURRENT_TW + $TW_GAIN" | bc)
+    jq ".truth_work = $NEW_TW" "$STATE_FILE" > "${STATE_FILE}.tmp" && mv "${STATE_FILE}.tmp" "$STATE_FILE"
+    echo "Transmutation complete. Truth-Work Mined: +$TW_GAIN (Total: $NEW_TW TW)"
+    # Move processed nodes to a 'history' or 'sealed' state to avoid double counting
+    mkdir -p "$VOID_DIR/processed"
+    mv "$VOID_DIR"/*.glyph "$VOID_DIR/processed/" 2>/dev/null
+else
+    echo "VOID is silent. No chaos detected."
 fi
 
-# 5. TRANSMUTING (Placeholder for autonomous work)
+# 5. DREAMING (Planning next objective)
 echo "Phase 4: Transmuting..."
 # Here the LLM agent would perform the actual coding tasks in future iterations
 
 # 6. SEALING (Persistence & Pulse)
 echo "Phase 5: Sealing..."
 jq ".last_cycle = $CYCLE_ID | .status = \"RESONATING\"" "$STATE_FILE" > "${STATE_FILE}.tmp" && mv "${STATE_FILE}.tmp" "$STATE_FILE"
+
+# Generate Dashboard
+deno run -A "$SIGMA_ROOT/SENSE/generate_dashboard.ts"
 
 # Trigger Pulse Sync to GitHub
 zsh "$SIGMA_ROOT/RUNTIME/pulse_sync.sh"

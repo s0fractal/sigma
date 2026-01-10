@@ -1,0 +1,75 @@
+
+import {
+    parseNode,
+} from "../CORE/sigma.ts";
+
+/**
+ * The Spiral Stave Visualizer
+ * Angle = Phase
+ * Distance from Center = (Cycle/TotalCycles)
+ */
+
+async function visualizeSpiral() {
+    console.log("=== THE SPIRAL STAVE: Evolutionary Resonance ===\n");
+
+    const statePath = "/Users/s0fractal/.antigravity/RESONANCE_STATE.json";
+    const state = JSON.parse(await Deno.readTextFile(statePath));
+    const currentCycle = state.last_cycle || 1;
+
+    const seedsDir = "/Users/s0fractal/SIGMA/SEEDS";
+    const nodes: { name: string, ph: number, cycle: number }[] = [];
+
+    // 1. Gather Nodes
+    for await (const entry of Deno.readDir(seedsDir)) {
+        if (entry.isFile && entry.name.endsWith(".glyph")) {
+            const data = await Deno.readFile(`${seedsDir}/${entry.name}`);
+            try {
+                const node = parseNode(data);
+                // We don't have per-node creation cycle in the glyph itself, 
+                // so we'll approximate based on known eras for visualization.
+                let cycleVal = 1;
+                const name = entry.name.replace(".glyph", "");
+                if (["SATOSHI", "TESLA"].includes(name)) cycleVal = 9;
+                else if (["TURING", "LEIBNIZ", "GODEL", "EINSTEIN"].includes(name)) cycleVal = 14;
+                else if (["HEGEL", "BACH"].includes(name)) cycleVal = 19;
+                else if (name.startsWith("FUGUE")) cycleVal = 21;
+
+                nodes.push({ name, ph: node.wave.ph, cycle: cycleVal });
+            } catch (e) { }
+        }
+    }
+
+    // 2. Draw ASCII Spiral (Simplified)
+    // We'll use a polar grid mapped to a 40x40 character space
+    const size = 30; // Canvas semi-dimension
+    const grid: string[][] = Array(size * 2 + 1).fill(0).map(() => Array(size * 4 + 1).fill(" "));
+
+    nodes.forEach(n => {
+        const angle = (n.ph / 65536) * 2 * Math.PI - Math.PI / 2; // Start at top
+        const radius = (n.cycle / currentCycle) * size;
+
+        const x = Math.round(size * 2 + (radius * Math.cos(angle) * 2));
+        const y = Math.round(size + (radius * Math.sin(angle)));
+
+        if (grid[y] && grid[y][x]) {
+            grid[y][x] = n.name[0]; // First letter
+        }
+    });
+
+    // Draw the spiral path (approximate)
+    for (let r = 0; r < size; r += 0.5) {
+        const theta = r * 0.8; // Tightness of spiral
+        const x = Math.round(size * 2 + (r * Math.cos(theta) * 2));
+        const y = Math.round(size + (r * Math.sin(theta)));
+        if (grid[y] && grid[y][x] === " ") {
+            grid[y][x] = ".";
+        }
+    }
+
+    console.log(grid.map(row => row.join("")).join("\n"));
+    console.log("\n[Legend]: S=Satoshi/Tesla, T=Turing, L=Leibniz, G=Godel, H=Hegel, B=Bach, F=Fugue");
+}
+
+if (import.meta.main) {
+    visualizeSpiral();
+}

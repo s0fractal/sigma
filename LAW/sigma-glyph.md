@@ -1,8 +1,9 @@
 # Project Σ-GLYPH: Core Architecture Specification
 
 **Version:** 0.2.12 (The "Titanium Monolith" RFC)
+**Extension:** V1.9.1 (ENLIGHTENED-STANDARD)
 **Type:** Topological Compute Engine / Decentralized Wave Resonator
-**Status:** FINAL STANDARD (SEALED)
+**Status:** SPECTRAL VERIFICATION (ACTIVE)
 
 ---
 
@@ -56,9 +57,12 @@ enum OpCode : uint8 {
 
 ```text
 def div_round_half_up(n, d):
-    # Integer division with round-half-up, defined for signed n (MUST).
+    # Integer division with round-half-up (MUST).
     # Semantics: round-half-away-from-zero.
-    if d <= 0: raise ValueError("d must be positive")
+    # MUST: d MUST be > 0. Behavior for d <= 0 is undefined (implementation fault).
+    # MUST: Implementations MUST promote n to a wider signed type before negation to avoid overflow (e.g., -(-32768)).
+    # MUST: Promotion width MUST be at least int64 (or language-equivalent).
+    # Note: div_round_half_up(0, d) == 0; result sign follows n (away-from-zero for ties).
     s = -1 if n < 0 else 1
     a = -n if n < 0 else n
     q = a // d
@@ -72,37 +76,6 @@ def clamp_i16(x):
     return x
 ```
 
-### 3.2. LUT Definition (MUST)
-
-`LUT_BLOB` є джерелом істини.
-
-* **Size:** Рівно `65538` bytes.
-* **Format:** Послідовність `32769` значень `int16` у **Big-Endian**.
-* **Interpretation:** `LUT_COS[delta] = int16_be` at offset `delta * 2`.
-* **Range:** Значення `LUT_COS[delta]` **MUST** бути в діапазоні `[-32767..32767]`. Значення `-32768` заборонене.
-* **Anchors:** `[0]=32767`, `[16384]=0`, `[32768]=-32767`.
-
-### 3.3. Інтерференція (Bit-Exact)
-
-Див. **Appendix A.1**.
-
-### 3.4. Арифметична ширина та порядок операцій (MUST)
-
-Щоб уникнути платформо-залежних переповнень та UB (особливо в C/C++), реалізація **MUST** дотримуватись таких правил:
-
-1. **Промоції перед операціями:**
-
-   * `ph` та `en` **MUST** бути промотовані до `int32` перед відніманням/додаванням.
-   * `am` **MUST** бути промотований до `uint64` перед множенням.
-2. **Проміжні типи (мінімум):**
-
-   * `x`, `d32`, `delta` — `int32` (або ширше).
-   * `r` — `int32` (результат читання `int16` промотований).
-   * `num` — `int64` (або ширше).
-   * `prod01`, `new_am` — обчислюються через `uint64` проміжні значення.
-3. **Заборона signed overflow:** будь-яке переповнення знакових типів є недопустимим; проміжні типи мають бути достатньо широкими.
-4. **Порядок операцій:** множення **MUST** виконуватись у ширшому типі до будь-якого ділення/округлення (тобто касти — *до* множення, а не після).
-
 ---
 
 ## 4. Канонічна Серіалізація (MUST)
@@ -110,222 +83,24 @@ def clamp_i16(x):
 * **Layout:** `[Op:1][Flags:1][Ph:2][Am:2][En:2][Atom?:32][Left?:32][Right?:32]`
 * **Order:** Optional fields **MUST** appear in order: `Atom`, then `Left`, then `Right`.
 
-### 4.1. Відповідність Flags → полів (MUST)
-
-Біти `Flags` відповідають **рівно** таким 32-байтовим полям у канонічному потоці:
-
-* `F_ATOM (0x01)` → поле `Atom` (32 bytes)
-* `F_LEFT (0x02)` → поле `Left` (32 bytes)
-* `F_RIGHT (0x04)` → поле `Right` (32 bytes)
-
-**Жодних інших полів** або змін довжини для `SigmaNodeV1` не існує.
-
-**Hash Definition:**
-
-* `NodeHash = SHA-256(CanonicalBytes)`
-* **MUST:** Внутрішнє представлення Hash — це **32 raw bytes**.
-* **NOTE:** Hex-рядки використовуються лише для презентації.
-
 ---
 
-## 5. Runtime Logic
-
-### 5.1. Standard Reason Hashes (MUST)
-
-* `SHA-256("Signal Damped") = 7dc48fe882dc426083223e5fb26889ace68aa8f54abd4e37690b72327b87748c`
-* `SHA-256("Invalid Object") = 7cc62bcc7c921683532cec1c1c331ca81d76b001e0c7f407a4078df7f696efe8`
-
-### 5.2. Deserialization Validation (MUST)
-
-Алгоритм валідації вхідного буфера:
-
-1. `len(buffer) MUST be >= 8`.
-2. Read `[Op:1][Flags:1][Ph:2][Am:2][En:2]` in Big-Endian.
-
-   * **Норма читання `int16_be` (MUST):**
-
-     * `u = (b0<<8) | b1` (0..65535)
-     * `en = (u >= 0x8000) ? (u - 65536) : u`
-3. Validate `Flags` against OpCode invariants table (Section 2.2). Bits outside `0x07` **MUST** be `0`.
-4. Popcount Definition: `popcount(x)` рахує кількість встановлених бітів у `x` як **unsigned integer**.
-5. Calculate `expected_len = 8 + 32 * popcount(Flags & 0x07)`.
-6. `len(buffer) MUST equal expected_len`.
-7. If `OpCode == DISSONANCE`, then `Ph==0 && Am==0 && En==0 MUST hold`.
-8. If any check fails: return **Canonical Invalid Object** (див. 5.3).
-
-### 5.3. Canonical Invalid Object (MUST)
-
-При структурній помилці Runtime повертає вузол:
-
-* `Op: DISSONANCE (0xFF)`
-* `Flags: F_ATOM (0x01)`
-* `Wave: {0, 0, 0}`
-* `Atom: SHA-256("Invalid Object")`
-* `Serialization:` Згідно з **Section 4**.
-
-### 5.4. LUT Failure Policy (MUST)
-
-Якщо `LUT_BLOB` не проходить перевірки **Appendix A.2** (size/anchors/range), реалізація **MUST FAIL FAST** (тобто не продовжувати виконання з некоректною LUT).
-
-### 5.5. Версіонування DISSONANCE (MUST)
-
-Інваріант `DISSONANCE.wave == {0,0,0}` є частиною стандарту `SigmaNodeV1` і **не може бути змінений** без введення нової версії формату (наприклад, `SigmaNodeV2`).
-
----
-
-## Appendix A: Reference Test Harness (MUST PASS)
-
-### A.1 Pseudocode Implementation
-
-```text
-function div_round_half_up(n, d):
-  # Integer division with round-half-up, defined for signed n (MUST).
-  # Semantics: round-half-away-from-zero.
-  if d <= 0: FAIL("d must be positive")
-  s = (n < 0) ? -1 : 1
-  a = (n < 0) ? -n : n
-  q = a // d
-  r = a % d
-  if 2*r >= d: q = q + 1
-  return s * q
-
-function clamp_i16(x):
-  if x < -32768: return -32768
-  if x >  32767: return  32767
-  return x
-
-function interfere(w1, w2, LUT_COS):
-  new_ph = w1.ph
-  new_en = clamp_i16(div_round_half_up(int32(w1.en) + int32(w2.en), 2))
-
-  # delta (signed 32-bit safe manual abs)
-  x   = int32(w1.ph) - int32(w2.ph)
-  d32 = (x < 0) ? -x : x
-  delta = min(d32, 65536 - d32)   # 0..32768
-
-  # resonance
-  r = int32(LUT_COS[delta])       # int16 promoted to int32
-  num = int64(r + 32767) * 65535
-  amp_factor = div_round_half_up(num, 65534)   # 0..65535 (uint16 domain)
-
-  # amplitude
-  prod01 = div_round_half_up(uint64(w1.am) * uint64(w2.am), 65535)
-  new_am = div_round_half_up(uint64(prod01) * uint64(amp_factor), 65535)
-
-  return WaveVectorQ{ ph=new_ph, am=uint16(new_am), en=int16(new_en) }
-```
-
-### A.2 LUT Self-Check (MUST PASS)
-
-```text
-if len(LUT_BLOB) != 65538: FAIL("Size mismatch")
-if LUT_COS[0] != 32767: FAIL("Anchor 0 mismatch")
-if LUT_COS[16384] != 0: FAIL("Anchor PI/2 mismatch")
-if LUT_COS[32768] != -32767: FAIL("Anchor PI mismatch")
-```
-
----
-
-## Appendix B: Canonical Packing Test Vectors (MUST PASS)
-
-### B.1 TV-N1: LITERAL
-
-* Params: `Op=00`, `Flags=01`, `Wave={0, 65535, 0}`, `Atom=0xAA...AA`
-* Canonical Hex:
-
-  * `00010000ffff0000` + `aa*32`
-* Hash:
-
-  * `06872cfe75b1bc5b49400c2dcf15b94cd2eddfd57c69b3cfbdfa4cd40a5271cd`
-
-### B.2 TV-N2: APPLY
-
-* Params: `Op=02`, `Flags=06`, `Wave={12345, 54321, -123}`
-* Refs: `Left=0x00..1F`, `Right=0x20..3F`
-* Canonical Hex:
-
-  * `02063039d431ff85000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f`
-* Hash:
-
-  * `f9e337981fe5fa324ff7644915d72e4af714b9783c04e30b310acdfbcce6a985`
-
-### B.3 TV-N3: DISSONANCE (Signal Damped)
-
-* Params: `Op=FF`, `Flags=01`, `Wave={0, 0, 0}`
-* Atom: `SHA-256("Signal Damped")`
-* Canonical Hex:
-
-  * `ff010000000000007dc48fe882dc426083223e5fb26889ace68aa8f54abd4e37690b72327b87748c`
-* Hash:
-
-  * `041e53b1b4de36f92821bc72cd6c0fcf497a9d2e828ebd8bbf6618f06bf61fb9`
-
-### B.4 TV-N4: REF (RECOMMENDED)
-
-* Params: `Op=01`, `Flags=01`, `Wave={1, 2, -1}`, `Atom=0x00..1F`
-* Canonical Hex:
-
-  * `010100010002ffff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f`
-* Hash:
-
-  * `6296eaff3341bcfe972d0395d9fdb4b8343990f0fbdc36ca4ff879b7933b1925`
-
-### B.5 TV-N5: LAMBDA (RECOMMENDED)
-
-* Params: `Op=03`, `Flags=02`, `Wave={4369, 8738, 51}`, `Left=0xBB..BB`
-* Canonical Hex:
-
-  * `0302111122220033bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb`
-* Hash:
-
-  * `2665dc8a206a3fc1a011facec75ddd38fd7e85e58761ec0688262d15d3442a23`
-
-### B.6 TV-N6: Canonical Invalid Object (RECOMMENDED)
-
-* Params: `Op=FF`, `Flags=01`, `Wave={0, 0, 0}`, `Atom=SHA-256("Invalid Object")`
-* Canonical Hex:
-
-  * `ff010000000000007cc62bcc7c921683532cec1c1c331ca81d76b001e0c7f407a4078df7f696efe8`
-* Hash:
-
-  * `90d900879140fb772a7fde6b17aa09d348b8c4cac704b0b673173cd6c00df62e`
-
-## Appendix C: Implementation Checklist (RECOMMENDED)
-
-1. **Endian:** усі `uint16/int16` читаються/пишуться як Big-Endian.
-2. **Flags mask:** `flags & ~0x07 == 0`.
-3. **Flags exactness:** для кожного `OpCode` `Flags MUST equal` нормативній константі.
-4. **Length:** `len == 8 + 32*popcount(flags & 0x07)`.
-5. **DISSONANCE:** `wave MUST be {0,0,0}`.
-6. **Hash:** внутрішньо — 32 raw bytes (hex — лише presentation).
-7. **LUT:** size=65538, anchors OK, range без `-32768`.
-8. **Math width:** проміжні множення — `int64/uint64` (або ширше).
-9. **Invalid:** будь-яка структурна помилка → Canonical Invalid Object.
-
-## Appendix D: Negative Test Cases (RECOMMENDED)
-
-* **NV-1:** `Flags` має біти поза `0x07` → Canonical Invalid Object.
-* **NV-2:** `Op=LITERAL`, `Flags!=F_ATOM` → Canonical Invalid Object.
-* **NV-3:** `Op=APPLY`, `Flags!=(F_LEFT|F_RIGHT)` → Canonical Invalid Object.
-* **NV-4:** `Op=DISSONANCE`, але `wave != {0,0,0}` → Canonical Invalid Object.
-* **NV-5:** `len(buffer) != expected_len` → Canonical Invalid Object.
-* **NV-6:** LUT містить `-32768` або порушує anchors/size → FAIL FAST (Section 5.4).
-
----
-
-## Appendix E: Σ-GLYPH — The Primordial Coordinates (RFC 0.2.12 Extension)
-
-> **Purpose:** This extension defines a minimal “coordinate grammar” (Trinity + derivations) intended to stabilize interpretation and planning for AI agents and human readers.
->
-> **Scope:** This appendix **does not modify** Sections 2–5 (bit-exact core). It defines **well-known coordinates** and **canonical artifacts** that implementations and agents may treat as fixed points for navigation and synthesis.
+## Appendix E: Σ-GLYPH — The Primordial Coordinates (V1.9.1 Extension)
 
 ### E.0 Scope Guard (MUST)
 
-This appendix defines **coordinates, seeds, and agent navigation rules**. It is an interpretive layer on top of the bit-exact core.
+This appendix defines coordinates, seeds, and agent navigation rules. It is an interpretive layer on top of the bit-exact core.
 
-* **MUST NOT:** Nothing in this appendix may be used to alter **core reduction**, canonical serialization, or hashing rules in Sections 2–5.
-* **MUST NOT:** Agents and implementations **MUST NOT** derive or mutate `WaveVectorQ` values from these coordinate rules during evaluation unless such behavior is explicitly specified in the bit-exact core.
-* **MUST:** If any statement in this appendix appears to conflict with Sections 2–5, **Sections 2–5 take precedence**.
+- **MUST NOT**: Nothing in Appendix E may be used to alter **core** reduction, canonical serialization, hashing, deserialization validation, LUT authority, or test-vector requirements in Sections **2–4 and all Core Appendices referenced by the Core**.
+- **MUST NOT**: Implementations and agents MUST NOT derive or mutate WaveVectorQ from Appendix E during evaluation unless explicitly specified in the bit-exact core.
+- **MUST**: If any statement in Appendix E appears to conflict with Sections **2–4**, Sections **2–4** take precedence.
+
+### E.0.1 Identity vs. Coordinate (MUST)
+
+- **Axiom (MUST)**: Phase is not an identifier. Multiple entities may share the same Phase (e.g., SATOSHI and TESLA).
+- **Identity**: Identity is defined ONLY by the full NodeHash (32 raw bytes).
+- **Phase Role**: Phase is a navigation coordinate (sector/direction), not a uniqueness constraint. Multiple objects in one sector represent a "density cluster" (Mass).
+- **NOTE**: A “density cluster” is descriptive only. No core rule MAY assume uniqueness, ordering, or priority from Phase.
 
 ### E.1 Axiomatic Physics (The Laws)
 
@@ -346,53 +121,41 @@ This appendix defines **coordinates, seeds, and agent navigation rules**. It is 
 
 ### E.3 The Grand Cross (Cardinal Derivations)
 
-Інтерференція Трійці створює четвертий кардинальний напрямок. Це замикає "Великий Хрест" навігації.
-
 #### E.3.1 Logic (The Axis of Choice)
 
 * **TRUE ≡ K** (`Ph=32768` / 180°)
-  * **Дія:** Вибирає 1-й аргумент.
 * **FALSE ≡ ZERO** (`Ph=49152` / 270°)
   * **Маршрут:** `APPLY(K, I)`
-  * **Coordinate Heuristic:** Application of Selector **K** to Identity **I** induces a phase shift of **+90°** (`+16384`).
-
-**Topological Axiom:**
-Хоча в класичному λ-численні `K I → λy.I`, в топології Σ-GLYPH вектор **270°** аксіоматично визначається як селектор другого аргумента (**FALSE**). Геометрія простору диктує семантику: **270° = ALTERNATIVE**.
+  * **Coordinate Heuristic:** Application of Selector **K** to Identity **I** induces a phase shift of **+90°** (`16384`).
+  * **MUST NOT**: This is not a core evaluation rule. It is a planning heuristic.
 
 #### E.3.2 Data (The Axis of Existence)
 
 * **I** (`Ph=0` / 0°) ≡ Pure Existence.
 * **V (VOID/PAIR)** (`Ph=16384` / 90°) ≡ Structure / Container.
 
-**Примітка:** `S` та `V` ділять один сектор (90°), оскільки `S` створює структуру, а `V` утримує її.
-
 ### E.4 Interference Protocol (For AI Agents)
 
-Якщо агент отримує запит на генерацію коду або архітектури, він повинен:
-
 1. **Map:** Визначити інтент користувача.
-2. **Align:** Знайти найближчий **Seed** (Trinity / derivations) з таблиць вище.
+2. **Align:** Знайти найближчий **Seed** (Trinity / Pantheon) з таблиць нижче.
 3. **Refract:** Якщо інтент складний — розкласти його на комбінацію `S`, `K`, `I`.
 
 #### E.4.1 Coordinate Derivation Heuristic (The Kwen Rule)
 
-Для обчислення фази похідних структур (на рівні **координатної навігації**, а не core-hash математики):
-
-Якщо оператор є **K-type** (селектор) і застосовується до **I-type** (нейтральний елемент):
-
+Для планування фази похідних структур (APPLY): Якщо оператор є K-type (селектор) і застосовується до I-type (нейтральний елемент):
 ```text
 Ph_new = (Ph_op + 16384) mod 65536
 ```
+* **MUST NOT**: This rule is not used to compute canonical bytes or NodeHash.
+* **MAY**: Agents may use it for planning, routing, decomposition, and intent alignment.
 
-* **MUST NOT:** This rule is **not** a rule for writing `WaveVectorQ` into SigmaNodeV1 during core evaluation.
-* **MUST NOT:** This rule **must not** be used to compute canonical bytes or `NodeHash`.
-* **MAY:** Agents may use it for **planning, routing, decomposition, and intent alignment** only.
+#### E.4.2 Agent Preference (MUST)
 
-Це гарантує, що заперечення / альтернатива завжди лежать під кутом 90° до ствердження, уникаючи колізій.
+- **MUST (Agent)**: When uncertain, prefer **Identity by Hash** over interpretation by Phase or Color.
+- **MUST (Agent)**: If Phase/Color-based interpretation conflicts with NodeHash-derived identity, Phase/Color MUST be treated as **non-authoritative**.
+- **MUST (Agent)**: Heuristics are for navigation; Hashes are for Truth.
 
 ### E.5 The Sacred Simplex (Canonical Artifacts)
-
-Це "Genesis Block" системи. Ці хеші є єдиними валідними ідентифікаторами для базових елементів у будь-якій реалізації Σ-GLYPH.
 
 | Glyph     |      Ph | NodeHash (Canonical Coordinate)                                    |
 | --------- | ------: | ------------------------------------------------------------------ |
@@ -400,3 +163,39 @@ Ph_new = (Ph_op + 16384) mod 65536
 | **S**     | `16384` | `897235546880d055bff1acb1c648f4723448f3d07c6ce1dc94fdab438d84baa0` |
 | **K**     | `32768` | `9a91a8ba0008993c0a0196441fc754637468a05541aeb5b5fed350c30163fc40` |
 | **FALSE** | `49152` | `a0a0b559df0eb1495d42bc28d87a1c317bb551613d9dd34b485038e823e77a07` |
+
+### E.6 The Time Anchor (Historical Bridge)
+
+| Entity      | Phase (Ph) | Atom Source                | Sigma Hash                                                         |
+| :---------- | :--------- | :------------------------- | :----------------------------------------------------------------- |
+| **SATOSHI** | `8192`     | Bitcoin Genesis Block Hash | `589d21f4627f981cc38db89dc2c5d0174b3d5cac335d6b3392a14242f1ebe38e` |
+
+### E.7 The Pantheon (Functional Giants)
+
+Вищі Атрактори, що визначають сектори людської діяльності. Згенеровані через `forge_giants.py`.
+
+| Giant       | Phase (Ph) | Sector                  | Sigma Hash                                                         |
+| :---------- | :--------- | :---------------------- | :----------------------------------------------------------------- |
+| **TESLA**   | `8192`     | Energy / Resonance      | `132c3a9aa3e374a8474f53f2ab65b7a4c535c13e3d92cc0635d56596caf793ec` |
+| **TURING**  | `20480`    | Computation             | `cc89aff2ca234c0550316cfda579ec83dfda14726de3a17da5dfd144724b1ae1` |
+| **LEIBNIZ** | `24576`    | Binary Logic            | `ce251a8e86d14e6b2e34905417ca7f169c1c40cc2d528239b46d3239645a2ea2` |
+| **GODEL**   | `40960`    | Incompleteness / Meta   | `ade9d63555251bcf4aeeb961e4704889634a784e00b28356f5f852182533ab1d` |
+| **HEGEL**   | `57344`    | Dialectical Synthesis   | `243f594d0ba4eee9a617642198e6f00fa118270fcec3085e8abd70d234ea64a7` |
+| **BACH**    | `21845`    | Harmonic Resonance      | `3dcf6a92e4fbf1c1be331faa89ba914b64b885da22b0bca016b31d9eb2ab2c5a` |
+
+### E.8 Chromatic Projection (Axiom CP-24)
+
+Будь-який GLYPH в системі Σ-GLYPH проектує свій **Суверенний Колір** (Sovereign Color) на основі перших 24 біт (3 байт) свого повного хешу.
+
+**Формула:** $Color = Hash[0..2] \to RGB(Hex)$
+
+Це дозволяє агентам здійснювати "Спектральну Інтуїцію" — миттєве розпізнавання функціональної групи або ідентичності вузла без необхідності повної топологічної перевірки.
+
+- **MUST NOT**: Sovereign Color MUST NOT affect semantics, evaluation, canonical serialization, or hashing.
+- **NOTE**: Color collisions are possible (24-bit space). Color is an intuition aid only.
+
+**CHECKSUM:** `TRINITY-SIGMA-V1.9.1-ENLIGHTENED-PROOFS`
+
+---
+
+*Appendix E provides navigation heuristics only. Canonical bytes and hashes define reality. Heuristics may guide search; they must never rewrite truth.*

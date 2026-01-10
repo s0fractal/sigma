@@ -135,6 +135,33 @@ export function serializeNode(node: SigmaNode): Uint8Array {
   return buf;
 }
 
+export function parseNode(data: Uint8Array): SigmaNode {
+  const dv = new DataView(data.buffer, data.byteOffset, data.byteLength);
+  const op = dv.getUint8(0) as OpCode;
+  const flags = dv.getUint8(1);
+  const wave: WaveVectorQ = {
+    ph: dv.getUint16(2, false),
+    am: dv.getUint16(4, false),
+    en: dv.getInt16(6, false),
+  };
+
+  const node: SigmaNode = { op, flags, wave };
+  let offset = 8;
+  if (flags & Flags.F_ATOM) {
+    node.atom = data.slice(offset, offset + 32);
+    offset += 32;
+  }
+  if (flags & Flags.F_LEFT) {
+    node.left = data.slice(offset, offset + 32);
+    offset += 32;
+  }
+  if (flags & Flags.F_RIGHT) {
+    node.right = data.slice(offset, offset + 32);
+    offset += 32;
+  }
+  return node;
+}
+
 export async function hashNode(node: SigmaNode): Promise<Uint8Array> {
   const bytes = serializeNode(node);
   const hashBuffer = await crypto.subtle.digest("SHA-256", bytes.buffer as ArrayBuffer);

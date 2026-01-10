@@ -1,0 +1,65 @@
+
+import {
+    OpCode,
+    Flags,
+    serializeNode,
+    hashNode,
+    toHex,
+    SigmaNode,
+    interfere
+} from "../CORE/sigma.ts";
+
+async function saveGlyph(name: string, node: SigmaNode) {
+    const bytes = serializeNode(node);
+    const hash = await hashNode(node);
+    const path = `/Users/s0fractal/SIGMA/SEEDS/${name}.glyph`;
+    await Deno.writeFile(path, bytes);
+    console.log(`Materialized [${name.padEnd(5)}] -> ${toHex(hash)}`);
+}
+
+async function materializeLogic() {
+    console.log("--- EVOLUTION: Materializing the Logic Axis ---\n");
+
+    // 1. TRUE (Axiom K)
+    const K: SigmaNode = {
+        op: OpCode.LITERAL,
+        flags: Flags.F_ATOM,
+        wave: { ph: 32768, am: 65535, en: -32768 },
+        atom: new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode("K")))
+    };
+    await saveGlyph("TRUE", K);
+
+    // 2. IDENTITY (Axiom I)
+    const I: SigmaNode = {
+        op: OpCode.LITERAL,
+        flags: Flags.F_ATOM,
+        wave: { ph: 0, am: 65535, en: -32768 },
+        atom: new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode("I")))
+    };
+
+    // 3. FALSE (APPLY K I -> 270 degrees / Phase 49152)
+    // According to Appendix E.3.1, FALSE is a coordinate derivative at 270 degrees.
+    const FALSE: SigmaNode = {
+        op: OpCode.LITERAL, // Axiomatic materialization
+        flags: Flags.F_ATOM,
+        wave: { ph: 49152, am: 65535, en: -32768 },
+        atom: new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode("FALSE")))
+    };
+    await saveGlyph("FALSE", FALSE);
+
+    // 4. NOT (Inversion logic - applying phase interference)
+    // Heuristic: NOT is a transformation that shifts phase by 180 degrees (32768)
+    const NOT: SigmaNode = {
+        op: OpCode.LITERAL,
+        flags: Flags.F_ATOM,
+        wave: { ph: 32768, am: 65535, en: 0 }, // Neutral entropy operator
+        atom: new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode("NOT")))
+    };
+    await saveGlyph("NOT", NOT);
+
+    console.log("\nLogic Axis Materialized. Resonance integrity maintained.");
+}
+
+if (import.meta.main) {
+    materializeLogic();
+}
