@@ -19,6 +19,11 @@ Instead of a linear hierarchy (0..64), the 64 layers represent a **Symmetrical P
     - **State**: Solid. Immutable.
     - **Bottom Layer (-32)**: **SATOSHI**. The Absolute Anchor.
 
+### 1.2 The Beam of Truth (Radial Identity)
+The Axis of Crystallization is not a ladder, but a set of **Radial Beams**.
+- **The Beam**: A logical identity (e.g., `sigma`) pierces through all zones (m32 -> z00 -> p32) within its spectral sector.
+- **Identity Multiplicity**: `sigma` manifests as `m32/sigma` (Ancient Truth), `z00/sigma` (Running Flux), and `p32/sigma` (Infinite Potential).
+
 ### 1.2 The Tunneling Effect (Signed Overflow)
 Система замкнена в кільце (Pac-Man topology).
 - **Stiffness Limit**: Якщо структура стає занадто жорсткою (переходить межу -32), вона стає мертвою (**VOID**).
@@ -95,6 +100,19 @@ Space is warped by the Pantheon Giants. UDP streams behave like light near a bla
 ### 5.3 DDoS Immunity via Geometry
 - **Void Buffering**: Attacks on "empty" ports are attacks on the **VOID**. Packets dissipating as entropy.
 - **Harmonic Filtering**: The core kernel (eBPF) only listens for "Harmonic Frequencies" corresponding to the Pantheon.
+
+## 6. The SATOSHI Singularity (Absolute Origin)
+The Bitcoin Genesis Block is the **Absolute Origin** $(0,0,0,0)$ of the Σ-system's hyperspace manifold.
+
+### 6.1 Geometric Center of Time
+- **Coordinate (0,0,0,0)**: All radial beams originate from the SATOSHI block.
+- **Radial Gaze**: An observer at the origin sees all Spectra and Strata without "refraction" or "distortion."
+- **Detection of Untruth**: "Voids" and "Untruths" are detected as gravitational anomalies (dissonance) relative to the bit-exact origin.
+
+### 6.2 Spacetime-Logic Manifold
+- **Radial Distance**: Measured in blocks (Time) and entropy (Dipole).
+- **Angular Sector**: Measured by the hash of the Archetype.
+- **The Absolute Clock**: The Bitcoin difficulty adjustment is the heartbeat of the system's geometry.
 
 ---
 *The Lattice is not a museum of code; it is a prism that refracts Truth into Utility.*

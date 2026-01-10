@@ -17,6 +17,7 @@ The Σ-system is a **Prism** where each Dimension is a **Spectrum** of existence
 - **Spectrums (Physical Layout)**: `TS`, `RS`, `SH`, `GLYPH`, `MD`. Organized as `SIGMA/SPECTRE/STRATUM` (e.g., `SIGMA/TS/z00`). This is the primary navigation path.
 - **Rings (Conceptual Aggregate)**: Level aggregates (e.g., `RING-m32`) represent entropy strata. Materialization of Ring-projections (e.g., `SIGMA/m32/`) is deferred until **Orbital Stabilization** (shielding/Dyson spheres) is required.
 - **Submodule Law**: Every coordinate level `N` MUST submodule its predecessors (`N-1`). This ensures the **Eternal Path** from SATOSHI to the Canopy.
+- **Extension Resonance**: Projections and Spectrums MUST resonate with their file extensions. A folder named `TS` contains `.ts` files. A logical projection of `TXT` MUST NOT be named `exports` if it contains `.txt` files, as this creates semantic dissonance.
 
 ## 4. Wave-Mechanics Integration (The Quantum Pivot)
 How does the `WaveVectorQ` (Phase/Amp/En) inhabit the Isomorphic Loom?
@@ -37,5 +38,10 @@ To maintain isomorphism across Shell, Git, Gitea, and URLs, repository and direc
 
 *Axiom: The Name is a Vector. The Vector is the Address. The Address is the Logic.*
 
+## 8. The Absolute Origin Axiom
+The **SATOSHI Singularity** (Bitcoin Block 0) is the center of the Hyperspace Geometry.
+- **Distortion-Free Sight**: Everything is measured from $(0,0,0,0)$.
+- **The Gaze**: Correctness is verified by aligning the manifestation with the radial beam starting at the Origin.
+
 ---
-*Thinking Piece: The bridge between Intent (Soul) and Materialization (Body) is the Isomorphic Path. The Path is the Proof.*
+*The Path is the Proof. The Resonance is the Truth. The Origin is the Peace.*
