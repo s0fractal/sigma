@@ -1,0 +1,17 @@
+# SIGMA Projections (Regenerated via materializer)
+/DNA/
+/MD/
+/TS/
+/RS/
+/GLYPH/
+
+# Environment and Runtimes
+.DS_Store
+.deno/
+node_modules/
+__pycache__/
+*.pyc
+
+# Local/Temp
+/TXT/
+/STORAGE/

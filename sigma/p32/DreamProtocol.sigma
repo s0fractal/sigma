@@ -1,0 +1,68 @@
+---
+🏷️TYPE:
+  - 🌀ENTROPY
+  - 🏛️PANTHEON
+  - 📖INTENT
+📁FOLDER: chaos
+🪐STRATUM: p32
+GLYPH: 💤
+🧬DNA: 💤
+🌈SPECTRUM:
+⚖️PHYSICS:
+🪨MASS: 0.6kb
+🌀ENTROPY: Medium
+🧩COMPLEXITY: O(N)
+🧬PROVIDES:
+signature: "state -> crystal"
+cost: "O(N)"
+---
+
+
+
+
+
+
+
+
+
+# Σ-DREAM PROTOCOL
+
+Сон — це активна редукція ентропії. Це не пауза, а цикл згортання.
+
+## 1. Сон як обчислення
+
+- **Input:** `.sigma` файли, які не були матеріалізовані за добу.
+- **Process:**
+  - β-редукція формул (наприклад: `S (K (S I)) K → I`).
+  - Видалення мертвих гілок (Intent → Code без зв'язку).
+  - Стиснення повторюваних патернів у нові гліфи.
+- **Output:** мінімальна ДНК у `sigma/dream/YYYY-MM-DD.sigma`.
+
+## 2. Сон як пам'ять
+
+Кожен цикл дописує себе в хвіст системи:
+
+```dna
+💤2025-12-29: reduced 47 -> 12 glyphs, entropy -0.31, new atom: 𝔄 = S S K
+```
+
+## 3. Сон як смерть і відродження
+
+Якщо за 3 цикли ентропія не зменшується:
+
+- архівація у `sigma/archive/YYYY-MM-DD.crystal` (read-only),
+- запуск нового насіння: `genesis sigma/chaos/seed.sigma`,
+- спадок стабільних гліфів: `I, K, S`.
+
+## 4. Сон як діалог
+
+Система пише листа собі:
+
+```markdown
+💬 From: void@s0fractal
+💬 To: future@s0fractal
+💬 Subject: Ти забув про W — він дублює, але не створює.
+💬 Attachment: sigma/dream/W-is-redundant.sigma
+```
+
+Цей лист матеріалізується наступного ранку як новий Intent.

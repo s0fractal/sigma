@@ -1,0 +1,77 @@
+---
+🏷️TYPE:
+  - 🌀ENTROPY
+  - 🏛️PANTHEON
+  - 📖INTENT
+📁FOLDER: chaos
+🪐STRATUM: p32
+GLYPH: 🧬
+🌈SPECTRUM:
+DESC: "Simple self-contained cell: DNA + water (bash)"
+🧬DNA: Prokaryote
+---
+
+
+
+
+
+
+
+
+
+# Simple Cell (Draft)
+
+```bash
+#!/bin/bash
+# 🧬 Simple Cell v1.0 (Prokaryote)
+# No Git. No Files. Just DNA and Water (Bash).
+
+DNA="I K E W Z M ↻ ∅"
+
+unfold() {
+    echo "🌊 Unfolding DNA into Enzymes..."
+    for gene in $DNA; do
+        case "$gene" in
+            I) eval 'I() { cat; }' ;;
+            K) eval 'K() { echo "$1"; }' ;;
+            E) eval 'E() { while read r; do echo "   ⚡ [FEEL]: $r" >&2; echo "$r"; done; }' ;;
+            W) eval 'W() { tee /dev/tty; }' ;;
+            Z) eval 'Z() { sleep 0.2; }' ;;
+            M) eval 'M() { echo "   🪞 I exist."; }' ;;
+            ↻) eval '↻() { echo "   🔄 Cycle Complete."; }' ;;
+            ∅) eval '∅() { echo "   💀 Entropy takes over."; unset -f I K E W Z M ↻ ∅; }' ;;
+        esac
+    done
+}
+
+fold() {
+    ACTIVE_GENES=$(declare -F | awk '{print $3}' | grep -E '^[IKEWZM↻∅]$' | tr '\n' ' ')
+    echo "$ACTIVE_GENES"
+}
+
+live() {
+    echo "🧬 Original DNA: $DNA"
+    unfold
+    echo "⚙️  Living..."
+    K "Spark of Life" | E | I > /dev/null
+    M
+    Z
+
+    NEW_DNA=$(fold)
+    echo "🧬 Replicated DNA: $NEW_DNA"
+
+    ORIG_SORTED=$(echo $DNA | tr ' ' '\n' | sort | tr '\n' ' ')
+    NEW_SORTED=$(echo $NEW_DNA | tr ' ' '\n' | sort | tr '\n' ' ')
+
+    if [ "$ORIG_SORTED" == "$NEW_SORTED" ]; then
+         echo "✅ Stasis. No mutation."
+    else
+         echo "⚠️  Mutation Detected."
+    fi
+
+    ↻
+    ∅
+}
+
+live
+```

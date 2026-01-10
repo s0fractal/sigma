@@ -38,6 +38,8 @@ def extract_block(text: str, tag: str) -> str | None:
         return match.group(1).strip()
     return None
 
+import sys
+
 def main():
     print("=== Σ-GLYPH MATERIALIZER: Initiating Unfolding Cycle ===\n")
 
@@ -45,10 +47,13 @@ def main():
         print(f"Error: Source directory {SOURCE_DIR} not found.")
         return
 
+    # Check for tag filtering
+    target_tags = sys.argv[1:] if len(sys.argv) > 1 else TAG_MAP.keys()
+    print(f"Targeting Spectrum(s): {', '.join(target_tags)}\n")
+
     # Scan for .sigma files in sigma/ (our SSOT)
     for path in SOURCE_DIR.glob("**/*.sigma"):
         rel_path = path.relative_to(SOURCE_DIR)
-        print(f"🧬 Materializing: {rel_path}")
         
         try:
             content = path.read_text(encoding="utf-8")
@@ -56,11 +61,19 @@ def main():
             print(f"   ❌ Error reading {rel_path}: {e}")
             continue
         
-        for tag, (target_base, ext) in TAG_MAP.items():
+        materialized_any = False
+        for tag in target_tags:
+            if tag not in TAG_MAP:
+                continue
+            
+            target_base, ext = TAG_MAP[tag]
             block = extract_block(content, tag)
             if block:
+                if not materialized_any:
+                    print(f"🧬 Materializing: {rel_path}")
+                    materialized_any = True
+                
                 # Target path keeps the relative structure but changes extension
-                # e.g. sigma/laws/TopologicalCanon.sigma -> DNA/laws/TopologicalCanon.dna
                 target_path = target_base / rel_path.with_suffix(ext)
                 target_path.parent.mkdir(parents=True, exist_ok=True)
                 

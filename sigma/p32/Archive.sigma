@@ -1,0 +1,35 @@
+---
+🏷️TYPE:
+  - 🌀ENTROPY
+  - 🏛️PANTHEON
+  - 📖INTENT
+📁FOLDER: chaos
+🪐STRATUM: p32
+GLYPH: Archive
+🌈SPECTRUM:
+DESC: "Snapshot intent for sigma preservation"
+🧬DNA: Archive
+---
+
+
+
+
+
+
+
+
+
+# Archive Protocol
+
+Intent: preserve Sigma state without mutation.
+
+## Core Idea
+
+Create immutable snapshots of `sigma/` so no meaning is lost during evolution.
+Snapshots are pure memory, not execution.
+
+## Constraints
+
+- No transformation of intent.
+- No deletion of past state.
+- Each snapshot is addressable by time or hash.
