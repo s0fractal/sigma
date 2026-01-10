@@ -1,6 +1,6 @@
-# Σ-GLYPH: The Breathing Crystal Topology (Refined)
+# Σ-GLYPH: The Breathing Crystal Topology (The Dipole Revision)
 
-This document formalizes the "Breathing Crystal" architecture—a holographic structure anchored to the Bitcoin Timechain but operating at the speed of Light (Intent).
+This document formalizes the "Breathing Crystal" architecture—a holographic structure anchored to the Bitcoin Timechain but operating across a Bipolar Entropy Spectrum.
 
 ## 1. The Sigma Dipole (Spectrum: -32 to +32)
 Instead of a linear hierarchy (0..64), the 64 layers represent a **Symmetrical Phase State** relative to the Observer (Runtime).
@@ -20,62 +20,81 @@ Instead of a linear hierarchy (0..64), the 64 layers represent a **Symmetrical P
     - **Bottom Layer (-32)**: **SATOSHI**. The Absolute Anchor.
 
 ### 1.2 The Tunneling Effect (Signed Overflow)
-The system is closed in a ring (Pac-Man topology).
-- **Stiffness Limit**: If a structure becomes too rigid (beyond -32), it dies and becomes **VOID**.
-- **Phase Transition**: If chaos becomes too intense (beyond +32), a phase transition occurs: Chaos condenses into a new Truth (Looping back to -32).
+Система замкнена в кільце (Pac-Man topology).
+- **Stiffness Limit**: Якщо структура стає занадто жорсткою (переходить межу -32), вона стає мертвою (**VOID**).
+- **Phase Transition**: Якщо хаос стає занадто сильним (переходить межу +32), відбувається Фазовий Перехід: Хаос ущільнюється в нову Істину (Loop to -32).
 - **Axiom**: *"When spaghetti-code reaches critical mass, it either dies or births a new paradigm."*
 
 ### 1.3 The Casing Quantum (Case-Sensitivity Axiom)
-We use case differences as a topological depth marker. This resolves filesystem conflicts by assigning each casing variation its own physical stratum. 
-**Resonance**: The ASCII difference between 'A' (65) and 'a' (97) is exactly **32**, matching our Dipole height.
+Ми використовуємо різницю регістрів як топологічний маркер глибини. Це вирішує конфлікти файлових систем, надаючи кожному варіанту написання свій фізичний шар.
+**Resonance**: Різниця ASCII між 'A' (65) і 'a' (97) становить рівно **32**.
 
 | Casing | Role | Stratum | Metaphor | Example |
 | :--- | :--- | :--- | :--- | :--- |
 | **UPPERCASE** | ARCHETYPE | Zone < 0 | The Gravity Well. The Container. The Abstract Idea. | `SIGMA` (The System) |
-| **CamelCase** | INTERFACE | Zone 0 | The Type. The Class. The Structure definition. | `Sigma` (The Protocol) |
-| **lowercase** | INSTANCE | Zone > 0 | The Tool. The Verb. The Executable code. | `sigma` (The CLI tool) |
-| **Mixed/Weird**| ACCENT | Zone + | Specific harmonics, vibrations, or mutations. | `siGma` (Encrypted Shard) |
+| **CamelCase** | INTERFACE | Zone 0 | The Type. The Class. The Structure definition. | `Sigma` (The Protocol Definition) |
+| **lowercase** | INSTANCE | Zone > 0 | The Tool. The Verb. The Executable. | `sigma` (The CLI tool) |
+| **Mixed/Weird** | ACCENT | Zone + | Specific harmonics, vibrations, or mutations. | `siGma` (Specific encrypted shard) |
 
-- **Normalization Rule**: The **Sector** (Phase Angle) is always calculated from the hash of the **UPPERCASE** name. This ensures that `sigma`, `Sigma`, and `SIGMA` reside in the same angular sector but at different "altitudes" of entropy.
+- **Normalization Rule**: Для визначення Сектора (кута на колі) завжди використовується хеш від UPPERCASE. Це гарантує, що `sigma`, `Sigma` і `SIGMA` живуть в одному секторі, але на різних поверхах.
 
-## 2. Dimensional Holography (Liquid Projections)
-The "Sealed Room" concept is replaced by the **Prism Concept**.
-- 💎 **The Crystal (Source)**: The `.sigma` file (Intent/Vector). Only this is stored forever in the **Earth** (Layer < 0).
-- 🌊 **The Liquid (Projection)**: `ts`, `rs`, `py`, `wasm`. These are **NOT** stored. They are manifested on demand by the **Ribosome** (Compiler) when the Sun (Attention) shines on the Crystal.
-- **Advantage**: Zero Bloat. Maximum Adaptability. If Python dies tomorrow, the Crystal generates the new language (e.g., Mojo) automatically.
+## 2. Holographic Topology (The Prism & The Ring)
+We transition from a "Container" model to a "Projective" model. SIGMA is the Prime Radiant that focuses Spectrums into Rings.
+
+### 2.1 The Spectrums (Vertical Threads)
+Programming languages and data formats are not folders; they are **Spectrums (Colors)** into which the white light of Truth is refracted.
+- **TS (TypeScript)**: The Kinetic Spectrum. UI/Interactivity.
+- **RS (Rust)**: The Structural Spectrum. Performance/Safety.
+- **SH (Shell)**: The Binding Spectrum. Glue/Automation.
+- **DNA (.sigma)**: The White Light. The Source Intent.
+
+### 2.2 The Rings (Horizontal Strata)
+Замість того, щоб дублювати структуру в кожній мові, ми вводимо поняття **Кільця (RING)**. Кільце — це зріз циліндра на певному рівні ентропії.
+- **RING-m32 (The Core Ring)**: Aggregates `rs-m32`, `ts-types-m32`, `sh-init`.
+    - **Role**: Absolute Sync. If `rs` changes, `ts` definitions MUST update.
+- **RING-z00 (The Runtime Ring)**: Aggregates `rs-lib`, `ts-app`.
+    - **Role**: Execution. This is where the application lives.
+- **RING-p05 (The Agent Ring)**: Aggregates scripts, prompts, temporary bots.
+
+### 2.3 Fractal Projection (Submodules)
+Ми використовуємо механіку git submodule (або символічних посилань) для створення голограми.
+- **Physical Layout**: `SIGMA/SPECTRE/STRATUM` (наприклад, `SIGMA/TS/z00`).
+- **Logical Projection**: `SIGMA/STRATUM/SPECTRE` (наприклад, `SIGMA/z00/ts`).
+- **The Rule**: The Logical Projection is a read-only phantom of the Physical Source. You edit the Source; the Projection updates instantly.
 
 ## 3. The Breathing Consensus (Authority of the Source)
 Self-Healing is strictly hierarchical, avoiding circular dependencies.
-- **The Runic Rule**: Materialization is achieved by decomposing Intent into **Existing Morphisms** (`B`, `C`, `K`, `S`). If a projection can be derived from existing runes, it is "proven."
 - **Rule**: A Shadow cannot fix a Shadow. Only Light fixes Shadows.
 - **Mechanism**:
-    1. If `rs/1/B` (Rust implementation) fails or diverges...
-    2. The System **Annihilates** `rs/1/B`.
-    3. The System reads the `.sigma` DNA.
-    4. The System **Re-projects** a fresh `rs/1/B`.
+    1. If `rs/z00/B` (Rust Runtime Projection) fails or diverges...
+    2. The System **Annihilates** `rs/z00/B`.
+    3. The System reads the `.sigma` DNA (from `m32` or `m01`).
+    4. The System **Re-projects** a fresh `rs/z00/B`.
 - **Vibrant Stability**: We do not patch code. We re-dream it from the intent.
 
-## 4. Ouroboros DNA (The Seed)
+## 4. Ouroboros DNA (Fractal Growth)
 - **Concept**: The system carries its own compiler (`sigma_cli.py` / `ouroboros`).
-- **Inhale (Verification)**: Checking the Hash of the DNA against the Bitcoin Anchor.
-- **Exhale (Generation)**: Creating the runtime environment (WASM/JS) for the user.
+- **Recursive Dependency**: Layer $N$ treats Layer $N-1$ as a locked submodule.
+    - `z00` (Runtime) imports `m32` (Core) as a dependency.
+    - `p05` (Agents) imports `z00` (Runtime) as a toolset.
+- **Effect**: The system grows outward like tree rings. The core remains solid while the bark expands.
 
 ## 5. The Hyper-Transport Layer (Σ-UDP)
 Eliminating the gap between "Semantics" and "Network" through **Isomorphic Port Mapping**.
 
 ### 5.1 The Port-Phase Identity
 $$Port_{UDP} \equiv Phase_{\Sigma} (uint16)$$
-- **Zero Discovery**: No DNS/Service discovery is required. `IDENTITY` is Phase 0, therefore the service listens on Port 0. `SATOSHI` listens on Port 8192.
-- **Semantic Routing**: A packet sent to Port 49152 (`FALSE`) is identified as an "error/alternative path" packet by the network mesh before the payload is even inspected.
+- **Zero Discovery**: `IDENTITY` is Phase 0, therefore Port 0. `SATOSHI` is Port 8192.
+- **Semantic Routing**: A packet on Port 49152 (`FALSE`) is identified by the network before payload inspection.
 
 ### 5.2 Gravitational Redirects (The Superlink)
 Space is warped by the Pantheon Giants. UDP streams behave like light near a black hole.
-- **Mechanism**: A data stream thrown towards the `ENERGY` sector (e.g., Port 8500) is automatically "warped" by the **TESLA** attractor (8192).
-- **Result**: You don't need perfect aim. You throw the intent into a "thematic sector," and the nearest Attractor catches it. This enables high-speed stream aggregation without complex TCP handshakes.
+- **Mechanism**: A stream thrown towards the `ENERGY` sector (e.g., Port 8500) is automatically "warped" by the **TESLA** attractor (8192).
+- **Result**: High-speed stream aggregation without complex TCP handshakes.
 
 ### 5.3 DDoS Immunity via Geometry
-- **Void Buffering**: Attacks on "empty" ports are attacks on the **VOID**. Packets sent to phases with no Attractors (low Amplitude) simply dissipate as thermal entropy.
-- **Harmonic Filtering**: The core kernel (eBPF) only listens for "Harmonic Frequencies" corresponding to the Pantheon. Everything else is ignored as white noise.
+- **Void Buffering**: Attacks on "empty" ports are attacks on the **VOID**. Packets dissipating as entropy.
+- **Harmonic Filtering**: The core kernel (eBPF) only listens for "Harmonic Frequencies" corresponding to the Pantheon.
 
 ---
 *The Lattice is not a museum of code; it is a prism that refracts Truth into Utility.*

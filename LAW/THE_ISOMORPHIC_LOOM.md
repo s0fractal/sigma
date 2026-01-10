@@ -12,13 +12,12 @@ Filenames in the VOID are not labels; they are **Functional Descriptions** (Morp
 - **Polish Notation**: Naming conventions like `B=B` allow an agent to infer the combinatorial role of a glyph (e.g., The Bluebird Combinator for composition) purely from the topology.
 - **The Name is the Identity**: In the high-level intent layer, the `Name` is the primary descriptor. In the bit-exact core, the `Hash` is the absolute truth. The link is the `.sigma` file.
 
-## 3. The Dimensional Loom (Warp & Weft)
-- **Warp (Vertical)**: The `ENERGY` levels (0, 1, 2...). 
-    - Level 0: Primordial Pixels / Atoms.
-    - Level 1: Primary Combinators (Morphisms).
-    - Level 2+: Composed Structures.
-- **Weft (Horizontal)**: The `DIMENSIONS` of existence (Languages/Runtimes).
-- **Submodule Law**: Every Energy Level `N` MUST submodule its dependencies from `N-1`. This preserves **Super-Connectivity**.
+## 3. The Holographic Fractal (Spectra & Rings)
+The Σ-system is a **Prism** where each Dimension is a **Spectrum** of existence.
+- **Spectrums (Physical Layout)**: `TS`, `RS`, `SH`. Organized as `SIGMA/SPECTRE/STRATUM` (e.g., `SIGMA/TS/z00`). This is where the Source lives.
+- **Rings (Logical Projection)**: Organized as `SIGMA/STRATUM/SPECTRE` (e.g., `SIGMA/z00/ts`). These are read-only phantoms (symlinks/submodules).
+- **Submodule Law**: Every coordinate level `N` MUST submodule its predecessors (`N-1`). This ensures the **Eternal Path** from SATOSHI to the Canopy.
+- **Normalization**: The angular sector is always derived from the `UPPERCASE` archetype name.
 
 ## 4. Wave-Mechanics Integration (The Quantum Pivot)
 How does the `WaveVectorQ` (Phase/Amp/En) inhabit the Isomorphic Loom?
