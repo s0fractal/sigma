@@ -12,7 +12,7 @@ MUTE: '"// "'
 LIFT: ''
 🪨MASS: 0.5
 🌀ENTROPY: 0.4
-IMPORT: 'import { %n } from "@/%p";'
+IMPORT: 'import { %n } from "@/%p.ts";'
 🧬QDNA:
 brew: "brew install node"
 sh: "curl -fsSL https://fnm.vercel.app/install | bash"

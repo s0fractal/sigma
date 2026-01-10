@@ -155,6 +155,11 @@ def main():
                         if dep in glyph_registry and dep != this_glyph: 
                             dep_rel_sigma = glyph_registry[dep]
                             dep_path_str = str(dep_rel_sigma.with_suffix("")).replace(".sigma", "")
+                            
+                            # Namespacing fix for Rust
+                            if tag == "rs":
+                                dep_path_str = dep_path_str.replace("/", "::")
+                                
                             line = template.replace("%n", dep).replace("%p", dep_path_str)
                             imports.append(line)
                     
