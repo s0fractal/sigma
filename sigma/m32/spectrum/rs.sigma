@@ -1,7 +1,7 @@
 --- 
 layer: m32
 GLYPH: rs
-TYPE: submodule
+🏷️TYPE: 🌈SPECTRUM
 PATH: 'rs/'
 HEX: '#FF4433'
 SYNTAX: rust
