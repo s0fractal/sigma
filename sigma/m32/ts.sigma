@@ -1,0 +1,32 @@
+---
+🏷️TYPE:
+  - 🌈SPECTRUM
+  - 🏛️PANTHEON
+  - 📖INTENT
+📁FOLDER: root
+layer: m32
+GLYPH: ts
+HEX: '#3388FF'
+SYNTAX: ts
+MUTE: '"// "'
+LIFT: ''
+🪨MASS: 0.5
+🌀ENTROPY: 0.4
+IMPORT: 'import { %n } from "@/%p";'
+🧬QDNA:
+brew: "brew install node"
+sh: "curl -fsSL https://fnm.vercel.app/install | bash"
+🕸️EDGES:
+check: "command -v node >/dev/null 2>&1"
+resolve: "curl -fsSL https://fnm.vercel.app/install | bash"
+channel: sh
+cost: 0.4
+ttl: 86400
+🧬DNA: ts
+---
+
+
+
+
+
+

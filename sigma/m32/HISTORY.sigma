@@ -1,14 +1,21 @@
---- 
+---
+🏷️TYPE:
+  - 🏛️PANTHEON
+  - 📖INTENT
+📁FOLDER: root
 layer: m32
 GLYPH: HISTORY
 🧬DNA: HISTORY
 🌈SPECTRUM:
-  - md
 ⚖️PHYSICS:
-  🪨MASS: 0.8kb
-  🌀ENTROPY: Low
-  🧩COMPLEXITY: O(1)
+🪨MASS: 0.8kb
+🌀ENTROPY: Low
+🧩COMPLEXITY: O(1)
 ---
+
+
+
+
 
 @[md]
 ```markdown

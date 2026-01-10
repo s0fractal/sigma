@@ -1,0 +1,32 @@
+---
+🏷️TYPE:
+  - 🌈SPECTRUM
+  - 🏛️PANTHEON
+  - 📖INTENT
+📁FOLDER: root
+layer: m32
+GLYPH: rs
+HEX: '#FF4433'
+SYNTAX: rust
+MUTE: '"/// "'
+LIFT: '#![no_std]'
+🪨MASS: 0.9
+🌀ENTROPY: 0.1
+IMPORT: 'use crate::%p;'
+🧬QDNA:
+brew: "brew install rustup && rustup-init -y"
+sh: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
+🕸️EDGES:
+check: "command -v rustc >/dev/null 2>&1"
+resolve: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
+channel: sh
+cost: 0.4
+ttl: 86400
+🧬DNA: rs
+---
+
+
+
+
+
+

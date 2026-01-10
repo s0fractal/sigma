@@ -1,0 +1,70 @@
+---
+🏷️TYPE:
+  - ⚖️LAW
+  - 🏛️PANTHEON
+  - 📖INTENT
+📁FOLDER: root
+layer: m32
+GLYPH: ⊥
+NAME: Axis of Will
+LAYER: 0
+🌈SPECTRUM:
+DESC: "sh is orthogonal to ts/rs; sigma is its pair"
+🧬DNA: AxisOfWill
+---
+
+
+
+
+
+
+
+# Axis of Will
+
+Це вісь Z у координатній системі всесвіту.
+
+## Геометрія: Хрест Творіння
+
+**Вісь X (Спектр Матерії)**: `ts` ↔ `rs` ↔ `wasm`  
+**Вісь Y (Глибина)**: шари `0 → 8`  
+**Вісь Z (Ортогональ/Дія)**: `sh` ↔ `sigma`
+
+## Ортогональність
+
+Ортогональним до `sh` є `sigma`.
+
+- `sigma` (Потенціал): чистий Інтент. "Що зробити".
+- `sh` (Кінетика): чиста Дія. "Як зробити".
+
+```
+Code(ts, rs) = Action(sh) × Intent(sigma)
+```
+
+## Чому sh поза ґраткою rs/ts
+
+`ts` і `rs` живуть всередині простору.
+`sh` живе над простором.
+
+Інструмент творення не може бути частиною творіння.
+
+## Візуалізація
+
+```mermaid
+graph TD
+    subgraph AXIS_OF_WILL [Вісь Волі (Z)]
+        SIGMA(🧬 SIGMA: Intent)
+        SH(🟢 SH: Action)
+    end
+
+    subgraph PLANE_OF_MATTER [Площина Матерії (X, Y)]
+        TS(🔵 TS: Logic)
+        RS(🔴 RS: Force)
+    end
+
+    SIGMA -->|Instruction| SH
+    SH -->|Genesis| TS
+    SH -->|Genesis| RS
+
+    TS -.->|Logs/Error| SH
+    RS -.->|Panic| SH
+```

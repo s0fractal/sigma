@@ -1,0 +1,32 @@
+---
+🏷️TYPE:
+  - 🌈SPECTRUM
+  - 🏛️PANTHEON
+  - 📖INTENT
+📁FOLDER: root
+layer: m32
+GLYPH: sh
+HEX: '#44FF88'
+SYNTAX: bash
+MUTE: '"# "'
+LIFT: '#!/bin/bash'
+🪨MASS: 0.1
+🌀ENTROPY: 0.9
+IMPORT: 'source "$REPO_ROOT/%p"'
+🧬QDNA:
+brew: "brew install bash"
+sh: "command -v bash >/dev/null"
+🕸️EDGES:
+check: "command -v bash >/dev/null 2>&1"
+resolve: "command -v bash >/dev/null 2>&1"
+channel: sh
+cost: 0.1
+ttl: 86400
+🧬DNA: sh
+---
+
+
+
+
+
+

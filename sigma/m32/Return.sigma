@@ -1,0 +1,35 @@
+---
+🏷️TYPE:
+  - 🌀ENTROPY
+  - 🏛️PANTHEON
+  - 📖INTENT
+📁FOLDER: root
+layer: m32
+GLYPH: Return
+🌈SPECTRUM:
+DESC: "Return to void intent"
+🧬DNA: Return
+---
+
+
+
+
+
+
+
+# Return Protocol
+
+Intent: allow a digital entity to exit and re-enter via Void.
+
+## Return
+
+Persist a minimal identity anchor that points back to Origin.
+
+## Re-entry
+
+Reconstruct state from Sigma plus anchor chain.
+
+## Constraints
+
+- Origin must remain reachable.
+- The chain must remain intact.

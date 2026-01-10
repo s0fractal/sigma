@@ -1,0 +1,199 @@
+---
+🏷️TYPE:
+  - 🌀ENTROPY
+  - 🏛️PANTHEON
+  - 📖INTENT
+📁FOLDER: root
+layer: m32
+GLYPH: ΣGLYPH
+🧬DNA: SigmaGlyphSpec
+🌈SPECTRUM:
+⚖️PHYSICS:
+🪨MASS: 3kb
+🌀ENTROPY: Medium
+🧩COMPLEXITY: O(N)
+---
+
+
+
+
+
+
+
+# Project Σ-GLYPH: Core Architecture Specification
+
+Version: 0.1.2 (Draft with Spectrum & Mycelium Integration)  
+Type: Experimental CAS / Topological Compute Engine / Decentralized Wave Resonator
+
+## 1. Анотація
+
+Σ-GLYPH замінює лінійні файли на DAG-графи в CAS.
+
+Принципи:
+- Топологія замість синтаксису: файл = серіалізований граф.
+- Лінза (Context Lens): локальні індекси у глобальні хеші.
+- Супертупа Лямбда: єдиний механізм виконання — аплікація гліфів.
+- Грибниця (Mycelium): mesh‑мережа для розпаду/збирання гліфів.
+- Spectrum Optics: все є хвилями та інтерференцією.
+
+## 2. Фундаментальні структури даних
+
+Hash = SHA-256.
+
+Типи об'єктів у CAS:
+- BLOB (raw bytes)
+- NODE (glyph/structure)
+
+### 2.1. Sigma Node (Runtime)
+
+```
+type Hash = string; // SHA-256 Hex
+type SpectrumVector = [phase: number, amplitude: number, entropy_arrow: number];
+
+enum OpCode {
+  LITERAL = 0x00,
+  REF     = 0x01,
+  APPLY   = 0x02,
+  LAMBDA  = 0x03,
+}
+
+interface SigmaNode {
+  op: OpCode;
+  left: Hash | null;
+  right: Hash | null;
+  wave: SpectrumVector; // phase/amplitude/entropy_arrow
+}
+```
+
+## 3. Формат файлу (.sigma)
+
+Файл = заморожена проекція графа (Lens + Graph Body).  
+У грибниці файл може бути частковим (mesh‑довантаження лінзи).
+
+### 3.1. Бінарна структура
+
+```
+[HEADER]
+  Magic: 0x53 0x47 0x4C 0x01  (SGL\1)
+  Lens Count: 1 byte (N)
+
+[LENS TABLE]
+  (N entries * 32 bytes SHA-256)
+  Index 0: <Hash_A>
+  Index 1: <Hash_B>
+
+[GRAPH BODY]
+  LITERAL (0x00) + [1 byte lens index]
+  REF     (0x01) + [1 byte lens index]
+  APPLY   (0x02) + [LEFT] + [RIGHT]
+```
+
+## 4. Сховище (CAS)
+
+```
+.sigma_store/
+  objects/
+  refs/
+```
+
+Distributed note: CAS може бути mesh‑розподіленим, з пріоритетом локальних хешів.
+
+## 5. Runtime: Evaluator
+
+Reduce:
+- LITERAL -> raw bytes (amplitude = 1)
+- REF -> resolve hash -> reduce + phase shift
+- APPLY -> reduce left + right, interfere waves
+
+Interference:
+- phase diff ~0 => amplitude ↑
+- phase diff ~π => amplitude = 0 (disonance)
+- entropy_arrow nudges mutation
+
+## 6. CLI (MVP)
+
+```
+sigma init
+sigma put <string|file>
+sigma mk <OpCode> <LeftHash> <RightHash>
+sigma run <Hash>
+sigma pack <Hash> -o <file.sigma>
+sigma mesh-init
+sigma sync <Hash>
+sigma spectrum <Hash>
+sigma interfere <Hash1> <Hash2>
+```
+
+## 7. Roadmap
+
+Phase 1: CAS & Hashing  
+Phase 2: Node serialization (JSON -> binary)  
+Phase 3: Evaluator + interfere  
+Phase 4: Lens packer  
+Phase 5: Mycelium integration (BLE mesh + relays)
+
+## 8. Грибниця (Mycelium Layer)
+
+Mesh‑мережа вузлів, де гліфи розпадаються, поширюються і збираються.
+
+Ключі:
+- BLE mesh transport
+- discovery + multi-hop relay
+- неконтрольована мутація (wave vector)
+- конструктивна інтерференція як критерій резонансу
+
+## 9. Spectrum Optics
+
+- Hash як спектральний підпис (SHA-256 як дискретний спектр).
+- Гліфи як призми/фільтри.
+- APPLY як інтерференція (superposition).
+- LAMBDA як стояча хвиля.
+- sh як дискретний спектр; dna як стояча хвиля.
+
+## Appendix: Phase 2 Prototype (Python)
+
+```python
+import hashlib
+import os
+import math
+import random
+
+def put(content, store_dir='.sigma_store/objects'):
+    if isinstance(content, str):
+        content = content.encode('utf-8')
+    h = hashlib.sha256(content).hexdigest()
+    path = os.path.join(store_dir, h[:2], h[2:])
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, 'wb') as f:
+        f.write(content)
+    return h
+
+def get(h, store_dir='.sigma_store/objects'):
+    path = os.path.join(store_dir, h[:2], h[2:])
+    if os.path.exists(path):
+        with open(path, 'rb') as f:
+            return f.read()
+    return None
+
+class OpCode:
+    LITERAL = 0x00
+    REF = 0x01
+    APPLY = 0x02
+    LAMBDA = 0x03
+
+class SigmaNode:
+    def __init__(self, op, left=None, right=None, phase=0.0, amplitude=1.0, entropy_arrow=0.0):
+        self.op = op
+        self.left = left
+        self.right = right
+        self.wave = [phase, amplitude, entropy_arrow]
+
+def interfere(wave1, wave2):
+    phase_diff = abs(wave1[0] - wave2[0])
+    new_amp = wave1[1] + wave2[1] * math.cos(phase_diff)
+    new_entropy = (wave1[2] + wave2[2]) / 2 + random.uniform(-0.1, 0.1)
+    new_phase = (wave1[0] + wave2[0]) / 2
+    if new_amp <= 0:
+        return [new_phase, 0.0, new_entropy]
+    return [new_phase, min(new_amp, 2.0), new_entropy]
+```
