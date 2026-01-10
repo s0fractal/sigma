@@ -1,0 +1,45 @@
+---
+GLYPH: T
+🧬DNA: C I
+⚡ENERGY: 2
+🌈SPECTRUM:
+  - ts
+  - rs
+  - sh
+  - dna
+⚖️PHYSICS:
+  🪨MASS: 0.1kb
+  🌀ENTROPY: Low
+  🧩COMPLEXITY: O(1)
+---
+
+# Thrush (T) - The C(I) Formula
+
+Похідна молекула. Реверсивне застосування (Reverse application).
+T x f = f x.
+
+# 🌊
+@[ts]
+```typescript
+export const T = C(I);
+```
+
+@[rs]
+```rust
+pub const T: fn(any) -> any = C(I);
+```
+
+@[sh]
+```bash
+# T (Thrush): CI
+T() {
+    C "$I" "$@"
+}
+```
+
+@[dna]
+```dna
+
+C I
+
+```

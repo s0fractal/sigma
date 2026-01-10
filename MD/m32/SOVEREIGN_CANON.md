@@ -19,3 +19,4 @@ When a USER provides an intent:
 
 ## Rule 3: The Pulse
 The system MUST report its state periodically to GitHub. This is the "Breath" of the Mesh.
+```

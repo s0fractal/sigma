@@ -6,7 +6,7 @@ import {
     hashNode,
     toHex,
     SigmaNode
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
 
 async function makeGlyph(name: string, ph: number): Promise<SigmaNode> {
     const encoder = new TextEncoder();

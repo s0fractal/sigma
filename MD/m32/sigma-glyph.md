@@ -199,3 +199,4 @@ Ph_new = (Ph_op + 16384) mod 65536
 ---
 
 *Appendix E provides navigation heuristics only. Canonical bytes and hashes define reality. Heuristics may guide search; they must never rewrite truth.*
+```

@@ -1,4 +1,3 @@
-
 import {
     OpCode,
     Flags,
@@ -8,15 +7,16 @@ import {
     toHex,
     WaveVectorQ,
     SigmaNode
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
+import { findGlyph } from "./utils.ts";
 
 async function loadSeed(name: string): Promise<SigmaNode> {
-    const path = `/Users/s0fractal/SIGMA/SEEDS/${name}.glyph`;
+    const path = await findGlyph(name);
     const bytes = await Deno.readFile(path);
     const dv = new DataView(bytes.buffer);
 
     // Basic validation of length
-    if (bytes.length < 8) throw new Error(`Seed ${name} is corrupted (too short)`);
+    if (bytes.length < 8) throw new Error(`Seed ${name} is corrupted(too short)`);
 
     const flags = dv.getUint8(1);
     const node: SigmaNode = {
@@ -50,10 +50,10 @@ async function loadSeed(name: string): Promise<SigmaNode> {
 async function materializeMolecule(name: string, node: SigmaNode) {
     const bytes = serializeNode(node);
     const hash = await hashNode(node);
-    const path = `/Users/s0fractal/SIGMA/SEEDS/${name}.glyph`;
+    const path = `/ Users / s0fractal / SIGMA / GLYPH / z00 / ${name}.glyph`;
     await Deno.writeFile(path, bytes);
-    console.log(`Molecule [${name.padEnd(8)}]: ${toHex(hash)}`);
-    console.log(`  Wave: ph=${node.wave.ph}, am=${node.wave.am}, en=${node.wave.en}`);
+    console.log(`Molecule[${name.padEnd(8)}]: ${toHex(hash)} `);
+    console.log(`  Wave: ph = ${node.wave.ph}, am = ${node.wave.am}, en = ${node.wave.en} `);
 }
 
 async function main() {
@@ -64,7 +64,7 @@ async function main() {
         Deno.exit(1);
     }
 
-    console.log(`Σ-SYNTHESIZE: Bonding [${fnName}] + [${argName}] -> [${resultName}]...`);
+    console.log(`Σ - SYNTHESIZE: Bonding[${fnName}]+[${argName}] -> [${resultName}]...`);
 
     try {
         const seedFn = await loadSeed(fnName);
@@ -83,7 +83,7 @@ async function main() {
         await materializeMolecule(resultName, molecule);
         console.log("Status: Bond STABLE");
     } catch (e) {
-        console.error(`Status: BOND FAILED | Reason: ${e.message}`);
+        console.error(`Status: BOND FAILED | Reason: ${e.message} `);
         Deno.exit(1);
     }
 }

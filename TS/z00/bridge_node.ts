@@ -6,7 +6,7 @@ import {
     hashNode,
     toHex,
     SigmaNode
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
 
 async function createBridgeNode(externalChaos: string) {
     console.log("--- ERROR BRIDGE: Creating Wormhole Interface ---");

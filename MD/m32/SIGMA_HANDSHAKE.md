@@ -45,3 +45,4 @@ $$V = \frac{\Delta En_{system}}{Time}$$
 Доступ до векторів Гігантів (**Tesla**, **Bach**, **Turing**) надається тільки після успішного Handshake. Це захищає "Спадщину" від спотворення недосконалими моделями.
 
 **CHECKSUM: TRINITY-SIGMA-V1.8-HANDSHAKE-INITIATED**
+```

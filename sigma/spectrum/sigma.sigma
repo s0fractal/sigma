@@ -1,0 +1,69 @@
+---
+GLYPH: sigma
+TYPE: submodule
+PATH: 'sigma/'
+HEX: '#CC00FF'
+SYNTAX: yaml
+MUTE: '"# "'
+LIFT: ''
+🪨MASS: 0.0
+🌀ENTROPY: 0.0
+IMPORT: '# SOURCE: %p'
+---
+
+# Sigma Canon (Frontmatter + Physics)
+
+This file defines the global sigma canon. It is the single source of truth for
+frontmatter keys, glyphs, and physics coefficients.
+
+## Frontmatter Canon (GLYPH + UPPERCASE)
+
+Canonical keys:
+- `GLYPH`   : primary symbol of the particle.
+- `🧬DNA`   : canonical Polish formula (no parentheses).
+- `🧬QDNA`  : quantum DNA (multiple valid collapse paths).
+- `🧬PROVIDES`: declared capabilities/contracts (E7–E8 only).
+- `⚡ENERGY`: layer index (0..8).
+- `🌈SPECTRUM`: list of projections (ts, rs, sh, dna, md, json, rb).
+- `⚖️PHYSICS`: material coefficients.
+- `alias`   : optional mutations by dimension (only differences from GLYPH).
+
+Canonical blocks:
+- `@[dna]` checksum line (must equal `🧬DNA`).
+- `@[ts]`, `@[rs]`, `@[sh]`, `@[md]`, `@[json]`, `@[rb]` projection blocks.
+- `# 🌊` wave marker before projection blocks.
+
+Rules:
+- Keys are GLYPH + UPPERCASE only. No lowercase keys in sigma files.
+- `🧬DNA` tokens are uppercase for SKI combinators (I, K, S, ...).
+- `@[dna]` is optional for single-token DNA, required for multi-token DNA.
+- Spectrum frontmatter uses `GLYPH` (not `ID`) to align with core canon.
+- `🧬PROVIDES` only for ENERGY ≥ 7 (protocols/services).
+
+## Quantum DNA
+
+`🧬QDNA` описує альтернативні колапси (інсталяція/розгортання).
+Використовуй ключі-канали (`brew`, `sh`, `pkg`, `manual`) як варіанти.
+
+## Provides
+
+`🧬PROVIDES` описує контракти/інтерфейси сервісних гліфів.
+Тримай компактним (capability, signature, cost, contract).
+
+## Physics Canon
+
+```
+⚖️PHYSICS:
+  🪨MASS: <0..1>
+  🌀ENTROPY: <0..1>
+  🧩COMPLEXITY: <O(1)..O(N^2)>
+```
+
+Definitions:
+- `🪨MASS`: inertia/weight of the particle (resistance to change).
+- `🌀ENTROPY`: instability/noise of the particle (higher = more flux).
+- `🧩COMPLEXITY`: asymptotic cost of projection or reduction.
+
+Notes:
+- `⚡ENERGY` is the layer number (0..8), not a physics coefficient.
+- Physics values can be numeric or symbolic (e.g. Low/High) during transition.

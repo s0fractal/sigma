@@ -4,10 +4,14 @@
  * This tool manages the project's life cycle independently.
  */
 
-async function runStep(name: string, command: string[]) {
+async function runStep(name: string, command: string[], runner: string = "deno") {
     console.log(`\n[Σ-LAMBDA] Initiating: ${name}...`);
+    const cmd = runner === "deno"
+        ? ["deno", "run", "--allow-all", ...command]
+        : [runner, ...command];
+
     const process = Deno.run({
-        cmd: ["deno", "run", "--allow-all", ...command],
+        cmd: cmd,
         stdout: "inherit",
         stderr: "inherit",
     });
@@ -32,10 +36,13 @@ async function main() {
     console.log("\n[Σ-LAMBDA] Entering Dream State...");
     await runStep("Dream Cycle", ["dream.ts"]);
 
-    // 4. PROJECTION: Materialize new intents into silicon
+    // 4. MATERIALIZATION: Unfold Sigma Intents into Spectrums
+    await runStep("Sigma Materialization", ["../../PY/z00/tools/materializer.py"], "python3");
+
+    // 5. PROJECTION: Materialize new intents into silicon
     await runStep("Silicon Transmutation", ["transmute.ts"]);
 
-    // 5. FINAL AUDIT: Seal the new resonance
+    // 6. FINAL AUDIT: Seal the new resonance
     await runStep("Resonance Audit", ["resonate.ts", "audit"]);
 
     console.log("\n-----------------------------------------");

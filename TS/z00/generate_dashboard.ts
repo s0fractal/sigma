@@ -1,6 +1,6 @@
 
-import { WaveVectorQ } from "../CORE/sigma.ts";
-import { parseNode, toHex } from "../CORE/sigma.ts";
+import { WaveVectorQ } from "../m32/sigma.ts";
+import { parseNode, toHex } from "../m32/sigma.ts";
 
 async function getSpiral() {
     const process = Deno.run({

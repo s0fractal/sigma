@@ -1,0 +1,53 @@
+---
+GLYPH: B
+🧬DNA: B
+⚡ENERGY: 1
+🌈SPECTRUM:
+  - ts
+  - rs
+  - sh
+  - dna
+⚖️PHYSICS:
+  🪨MASS: 0.1kb
+  🌀ENTROPY: Low
+  🧩COMPLEXITY: O(1)
+---
+
+# Bluebird (B) - Compose
+
+Чиста структура зв'язку. Композиція функцій f(g(x)).
+Аксіома зв'язку.
+
+# 🌊
+@[ts]
+```typescript
+export const B = <A, B, C>(f: (y: B) => C) => (g: (x: A) => B) => (x: A): C => f(g(x));
+```
+
+@[rs]
+```rust
+pub fn B<A, B, C, F, G>(f: F, g: G) -> impl Fn(A) -> C
+where
+    F: Fn(B) -> C,
+    G: Fn(A) -> B,
+{
+    move |x| f(g(x))
+}
+```
+
+@[sh]
+```bash
+# B (Compose): f(g(x)) -> g | f
+B() {
+    local f="$1"
+    local g="$2"
+    eval "$g" | eval "$f"
+}
+```
+
+@[dna]
+```dna
+
+B
+
+```

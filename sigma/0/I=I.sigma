@@ -1,0 +1,45 @@
+---
+GLYPH: I
+🧬DNA: I
+⚡ENERGY: 0
+🌈SPECTRUM:
+  - ts
+  - rs
+  - sh
+  - dna
+⚖️PHYSICS:
+  🪨MASS: 0.1kb
+  🌀ENTROPY: Zero
+  🧩COMPLEXITY: O(1)
+---
+
+# Identity (I)
+
+Фундаментальна частинка ідентичності. Повертає вхід без змін.
+Вона є коренем ланцюга постачання для всіх комбінаторів.
+
+# 🌊
+@[ts]
+```typescript
+export const I = <T>(x: T): T => x;
+```
+
+@[rs]
+```rust
+pub fn I<T>(x: T) -> T { x }
+```
+
+@[sh]
+```bash
+# I (Identity): Просто пропускає дані далі
+I() {
+    cat -
+}
+```
+
+@[dna]
+```dna
+
+I
+
+```

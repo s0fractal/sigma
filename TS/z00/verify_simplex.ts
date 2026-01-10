@@ -6,7 +6,7 @@ import {
     serializeNode,
     hashNode,
     toHex
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
 
 async function makeGlyph(name: string, ph: number): Promise<{ canon: string, hash: string }> {
     const encoder = new TextEncoder();

@@ -1,0 +1,28 @@
+---
+GLYPH: sh
+TYPE: folder
+PATH: 'sh/'
+HEX: '#44FF88'
+SYNTAX: bash
+MUTE: '"# "'
+LIFT: '#!/bin/bash'
+🪨MASS: 0.1
+🌀ENTROPY: 0.9
+IMPORT: 'source "$REPO_ROOT/%p"'
+🧬QDNA:
+  brew: "brew install bash"
+  sh: "command -v bash >/dev/null"
+🕸️EDGES:
+  - edge: "edge://brew/bash/5"
+    check: "brew list bash >/dev/null 2>&1"
+    resolve: "brew install bash"
+    channel: brew
+    cost: 0.2
+    ttl: 86400
+  - edge: "edge://sh/bash/5"
+    check: "command -v bash >/dev/null 2>&1"
+    resolve: "command -v bash >/dev/null 2>&1"
+    channel: sh
+    cost: 0.1
+    ttl: 86400
+---

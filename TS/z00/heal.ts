@@ -3,13 +3,13 @@ import {
     serializeNode,
     hashNode,
     toHex
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
 
 async function main() {
     console.log("Σ-IMMUNE: Scanning for Dissonance...\n");
 
     const sealPath = "/Users/s0fractal/SIGMA/SENSE/resonance-seal.json";
-    const seedsDir = "/Users/s0fractal/SIGMA/SEEDS";
+    const seedsDir = "/Users/s0fractal/SIGMA/GLYPH";
     const echoDir = "/Users/s0fractal/ts_echo";
 
     try {

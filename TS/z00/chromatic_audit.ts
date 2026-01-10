@@ -2,7 +2,7 @@
 import {
     hashNode,
     toHex,
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
 import { PANTHEON_REGISTRY, ForgeManager, GiantDef } from "../RUNTIME/FORGE_MANAGER.ts";
 
 /**

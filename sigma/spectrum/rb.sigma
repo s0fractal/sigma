@@ -1,0 +1,13 @@
+---
+GLYPH: rb
+TYPE: folder
+PATH: 'rb/'
+HEX: '#FFD700'
+SYNTAX: ruby
+MUTE: '"# "'
+LIFT: '#!/usr/bin/ruby'
+🪨MASS: 0.3
+🌀ENTROPY: 0.6
+IMPORT: 'require_relative "$REPO_ROOT/%p"'
+---
+

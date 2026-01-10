@@ -2,12 +2,12 @@
 import {
     parseNode,
     toHex
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
 
 async function scanGaps() {
     console.log("=== PSYCHOHISTORICAL SCANNER: Analyzing Phase-Space ===\n");
 
-    const seedsDir = "/Users/s0fractal/SIGMA/SEEDS";
+    const seedsDir = "/Users/s0fractal/SIGMA/GLYPH";
     const phases: { name: string, ph: number }[] = [];
 
     for await (const entry of Deno.readDir(seedsDir)) {

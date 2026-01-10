@@ -1,7 +1,7 @@
 
 import {
     parseNode,
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
 
 /**
  * The Spiral Stave Visualizer
@@ -16,7 +16,7 @@ async function visualizeSpiral() {
     const state = JSON.parse(await Deno.readTextFile(statePath));
     const currentCycle = state.last_cycle || 1;
 
-    const seedsDir = "/Users/s0fractal/SIGMA/SEEDS";
+    const seedsDir = "/Users/s0fractal/SIGMA/GLYPH";
     const nodes: { name: string, ph: number, cycle: number }[] = [];
 
     // 1. Gather Nodes

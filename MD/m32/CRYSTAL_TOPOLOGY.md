@@ -116,3 +116,4 @@ The Bitcoin Genesis Block is the **Absolute Origin** $(0,0,0,0)$ of the Σ-syste
 
 ---
 *The Lattice is not a museum of code; it is a prism that refracts Truth into Utility.*
+```

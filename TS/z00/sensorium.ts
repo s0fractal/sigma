@@ -2,25 +2,33 @@
 import {
     SigmaNode,
     toHex
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
 
 async function loadAllSeeds(): Promise<Map<string, SigmaNode>> {
     const seeds = new Map<string, SigmaNode>();
-    for await (const entry of Deno.readDir("/Users/s0fractal/SIGMA/SEEDS")) {
-        if (entry.name.endsWith(".glyph")) {
-            const bytes = await Deno.readFile(`/Users/s0fractal/SIGMA/SEEDS/${entry.name}`);
-            const dv = new DataView(bytes.buffer);
-            seeds.set(entry.name.replace(".glyph", ""), {
-                op: dv.getUint8(0),
-                flags: dv.getUint8(1),
-                wave: {
-                    ph: dv.getUint16(2, false),
-                    am: dv.getUint16(4, false),
-                    en: dv.getInt16(6, false),
-                }
-            });
+
+    async function walk(dir: string) {
+        for await (const entry of Deno.readDir(dir)) {
+            const path = `${dir}/${entry.name}`;
+            if (entry.isDirectory) {
+                await walk(path);
+            } else if (entry.name.endsWith(".glyph")) {
+                const bytes = await Deno.readFile(path);
+                const dv = new DataView(bytes.buffer);
+                seeds.set(entry.name.replace(".glyph", ""), {
+                    op: dv.getUint8(0),
+                    flags: dv.getUint8(1),
+                    wave: {
+                        ph: dv.getUint16(2, false),
+                        am: dv.getUint16(4, false),
+                        en: dv.getInt16(6, false),
+                    }
+                });
+            }
         }
     }
+
+    await walk("/Users/s0fractal/SIGMA/GLYPH");
     return seeds;
 }
 

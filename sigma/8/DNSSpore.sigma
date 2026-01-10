@@ -1,0 +1,56 @@
+---
+GLYPH: 🧬
+🧬DNA: DNSSpore
+⚡ENERGY: 8
+🌈SPECTRUM:
+  - sigma
+  - md
+⚖️PHYSICS:
+  🪨MASS: 1kb
+  🌀ENTROPY: Low
+  🧩COMPLEXITY: O(1)
+🧬PROVIDES:
+  - capability: resolve
+    signature: "glyph -> bytes"
+    cost: "Network IO"
+  - capability: transport
+    signature: "spore -> void"
+    cost: "Network IO"
+  - contract: idempotent
+---
+
+# The DNS-Spore Protocol
+
+Using DNS TXT as a carrier for micro-proteins (WASM) and pointers.
+
+## 1. Record Structure
+
+Domain: `<GLYPH>.sigma.s0fractal.io`  
+Type: TXT  
+
+Payload (max 255 chars):  
+Format: `v=1;t=<type>;b=<payload>`
+
+Type `p` (Protein): pure code.  
+Type `h` (Host/Parasite): pointer to a host.  
+Type `s` (Spore): compressed cluster pointer (e.g. IPFS CID).
+
+Examples:
+
+```
+v=1;t=p;b=AGFzbQE...
+v=1;t=h;ref=0-rs/1/K.rs;h=<hash>
+v=1;t=s;ipfs=QmHash...
+```
+
+## 2. Ribosome (Local Cache)
+
+Local cache: `~/.cache/s0fractal/proteins`
+
+- Check cache first (TTL-aware).
+- Fetch TXT only when missing/expired.
+
+## 3. Law of Diet
+
+Small cells eat WASM from DNS.  
+Large cells follow host pointers to full code.

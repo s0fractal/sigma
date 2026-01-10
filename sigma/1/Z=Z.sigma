@@ -1,0 +1,30 @@
+---
+GLYPH: Z
+🧬DNA: Z
+⚡ENERGY: 1
+🌈SPECTRUM:
+  - sh
+  - dna
+---
+
+# Sleep (Z) - Wait
+
+Чиста затримка часу.
+Аксіома очікування.
+
+# 🌊
+@[sh]
+```bash
+# Z (Wait): Засинає на вказаний час
+Z() {
+    sleep "$1"
+    cat -
+}
+```
+
+@[dna]
+```dna
+
+Z
+
+```

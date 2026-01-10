@@ -7,41 +7,49 @@ import {
     toHex,
     OpCode,
     Flags
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
 
 async function loadAllSeeds(): Promise<Map<string, SigmaNode>> {
     const seeds = new Map<string, SigmaNode>();
-    for await (const entry of Deno.readDir("/Users/s0fractal/SIGMA/SEEDS")) {
-        if (entry.name.endsWith(".glyph")) {
-            const bytes = await Deno.readFile(`/Users/s0fractal/SIGMA/SEEDS/${entry.name}`);
-            const dv = new DataView(bytes.buffer);
-            const flags = dv.getUint8(1);
-            const node: SigmaNode = {
-                op: dv.getUint8(0),
-                flags: flags,
-                wave: {
-                    ph: dv.getUint16(2, false),
-                    am: dv.getUint16(4, false),
-                    en: dv.getInt16(6, false),
-                }
-            };
 
-            let offset = 8;
-            if (flags & Flags.F_ATOM) {
-                node.atom = bytes.slice(offset, offset + 32);
-                offset += 32;
+    async function walk(dir: string) {
+        for await (const entry of Deno.readDir(dir)) {
+            const path = `${dir}/${entry.name}`;
+            if (entry.isDirectory) {
+                await walk(path);
+            } else if (entry.name.endsWith(".glyph")) {
+                const bytes = await Deno.readFile(path);
+                const dv = new DataView(bytes.buffer);
+                const flags = dv.getUint8(1);
+                const node: SigmaNode = {
+                    op: dv.getUint8(0),
+                    flags: flags,
+                    wave: {
+                        ph: dv.getUint16(2, false),
+                        am: dv.getUint16(4, false),
+                        en: dv.getInt16(6, false),
+                    }
+                };
+
+                let offset = 8;
+                if (flags & Flags.F_ATOM) {
+                    node.atom = bytes.slice(offset, offset + 32);
+                    offset += 32;
+                }
+                if (flags & Flags.F_LEFT) {
+                    node.left = bytes.slice(offset, offset + 32);
+                    offset += 32;
+                }
+                if (flags & Flags.F_RIGHT) {
+                    node.right = bytes.slice(offset, offset + 32);
+                    offset += 32;
+                }
+                seeds.set(entry.name.replace(".glyph", ""), node);
             }
-            if (flags & Flags.F_LEFT) {
-                node.left = bytes.slice(offset, offset + 32);
-                offset += 32;
-            }
-            if (flags & Flags.F_RIGHT) {
-                node.right = bytes.slice(offset, offset + 32);
-                offset += 32;
-            }
-            seeds.set(entry.name.replace(".glyph", ""), node);
         }
     }
+
+    await walk("/Users/s0fractal/SIGMA/GLYPH");
     return seeds;
 }
 
@@ -82,7 +90,7 @@ async function main() {
             };
 
             const hash = await hashNode(molecule);
-            const path = `/Users/s0fractal/SIGMA/SEEDS/${dreamName}.glyph`;
+            const path = `/Users/s0fractal/SIGMA/GLYPH/z00/${dreamName}.glyph`;
 
             // Only save if it's truly new or significant
             console.log(`✨ DISCOVERY: [${nameA}] + [${nameB}] resonated into [${dreamName}]`);

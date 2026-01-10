@@ -5,7 +5,7 @@ import {
     hashNode,
     toHex,
     interfere,
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
 
 async function runTests() {
     console.log("--- Σ-GLYPH TV-N1: LITERAL ---");

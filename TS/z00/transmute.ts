@@ -4,10 +4,11 @@ import {
     Flags,
     toHex,
     SigmaNode
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
+import { findGlyph } from "./utils.ts";
 
 async function loadSeed(name: string): Promise<SigmaNode> {
-    const path = `/Users/s0fractal/SIGMA/SEEDS/${name}.glyph`;
+    const path = await findGlyph(name);
     const bytes = await Deno.readFile(path);
     const dv = new DataView(bytes.buffer);
 
@@ -46,7 +47,7 @@ function generateTS(name: string, node: SigmaNode): string {
  * AMUR (Attraction): ${am} (~${amur}%)
  * ENTROPY (Tension): ${en}
  * 
- * Intent: file:///Users/s0fractal/SIGMA/SEEDS/${name}.glyph
+ * Intent: ${name}.glyph
  */
 
 ${body}

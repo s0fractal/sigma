@@ -31,3 +31,4 @@ The Prime Radiant is not a closed loop; it is an open invitation.
 
 ---
 *The Logic is the Rune. The Intent is the Light. The Fugue is the Life.*
+```

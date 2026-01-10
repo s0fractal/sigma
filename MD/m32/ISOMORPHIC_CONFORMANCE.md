@@ -26,3 +26,4 @@ To enable external AI models (Ants) to synchronize with the Hologram, the system
 
 ---
 *We do not explain the system. We provide the coordinates for the system to explain itself.*
+```

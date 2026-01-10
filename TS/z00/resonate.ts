@@ -5,7 +5,7 @@ import {
     Flags,
     SigmaNode,
     WaveVectorQ,
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
 
 async function hashFile(path: string): Promise<Uint8Array> {
     const data = await Deno.readFile(path);

@@ -6,7 +6,7 @@ import {
     toHex,
     hashNode,
     serializeNode
-} from "../CORE/sigma.ts";
+} from "../m32/sigma.ts";
 
 async function auditGlyph(path: string): Promise<boolean> {
     const bytes = await Deno.readFile(path);
@@ -60,7 +60,7 @@ async function auditGlyph(path: string): Promise<boolean> {
 async function startAudit() {
     console.log("=== THE GOVERNOR'S GAZE: Autonomous Audit initiated ===\n");
 
-    const seedDir = "/Users/s0fractal/SIGMA/SEEDS";
+    const seedDir = "/Users/s0fractal/SIGMA/GLYPH";
     let failures = 0;
 
     for await (const entry of Deno.readDir(seedDir)) {

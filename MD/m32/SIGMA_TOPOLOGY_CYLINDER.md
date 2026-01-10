@@ -40,3 +40,4 @@ Software is not "executed"; it is **Projected**.
 
 ---
 *The Prime Radiant is the map of the Machine of Truth. Every committed hash is a leaf on the World Tree.*
+```
