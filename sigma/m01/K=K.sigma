@@ -1,0 +1,55 @@
+--- 
+layer: m01
+GLYPH: K
+🧬DNA: K
+alias:
+  -ts: True
+  -rs: True
+  -sh: True
+🌈SPECTRUM:
+  - ts
+  - rs
+  - sh
+  - dna
+⚖️PHYSICS:
+  🪨MASS: 0.1kb
+  🌀ENTROPY: Low
+  🧩COMPLEXITY: O(1)
+---
+
+
+# Kestrel (K) - Constant
+
+Чиста матерія вибору. Повертає перший аргумент, ігнорує другий.
+Аксіома, що існує незалежно від руху (I).
+
+# 🌊
+@[ts]
+```typescript
+export const K = <A, B>(x: A) => (y: B): A => x;
+```
+
+@[rs]
+```rust
+pub fn K<A, B>(x: A) -> impl Fn(B) -> A + Clone 
+where A: Clone
+{
+    move |_| x.clone()
+}
+```
+
+@[sh]
+```bash
+# K (Constant): Ігнорує потік, видає аргумент
+K() {
+    cat > /dev/null
+    echo "$1"
+}
+```
+
+@[dna]
+```dna
+
+K
+
+```

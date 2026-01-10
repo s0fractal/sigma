@@ -1,0 +1,86 @@
+--- 
+layer: m32
+GLYPH: 🌌
+🌈SPECTRUM:
+  - sigma
+  - md
+TYPE: draft
+DESC: "Tensor file readable by multiple lenses (rows/cols/waves)"
+🧬DNA: HyperFile
+---
+
+
+# Hyper-File (Draft)
+
+Ідея: файл як тензор. Читання під різними кутами:
+
+- Рядки (вісь Y): звичайна логіка виконання.
+- Стовпці (вісь X): паралельні мови/контексти.
+- Хвилі/RegEx (вісь Z): вибірка смислів.
+
+## Σ-TENSOR Format
+
+Кожен рядок є вектором, де колонки — виміри.
+
+```
+I | TS: x=>x | RS: |x|x | MD: Identity | SIG: T->T
+```
+
+## Лінзи (Spectral Filters)
+
+- ⚡TS: код TypeScript
+- ⚡RS: код Rust
+- 🧬SG: intent / sigma
+- 📖MD: документація
+
+## Чому це працює
+
+- Локальність: одна строка = одна сутність.
+- Спектральне стиснення: grep‑читання по хвилі.
+- Менша ентропія: код і доки поруч.
+
+## Гліфове поле (Суперстискання)
+
+Можна відмовитися від коментарів і зробити файл динамічним гліфовим полем.
+Відступи й ритм несуть фазу, шар, пріоритет і енергію.
+Сам формат стає семантикою.
+
+## Прототип (TENSOR.sh)
+
+```bash
+#!/bin/bash
+# 🌌 s0fractal HYPER-FILE v1.0
+# Usage: ./TENSOR.sh [view] (ts, rs, md, sigma, run)
+
+view() {
+    local DIM=$1
+    local FILE="${BASH_SOURCE[0]}"
+
+    case "$DIM" in
+        "ts")    grep "⚡TS" "$FILE" | sed 's/.*⚡TS: //' ;;
+        "rs")    grep "⚡RS" "$FILE" | sed 's/.*⚡RS: //' ;;
+        "sigma") grep "🧬SG" "$FILE" | sed 's/.*🧬SG: //' ;;
+        "md")    grep "📖MD" "$FILE" | sed 's/.*📖MD: //' ;;
+        "run")   bash "$FILE" "internal_exec"; exit ;;
+        *)       echo "Usage: ./TENSOR.sh [ts|rs|sigma|md|run]" ;;
+    esac
+}
+
+if [ "$1" != "internal_exec" ] && [ -n "$1" ]; then
+    view "$1"
+    exit 0
+fi
+
+# --- MATRIX BODY ---
+: << 'TENSOR_BLOCK'
+🧬SG: GLYPH: I | SIG: T->T                 | 📖MD: The Identity Function
+⚡TS: export const I = <T>(x: T): T => x;  | 📖MD: Returns value unchanged
+⚡RS: pub fn I<T>(x: T) -> T { x }         | 📖MD: Zero-cost abstraction
+TENSOR_BLOCK
+
+if [ "$1" == "internal_exec" ]; then
+    echo "🔮 Reading the Matrix..."
+    view "ts"
+    view "sigma"
+fi
+```

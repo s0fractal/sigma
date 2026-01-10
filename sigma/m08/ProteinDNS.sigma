@@ -1,0 +1,44 @@
+--- 
+layer: m08
+GLYPH: 🧫
+🧬DNA: ProteinDNS
+🌈SPECTRUM:
+  - sigma
+  - md
+⚖️PHYSICS:
+  🪨MASS: 1kb
+  🌀ENTROPY: Low
+  🧩COMPLEXITY: O(1)
+🧬PROVIDES:
+  - capability: resolve
+    signature: "glyph -> wasm|meta"
+    cost: "DNS IO"
+  - capability: cache
+    signature: "glyph -> ~/.cache/s0fractal/proteins"
+    cost: "O(1)"
+  - contract: "prefer cache"
+---
+
+
+# Protein DNS Protocol
+
+DNS-TXT delivers ready proteins (wasm) for minimal glyphs. No repo pull, no build.
+
+## Records
+
+```
+TXT I.sigma.s0fractal.io
+b64:<base64-wasm>
+port:0-rs/1/K.rs
+🪨MASS:47
+ttl:86400
+sig:<ed25519>
+```
+
+Rules:
+- First lookup is local cache.
+- If missing, fetch TXT via DNS.
+- `b64:` is the payload; `port:` is an optional full-code pointer.
+- Cache path: `~/.cache/s0fractal/proteins/<GLYPH>.wasm`
+- Optional metadata is stored in `~/.cache/s0fractal/proteins/<GLYPH>.meta`
+- Sync only for used glyphs; drop after 30d of inactivity.

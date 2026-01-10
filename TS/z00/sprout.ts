@@ -9,7 +9,7 @@ import {
     WaveVectorQ,
     SigmaNode
 } from "../m32/sigma.ts";
-import { findGlyph } from "./utils.ts";
+import { findGlyph } from "./spectral_core.ts";
 
 const GOLDEN_PHASE = Math.round(65536 * ((Math.sqrt(5) - 1) / 2));
 

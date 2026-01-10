@@ -5,7 +5,7 @@ import {
     toHex,
     SigmaNode
 } from "../m32/sigma.ts";
-import { findGlyph } from "./utils.ts";
+import { findGlyph } from "./spectral_core.ts";
 
 async function loadSeed(name: string): Promise<SigmaNode> {
     const path = await findGlyph(name);

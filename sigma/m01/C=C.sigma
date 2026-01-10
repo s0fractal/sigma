@@ -1,0 +1,57 @@
+--- 
+layer: m01
+GLYPH: C
+🧬DNA: C
+🌈SPECTRUM:
+  - ts
+  - rs
+  - sh
+  - dna
+⚖️PHYSICS:
+  🪨MASS: 0.1kb
+  🌀ENTROPY: Low
+  🧩COMPLEXITY: O(1)
+---
+
+
+# Cardinal (C) - Flip
+
+Чиста перестановка. Змінює порядок двох аргументів.
+Аксіома фліпу.
+
+# 🌊
+@[ts]
+```typescript
+export const C = <A, B, C>(f: (x: A) => (y: B) => C) => (y: B) => (x: A): C => f(x)(y);
+```
+
+@[rs]
+```rust
+pub fn C<A, B, C, F>(f: F) -> impl Fn(B) -> Box<dyn Fn(A) -> C>
+where
+    F: Fn(A) -> Box<dyn Fn(B) -> C> + 'static,
+{
+    move |y| {
+        let f = f.clone();
+        Box::new(move |x| f(x)(y))
+    }
+}
+```
+
+@[sh]
+```bash
+# C (Flip): f x y -> f y x
+C() {
+    local f="$1"
+    local arg1="$2"
+    local arg2="$3"
+    eval "$f" "$arg2" "$arg1"
+}
+```
+
+@[dna]
+```dna
+
+C
+
+```

@@ -1,0 +1,16 @@
+--- 
+layer: m32
+GLYPH: dna
+TYPE: virtual
+PATH: 'dna/'
+HEX: '#00FF00'
+SYNTAX: glyphs
+MUTE: '"// "'
+LIFT: ''
+🪨MASS: 0.0
+🌀ENTROPY: 0.0
+IMPORT: '// SOURCE: %p'
+🧬DNA: dna
+---
+
+

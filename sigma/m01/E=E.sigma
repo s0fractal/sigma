@@ -1,0 +1,52 @@
+--- 
+layer: m01
+GLYPH: E
+🧬DNA: E
+🌈SPECTRUM:
+  - ts
+  - rs
+  - sh
+  - dna
+⚖️PHYSICS:
+  🪨MASS: 0.1kb
+  🌀ENTROPY: High
+  🧩COMPLEXITY: O(E)
+---
+
+
+# Effect (E) - Side Effect
+
+Чиста побічна дія. Пропускає аргумент через ефект.
+Аксіома впливу.
+
+# 🌊
+@[ts]
+```typescript
+export const E = <T>(f: (x: T) => void) => (x: T): T => { f(x); return x; };
+```
+
+@[rs]
+```rust
+pub fn E<T, F>(f: F, x: T) -> T 
+where F: Fn(&T)
+{
+    f(&x);
+    x
+}
+```
+
+@[sh]
+```bash
+# E (Effect): Виконує команду, але пропускає оригінальний потік далі
+E() {
+    local cmd="$1"
+    tee >(eval "$cmd" > /dev/null)
+}
+```
+
+@[dna]
+```dna
+
+E
+
+```
