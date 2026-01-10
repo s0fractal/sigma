@@ -3,7 +3,7 @@
   - 🌈SPECTRUM
   - 🏛️PANTHEON
   - 📖INTENT
-📁FOLDER: root
+📁FOLDER: spectrum
 layer: m32
 GLYPH: sigma
 HEX: '#CC00FF'
@@ -15,6 +15,8 @@ LIFT: ''
 IMPORT: '# SOURCE: %p'
 🧬DNA: sigma
 ---
+
+
 
 
 

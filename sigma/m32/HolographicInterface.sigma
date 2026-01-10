@@ -3,7 +3,7 @@
   - 🌀ENTROPY
   - 🏛️PANTHEON
   - 📖INTENT
-📁FOLDER: root
+📁FOLDER: chaos
 layer: m32
 GLYPH: 🧿
 NAME: The Holographic Interface
@@ -11,6 +11,8 @@ NAME: The Holographic Interface
 DESC: "Visualizes the System State as a reactive Torus. Controlled by physical motion (Optical Flow)."
 🧬DNA: HolographicInterface
 ---
+
+
 
 
 

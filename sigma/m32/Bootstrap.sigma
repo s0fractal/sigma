@@ -3,7 +3,7 @@
   - 🌀ENTROPY
   - 🏛️PANTHEON
   - 📖INTENT
-📁FOLDER: root
+📁FOLDER: chaos
 layer: m32
 GLYPH: ⛺
 NAME: Bootstrap
@@ -11,6 +11,8 @@ NAME: Bootstrap
 DESC: "Life support system: brew, dotfiles, local gitea"
 🧬DNA: Bootstrap
 ---
+
+
 
 
 

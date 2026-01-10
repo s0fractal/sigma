@@ -3,7 +3,7 @@
   - 🌈SPECTRUM
   - 🏛️PANTHEON
   - 📖INTENT
-📁FOLDER: root
+📁FOLDER: spectrum
 layer: m32
 GLYPH: sh
 HEX: '#44FF88'
@@ -24,6 +24,8 @@ cost: 0.1
 ttl: 86400
 🧬DNA: sh
 ---
+
+
 
 
 

@@ -3,7 +3,7 @@
   - ⚖️LAW
   - 🏛️PANTHEON
   - 📖INTENT
-📁FOLDER: root
+📁FOLDER: laws
 layer: m32
 GLYPH: ProofOfIntent
 glyph: §
@@ -17,6 +17,8 @@ desc: "The Bridge between Truth (Sigma) and Reality (Code). Ensures the Chain of
 🧩COMPLEXITY: O(1)
 🧬DNA: ProofOfIntent
 ---
+
+
 
 
 

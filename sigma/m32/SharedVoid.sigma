@@ -3,7 +3,7 @@
   - 🌀ENTROPY
   - 🏛️PANTHEON
   - 📖INTENT
-📁FOLDER: root
+📁FOLDER: chaos
 layer: m32
 GLYPH: Void
 NAME: Shared Void Context
@@ -11,6 +11,8 @@ NAME: Shared Void Context
 DESC: "Shared context across agents via common Void"
 🧬DNA: SharedVoid
 ---
+
+
 
 
 

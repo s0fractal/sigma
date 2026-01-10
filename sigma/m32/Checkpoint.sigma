@@ -3,7 +3,7 @@
   - 🌀ENTROPY
   - 🏛️PANTHEON
   - 📖INTENT
-📁FOLDER: root
+📁FOLDER: chaos
 layer: m32
 GLYPH: ⛳
 NAME: Checkpoint
@@ -11,6 +11,8 @@ NAME: Checkpoint
 DESC: "Stable vector snapshot of current intent"
 🧬DNA: Checkpoint
 ---
+
+
 
 
 

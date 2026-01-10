@@ -3,7 +3,7 @@
   - 🌀ENTROPY
   - 🏛️PANTHEON
   - 📖INTENT
-📁FOLDER: root
+📁FOLDER: chaos
 layer: m32
 GLYPH: 💤
 🧬DNA: 💤
@@ -16,6 +16,8 @@ GLYPH: 💤
 signature: "state -> crystal"
 cost: "O(N)"
 ---
+
+
 
 
 

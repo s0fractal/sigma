@@ -3,7 +3,7 @@
   - 🌀ENTROPY
   - 🏛️PANTHEON
   - 📖INTENT
-📁FOLDER: root
+📁FOLDER: chaos
 layer: m32
 GLYPH: Ω
 NAME: The Proteus Protocol
@@ -12,6 +12,8 @@ DESC: "The entire system collapsed into a single, self-modifying executable. The
 TAGS: [quine, monolith, singularity, ski-calculus]
 🧬DNA: ProteusProtocol
 ---
+
+
 
 
 

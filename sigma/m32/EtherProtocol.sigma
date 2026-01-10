@@ -3,7 +3,7 @@
   - 🌀ENTROPY
   - 🏛️PANTHEON
   - 📖INTENT
-📁FOLDER: root
+📁FOLDER: chaos
 layer: m32
 GLYPH: 🟣
 NAME: The Ether Protocol (WASM)
@@ -12,6 +12,8 @@ DESC: "WebAssembly is the liquified state of Rust. It flows through the network 
 TAGS: [wasm, stream, signal, carrier]
 🧬DNA: EtherProtocol
 ---
+
+
 
 
 

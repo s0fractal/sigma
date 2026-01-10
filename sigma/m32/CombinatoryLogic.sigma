@@ -3,7 +3,7 @@
   - ⚖️LAW
   - 🏛️PANTHEON
   - 📖INTENT
-📁FOLDER: root
+📁FOLDER: laws
 layer: m32
 GLYPH: CombinatoryLogic
 glyph: ⛓️
@@ -16,6 +16,8 @@ desc: "Imperative code is forbidden. Only application of Basis Combinators is al
 🧩COMPLEXITY: O(1)
 🧬DNA: CombinatoryLogic
 ---
+
+
 
 
 
