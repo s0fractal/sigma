@@ -10,7 +10,7 @@ GLYPH: resonate
 # Resonate
 
 @[ts]
-``` ts
+```ts
 import {
     hashNode,
     toHex,

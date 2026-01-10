@@ -10,7 +10,7 @@ GLYPH: sigma_cli
 # Sigma Cli
 
 @[py]
-``` py
+```py
 #!/usr/bin/env python3
 import hashlib
 import struct

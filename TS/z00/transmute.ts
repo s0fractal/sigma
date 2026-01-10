@@ -1,5 +1,3 @@
-``` ts
-
 import {
     OpCode,
     Flags,

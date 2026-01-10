@@ -10,7 +10,7 @@ GLYPH: chromatic_audit
 # Chromatic Audit
 
 @[ts]
-``` ts
+```ts
 
 import {
     hashNode,

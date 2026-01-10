@@ -1,5 +1,3 @@
-``` ts
-
 import { WaveVectorQ } from "../m32/sigma.ts";
 import { parseNode, toHex } from "../m32/sigma.ts";
 

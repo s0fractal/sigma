@@ -10,7 +10,7 @@ GLYPH: transmute
 # Transmute
 
 @[ts]
-``` ts
+```ts
 
 import {
     OpCode,

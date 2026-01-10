@@ -1,5 +1,3 @@
-``` ts
-
 import {
     serializeNode,
     hashNode,

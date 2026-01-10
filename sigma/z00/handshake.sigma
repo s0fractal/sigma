@@ -10,7 +10,7 @@ GLYPH: handshake
 # Handshake
 
 @[ts]
-``` ts
+```ts
 
 import {
     OpCode,

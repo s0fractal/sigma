@@ -10,7 +10,7 @@ GLYPH: detect_missing_links
 # Detect Missing Links
 
 @[ts]
-``` ts
+```ts
 
 import {
     parseNode,

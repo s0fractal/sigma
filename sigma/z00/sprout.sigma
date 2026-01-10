@@ -10,7 +10,7 @@ GLYPH: sprout
 # Sprout
 
 @[ts]
-``` ts
+```ts
 
 import {
     OpCode,

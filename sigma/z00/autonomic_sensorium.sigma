@@ -10,7 +10,7 @@ GLYPH: autonomic_sensorium
 # Autonomic Sensorium
 
 @[ts]
-``` ts
+```ts
 
 import { SigmaNode, WaveVectorQ } from "../m32/sigma.ts";
 

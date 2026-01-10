@@ -10,7 +10,7 @@ GLYPH: bridge_node
 # Bridge Node
 
 @[ts]
-``` ts
+```ts
 
 import {
     OpCode,

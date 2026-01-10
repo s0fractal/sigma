@@ -10,7 +10,7 @@ GLYPH: FORGE_MANAGER
 # Forge Manager
 
 @[ts]
-``` ts
+```ts
 
 import {
     OpCode,

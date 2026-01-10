@@ -1,4 +1,3 @@
-``` ts
 import { hashNode, toHex, OpCode, Flags, interfere, SigmaNode } from "../m32/sigma.ts";
 
 async function hashFile(path: string): Promise<Uint8Array> {

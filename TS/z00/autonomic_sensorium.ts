@@ -1,5 +1,3 @@
-``` ts
-
 import { SigmaNode, WaveVectorQ } from "../m32/sigma.ts";
 
 interface AutonomicState {

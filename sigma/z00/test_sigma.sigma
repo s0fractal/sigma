@@ -10,7 +10,7 @@ GLYPH: test_sigma
 # Test Sigma
 
 @[ts]
-``` ts
+```ts
 import {
     OpCode,
     Flags,

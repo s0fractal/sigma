@@ -10,7 +10,7 @@ GLYPH: governors_gaze
 # Governors Gaze
 
 @[ts]
-``` ts
+```ts
 
 import {
     OpCode,

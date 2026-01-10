@@ -10,7 +10,7 @@ GLYPH: verify_simplex
 # Verify Simplex
 
 @[ts]
-``` ts
+```ts
 
 import {
     OpCode,

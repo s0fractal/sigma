@@ -10,7 +10,7 @@ GLYPH: synthesize
 # Synthesize
 
 @[ts]
-``` ts
+```ts
 import {
     OpCode,
     Flags,

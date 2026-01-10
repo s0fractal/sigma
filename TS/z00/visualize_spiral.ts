@@ -1,5 +1,3 @@
-``` ts
-
 import {
     parseNode,
 } from "../m32/sigma.ts";

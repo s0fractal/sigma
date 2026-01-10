@@ -10,7 +10,7 @@ GLYPH: evolve_logic
 # Evolve Logic
 
 @[ts]
-``` ts
+```ts
 
 import {
     OpCode,

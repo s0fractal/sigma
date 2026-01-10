@@ -10,7 +10,7 @@ GLYPH: visualize_spiral
 # Visualize Spiral
 
 @[ts]
-``` ts
+```ts
 
 import {
     parseNode,

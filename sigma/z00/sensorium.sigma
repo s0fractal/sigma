@@ -10,7 +10,7 @@ GLYPH: sensorium
 # Sensorium
 
 @[ts]
-``` ts
+```ts
 
 import {
     SigmaNode,

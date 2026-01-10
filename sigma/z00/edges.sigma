@@ -11,7 +11,7 @@ GLYPH: edges
 # Edges
 
 @[py]
-``` py
+```py
 #!/usr/bin/env python3
 import argparse
 import json

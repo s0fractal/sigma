@@ -10,7 +10,7 @@ GLYPH: generate_dashboard
 # Generate Dashboard
 
 @[ts]
-``` ts
+```ts
 
 import { WaveVectorQ } from "../m32/sigma.ts";
 import { parseNode, toHex } from "../m32/sigma.ts";

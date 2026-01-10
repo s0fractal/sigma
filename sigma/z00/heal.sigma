@@ -10,7 +10,7 @@ GLYPH: heal
 # Heal
 
 @[ts]
-``` ts
+```ts
 
 import {
     serializeNode,

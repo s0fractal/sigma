@@ -10,7 +10,7 @@ GLYPH: dream
 # Dream
 
 @[ts]
-``` ts
+```ts
 
 import {
     SigmaNode,

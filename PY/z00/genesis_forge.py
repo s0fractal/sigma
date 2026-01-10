@@ -1,4 +1,3 @@
-``` py
 """
 Σ-GLYPH: GENESIS FORGE (Materializing the Sacred Simplex)
 Path: /Users/s0fractal/SIGMA/CLI/genesis_forge.py
