@@ -16,16 +16,17 @@ def repo_root() -> Path:
 # --- CONFIGURATION ---
 SIGMA_ROOT = Path("/Users/s0fractal/SIGMA")
 SOURCE_DIR = SIGMA_ROOT / "sigma"
-MD_DIR = SIGMA_ROOT / "MD"
-TS_DIR = SIGMA_ROOT / "TS"
-RS_DIR = SIGMA_ROOT / "RS"
-DNA_DIR = SIGMA_ROOT / "DNA"
 
 TAG_MAP = {
-    "md": (MD_DIR, ".md"),
-    "ts": (TS_DIR, ".ts"),
-    "rs": (RS_DIR, ".rs"),
-    "dna": (DNA_DIR, ".dna"),
+    "md": (SIGMA_ROOT / "MD", ".md"),
+    "ts": (SIGMA_ROOT / "TS", ".ts"),
+    "rs": (SIGMA_ROOT / "RS", ".rs"),
+    "dna": (SIGMA_ROOT / "DNA", ".dna"),
+    "sh": (SIGMA_ROOT / "SH", ".sh"),
+    "rb": (SIGMA_ROOT / "RB", ".rb"),
+    "py": (SIGMA_ROOT / "PY", ".py"),
+    "json": (SIGMA_ROOT / "JSON", ".json"),
+    "glyph": (SIGMA_ROOT / "GLYPH", ".glyph"),
 }
 
 # --- EXTRACTION ---
