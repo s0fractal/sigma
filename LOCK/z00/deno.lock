@@ -1,32 +1,3 @@
-Σ-GLYPH SEED: deno
-🧬IDENTITY: 3805ccb5020671540b05e6d62bea002197297eea7d1a7ff3baf4521d3554a4a6
-
----
-# === 🧬 IDENTITY ===
-🧬: deno
-DNA: deno.lock
-⚛️: 0000000000000000000000000000000000000000000000000000000000000000
-🎨: #FFFFFF
-
-# === ⚖️ PHYSICS (Wave Function) ===
-⚙️: 0
-🚩: 1
-🌊: 0
-🔊: 65535
-🌀: -1
-
-# === 🔗 GRAVITY (Dependencies) ===
-🔗:
-  - SATOSHI
----
-
-# DENO ENVIRONMENT
-
-Environment Lockfile for Deterministic Execution.
-
-🌊
-
-@[lock]
 {
   "version": "5",
   "remote": {
@@ -126,5 +97,3 @@ Environment Lockfile for Deterministic Execution.
     "https://deno.land/std@0.208.0/path/windows/to_namespaced_path.ts": "e0f4d4a5e77f28a5708c1a33ff24360f35637ba6d8f103d19661255ef7bfd50d"
   }
 }
-
-🔒: 3805ccb5020671540b05e6d62bea002197297eea7d1a7ff3baf4521d3554a4a6

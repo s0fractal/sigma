@@ -7,5 +7,3 @@ DNA="I K E W Z M ↻ ∅"
 
 unfold() {
     echo "
-
-🌊

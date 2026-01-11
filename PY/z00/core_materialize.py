@@ -21,6 +21,7 @@ TAG_MAP = {
     "glyph": ".glyph",
     "dna": ".dna",
     "json": ".json",
+    "lock": ".lock",
     "md": ".md"
 }
 

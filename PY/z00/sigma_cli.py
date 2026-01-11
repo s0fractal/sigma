@@ -99,8 +99,8 @@ def cmd_path_check():
     
     found = False
     
-    # Scan PY, TS, sigma, SH, MD
-    for dir_name in ["PY", "TS", "sigma", "SH", "MD"]:
+    # Scan PY, TS, sigma, SH, MD, LOCK, JSON
+    for dir_name in ["PY", "TS", "sigma", "SH", "MD", "LOCK", "JSON"]:
         search_dir = root / dir_name
         if not search_dir.exists(): continue
         

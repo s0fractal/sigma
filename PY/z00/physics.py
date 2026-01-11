@@ -7,33 +7,6 @@ import protocol
 def div_round_half_up(n: int, d: int) -> int:
     """Integer division with symmetric round-half-up (away from zero)."""
     if d <= 0: raise ValueError("d must be positive")
-    # Symmetric logic: (n + sgn(n) * (d // 2)) // d
-    # But in Python // floors. for negative n, we want truncation towards zero then rounding away.
-    # Actually, the user asked for: "(n + (d // 2 if n >= 0 else -(d // 2))) // d" 
-    # Let's verify this formula.
-    # n=3, d=2. half=1. (3+1)//2 = 2. Correct.
-    # n=-3, d=2. half=1. (-3-1)//2 = -4//2 = -2. Correct.
-    # Wait, Python // is floor. -2.0 -> -2. 
-    # If n=-1, d=2. (-1-1)//2 = -1. Correct (round -0.5 to -1).
-    # If n=-1, d=4. (-1-2)//4 = 0? No. (-1-1)//4 = -0.5 -> -1?
-    # User formula: (n + (d // 2 if n >= 0 else -(d // 2))) // d
-    
-    # Python's // operator floors (rounds towards -infinity). 
-    # C/TS / operator truncates (rounds towards 0).
-    
-    # To match TS BigInt logic (which truncates), we should probably use int() cast of float division OR
-    # implement precise integer math.
-    
-    # Let's stick strictly to the User's requested Python formula if it works?
-    # User Request: `(n + (d // 2 if n >= 0 else -(d // 2))) // d` for Python.
-    # Let's re-eval n=-1, d=10. (-1 - 5) // 10 = -6 // 10 = -1. (Should be 0).
-    # So the user's formula relies on truncating division (like C/TS), NOT Python's floor division.
-    # BUT the user said `//` in the formula. 
-    
-    # Let's implement what creates "Round Half Away From Zero".
-    # Positive: (n + d//2) // d
-    # Negative: - ( (-n + d//2) // d )  <-- working with magnitudes
-    
     s = 1 if n >= 0 else -1
     n_abs = abs(n)
     q_abs = (n_abs + (d // 2)) // d
