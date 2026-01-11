@@ -1,0 +1,70 @@
+---
+🪐STRATUM: z00
+GLYPH: interference
+🏷️TYPE:
+  - ⚙️TOOL
+  - 🌊WAVEGUIDE
+⚖️PHYSICS:
+  OP: 22
+  FLAGS: 1
+  PHASE: 32768
+  AMPLITUDE: 65535
+  ENTROPY: -32768
+---
+
+# Σ-INTERFERENCE
+
+Tool for calculating wave interference and resolving spectral UDP ports.
+
+@[ts]
+```typescript
+import { parseNode, interfere, WaveVectorQ } from "../m32/sigma.ts";
+import { findGlyph } from "./spectral_core.ts";
+
+/**
+ * Resolves the UDP port for a given wave phase.
+ * Phase 0-65535 maps directly to the ephemeral port range 49152-65535 
+ * using a wrapping or scaling logic, or directly as requested by the user.
+ * 
+ * User suggested PHASE 49152 (TS) maps to port 49152.
+ */
+export function getWavePort(phase: number): number {
+    // Direct mapping for the upper range
+    if (phase >= 49152) return phase;
+    // For lower phases, we wrap or offset. 
+    // Let's use 1024 as a base offset for non-ephemeral signals.
+    return 1024 + (phase % 48128);
+}
+
+async function loadWave(name: string): Promise<WaveVectorQ> {
+    const path = await findGlyph(name);
+    const data = await Deno.readFile(path);
+    const node = parseNode(data);
+    return node.wave;
+}
+
+async function main() {
+    const [cmd, arg1, arg2] = Deno.args;
+
+    if (cmd === "port") {
+        const wave = await loadWave(arg1);
+        const port = getWavePort(wave.ph);
+        console.log(`GLYPH: ${arg1} | PHASE: ${wave.ph} | UDP PORT: ${port}`);
+    } else if (cmd === "mix") {
+        const w1 = await loadWave(arg1);
+        const w2 = await loadWave(arg2);
+        const result = interfere(w1, w2);
+        console.log(`MIX [${arg1} + ${arg2}]:`);
+        console.log(`  PHASE: ${result.ph}`);
+        console.log(`  AMPLITUDE: ${result.am}`);
+        console.log(`  ENTROPY: ${result.en}`);
+        console.log(`  TARGET PORT: ${getWavePort(result.ph)}`);
+    } else {
+        console.log("Usage: interference <port|mix> <glyph1> [glyph2]");
+    }
+}
+
+if (import.meta.main) {
+    main();
+}
+```
