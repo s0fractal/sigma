@@ -1,5 +1,5 @@
 Σ-GLYPH SEED: physics
-🧬IDENTITY: 3c6773af1baa22ea4a6d9026265ab76bab038ef832a0fb5d59bd95124653bd22
+🧬IDENTITY: 54b560a9c8f08abd70c30f1d3ccf4f36d337e3b7528ec63d0145286d915cc255
 
 ---
 # === 🧬 IDENTITY ===
@@ -27,6 +27,7 @@ Canonical CORE physics and binary serialization.
 @[py]
 import struct
 import hashlib
+import math
 from typing import Optional
 import protocol
 
@@ -40,6 +41,32 @@ def div_round_half_up(n: int, d: int) -> int:
     if 2 * r >= d:
         q += 1
     return s * q
+
+def clamp_i16(x: int) -> int:
+    return max(-32768, min(32767, x))
+
+# Canonical LUT generation (満足 Appendices A.2)
+LUT_COS = [round(32767 * math.cos((i * math.pi) / 32768)) for i in range(32769)]
+LUT_COS[0] = 32767
+LUT_COS[16384] = 0
+LUT_COS[32768] = -32767
+
+def interfere(w1: 'WaveVectorQ', w2: 'WaveVectorQ') -> 'WaveVectorQ':
+    new_ph = w1.ph
+    new_en = clamp_i16(div_round_half_up(w1.en + w2.en, 2))
+
+    x = w1.ph - w2.ph
+    d32 = abs(x)
+    delta = min(d32, 65536 - d32)
+
+    r = LUT_COS[delta]
+    num = (r + 32767) * 65535
+    amp_factor = div_round_half_up(num, 65534)
+
+    prod01 = div_round_half_up(w1.am * w2.am, 65535)
+    new_am = div_round_half_up(prod01 * amp_factor, 65535)
+
+    return WaveVectorQ(new_ph, int(new_am), new_en)
 
 def entropy_to_stratum(entropy: int) -> str:
     """Canonical entropy-to-stratum mapping."""
@@ -85,6 +112,37 @@ class SigmaNode:
         return hashlib.sha256(self.serialize()).hexdigest()
 
 @[ts]
+import protocolData from "../../sigma/m32/protocol.json" with { type: "json" };
+
+export enum OpCode {
+  LITERAL = protocolData.OPCODES.LITERAL,
+  REF = protocolData.OPCODES.REF,
+  APPLY = protocolData.OPCODES.APPLY,
+  LAMBDA = protocolData.OPCODES.LAMBDA,
+  DISSONANCE = protocolData.OPCODES.DISSONANCE,
+}
+
+export enum Flags {
+  F_ATOM = protocolData.FLAGS.F_ATOM,
+  F_LEFT = protocolData.FLAGS.F_LEFT,
+  F_RIGHT = protocolData.FLAGS.F_RIGHT,
+}
+
+export interface WaveVectorQ {
+  ph: number; // uint16
+  am: number; // uint16
+  en: number; // int16
+}
+
+export interface SigmaNode {
+  op: number;
+  flags: number;
+  wave: WaveVectorQ;
+  atom?: Uint8Array;
+  left?: Uint8Array;
+  right?: Uint8Array;
+}
+
 export function divRoundHalfUp(n: bigint, d: bigint): bigint {
   if (d <= 0n) throw new Error("d must be positive");
   const s = n < 0n ? -1n : 1n;
@@ -95,6 +153,36 @@ export function divRoundHalfUp(n: bigint, d: bigint): bigint {
   return s * q;
 }
 
+export function clampI16(x: number): number {
+  return Math.max(-32768, Math.min(32767, x));
+}
+
+const LUT_COS = new Int16Array(32769);
+for (let i = 0; i <= 32768; i++) {
+  LUT_COS[i] = Math.round(32767 * Math.cos((i * Math.PI) / 32768));
+}
+LUT_COS[0] = 32767;
+LUT_COS[16384] = 0;
+LUT_COS[32768] = -32767;
+
+export function interfere(w1: WaveVectorQ, w2: WaveVectorQ): WaveVectorQ {
+  const new_ph = w1.ph;
+  const new_en = clampI16(Number(divRoundHalfUp(BigInt(w1.en) + BigInt(w2.en), 2n)));
+
+  const x = Number(w1.ph) - Number(w2.ph);
+  const d32 = Math.abs(x);
+  const delta = Math.min(d32, 65536 - d32);
+
+  const r = BigInt(LUT_COS[delta]);
+  const num = (r + 32767n) * 65535n;
+  const amp_factor = divRoundHalfUp(num, 65534n);
+
+  const prod01 = divRoundHalfUp(BigInt(w1.am) * BigInt(w2.am), 65535n);
+  const new_am = divRoundHalfUp(prod01 * amp_factor, 65535n);
+
+  return { ph: new_ph, am: Number(new_am), en: Number(new_en) };
+}
+
 export function entropyToStratum(entropy: number): string {
   if (entropy === -1) return "z00";
   if (entropy === 0) return "m00";
@@ -103,9 +191,37 @@ export function entropyToStratum(entropy: number): string {
   return `${prefix}${bucket.toString().padStart(2, "0")}`;
 }
 
+export function serializeNode(node: SigmaNode): Uint8Array {
+  const popcount = (n: number) => {
+    let count = 0;
+    while (n > 0) {
+      if (n & 1) count++;
+      n >>= 1;
+    }
+    return count;
+  };
+  const expected_len = 8 + 32 * popcount(node.flags & 0x07);
+  const buf = new Uint8Array(expected_len);
+  const dv = new DataView(buf.buffer);
+  dv.setUint8(0, node.op);
+  dv.setUint8(1, node.flags & 0x07);
+  dv.setUint16(2, node.wave.ph, false);
+  dv.setUint16(4, node.wave.am, false);
+  dv.setInt16(6, node.wave.en, false);
+  let offset = 8;
+  if (node.flags & 0x01) { buf.set(node.atom!, offset); offset += 32; }
+  if (node.flags & 0x02) { buf.set(node.left!, offset); offset += 32; }
+  if (node.flags & 0x04) { buf.set(node.right!, offset); offset += 32; }
+  return buf;
+}
+
+export function toHex(bytes: Uint8Array): string {
+  return Array.from(bytes).map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
 @[dna]
 - SATOSHI
 
 🌊
 
-🔒: 3c6773af1baa22ea4a6d9026265ab76bab038ef832a0fb5d59bd95124653bd22
+🔒: 54b560a9c8f08abd70c30f1d3ccf4f36d337e3b7528ec63d0145286d915cc255

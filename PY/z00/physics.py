@@ -1,5 +1,6 @@
 import struct
 import hashlib
+import math
 from typing import Optional
 import protocol
 
@@ -13,6 +14,32 @@ def div_round_half_up(n: int, d: int) -> int:
     if 2 * r >= d:
         q += 1
     return s * q
+
+def clamp_i16(x: int) -> int:
+    return max(-32768, min(32767, x))
+
+# Canonical LUT generation (満足 Appendices A.2)
+LUT_COS = [round(32767 * math.cos((i * math.pi) / 32768)) for i in range(32769)]
+LUT_COS[0] = 32767
+LUT_COS[16384] = 0
+LUT_COS[32768] = -32767
+
+def interfere(w1: 'WaveVectorQ', w2: 'WaveVectorQ') -> 'WaveVectorQ':
+    new_ph = w1.ph
+    new_en = clamp_i16(div_round_half_up(w1.en + w2.en, 2))
+
+    x = w1.ph - w2.ph
+    d32 = abs(x)
+    delta = min(d32, 65536 - d32)
+
+    r = LUT_COS[delta]
+    num = (r + 32767) * 65535
+    amp_factor = div_round_half_up(num, 65534)
+
+    prod01 = div_round_half_up(w1.am * w2.am, 65535)
+    new_am = div_round_half_up(prod01 * amp_factor, 65535)
+
+    return WaveVectorQ(new_ph, int(new_am), new_en)
 
 def entropy_to_stratum(entropy: int) -> str:
     """Canonical entropy-to-stratum mapping."""
