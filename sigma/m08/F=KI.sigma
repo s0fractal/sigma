@@ -6,10 +6,6 @@ alias:
   -rs: False
   -sh: False
   -dna: KI
-  - ts
-  - rs
-  - sh
-  - dna
 ⚖️PHYSICS:
   OP: 9
   FLAGS: 1
