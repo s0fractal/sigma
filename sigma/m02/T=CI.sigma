@@ -8,9 +8,11 @@ GLYPH: T
   - sh
   - dna
 ⚖️PHYSICS:
-  🪨MASS: 0.1kb
-  🌀ENTROPY: Low
-  🧩COMPLEXITY: O(1)
+  OP: 10
+  FLAGS: 1
+  PHASE: 16384
+  AMPLITUDE: 65535
+  ENTROPY: -20480
 ---
 
 

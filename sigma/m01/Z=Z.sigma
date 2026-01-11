@@ -5,6 +5,12 @@ GLYPH: Z
 🌈SPECTRUM:
   - sh
   - dna
+⚖️PHYSICS:
+  OP: 6
+  FLAGS: 1
+  PHASE: 24576
+  AMPLITUDE: 65535
+  ENTROPY: -32768
 ---
 
 

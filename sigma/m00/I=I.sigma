@@ -8,9 +8,11 @@ GLYPH: I
   - sh
   - dna
 ⚖️PHYSICS:
-  🪨MASS: 0.1kb
-  🌀ENTROPY: Zero
-  🧩COMPLEXITY: O(1)
+  OP: 0
+  FLAGS: 1
+  PHASE: 0
+  AMPLITUDE: 65535
+  ENTROPY: -32768
 ---
 
 

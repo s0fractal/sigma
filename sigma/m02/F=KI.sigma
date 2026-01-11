@@ -13,9 +13,11 @@ alias:
   - sh
   - dna
 ⚖️PHYSICS:
-  🪨MASS: 0.2kb
-  🌀ENTROPY: Low
-  🧩COMPLEXITY: O(1)
+  OP: 9
+  FLAGS: 1
+  PHASE: 4096
+  AMPLITUDE: 65535
+  ENTROPY: -24576
 ---
 
 

@@ -8,9 +8,11 @@ GLYPH: Y
   - rs
   - dna
 ⚖️PHYSICS:
-  🪨MASS: 0.5kb
-  🌀ENTROPY: High
-  🧩COMPLEXITY: O(infinity)
+  OP: 15
+  FLAGS: 1
+  PHASE: 57344
+  AMPLITUDE: 65535
+  ENTROPY: -32768
 ---
 
 

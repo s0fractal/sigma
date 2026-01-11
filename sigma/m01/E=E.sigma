@@ -8,9 +8,11 @@ GLYPH: E
   - sh
   - dna
 ⚖️PHYSICS:
-  🪨MASS: 0.1kb
-  🌀ENTROPY: High
-  🧩COMPLEXITY: O(E)
+  OP: 7
+  FLAGS: 1
+  PHASE: 28672
+  AMPLITUDE: 65535
+  ENTROPY: 0
 ---
 
 

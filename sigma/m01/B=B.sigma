@@ -8,9 +8,11 @@ GLYPH: B
   - sh
   - dna
 ⚖️PHYSICS:
-  🪨MASS: 0.1kb
-  🌀ENTROPY: Low
-  🧩COMPLEXITY: O(1)
+  OP: 5
+  FLAGS: 1
+  PHASE: 20480
+  AMPLITUDE: 65535
+  ENTROPY: -20480
 ---
 
 

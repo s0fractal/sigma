@@ -8,9 +8,11 @@ GLYPH: W
   - sh
   - dna
 ⚖️PHYSICS:
-  🪨MASS: 0.1kb
-  🌀ENTROPY: Medium
-  🧩COMPLEXITY: O(1)
+  OP: 2
+  FLAGS: 1
+  PHASE: 8192
+  AMPLITUDE: 65535
+  ENTROPY: -16384
 ---
 
 
