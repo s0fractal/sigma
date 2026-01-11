@@ -1,4 +1,4 @@
-🧬IDENTITY: 81f8e6c9b7090ea892dcbd9244bdb79318b95c54132bdc71f4e927e3af3d602f
+🧬IDENTITY: e9534d5b407a84f289e2467dcf6f12961586f6d9ac04e1d502a7374eca47a071
 # Σ-GLYPH V2.3: DETERMINISTIC RESONANCE
 ## Protocol V2.3 (Stable Canonical Resonance)
 
@@ -39,11 +39,28 @@ Where:
 ### 3. Absolute Path Immunity
 
 Tools MUST NEVER use absolute paths in generated code or internal logic.
-- Use `repo_root` discovery (searching for `.git` or `sigma/` root).
+- Use `get_repo_root` discovery (searching for `.git` AND `sigma/` root).
 - Use relative paths within the `sigma/` lattice.
-- Environment variable `SIGMA_GARDEN` can override the root.
+- Environment variable `SIGMA_ROOT` or `SIGMA_GARDEN` can override the root.
 
-### 4. Canonical Test Vectors (V2.3 Verified)
+### 4. .glyph Binary Layout (Big-Endian)
+
+Serialized nodes follow a strict, bit-exact binary layout:
+
+| Offset | Size | Type | Field |
+| :--- | :--- | :--- | :--- |
+| 0 | 1 | uint8 | **OpCode** |
+| 1 | 1 | uint8 | **Flags** (0x01: Atom, 0x02: Left, 0x04: Right) |
+| 2 | 2 | uint16 | **Wave Phase (ph)** |
+| 4 | 2 | uint16 | **Wave Amplitude (am)** |
+| 6 | 2 | int16 | **Wave Entropy (en)** |
+| 8+ | 32*N | bytes | **Payload** (Atom → Left → Right) |
+
+- **Endianness**: Big-Endian (Network Order) for all multi-byte integers.
+- **Optional Fields**: Only present if the corresponding bit in **Flags** is set.
+- **Atom/Hash Size**: 32 bytes (SHA-256).
+
+### 5. Canonical Test Vectors (V2.3 Verified)
 
 | Seed | DNA | NodeHash (V2.3) |
 | :--- | :--- | :--- |
@@ -61,4 +78,4 @@ Tools MUST NEVER use absolute paths in generated code or internal logic.
 *Codified into the Crystal Core m32.*
 *Pulse: V2.3.0*
 
-🔒: 81f8e6c9b7090ea892dcbd9244bdb79318b95c54132bdc71f4e927e3af3d602f
+🔒: e9534d5b407a84f289e2467dcf6f12961586f6d9ac04e1d502a7374eca47a071
