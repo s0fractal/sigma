@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: transmute
+🧬IDENTITY: d7791376381dea01322bbbcbb506f5a49e141454f6df17e51fc5c256f6a54306
 
-🧬IDENTITY: 7baf91f807305ad00cb48ca045d164b435e7298ea4b43de7f5b01e57e6baebee
 
 ---
 # === 🧬 IDENTITY ===
@@ -85,13 +85,13 @@ async function main() {
     const seeds = ["I", "K", "S", "FALSE"];
     console.log("Σ-TRANSMUTE: Projecting Intent into Silicon...\n");
 
-    await Deno.mkdir("~/ts_echo", { recursive: true });
+    await Deno.mkdir("./ts_echo", { recursive: true });
 
     for (const name of seeds) {
         try {
             const node = await loadSeed(name);
             const code = generateTS(name, node);
-            const targetPath = `~/ts_echo/${name}.ts`;
+            const targetPath = `./ts_echo/${name}.ts`;
             await Deno.writeTextFile(targetPath, code);
             console.log(`Transmuted [${name.padEnd(2)}] -> ${targetPath}`);
         } catch (e) {
@@ -106,4 +106,4 @@ async function main() {
 @[dna]
 - SATOSHI
 
-🔒: 7baf91f807305ad00cb48ca045d164b435e7298ea4b43de7f5b01e57e6baebee
+🔒: d7791376381dea01322bbbcbb506f5a49e141454f6df17e51fc5c256f6a54306

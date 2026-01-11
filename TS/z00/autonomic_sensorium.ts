@@ -10,7 +10,7 @@ interface AutonomicState {
 }
 
 async function updateState(entropy: number, sentiment: string) {
-    const path = "~/.antigravity/RESONANCE_STATE.json";
+    const path = "./.antigravity/RESONANCE_STATE.json";
     let state: any = { cycle: 0 };
 
     try {

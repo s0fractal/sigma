@@ -11,7 +11,7 @@ async function main() {
 
     const sealPath = "./SENSE/resonance-seal.json";
     const seedsDir = "./GLYPH";
-    const echoDir = "~/ts_echo";
+    const echoDir = "./ts_echo";
 
     try {
         const sealData = JSON.parse(await Deno.readTextFile(sealPath));

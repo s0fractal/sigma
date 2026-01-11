@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: K
+🧬IDENTITY: 53bbcd11d0d533ee1e72793f9b0c5443eff5fda8f7d0e9592994e77bbc6326d8
 
-🧬IDENTITY: 705ccb9fa2281dfb3adfdc3ac8901e9cfa38c66a6da37d223c982a2645e26aee
 
 ---
 # === 🧬 IDENTITY ===
@@ -31,4 +31,4 @@ The Kestrel: selects the first, discards the second.
 @[dna]
 λx.y.x
 
-🔒: 705ccb9fa2281dfb3adfdc3ac8901e9cfa38c66a6da37d223c982a2645e26aee
+🔒: 53bbcd11d0d533ee1e72793f9b0c5443eff5fda8f7d0e9592994e77bbc6326d8

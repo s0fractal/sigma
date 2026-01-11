@@ -14,7 +14,7 @@ async function getSpiral() {
 }
 
 async function generateDashboard() {
-    const statePath = "~/.antigravity/RESONANCE_STATE.json";
+    const statePath = "./.antigravity/RESONANCE_STATE.json";
     const state = JSON.parse(await Deno.readTextFile(statePath));
 
     const phaseShift = state.phase_shift || 0;

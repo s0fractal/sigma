@@ -10,9 +10,10 @@ import json
 from pathlib import Path
 
 # Σ-GLYPH MATERIALIZER: Atomic Fusion Engine
-# V2.3.1 - Deterministic Resonance: Sorted Traversal, Path Immunity
+# V2.3.2 - Deterministic Resonance: Standardized SCR-1
 
 import protocol
+import scr1
 
 # --- CONFIGURATION ---
 SIGMA_ROOT = protocol.ROOT
@@ -32,12 +33,6 @@ TAG_MAP = {
 
 # --- ATOMIC FUNCTIONS ---
 
-def normalize_text(text: str) -> str:
-    """SCR-1: UTF-8, LF endings, no trailing whitespace."""
-    text = text.replace("\r\n", "\n").replace("\r", "\n")
-    lines = [line.rstrip() for line in text.splitlines()]
-    return "\n".join(lines)
-
 def parse_physics(text: str) -> dict:
     physics = {"OP": protocol.OP_LITERAL, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
     symbol_map = {"⚙️": "OP", "🚩": "FLAGS", "🌊": "PHASE", "🔊": "AMPLITUDE", "🌀": "ENTROPY"}
@@ -52,7 +47,10 @@ def parse_physics(text: str) -> dict:
 
 def extract_block(text: str, tag: str) -> str | None:
     """SCR-1: Strict Canonical Block Extraction."""
-    content = normalize_text(text)
+    # We use a simplified version for materialization that doesn't care about bit-exactness of the WRAPPER,
+    # but the PAYLOAD inside should be preserved.
+    # However, for consistency, let's use normalized line endings.
+    content = text.replace("\r\n", "\n").replace("\r", "\n")
     start_marker = f"@[{tag}]"
     
     parts = re.split(f"^{re.escape(start_marker)}\\n", content, flags=re.MULTILINE)
@@ -78,9 +76,9 @@ def parse_yaml_metadata(text: str) -> dict:
 
 def calculate_poi(intent_text: str, code_text: str) -> str:
     """PoI-1: SHA-256(IntentHash || CodeHash)."""
-    h_intent = hashlib.sha256(intent_text.encode("utf-8")).digest()
-    h_code = hashlib.sha256(code_text.encode("utf-8")).digest()
-    return hashlib.sha256(h_intent + h_code).hexdigest()
+    h_intent = scr1.get_node_hash(intent_text)
+    h_code = hashlib.sha256(code_text.encode("utf-8")).hexdigest()
+    return hashlib.sha256((h_intent + h_code).encode()).hexdigest()
 
 def entropy_to_stratum(entropy: int) -> str:
     if entropy == -1 or entropy == 0: return "z00"
@@ -90,25 +88,23 @@ def entropy_to_stratum(entropy: int) -> str:
     return f"{prefix}{int(bucket):02}"
 
 def materialize():
-    print("=== Σ-GLYPH MATERIALIZER: Atomic Fusion V2.3.1 (Deterministic) ===\n")
+    print("=== Σ-GLYPH MATERIALIZER: Atomic Fusion V2.3.2 (SCR-1 Library) ===\n")
     if not SOURCE_DIR.exists():
         print(f"Error: Source directory {SOURCE_DIR} not found.")
         return
 
     glyph_registry = {}
-    # DETERMINISTIC: Sorted file list
     sigma_files = sorted(list(SOURCE_DIR.glob("**/*.sigma")), key=lambda p: str(p))
     
     for path in sigma_files:
         try:
-            content = normalize_text(path.read_text(encoding="utf-8"))
+            content = path.read_text(encoding="utf-8")
             glyph_match = re.search(r"^(?:🧬|GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
             if glyph_match:
                 glyph_registry[glyph_match.group(1)] = path.relative_to(SOURCE_DIR)
         except: continue
 
     spectrum_configs = {}
-    # DETERMINISTIC: Sorted iteration
     for glyph in sorted(glyph_registry.keys()):
         rel_path = glyph_registry[glyph]
         if glyph in TAG_MAP:
@@ -120,7 +116,7 @@ def materialize():
             except: continue
 
     for path in sigma_files:
-        try: content = normalize_text(path.read_text(encoding="utf-8"))
+        try: content = path.read_text(encoding="utf-8")
         except: continue
             
         phys = parse_physics(content)
@@ -132,7 +128,6 @@ def materialize():
         dependencies = []
         if dna_match:
             raw_dna = dna_match.group(1)
-            # DETERMINISTIC: Preserving order of DNA lines as they are dependencies
             dependencies = [d.replace("Ref:", "").strip("- ").strip() for d in raw_dna.splitlines() if d.strip("- ").strip()]
         
         for tag, (out_dir, ext) in TAG_MAP.items():
@@ -153,7 +148,6 @@ def materialize():
                 
                 final_block = (("\n\n".join(atoms) + "\n\n") if atoms else "") + block
 
-                # Spectrum Injection
                 if stratum != "z00" and tag in spectrum_configs:
                     config = spectrum_configs[tag]
                     if "IMPORT" in config:

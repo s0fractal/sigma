@@ -1,4 +1,4 @@
-[SATOSHI](file://m32/SATOSHI)
+[SATOSHI](m32/SATOSHI)
 
 ```markdown
 # m32 GLYPH Stratum: Memory of the Mesh

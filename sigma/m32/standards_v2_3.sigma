@@ -1,4 +1,4 @@
-🧬IDENTITY: 72e3e6c7b560283c6c55cf47b95f7a90709ed586af510aa4b04d38e260a38be8
+🧬IDENTITY: 798cc136f9685d1e75e214f1e96d2796a39b10414722f3b5ff4506cd240e0631
 # Σ-GLYPH V2.3: DETERMINISTIC RESONANCE
 ## Protocol V2.3 (Stable Canonical Resonance)
 
@@ -43,10 +43,10 @@ Tools MUST NEVER use absolute paths in generated code or internal logic.
 
 | Seed | DNA | NodeHash (V2.3) |
 | :--- | :--- | :--- |
-| **I** | `λx.x` | `e35fe74d357c1ba7b5dec8d39f92c5151ac1780cb16170bee1838bca52a71422` |
-| **K** | `λx.λy.x` | `705ccb9fa2281dfb3adfdc3ac8901e9cfa38c66a6da37d223c982a2645e26aee` |
-| **S** | `λx.λy.λz.xz(yz)` | `6ebedc8a50d8286468ab7d7d9b6d1cb2f7002097a7666792fad8a499b46fb357` |
-| **FALSE** | `λx.λy.y` | `fa844eb8f9e102d0249d693ea8a79bd6f466489216f9a86f63343b7cda36351a` |
+| **I** | `λx.x` | `6d790ee9187df21994ac486616c676f1a287af7d87b0530e77afb9844fa0758e` |
+| **K** | `λx.λy.x` | `53bbcd11d0d533ee1e72793f9b0c5443eff5fda8f7d0e9592994e77bbc6326d8` |
+| **S** | `λx.λy.λz.xz(yz)` | `b3b7a6ff9b830929d4d838b99a9e6121c63d8ce5ce2a7e586791f8dce5613311` |
+| **FALSE** | `λx.λy.y` | `70dbe5b36f507bfecd57522c988ae5257967f10a71b5da3afcbde0ce9949f82d` |
 
 ### 5. Transition Rules
 - All new seeds created via `sigma forge` must use the V2.3 template.
@@ -57,4 +57,4 @@ Tools MUST NEVER use absolute paths in generated code or internal logic.
 *Codified into the Crystal Core m32.*
 *Pulse: V2.3.0*
 
-🔒: 72e3e6c7b560283c6c55cf47b95f7a90709ed586af510aa4b04d38e260a38be8
+🔒: 798cc136f9685d1e75e214f1e96d2796a39b10414722f3b5ff4506cd240e0631

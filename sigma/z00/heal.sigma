@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: heal
+🧬IDENTITY: 12f99f47228476c5d7caabb1c1fc04b53fc655ea23cfd860cf9ed07ca749d419
 
-🧬IDENTITY: 8ff029e62a0add528a24aa55c6b4f067c17b56336a1617a87871818a622450a7
 
 ---
 # === 🧬 IDENTITY ===
@@ -37,7 +37,7 @@ async function main() {
 
     const sealPath = "./SENSE/resonance-seal.json";
     const seedsDir = "./GLYPH";
-    const echoDir = "~/ts_echo";
+    const echoDir = "./ts_echo";
 
     try {
         const sealData = JSON.parse(await Deno.readTextFile(sealPath));
@@ -97,4 +97,4 @@ if (import.meta.main) {
 @[dna]
 - SATOSHI
 
-🔒: 8ff029e62a0add528a24aa55c6b4f067c17b56336a1617a87871818a622450a7
+🔒: 12f99f47228476c5d7caabb1c1fc04b53fc655ea23cfd860cf9ed07ca749d419

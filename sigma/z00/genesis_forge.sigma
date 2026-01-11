@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: genesis_forge
+🧬IDENTITY: 85e4bcf952bd68bde39cb0682c6c518cebf3c0e14c57bff7b24c7d2f4ace9886
 
-🧬IDENTITY: 3efdc2076a748a0bf641b16ce34b4380b9b795115c43df07b27c4e3da24ebb33
 
 ---
 # === 🧬 IDENTITY ===
@@ -30,4 +30,4 @@ Tool for materializing bit-exact .glyph files for foundational axioms.
 @[dna]
 - SATOSHI
 
-🔒: 3efdc2076a748a0bf641b16ce34b4380b9b795115c43df07b27c4e3da24ebb33
+🔒: 85e4bcf952bd68bde39cb0682c6c518cebf3c0e14c57bff7b24c7d2f4ace9886

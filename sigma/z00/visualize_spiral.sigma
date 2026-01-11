@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: visualize_spiral
+🧬IDENTITY: a370a3d55c21043fe1a6be9a90453a18f3627fc888c6fcd23ba08264198761ea
 
-🧬IDENTITY: ec253de2a8bd675dc52c75de3a32784b2641bb43d9bcbba138f6a615d81786c8
 
 ---
 # === 🧬 IDENTITY ===
@@ -39,7 +39,7 @@ import {
 async function visualizeSpiral() {
     console.log("=== THE SPIRAL STAVE: Evolutionary Resonance ===\n");
 
-    const statePath = "~/.antigravity/RESONANCE_STATE.json";
+    const statePath = "./.antigravity/RESONANCE_STATE.json";
     const state = JSON.parse(await Deno.readTextFile(statePath));
     const currentCycle = state.last_cycle || 1;
 
@@ -108,4 +108,4 @@ if (import.meta.main) {
 @[dna]
 - SATOSHI
 
-🔒: ec253de2a8bd675dc52c75de3a32784b2641bb43d9bcbba138f6a615d81786c8
+🔒: a370a3d55c21043fe1a6be9a90453a18f3627fc888c6fcd23ba08264198761ea

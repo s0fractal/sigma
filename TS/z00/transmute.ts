@@ -59,13 +59,13 @@ async function main() {
     const seeds = ["I", "K", "S", "FALSE"];
     console.log("Σ-TRANSMUTE: Projecting Intent into Silicon...\n");
 
-    await Deno.mkdir("~/ts_echo", { recursive: true });
+    await Deno.mkdir("./ts_echo", { recursive: true });
 
     for (const name of seeds) {
         try {
             const node = await loadSeed(name);
             const code = generateTS(name, node);
-            const targetPath = `~/ts_echo/${name}.ts`;
+            const targetPath = `./ts_echo/${name}.ts`;
             await Deno.writeTextFile(targetPath, code);
             console.log(`Transmuted [${name.padEnd(2)}] -> ${targetPath}`);
         } catch (e) {

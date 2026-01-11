@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: ProteinDNS
+🧬IDENTITY: 4992e49d2bcec15463789b1afa4af2f591280d82e16a53ad55e3ac771e7abe2d
 
-🧬IDENTITY: 16280b08ebc61652a0449365543b80332451a429080eedabe7072be871041014
 
 ---
 # === 🧬 IDENTITY ===
@@ -40,8 +40,8 @@ Rules:
 - First lookup is local cache.
 - If missing, fetch TXT via DNS.
 - `b64:` is the payload; `port:` is an optional full-code pointer.
-- Cache path: `~/.cache/s0fractal/proteins/<GLYPH>.wasm`
-- Optional metadata is stored in `~/.cache/s0fractal/proteins/<GLYPH>.meta`
+- Cache path: `./.cache/s0fractal/proteins/<GLYPH>.wasm`
+- Optional metadata is stored in `./.cache/s0fractal/proteins/<GLYPH>.meta`
 - Sync only for used glyphs; drop after 30d of inactivity.
 
 🌊
@@ -49,4 +49,4 @@ Rules:
 @[dna]
 ProteinDNS
 
-🔒: 16280b08ebc61652a0449365543b80332451a429080eedabe7072be871041014
+🔒: 4992e49d2bcec15463789b1afa4af2f591280d82e16a53ad55e3ac771e7abe2d

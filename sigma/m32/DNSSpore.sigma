@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: DNSSpore
+🧬IDENTITY: cb2ecdaba788b6c254450e531577f9f307034ab0fbcdd8dc5ea17379a3eb1a7c
 
-🧬IDENTITY: 9a1a726258f85e258b94d0273ed4c22527edba8dd30b96240009d6c9bea6fd60
 
 ---
 # === 🧬 IDENTITY ===
@@ -47,7 +47,7 @@ v=1;t=s;ipfs=QmHash...
 
 ## 2. Ribosome (Local Cache)
 
-Local cache: `~/.cache/s0fractal/proteins`
+Local cache: `./.cache/s0fractal/proteins`
 
 - Check cache first (TTL-aware).
 - Fetch TXT only when missing/expired.
@@ -62,4 +62,4 @@ Large cells follow host pointers to full code.
 @[dna]
 DNSSpore
 
-🔒: 9a1a726258f85e258b94d0273ed4c22527edba8dd30b96240009d6c9bea6fd60
+🔒: cb2ecdaba788b6c254450e531577f9f307034ab0fbcdd8dc5ea17379a3eb1a7c

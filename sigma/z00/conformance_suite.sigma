@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: conformance_suite
+🧬IDENTITY: 8db97142476fa78e75abf9f5728e658dfab801ed861312f7ef4f60a0288c0317
 
-🧬IDENTITY: f004ad3f87f27a3f8a420c27ceb2a6b7b376b60b028a56e960c2d36d0eba8202
 
 ---
 # === 🧬 IDENTITY ===
@@ -31,4 +31,4 @@ Defines the standard test vectors for math, interference, and serialization pari
 @[dna]
 - SATOSHI
 
-🔒: f004ad3f87f27a3f8a420c27ceb2a6b7b376b60b028a56e960c2d36d0eba8202
+🔒: 8db97142476fa78e75abf9f5728e658dfab801ed861312f7ef4f60a0288c0317

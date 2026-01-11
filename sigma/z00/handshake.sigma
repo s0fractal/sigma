@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: handshake
+🧬IDENTITY: 8c5f8adf1f11e02398163dffe7b5268faaf1da56d8bbbf93b653b99970044406
 
-🧬IDENTITY: e2524a0c8d2e38447190d7c4265f33c8e84ec7b16ad4ae251bafeb427d96b89d
 
 ---
 # === 🧬 IDENTITY ===
@@ -67,4 +67,4 @@ async function handshake() {
 @[dna]
 - SATOSHI
 
-🔒: e2524a0c8d2e38447190d7c4265f33c8e84ec7b16ad4ae251bafeb427d96b89d
+🔒: 8c5f8adf1f11e02398163dffe7b5268faaf1da56d8bbbf93b653b99970044406

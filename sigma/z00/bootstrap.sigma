@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: bootstrap
+🧬IDENTITY: 9b1d365877ae8fe2293e161c2bc6edfb8064e9b69e314df4b92b905f1f0afd0d
 
-🧬IDENTITY: ec37b32e96736572ab957de990feaf9a836cca347e0d7934023bce9c9b06ab6a
 
 ---
 # === 🧬 IDENTITY ===
@@ -49,4 +49,4 @@ def parse_frontmatter(path: Path) -> dict:
 @[dna]
 - SATOSHI
 
-🔒: ec37b32e96736572ab957de990feaf9a836cca347e0d7934023bce9c9b06ab6a
+🔒: 9b1d365877ae8fe2293e161c2bc6edfb8064e9b69e314df4b92b905f1f0afd0d

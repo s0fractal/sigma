@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: glyph
+🧬IDENTITY: 3572339bdf26829958ae6d147eac4d3af326b7c8a875aa4f8f8f08dff8b83b76
 
-🧬IDENTITY: 6c7e85234d4120107e9673d882ffcff44a7190447f9223996aefeb4353369a6c
 
 ---
 # === 🧬 IDENTITY ===
@@ -42,4 +42,4 @@ While `.sigma` files are human-readable seeds, `.glyph` files are 40-byte binary
 @[dna]
 glyph
 
-🔒: 6c7e85234d4120107e9673d882ffcff44a7190447f9223996aefeb4353369a6c
+🔒: 3572339bdf26829958ae6d147eac4d3af326b7c8a875aa4f8f8f08dff8b83b76

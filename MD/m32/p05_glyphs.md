@@ -1,4 +1,4 @@
-[SATOSHI](file://m32/SATOSHI)
+[SATOSHI](m32/SATOSHI)
 
 ```markdown
 # p05 GLYPH Stratum: Positive Potential

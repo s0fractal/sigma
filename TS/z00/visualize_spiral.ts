@@ -13,7 +13,7 @@ import {
 async function visualizeSpiral() {
     console.log("=== THE SPIRAL STAVE: Evolutionary Resonance ===\n");
 
-    const statePath = "~/.antigravity/RESONANCE_STATE.json";
+    const statePath = "./.antigravity/RESONANCE_STATE.json";
     const state = JSON.parse(await Deno.readTextFile(statePath));
     const currentCycle = state.last_cycle || 1;
 

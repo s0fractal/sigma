@@ -4,7 +4,7 @@
 
 REPO="s0fractal/sigma"
 SIGMA_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || echo ".")"
-BRAIN_ROOT="~/.antigravity"
+BRAIN_ROOT="${HOME}/.antigravity"
 
 echo "--- PULSE SYNC: Initiating Heartbeat Synchronization ---"
 

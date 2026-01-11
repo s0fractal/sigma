@@ -11,7 +11,7 @@
 
 ### Step A: The Trinity Recognition
 Агент повинен надати хеші для **I**, **K**, **S**. 
-Система перевіряє їх на відповідність [**sigma-glyph.md**](file://./LAW/sigma-glyph.md).
+Система перевіряє їх на відповідність [**sigma-glyph.md**](./LAW/sigma-glyph.md).
 
 ### Step B: The Orthogonal Proof (Kwen Rule Validation)
 Агент повинен обчислити координату "АЛЬТЕРНАТИВИ" (**FALSE**) шляхом виведення, а не простого пошуку.

@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: generate_dashboard
+🧬IDENTITY: 4a82e084ba1e24147abca525a4b34c4a979c512cc5cd76f6f621550303c0cdeb
 
-🧬IDENTITY: 8b988d1ba2b941423bf8017cd7e9b68d772e76ef3c08b937ed81d81b3ee7086e
 
 ---
 # === 🧬 IDENTITY ===
@@ -40,7 +40,7 @@ async function getSpiral() {
 }
 
 async function generateDashboard() {
-    const statePath = "~/.antigravity/RESONANCE_STATE.json";
+    const statePath = "./.antigravity/RESONANCE_STATE.json";
     const state = JSON.parse(await Deno.readTextFile(statePath));
 
     const phaseShift = state.phase_shift || 0;
@@ -125,4 +125,4 @@ ${await getSpiral()}
 @[dna]
 - SATOSHI
 
-🔒: 8b988d1ba2b941423bf8017cd7e9b68d772e76ef3c08b937ed81d81b3ee7086e
+🔒: 4a82e084ba1e24147abca525a4b34c4a979c512cc5cd76f6f621550303c0cdeb

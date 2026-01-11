@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: resonate
+🧬IDENTITY: eb0ba4d024c0d2305f39cfc16579618f5ce28f9c3b9658fd2e76f05f7b9073b9
 
-🧬IDENTITY: 43c51d7bf665a957a578a2208f7adc2faccac82c2859788e2f2b497a3f173236
 
 ---
 # === 🧬 IDENTITY ===
@@ -74,7 +74,7 @@ async function getProjectResonance() {
     const resonanceData: Record<string, any> = {};
 
     for (const node of nodes) {
-        const nodePath = `~/${node}`;
+        const nodePath = `./${node}`;
         resonanceData[node] = {
             ts: toHex(await calculateDirectoryResonance(`${nodePath}/ts`)),
             rs: toHex(await calculateDirectoryResonance(`${nodePath}/rs`)),
@@ -158,4 +158,4 @@ switch (command) {
 @[dna]
 - SATOSHI
 
-🔒: 43c51d7bf665a957a578a2208f7adc2faccac82c2859788e2f2b497a3f173236
+🔒: eb0ba4d024c0d2305f39cfc16579618f5ce28f9c3b9658fd2e76f05f7b9073b9

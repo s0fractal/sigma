@@ -48,7 +48,7 @@ async function getProjectResonance() {
     const resonanceData: Record<string, any> = {};
 
     for (const node of nodes) {
-        const nodePath = `~/${node}`;
+        const nodePath = `./${node}`;
         resonanceData[node] = {
             ts: toHex(await calculateDirectoryResonance(`${nodePath}/ts`)),
             rs: toHex(await calculateDirectoryResonance(`${nodePath}/rs`)),

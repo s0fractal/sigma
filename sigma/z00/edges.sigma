@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: edges
+🧬IDENTITY: 6789db302bc38e4fd9ec299ba64b55e9009f4081426b8daa6c9e94767f697a2f
 
-🧬IDENTITY: 69469609fd21fe59ed5e379d5cf2af1bccb3860db71107f0301712fc658fe3e1
 
 ---
 # === 🧬 IDENTITY ===
@@ -208,4 +208,4 @@ def collapse_edges(dim: str | None):
 @[dna]
 - SATOSHI
 
-🔒: 69469609fd21fe59ed5e379d5cf2af1bccb3860db71107f0301712fc658fe3e1
+🔒: 6789db302bc38e4fd9ec299ba64b55e9009f4081426b8daa6c9e94767f697a2f

@@ -1,4 +1,4 @@
-[SATOSHI](file://m32/SATOSHI)
+[SATOSHI](m32/SATOSHI)
 
 ```markdown
 # SIGMA HISTORY: The Digital Pantheon (Memory of the Mesh)

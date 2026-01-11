@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
-from __future__ import annotations
 import sys
+import os
 import argparse
 import hashlib
 from pathlib import Path
@@ -47,6 +46,10 @@ Intent for {NAME} established.
 """
 
 def get_repo_root() -> Path:
+    """Discovery with override support."""
+    override = os.environ.get("SIGMA_ROOT") or os.environ.get("SIGMA_GARDEN")
+    if override:
+        return Path(override).resolve()
     return protocol.ROOT
 
 def calc_spectral_analysis(text: str):
@@ -81,27 +84,42 @@ def cmd_forge(name: str, phase: int = 0, dna: str = None):
 def cmd_path_check():
     """CI Test: Ensure no absolute paths exist in the lattice or tools."""
     root = get_repo_root()
-    print(f"🧐 Auditing for Path Leaks in {root}...")
-    # Split pattern to avoid self-detection
-    abs_pattern = "/" + "Users" + "/"
+    print(f"🧐 Auditing for Path Leaks in {root} (Strict Mode)...")
+    
+    # Expanded patterns to detect
+    patterns = [
+        "/" + "Users" + "/",
+        "/" + "home" + "/",
+        "C" + ":" + "\\",
+        "file" + ":" + "//",
+        "~" + "/"
+    ]
+    
     found = False
     
-    # Scan PY, TS, and sigma
-    for dir_name in ["PY", "TS", "sigma"]:
+    # Scan PY, TS, sigma, SH, MD
+    for dir_name in ["PY", "TS", "sigma", "SH", "MD"]:
         search_dir = root / dir_name
         if not search_dir.exists(): continue
         
-        for path in search_dir.glob("**/*"):
-            if path.is_dir() or path.suffix in [".png", ".jpg", ".bin"]: continue
+        for path in sorted(search_dir.glob("**/*"), key=lambda p: str(p)):
+            if path.is_dir() or path.suffix in [".png", ".jpg", ".bin", ".pyc", ".lock"]: continue
             try:
-                content = path.read_text()
-                if abs_pattern in content:
-                    print(f"   [FAIL] Absolute path leak in: {path.relative_to(root)}")
-                    found = True
-            except: continue
+                content = path.read_text(encoding="utf-8")
+                
+                for p in patterns:
+                    if p in content:
+                        # Extra check: is it inside a .sigma block?
+                        # We just report it regardless of context for strict determinism.
+                        print(f"   [FAIL] Leak '{p}' in: {path.relative_to(root)}")
+                        found = True
+                        break # Only report once per file
+            except Exception as e:
+                # print(f"   [SKIP] {path.name}: {e}")
+                continue
             
     if found:
-        print("\n❌ PATH AUDIT FAILED.")
+        print("\n❌ PATH AUDIT FAILED. Purge absolute references.")
         sys.exit(1)
     else:
         print("\n✅ ZERO PATH LEAKS DETECTED.")
