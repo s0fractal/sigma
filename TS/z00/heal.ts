@@ -1,3 +1,4 @@
+```ts
 
 import {
     serializeNode,
@@ -17,7 +18,7 @@ async function main() {
         // In our current setup, the seal has node: { ts, rs, md }
         // Let's focus on healing the seeds and the echoes we just created.
 
-        // For this demonstration, we'll check if the seeds in seedsDir 
+        // For this demonstration, we'll check if the seeds in seedsDir
         // actually exist and if they can be transmuted back.
 
         const seeds = ["I", "K", "S", "F", "M", "E", "L", "B", "C", "W", "Z", "T_mol"];
@@ -32,7 +33,7 @@ async function main() {
                 // If seed exists, verify the echo
                 try {
                     await Deno.stat(tsPath);
-                    // Echo exists, all good (for now we assume if it exists it is fine, 
+                    // Echo exists, all good (for now we assume if it exists it is fine,
                     // a deep check would re-transmute and compare).
                 } catch (_) {
                     console.log(`⚠️ DISSONANCE: Silicon Echo [${name}.ts] missing!`);

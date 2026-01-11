@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: ΣGLYPH
 
+🧬IDENTITY: 3791bcf24a7bcb9d02cd0d9a563690d0880c3303eb576918e23ce17e1382b114
+
 ---
 # === 🧬 IDENTITY ===
 🧬: ΣGLYPH
@@ -21,7 +23,7 @@ DNA: - SATOSHI
 
 # Project Σ-GLYPH: Core Architecture Specification
 
-Version: 0.1.2 (Draft with Spectrum & Mycelium Integration)  
+Version: 0.1.2 (Draft with Spectrum & Mycelium Integration)
 Type: Experimental CAS / Topological Compute Engine / Decentralized Wave Resonator
 
 ## 1. Анотація
@@ -66,7 +68,7 @@ interface SigmaNode {
 
 ## 3. Формат файлу (.sigma)
 
-Файл = заморожена проекція графа (Lens + Graph Body).  
+Файл = заморожена проекція графа (Lens + Graph Body).
 У грибниці файл може бути частковим (mesh‑довантаження лінзи).
 
 ### 3.1. Бінарна структура
@@ -125,10 +127,10 @@ sigma interfere <Hash1> <Hash2>
 
 ## 7. Roadmap
 
-Phase 1: CAS & Hashing  
-Phase 2: Node serialization (JSON -> binary)  
-Phase 3: Evaluator + interfere  
-Phase 4: Lens packer  
+Phase 1: CAS & Hashing
+Phase 2: Node serialization (JSON -> binary)
+Phase 3: Evaluator + interfere
+Phase 4: Lens packer
 Phase 5: Mycelium integration (BLE mesh + relays)
 
 ## 8. Грибниця (Mycelium Layer)
@@ -202,4 +204,4 @@ def interfere(wave1, wave2):
 @[dna]
 - SATOSHI
 
-🔒: a3e3b121c23719acb447a80b67e27e07a2e1a8ab5e82202e7fe4e4286f5e99d3
+🔒: 3791bcf24a7bcb9d02cd0d9a563690d0880c3303eb576918e23ce17e1382b114

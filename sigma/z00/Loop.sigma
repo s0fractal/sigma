@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: Loop
 
+🧬IDENTITY: a52ff6e68d16a1256434f996b720842016f58f3da429599027bb797a14a24be4
+
 ---
 # === 🧬 IDENTITY ===
 🧬: Loop
@@ -50,10 +52,10 @@ for ITEM in "${ITERABLE[@]}"; do
         WORK_DIR="$REPO_ROOT/$VPATH"
         COLOR="$VCOL"
     else
-        WORK_DIR="$REPO_ROOT" 
+        WORK_DIR="$REPO_ROOT"
         COLOR="\033[1;37m"
     fi
-    
+
     [ -z "$COLOR" ] && COLOR="\033[1;37m"
 
     if [ -d "$WORK_DIR" ]; then
@@ -75,4 +77,4 @@ Loop
 @[dna]
 - SATOSHI
 
-🔒: 4a451c2c30d98df328132203ee6305360ea63a5eb4751ac171e2a055d4382bf6
+🔒: a52ff6e68d16a1256434f996b720842016f58f3da429599027bb797a14a24be4

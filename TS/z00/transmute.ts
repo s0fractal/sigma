@@ -1,3 +1,4 @@
+```ts
 
 import {
     OpCode,
@@ -42,11 +43,11 @@ function generateTS(name: string, node: SigmaNode): string {
 
     return `/**
  * Σ-GLYPH Silicon Echo: ${name}
- * 
+ *
  * PHOS (Identity): ${ph} (~${phos}°)
  * AMUR (Attraction): ${am} (~${amur}%)
  * ENTROPY (Tension): ${en}
- * 
+ *
  * Intent: ${name}.glyph
  */
 

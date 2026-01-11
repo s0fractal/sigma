@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: E
 
+🧬IDENTITY: 6921b75e0acc74166a12c46a50dcf9f7c4f1d3e84d30f610303ee85b36749bdf
+
 ---
 # === 🧬 IDENTITY ===
 🧬: E
@@ -30,7 +32,7 @@ DNA: E
 export const E = <T>(f: (x: T) => void) => (x: T): T => { f(x); return x; };
 
 @[rs]
-pub fn E<T, F>(f: F, x: T) -> T 
+pub fn E<T, F>(f: F, x: T) -> T
 where F: Fn(&T)
 {
     f(&x);
@@ -47,4 +49,4 @@ E() {
 @[dna]
 E
 
-🔒: f7be0dffb16d3cc41f40ef863d9a7fdf75644f2d19348790429c447747d467b2
+🔒: 6921b75e0acc74166a12c46a50dcf9f7c4f1d3e84d30f610303ee85b36749bdf

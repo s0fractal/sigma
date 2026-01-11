@@ -1,3 +1,4 @@
+```bash
 # entropy_to_stratum: Predict folder from entropy
 entropy_to_stratum() {
     local entropy=$1

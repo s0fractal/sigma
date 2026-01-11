@@ -1,3 +1,4 @@
+```bash
 # parse_physics: Extract entropy from stdin/file
 parse_physics() {
     local file_content

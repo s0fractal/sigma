@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: Ω
 
+🧬IDENTITY: 2f5f7d7c075fc85f0b1da5bcedb77d4225d5d5c7db932ec7fade89504b1e7e7f
+
 ---
 # === 🧬 IDENTITY ===
 🧬: Ω
@@ -27,8 +29,8 @@ DNA: - SATOSHI
 
 ## Anatomy of Ω
 
-**The Head (λ)**: Інтерпретатор. Розум. Це редукційна машина для SKI‑комбінаторів.  
-**The Body (Calculus)**: Органи, виражені через базові морфізми.  
+**The Head (λ)**: Інтерпретатор. Розум. Це редукційна машина для SKI‑комбінаторів.
+**The Body (Calculus)**: Органи, виражені через базові морфізми.
 **The Tail (Memory)**: Дані. Це Base64‑кодований зліпок Всесвіту або Журнал Подій.
 
 ## The Body (Calculus)
@@ -49,8 +51,8 @@ DNA: - SATOSHI
 
 ## Lifecycle
 
-**Inhale**: Ω розпаковує себе у void.  
-**Live**: void змінюється.  
+**Inhale**: Ω розпаковує себе у void.
+**Live**: void змінюється.
 **Exhale**: Ω пакує void назад у свій хвіст і оновлює власний хеш.
 
 🌊
@@ -58,4 +60,4 @@ DNA: - SATOSHI
 @[dna]
 - SATOSHI
 
-🔒: 4097a8a70a0730f6f44f94b48d6ce6024089b6886e9fe18ad3f5374501211f29
+🔒: 2f5f7d7c075fc85f0b1da5bcedb77d4225d5d5c7db932ec7fade89504b1e7e7f

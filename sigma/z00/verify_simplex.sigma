@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: verify_simplex
 
+🧬IDENTITY: faa450ab0b9f53b90729294d0580cca15c6145e926dc9af116477c2b826e88e6
+
 ---
 # === 🧬 IDENTITY ===
 🧬: verify_simplex
@@ -86,4 +88,4 @@ if (import.meta.main) {
 @[dna]
 - SATOSHI
 
-🔒: 193eb5df82b54290d039e77fc8e88f4d637532348b4861208174dd84008479eb
+🔒: faa450ab0b9f53b90729294d0580cca15c6145e926dc9af116477c2b826e88e6

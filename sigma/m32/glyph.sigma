@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: glyph
 
+🧬IDENTITY: 6c7e85234d4120107e9673d882ffcff44a7190447f9223996aefeb4353369a6c
+
 ---
 # === 🧬 IDENTITY ===
 🧬: glyph
@@ -23,7 +25,7 @@ DNA: glyph
 ```markdown
 # GLYPH Spectrum: Binary Crystallization
 
-The **GLYPH** spectrum is the final physical crystallization of a Sigma Intent. 
+The **GLYPH** spectrum is the final physical crystallization of a Sigma Intent.
 While `.sigma` files are human-readable seeds, `.glyph` files are 40-byte binary atoms used by the machine for runtime resonance.
 
 ### Binary Structure (40 bytes)
@@ -40,4 +42,4 @@ While `.sigma` files are human-readable seeds, `.glyph` files are 40-byte binary
 @[dna]
 glyph
 
-🔒: d958e9a8d48f37a6a2d857b0c220339c61dece8f14a743a46000256da96e9426
+🔒: 6c7e85234d4120107e9673d882ffcff44a7190447f9223996aefeb4353369a6c

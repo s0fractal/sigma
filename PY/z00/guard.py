@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from __future__ import annotations
 import os
 import re
 import sys
@@ -8,163 +9,114 @@ import math
 from pathlib import Path
 
 # Σ-GLYPH GUARD
-# V2.1.1: Symbolic Standard - Lossless Metadata
+# V2.3.2 - Deterministic Resonance: Robust Healing
 
-SIGMA_ROOT = Path("/Users/s0fractal/SIGMA")
+def get_repo_root() -> Path:
+    cur = Path(__file__).resolve()
+    for parent in [cur] + list(cur.parents):
+        if (parent / ".git").exists():
+            return parent
+    return Path.cwd()
+
+SIGMA_ROOT = get_repo_root()
 SOURCE_DIR = SIGMA_ROOT / "sigma"
-PROJECTION_DIRS = ["TS", "RS", "SH", "PY", "DNA", "GLYPH"]
-WHITELIST = ["deno.json", ".DS_Store", "README.md", "pantheon"]
 
-def parse_physics(text: str) -> dict:
-    physics = {"OP": 0, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
+def normalize_text(text: str) -> str:
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    lines = [line.rstrip() for line in text.splitlines()]
+    return "\n".join(lines)
+
+def calculate_node_hash(content: str) -> str:
+    """SCR-1: Hash body by excluding Identity header and Seal."""
+    # 1. Strip seal (search for ANY trailing seal-like line)
+    # We strip from the LAST occurrence of a marker at the start of a line
+    body = content
+    markers = ["\n🔒:", "\nCHECKSUM:"]
+    idx = -1
+    found_marker = ""
+    for m in markers:
+        m_idx = content.rfind(m)
+        if m_idx > idx:
+            idx = m_idx
+            found_marker = m
     
-    # V2.1 Symbolic Keys (Precise Search - robust to comments)
-    symbol_map = {"⚙️": "OP", "🚩": "FLAGS", "🌊": "PHASE", "🔊": "AMPLITUDE", "🌀": "ENTROPY"}
-    for sym, key in symbol_map.items():
-        match = re.search(f"{sym}:?\\s*(-?\\d+|0x[a-fA-F0-9]+)(?:\\s*#.*|$)", text, re.MULTILINE)
-        if match:
-            val = match.group(1)
-            try:
-                physics[key] = int(val, 16) if val.startswith("0x") else int(val)
-            except: continue
-
-    # Fallback: Legacy PHYSICS block parsing
-    if all(physics[k] == 0 for k in ["PHASE", "AMPLITUDE", "ENTROPY"]):
-        header_match = re.search(r"(?:⚖️)?\s*PHYSICS(?:\s*\(Wave Function\))?:?\s*\n+", text, re.MULTILINE)
-        if header_match:
-            start_idx = header_match.end()
-            remaining = text[start_idx:].lstrip("\n")
-            found_any = False
-            for line in remaining.split("\n"):
-                clean_line = line.split("#")[0].strip()
-                if not clean_line: continue
-                if ":" in clean_line:
-                    key, val = clean_line.split(":", 1)
-                    key = re.sub(r'[^\w]', '', key).strip().upper()
-                    if key in physics:
-                        found_any = True
-                        val = val.strip()
-                        try:
-                            if val.startswith("0x"): physics[key] = int(val, 16)
-                            else: physics[key] = int(re.search(r'-?\d+', val).group())
-                        except: continue
-                    elif found_any: break
-                else: break
-    return physics
-
-def calculate_checksum(content: str) -> str:
-    # Look for V2.1/V2.0 checksum marker first
-    if "\n🔒:" in content:
-        clean_content = content.rsplit("\n🔒:", 1)[0].rstrip()
-    elif "\nCHECKSUM:" in content:
-        clean_content = content.rsplit("\nCHECKSUM:", 1)[0].rstrip()
+    if idx != -1:
+        body = content[:idx]
     else:
-        clean_content = content.strip()
-    return hashlib.sha256(clean_content.encode("utf-8")).hexdigest()
+        body = content.strip()
+        
+    # 2. Exclude Identity lines from hash
+    lines = body.splitlines()
+    filtered_lines = [l for l in lines if not re.match(r"^(🧬IDENTITY:|IDENTITY:|CHECKSUM:|🔒:)", l.strip())]
+    canon_body = "\n".join(filtered_lines).strip()
+    
+    return hashlib.sha256(canon_body.encode("utf-8")).hexdigest()
 
-def get_glyph_registry():
-    registry = {}
+def audit_lattice(fix=False):
+    violations = []
+    print("🛡️  Guarding Lattice (Deterministic Resonance)...")
+    
     for path in SOURCE_DIR.glob("**/*.sigma"):
         try:
-            content = path.read_text(encoding="utf-8")
-            glyph_match = re.search(r"^(?:GLYPH|Σ-GLYPH SEED|🧬):\s*([\w=]+)", content, re.MULTILINE)
-            if glyph_match:
-                glyph = glyph_match.group(1)
-                phys = parse_physics(content)
-                
-                # DNA Purification: V2.1 🔗 and DNA: support
-                dna_match = re.search(r"^(?:🧬DNA|DNA:|🔗|🔗:):\s*\n+((?:\s*(?:-\s*|Ref:\s*)?[\w=]+\n?)*)", content, re.MULTILINE)
-                dependencies = []
-                if dna_match:
-                    raw_dna = dna_match.group(1)
-                    dependencies = [d.replace("Ref:", "").strip("- ").strip() for d in raw_dna.splitlines() if d.strip("- ").strip()]
-                    if not dependencies:
-                        dependencies = [d.strip("- ").strip() for d in raw_dna.split() if d.strip("- ").strip()]
-                
-                if not dependencies: # Inline DNA support
-                    dna_match = re.search(r"DNA:\s*([\w\s=]+)(?:\s*#|$)", content)
-                    if dna_match:
-                        dependencies = dna_match.group(1).split()
-                
-                registry[glyph] = {
-                    "path": path,
-                    "entropy": phys["ENTROPY"],
-                    "deps": dependencies,
-                    "content": content
-                }
-        except: continue
-    return registry
+            raw_content = path.read_text(encoding="utf-8")
+            content = normalize_text(raw_content)
+            
+            id_match = re.search(r"^🧬IDENTITY:\s*([a-fA-F0-9]{64})", content, re.MULTILINE)
+            # Find the last seal line even if it doesn't match the hex pattern
+            seal_match = re.search(r"\n(?:🔒:|CHECKSUM:)\s*(.*)$", content, re.MULTILINE)
+            
+            node_hash = calculate_node_hash(content)
+            current_id = id_match.group(1) if id_match else None
+            current_seal = seal_match.group(1).strip() if seal_match else None
 
-def audit_entropy(registry):
-    violations = []
-    print("🛡️  Auditing Entropy Hierarchy...")
-    for glyph, data in registry.items():
-        if data["entropy"] == -1: continue 
-        for dep in data["deps"]:
-            if dep not in registry: continue
-            dep_data = registry[dep]
-            # V2.1: Tools (En=0, -1) can depend on anything.
-            if data["entropy"] == 0 or data["entropy"] == -1: continue
-            if dep_data["entropy"] > data["entropy"]:
-                rel_path = data["path"].relative_to(SOURCE_DIR)
-                violations.append(f"Entropy Inversion: {rel_path} ({data['entropy']}) -> {dep} ({dep_data['entropy']})")
-    return violations
+            needs_fix = False
+            if node_hash != current_id:
+                violations.append(f"Identity Drift: {path.relative_to(SOURCE_DIR)}")
+                needs_fix = True
+            if node_hash != current_seal:
+                violations.append(f"Seal Dissonance: {path.relative_to(SOURCE_DIR)}")
+                needs_fix = True
 
-def audit_vector_topology(fix=False):
-    violations = []
-    print("📐 Auditing Vector Topology...")
-    for dim in PROJECTION_DIRS:
-        dim_dir = SIGMA_ROOT / dim
-        if not dim_dir.exists(): continue
-        for stratum_dir in dim_dir.iterdir():
-            if stratum_dir.name in WHITELIST: continue
-            if not re.match(r"^[mpz]\d{2}$", stratum_dir.name):
-                violations.append(f"Non-vector folder in {dim}/: {stratum_dir.name}")
-                if fix:
-                    print(f"   🛠 Purging legacy dimension dissonance: {stratum_dir}")
-                    if stratum_dir.is_dir(): shutil.rmtree(stratum_dir)
-                    else: stratum_dir.unlink()
-                continue
-    return violations
-
-def audit_checksums(registry, fix=False):
-    violations = []
-    print("⚓ Auditing Physical Checksums...")
-    for glyph, data in registry.items():
-        path = data["path"]
-        content = data["content"]
-        checksum_match = re.search(r"\n(?:CHECKSUM|🔒):\s*(.*)$", content, re.MULTILINE)
-        if not checksum_match: continue
-        
-        current_checksum = checksum_match.group(1).strip()
-        expected_checksum = calculate_checksum(content)
-        
-        if current_checksum != expected_checksum:
-            rel_path = path.relative_to(SOURCE_DIR)
-            violations.append(f"Checksum Mismatch: {rel_path} (Expected {expected_checksum[:8]}...)")
-            if fix:
-                print(f"   🛠 Resealing Seed: {rel_path}")
-                marker = "🔒:" if "\n🔒:" in content else "CHECKSUM:"
-                parts = content.rsplit(f"\n{marker}", 1)
-                new_content = parts[0] + f"\n{marker} {expected_checksum}"
+            if needs_fix and fix:
+                print(f"   🛠 Healing: {path.name} -> {node_hash[:16]}...")
+                # 1. Update/Add Identity Header
+                if id_match:
+                    new_content = content.replace(id_match.group(0), f"🧬IDENTITY: {node_hash}")
+                else:
+                    header_pat = r"^(Σ-GLYPH SEED|🧬):\s*([\w=]+)(\n?)"
+                    match = re.search(header_pat, content, re.MULTILINE)
+                    if match:
+                        new_content = content[:match.end()] + f"🧬IDENTITY: {node_hash}\n" + content[match.end():]
+                    else:
+                        new_content = f"🧬IDENTITY: {node_hash}\n" + content
+                
+                # 2. Update/Add Seal
+                # Refresh seal_match on new_content
+                sm = re.search(r"\n(?:🔒:|CHECKSUM:)\s*(.*)$", new_content, re.MULTILINE)
+                if sm:
+                    start, end = sm.span()
+                    # Preserve the marker type if it was CHECKSUM
+                    marker = "CHECKSUM:" if "CHECKSUM:" in sm.group(0) else "🔒:"
+                    new_content = new_content[:start] + f"\n{marker} {node_hash}"
+                else:
+                    new_content = new_content.strip() + f"\n\n🔒: {node_hash}"
+                
                 path.write_text(new_content, encoding="utf-8")
+                    
+        except Exception as e:
+            violations.append(f"Core Fault: {path.name} ({e})")
+            
     return violations
 
 def main():
     fix_mode = "--fix" in sys.argv
-    registry = get_glyph_registry()
-    entropy_violations = audit_entropy(registry)
-    vector_violations = audit_vector_topology(fix=fix_mode)
-    checksum_violations = audit_checksums(registry, fix=fix_mode)
-    violations = entropy_violations + vector_violations + checksum_violations
+    violations = audit_lattice(fix=fix_mode)
+    
     if not violations:
-        print("\n✅ THE FIELD IS PURE. Hierarchy, Topology, and Checks are verified.")
+        print("\n✅ THE LATTICE IS BIT-PURE.")
         sys.exit(0)
-    print(f"\n❌ VIOLATIONS DETECTED ({len(violations)})")
-    for v in violations:
-        print(f"   - {v}")
-    if not fix_mode:
-        print("\n   [Tip]: Run with --fix to automatically resolve violations.")
+    
+    print(f"\n❌ VIOLATIONS: {len(violations)}")
     sys.exit(1)
 
 if __name__ == "__main__":

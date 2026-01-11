@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: ProofOfIntent
 
+🧬IDENTITY: a7f404112a4806baac5754d850f242b740341afde78438a0f73ac215571e4580
+
 ---
 # === 🧬 IDENTITY ===
 🧬: ProofOfIntent
@@ -108,7 +110,7 @@ function hashCode(codeFile: string): string {
 function verifyProof(intent: string, code: string): ProofStatus {
   const intentHash = hashIntent(intent);
   const codeHash = hashCode(code);
-  
+
   if (intentHash === codeHash) {
     return ProofStatus.Harmony;  // 🟢
   } else {
@@ -210,4 +212,4 @@ On every commit:
 @[dna]
 ProofOfIntent
 
-🔒: 1df2998cf83fe145ba0befdeab14d1a473d261b6f9e107b4ec6e7350bd67f29b
+🔒: a7f404112a4806baac5754d850f242b740341afde78438a0f73ac215571e4580

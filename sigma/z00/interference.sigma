@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: interference
 
+🧬IDENTITY: 325c0577349f93ea35aab8653b1c1d0ebcfef1b4fd1598338819d72b012f30f3
+
 ---
 # === 🧬 IDENTITY ===
 🧬: interference
@@ -30,15 +32,15 @@ import { findGlyph } from "./spectral_core.ts";
 
 /**
  * Resolves the UDP port for a given wave phase.
- * Phase 0-65535 maps directly to the ephemeral port range 49152-65535 
+ * Phase 0-65535 maps directly to the ephemeral port range 49152-65535
  * using a wrapping or scaling logic, or directly as requested by the user.
- * 
+ *
  * User suggested PHASE 49152 (TS) maps to port 49152.
  */
 export function getWavePort(phase: number): number {
     // Direct mapping for the upper range
     if (phase >= 49152) return phase;
-    // For lower phases, we wrap or offset. 
+    // For lower phases, we wrap or offset.
     // Let's use 1024 as a base offset for non-ephemeral signals.
     return 1024 + (phase % 48128);
 }
@@ -81,4 +83,4 @@ if (import.meta.main) {
 @[dna]
 - SATOSHI
 
-🔒: 505b4cb170bde3cdae479ec08f44ed413ec3b60b75148653e82dc0973414b9eb
+🔒: 325c0577349f93ea35aab8653b1c1d0ebcfef1b4fd1598338819d72b012f30f3

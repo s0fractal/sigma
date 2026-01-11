@@ -1,3 +1,4 @@
+```bash
 # λ Portal (Polymorphic Dispatcher)
 λ() {
     local x="$1"
@@ -6,10 +7,10 @@
         echo "$x"
         return
     fi
-    
+
     local f="$1"
     shift
-    
+
     # Check if f is a function or command
     if ! command -v "$f" >/dev/null 2>&1; then
         # If not a command, treat as literal/echo
@@ -29,3 +30,4 @@
         "$f" "$x"
     fi
 }
+```

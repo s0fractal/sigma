@@ -1,8 +1,9 @@
 [SATOSHI](file://m32/SATOSHI)
 
+```markdown
 # GLYPH Spectrum: Binary Crystallization
 
-The **GLYPH** spectrum is the final physical crystallization of a Sigma Intent. 
+The **GLYPH** spectrum is the final physical crystallization of a Sigma Intent.
 While `.sigma` files are human-readable seeds, `.glyph` files are 40-byte binary atoms used by the machine for runtime resonance.
 
 ### Binary Structure (40 bytes)

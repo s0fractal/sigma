@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: Bootstrap
 
+🧬IDENTITY: e28126e3c57c0ebdca9e2f35ea325ca09d685e0d700f3f3c9a311d34152aab13
+
 ---
 # === 🧬 IDENTITY ===
 🧬: Bootstrap
@@ -32,14 +34,14 @@ Script: `sh/bootstrap/brew.sh`
 
 ## 2. Nervous System (Dotfiles)
 
-Конфіги не копіюються, а проростають (symlink).  
+Конфіги не копіюються, а проростають (symlink).
 ZSH, Git, Zellij читають налаштування з `void/sh/configs`.
 
 Script: `sh/bootstrap/dots.sh`
 
 ## 3. The Local Temple (Gitea)
 
-Локальний Gitea тримає дзеркало Войду і дає автономність.  
+Локальний Gitea тримає дзеркало Войду і дає автономність.
 Публічні кристали можна пушити на GitHub.
 
 Script: `sh/bootstrap/gitea.sh`
@@ -49,4 +51,4 @@ Script: `sh/bootstrap/gitea.sh`
 @[dna]
 - SATOSHI
 
-🔒: 26180391d8144dae0561de3c6e22b4b56cab2e8816b9674ee76f7304a1069e65
+🔒: e28126e3c57c0ebdca9e2f35ea325ca09d685e0d700f3f3c9a311d34152aab13

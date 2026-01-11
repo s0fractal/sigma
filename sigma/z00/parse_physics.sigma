@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: parse_physics
 
+🧬IDENTITY: 9d71560ae9abadb603c560116542ddc822dd72a7da1e3d477ae6bcacd59229b2
+
 ---
 # === 🧬 IDENTITY ===
 🧬: parse_physics
@@ -34,13 +36,13 @@ def parse_physics(text: str) -> dict:
     if header_match:
         start_idx = header_match.end()
         remaining = text[start_idx:].lstrip("\n")
-        
+
         # Parse line by line until we hit a non-property line
         found_any = False
         for line in remaining.split("\n"):
             clean_line = line.split("#")[0].strip()
             if not clean_line: continue
-            
+
             if ":" in clean_line:
                 key, val = clean_line.split(":", 1)
                 key = re.sub(r'[^\w]', '', key).strip().upper()
@@ -66,13 +68,13 @@ export function parsePhysics(text: string): Record<string, number> {
     if (headerMatch) {
         let startIdx = headerMatch.index! + headerMatch[0].length;
         let remaining = text.slice(startIdx).replace(/^\n+/, "");
-        
+
         let foundAny = false;
         const lines = remaining.split("\n");
         for (let line of lines) {
             let cleanLine = line.split("#")[0].trim();
             if (!cleanLine) continue;
-            
+
             if (cleanLine.includes(":")) {
                 let [key, val] = cleanLine.split(":").map(s => s.trim());
                 key = key.replace(/[^\w]/g, "").toUpperCase();
@@ -109,4 +111,4 @@ parse_physics() {
 @[dna]
 - SATOSHI
 
-🔒: 303aa60bb1079f9777a6e4436c1c92ce9a96494f4cfcad8d01cd81a7957c6e50
+🔒: 9d71560ae9abadb603c560116542ddc822dd72a7da1e3d477ae6bcacd59229b2

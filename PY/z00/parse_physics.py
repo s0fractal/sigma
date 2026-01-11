@@ -1,3 +1,4 @@
+```python
 import re
 def parse_physics(text: str) -> dict:
     physics = {"OP": 0, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
@@ -6,13 +7,13 @@ def parse_physics(text: str) -> dict:
     if header_match:
         start_idx = header_match.end()
         remaining = text[start_idx:].lstrip("\n")
-        
+
         # Parse line by line until we hit a non-property line
         found_any = False
         for line in remaining.split("\n"):
             clean_line = line.split("#")[0].strip()
             if not clean_line: continue
-            
+
             if ":" in clean_line:
                 key, val = clean_line.split(":", 1)
                 key = re.sub(r'[^\w]', '', key).strip().upper()
@@ -28,3 +29,4 @@ def parse_physics(text: str) -> dict:
             else: # No colon -> end of physics block
                 break
     return physics
+```

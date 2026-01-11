@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: Universal
 
+🧬IDENTITY: e520261ebabadcf6b0a54507f0f4bf6b426fc4538358fe643d2316f9d7265bd7
+
 ---
 # === 🧬 IDENTITY ===
 🧬: Universal
@@ -54,27 +56,27 @@ Ref: Universal.sigma
  */
 export const λ = (x: any, f?: any, ...xs: any[]): any => {
     if (f === undefined) return x;
-    
+
     // Map: λ([x], f)
     if (Array.isArray(x) && typeof f === 'function' && xs.length === 0) {
         return x.map(f);
     }
-    
+
     // Fold: λ([x], (a,b)=>a+b, init)
     if (Array.isArray(x) && typeof f === 'function' && xs.length === 1) {
         return x.reduce(f, xs[0]);
     }
-    
+
     // Pipe / Composition: λ(x, f, g)
     if (xs.length > 0) {
         return λ(f(x), ...xs);
     }
-    
+
     // Basic Application
     return f(x);
 };
 
-export const fn = λ; 
+export const fn = λ;
 ```
 
 @[py]
@@ -85,20 +87,20 @@ def λ(x, f=None, *xs):
     """
     if f is None:
         return x
-    
+
     # Map: λ([x], f)
     if isinstance(x, (list, tuple)) and callable(f) and not xs:
         return type(x)(map(f, x))
-    
+
     # Fold: λ([x], (a,b)=>a+b, init)
     if isinstance(x, (list, tuple)) and callable(f) and len(xs) == 1:
         from functools import reduce
         return reduce(f, x, xs[0])
-    
+
     # Pipe / Composition: λ(x, f, g)
     if xs:
         return λ(f(x), *xs)
-    
+
     # Basic Application
     return f(x)
 
@@ -107,9 +109,9 @@ fn = λ
 
 @[rs]
 ```rust
-// Polymorphic λ in Rust 
+// Polymorphic λ in Rust
 // Using a simplified approach for the engine context.
-pub fn lambda<T, F>(x: T, f: Option<F>) -> T 
+pub fn lambda<T, F>(x: T, f: Option<F>) -> T
 where F: Fn(T) -> T {
     match f {
         Some(func) => func(x),
@@ -130,10 +132,10 @@ pub use lambda as function;
         echo "$x"
         return
     fi
-    
+
     local f="$1"
     shift
-    
+
     # Check if f is a function or command
     if ! command -v "$f" >/dev/null 2>&1; then
         # If not a command, treat as literal/echo
@@ -166,4 +168,4 @@ pub use lambda as function;
 @[dna]
 - SATOSHI
 
-🔒: 58af8bb1d507a302f917995b79205eaeeb6fce9c76b32b028b6ef0eb51f23509
+🔒: e520261ebabadcf6b0a54507f0f4bf6b426fc4538358fe643d2316f9d7265bd7

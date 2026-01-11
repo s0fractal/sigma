@@ -1,3 +1,4 @@
+🧬IDENTITY: eba62b06a0851b5c3940076f68a77833f06594f60686126e568748c6ca54deba
 Σ-GLYPH SEED: {NAME}
 
 ---
@@ -29,7 +30,7 @@ DNA: {DNA_EXPRESSION}    # The Formula (e.g., W I). NO LISTS!
 @[ts]
 // 🔗 Implicit Gravity: No imports required. Dependencies are in the DNA.
 // Projection of: {DNA_EXPRESSION}
-export const {NAME} = ...; 
+export const {NAME} = ...;
 
 @[rs]
 // 🔗 Native implementation
@@ -42,4 +43,4 @@ pub const {NAME}: ... = ...;
 @[dna]
 {DNA_EXPRESSION}
 
-🔒: {HASH_OF_THIS_FILE}
+🔒: eba62b06a0851b5c3940076f68a77833f06594f60686126e568748c6ca54deba

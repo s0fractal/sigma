@@ -1,3 +1,4 @@
+```ts
 
 import {
     parseNode,
@@ -25,7 +26,7 @@ async function visualizeSpiral() {
             const data = await Deno.readFile(`${seedsDir}/${entry.name}`);
             try {
                 const node = parseNode(data);
-                // We don't have per-node creation cycle in the glyph itself, 
+                // We don't have per-node creation cycle in the glyph itself,
                 // so we'll approximate based on known eras for visualization.
                 let cycleVal = 1;
                 const name = entry.name.replace(".glyph", "");

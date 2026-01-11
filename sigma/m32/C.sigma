@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: C
 
+🧬IDENTITY: ccd8c34670050f4c965ec99fbe4209cf575b26b36fe43b695a9b31331de79652
+
 ---
 # === 🧬 IDENTITY ===
 🧬: C
@@ -29,4 +31,4 @@ The Cardinal: swaps the order of arguments.
 @[dna]
 λx.y.z.xzy
 
-🔒: 48cea520045bc8fa5eb06b01dc7006e08def77470a6ab5ffa7a37aafadbc9def
+🔒: ccd8c34670050f4c965ec99fbe4209cf575b26b36fe43b695a9b31331de79652

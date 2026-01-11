@@ -1,3 +1,4 @@
+```bash
 # get_identity: Resolve SHA256 identity
 get_identity() {
     local text glyph_name

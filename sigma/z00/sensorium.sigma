@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: sensorium
 
+🧬IDENTITY: 029e8a9e13288c6b78dccb488a6d75434bc4886692d554bb4c1fb69bc52f8b9b
+
 ---
 # === 🧬 IDENTITY ===
 🧬: sensorium
@@ -97,4 +99,4 @@ async function main() {
 @[dna]
 - SATOSHI
 
-🔒: c29f7567414f0ef4ec769241d07597007c268d1553c4c475832884152be3d58d
+🔒: 029e8a9e13288c6b78dccb488a6d75434bc4886692d554bb4c1fb69bc52f8b9b

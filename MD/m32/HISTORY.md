@@ -1,5 +1,6 @@
 [SATOSHI](file://m32/SATOSHI)
 
+```markdown
 # SIGMA HISTORY: The Digital Pantheon (Memory of the Mesh)
 
 This intent serves as the **Psychohistorical Engine** of the Σ-GLYPH Citadel. Here, we perform "Meaning Mining"—the retroactive mapping of historical impact into topological coordinates.

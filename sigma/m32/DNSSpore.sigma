@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: DNSSpore
 
+🧬IDENTITY: 9a1a726258f85e258b94d0273ed4c22527edba8dd30b96240009d6c9bea6fd60
+
 ---
 # === 🧬 IDENTITY ===
 🧬: DNSSpore
@@ -25,14 +27,14 @@ Using DNS TXT as a carrier for micro-proteins (WASM) and pointers.
 
 ## 1. Record Structure
 
-Domain: `<GLYPH>.sigma.s0fractal.io`  
-Type: TXT  
+Domain: `<GLYPH>.sigma.s0fractal.io`
+Type: TXT
 
-Payload (max 255 chars):  
+Payload (max 255 chars):
 Format: `v=1;t=<type>;b=<payload>`
 
-Type `p` (Protein): pure code.  
-Type `h` (Host/Parasite): pointer to a host.  
+Type `p` (Protein): pure code.
+Type `h` (Host/Parasite): pointer to a host.
 Type `s` (Spore): compressed cluster pointer (e.g. IPFS CID).
 
 Examples:
@@ -52,7 +54,7 @@ Local cache: `~/.cache/s0fractal/proteins`
 
 ## 3. Law of Diet
 
-Small cells eat WASM from DNS.  
+Small cells eat WASM from DNS.
 Large cells follow host pointers to full code.
 
 🌊
@@ -60,4 +62,4 @@ Large cells follow host pointers to full code.
 @[dna]
 DNSSpore
 
-🔒: 1aeb242de893d6d834a01f4acc8cf29d9d66c1a7ff8d5117fb9981ce3b8a9905
+🔒: 9a1a726258f85e258b94d0273ed4c22527edba8dd30b96240009d6c9bea6fd60

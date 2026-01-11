@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: get_identity
 
+🧬IDENTITY: 6add853a79a5fd91daa948b6f285602fc1f925f1c0876ddb06738fe2b544ae66
+
 ---
 # === 🧬 IDENTITY ===
 🧬: get_identity
@@ -30,7 +32,7 @@ import hashlib
 def get_identity(text: str, glyph_name: str) -> bytes:
     id_match = re.search(r"🧬IDENTITY:\s*([a-fA-F0-9]{64})", text)
     if id_match: return bytes.fromhex(id_match.group(1))
-    
+
     first_block_match = re.search(r"@\[\w+\]\n(.*?)\n(?=@\[|$)", text, re.DOTALL)
     content = first_block_match.group(1).strip() if first_block_match else glyph_name
     return hashlib.sha256(content.encode("utf-8")).digest()
@@ -67,4 +69,4 @@ get_identity() {
 @[dna]
 - SATOSHI
 
-🔒: c47574d195bad40e5282c4c65eb1d0671332b00d3546bfc1b10e616cd2319a92
+🔒: 6add853a79a5fd91daa948b6f285602fc1f925f1c0876ddb06738fe2b544ae66

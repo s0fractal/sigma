@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: FullereneLens
 
+🧬IDENTITY: bb7467a16b03154b0bc95e6a8a35c5601663a4b3a333d5fca3a3f17cc77ddfb5
+
 ---
 # === 🧬 IDENTITY ===
 🧬: FullereneLens
@@ -25,7 +27,7 @@ DNA: - SATOSHI
 
 ## 1. Hexagonal Filtering (The Facet)
 
-Вхідний сигнал розбивається на чарунки (Hexagons).  
+Вхідний сигнал розбивається на чарунки (Hexagons).
 Кожна чарунка — це мікро-фільтр.
 
 $$Cell(x) = \begin{cases} x, & \text{if } x \in \text{Pattern} \\ \emptyset, & \text{if } x \in \text{Noise} \end{cases}$$
@@ -46,4 +48,4 @@ Input (GB) $\to$ Retina $\to$ Projection (KB) $\to$ Brain.
 @[dna]
 - SATOSHI
 
-🔒: 945e1af8bedd2c525fde6e959233e58101de61c3c4153978a44079e20518d0cd
+🔒: bb7467a16b03154b0bc95e6a8a35c5601663a4b3a333d5fca3a3f17cc77ddfb5

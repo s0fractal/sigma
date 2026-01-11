@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: detect_missing_links
 
+🧬IDENTITY: fd2267d8e569e7fab45403b674a8a58ddf5da9c1357221231daa72ef07033fb3
+
 ---
 # === 🧬 IDENTITY ===
 🧬: detect_missing_links
@@ -90,4 +92,4 @@ if (import.meta.main) {
 @[dna]
 - SATOSHI
 
-🔒: 1e6d590b6dc37a471a3a5889278dbb6ef31fd15e44de3277b6f734fc885aa2f3
+🔒: fd2267d8e569e7fab45403b674a8a58ddf5da9c1357221231daa72ef07033fb3

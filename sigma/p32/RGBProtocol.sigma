@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: RGBProtocol
 
+🧬IDENTITY: e2706bff5515aeba16f4e2f3b9c1fc694f55e3a9dc92ad45432a79e64c5e6a02
+
 ---
 # === 🧬 IDENTITY ===
 🧬: RGBProtocol
@@ -27,16 +29,16 @@ DNA: - SATOSHI
 
 ## 1. The Trinity of Light (RGB)
 
-🔴 **R‑Channel (Power)**: `rs/` (Rust).  
-Відповідає за масу, безпеку пам'яті, низькорівневу фізику.  
+🔴 **R‑Channel (Power)**: `rs/` (Rust).
+Відповідає за масу, безпеку пам'яті, низькорівневу фізику.
 Це "Тіло".
 
-🟢 **G‑Channel (Flow)**: `sh/` (Shell).  
-Відповідає за рух, склеювання, життєві цикли.  
+🟢 **G‑Channel (Flow)**: `sh/` (Shell).
+Відповідає за рух, склеювання, життєві цикли.
 Це "Життя".
 
-🔵 **B‑Channel (Mind)**: `ts/` (TypeScript).  
-Відповідає за інтерфейси, логіку, зв'язок.  
+🔵 **B‑Channel (Mind)**: `ts/` (TypeScript).
+Відповідає за інтерфейси, логіку, зв'язок.
 Це "Розум".
 
 ## 2. Synthesis ($\Sigma$)
@@ -54,7 +56,7 @@ $$\Sigma = R \oplus G \oplus B$$
 
 Твій `genesis.sh` — це призма.
 
-Вхід: Білий промінь (Інтент `.sigma`).  
+Вхід: Білий промінь (Інтент `.sigma`).
 Заломлення: Розкладання на файли `.rs`, `.sh`, `.ts`.
 
 ## 4. Implementation
@@ -64,4 +66,4 @@ $$\Sigma = R \oplus G \oplus B$$
 @[dna]
 - SATOSHI
 
-🔒: 48d2ac1c31be57a6aaaeecfd0de1fa9f9c56e6f2bd375d44bb736bafc183d25a
+🔒: e2706bff5515aeba16f4e2f3b9c1fc694f55e3a9dc92ad45432a79e64c5e6a02

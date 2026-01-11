@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: graph
 
+🧬IDENTITY: 48cc149d646b8e38313bab2350a47d992fe56a9ff04cbbe2093307595aebc513
+
 ---
 # === 🧬 IDENTITY ===
 🧬: graph
@@ -36,7 +38,7 @@ AMPLITUDE: 65535    # Reality Density
 ENTROPY:   32767    # THE VOID (Outdated Draft)
 
 
-The Sigma Dependency Graph. 
+The Sigma Dependency Graph.
 A visualization of the Crystal Lattice architecture (V1.5 legacy model).
 While the levels (E0..E8) have been superseded by the Dipole Standard, this graph remains a valuable record of the system's recursive supply chain.
 
@@ -87,22 +89,22 @@ graph TD
     %% Connections
     I --> F
     K --> F
-    
+
     I --> M
     W --> M
-    
+
     I --> T_mol
     C --> T_mol
-    
+
     %% True/False are aliases (no separate nodes)
-    
+
     Tensor --> Genesis
     Tensor --> Synapse
     Tensor --> Sync
     Tensor --> Sprout
     Tensor --> Loop
     Tensor --> Doctor
-    
+
     Tensor --> Lambda
     Genesis --> Lambda
     Synapse --> Lambda
@@ -129,4 +131,4 @@ graph TD
 @[dna]
 - SATOSHI
 
-🔒: 63e367053e498a07780d419d91975f69bd0db03f88f5a69d3eace3ef9c1819f7
+🔒: 48cc149d646b8e38313bab2350a47d992fe56a9ff04cbbe2093307595aebc513

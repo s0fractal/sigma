@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: VectorRetina
 
+🧬IDENTITY: fef3a31ddbd28e0db94ea4f8ca0b4c8b6590d819c87c5c2a0e3b9f3de95edc87
+
 ---
 # === 🧬 IDENTITY ===
 🧬: VectorRetina
@@ -34,7 +36,7 @@ DNA: - SATOSHI
 
 ## 2. Filters as Logic
 
-SVG підтримує `<feGaussianBlur>`, `<feColorMatrix>`.  
+SVG підтримує `<feGaussianBlur>`, `<feColorMatrix>`.
 Ми використовуємо це як метафору обробки даних:
 
 - Blur: Нечіткий інтент (Draft).
@@ -50,4 +52,4 @@ SVG підтримує `<feGaussianBlur>`, `<feColorMatrix>`.
 @[dna]
 - SATOSHI
 
-🔒: e898ddf05f76fc233de0110a2e41337a83ab63f305f1bc181c9540ae2d07087d
+🔒: fef3a31ddbd28e0db94ea4f8ca0b4c8b6590d819c87c5c2a0e3b9f3de95edc87

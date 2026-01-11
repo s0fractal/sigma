@@ -1,5 +1,6 @@
 [SATOSHI](file://m32/SATOSHI)
 
+```markdown
 # Σ-Spectrum Protocol
 > "Колір — це частота вібрації Смислу."
 

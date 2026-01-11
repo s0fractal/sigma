@@ -1,5 +1,7 @@
 Σ-GLYPH SEED: AxisOfWill
 
+🧬IDENTITY: ec6ef8bfcbad3a237aa237b554c96f9d1e34ec4775313fca1f2b0be4dc13c48c
+
 ---
 # === 🧬 IDENTITY ===
 🧬: AxisOfWill
@@ -25,8 +27,8 @@ DNA: AxisOfWill
 
 ## Геометрія: Хрест Творіння
 
-**Вісь X (Спектр Матерії)**: `ts` ↔ `rs` ↔ `wasm`  
-**Вісь Y (Глибина)**: шари `0 → 8`  
+**Вісь X (Спектр Матерії)**: `ts` ↔ `rs` ↔ `wasm`
+**Вісь Y (Глибина)**: шари `0 → 8`
 **Вісь Z (Ортогональ/Дія)**: `sh` ↔ `sigma`
 
 ## Ортогональність
@@ -74,4 +76,4 @@ graph TD
 @[dna]
 AxisOfWill
 
-🔒: d30c19e727e612bf287f2bfd70323cd0f6847c42aac2444e168a0288cc713d32
+🔒: ec6ef8bfcbad3a237aa237b554c96f9d1e34ec4775313fca1f2b0be4dc13c48c
