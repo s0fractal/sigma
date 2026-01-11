@@ -11,6 +11,12 @@ FORMAT:
   HEAD: 8b (op: u8, flags: u8, ph: u16, am: u16, en: i16)
   HASH: 32b (SHA-256 Identity)
 DESC: "The binary crystallization of intent. 40-byte absolute seeds."
+⚖️PHYSICS:
+  OP: 21
+  FLAGS: 1
+  PHASE: 65535
+  AMPLITUDE: 65535
+  ENTROPY: -32768
 ---
 
 @[md]

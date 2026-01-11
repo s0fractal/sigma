@@ -10,8 +10,12 @@ HEX: '#00FF00'
 SYNTAX: glyphs
 MUTE: '"// "'
 LIFT: ''
-🪨MASS: 0.0
-🌀ENTROPY: 0.0
+⚖️PHYSICS:
+  OP: 0
+  FLAGS: 1
+  PHASE: 0
+  AMPLITUDE: 65535
+  ENTROPY: -32768
 IMPORT: '// SOURCE: %p'
 🧬DNA: dna
 ---

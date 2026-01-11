@@ -10,8 +10,12 @@ HEX: '#3388FF'
 SYNTAX: ts
 MUTE: '"// "'
 LIFT: ''
-🪨MASS: 0.5
-🌀ENTROPY: 0.4
+⚖️PHYSICS:
+  OP: 16
+  FLAGS: 1
+  PHASE: 49152
+  AMPLITUDE: 65535
+  ENTROPY: -16384
 IMPORT: 'import { %n } from "@/%p.ts";'
 🧬QDNA:
 brew: "brew install node"

@@ -10,8 +10,12 @@ HEX: '#F7DF1E'
 SYNTAX: json
 MUTE: ''
 LIFT: ''
-🪨MASS: 0.2
-🌀ENTROPY: 0.1
+⚖️PHYSICS:
+  OP: 20
+  FLAGS: 1
+  PHASE: 12288
+  AMPLITUDE: 65535
+  ENTROPY: -32768
 IMPORT: '"%n": "%p"'
 🧬DNA: json
 ---

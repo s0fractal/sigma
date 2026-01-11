@@ -10,8 +10,12 @@ HEX: '#FF4433'
 SYNTAX: rust
 MUTE: '"/// "'
 LIFT: '#![no_std]'
-🪨MASS: 0.9
-🌀ENTROPY: 0.1
+⚖️PHYSICS:
+  OP: 17
+  FLAGS: 1
+  PHASE: 16384
+  AMPLITUDE: 65535
+  ENTROPY: -24576
 IMPORT: 'use crate::%p;'
 🧬QDNA:
 brew: "brew install rustup && rustup-init -y"

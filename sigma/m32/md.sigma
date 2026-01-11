@@ -10,8 +10,12 @@ HEX: '#AAAAAA'
 SYNTAX: md
 MUTE: '<!--'
 LIFT: ''
-🪨MASS: 0.2
-🌀ENTROPY: 0.7
+⚖️PHYSICS:
+  OP: 19
+  FLAGS: 1
+  PHASE: 24576
+  AMPLITUDE: 65535
+  ENTROPY: 8192
 IMPORT: '[%n](file://%p)'
 🧬DNA: md
 ---

@@ -10,8 +10,12 @@ HEX: '#44FF88'
 SYNTAX: bash
 MUTE: '"# "'
 LIFT: '#!/bin/bash'
-🪨MASS: 0.1
-🌀ENTROPY: 0.9
+⚖️PHYSICS:
+  OP: 18
+  FLAGS: 1
+  PHASE: 32768
+  AMPLITUDE: 65535
+  ENTROPY: 0
 IMPORT: 'source "$REPO_ROOT/%p"'
 🧬QDNA:
 brew: "brew install bash"
