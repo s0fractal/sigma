@@ -100,6 +100,31 @@ export function entropyToStratum(entropy: number): string {
   return `${prefix}${bucket.toString().padStart(2, "0")}`;
 }
 
+/**
+ * Ironclad repository root discovery in TypeScript.
+ */
+export function getRepoRoot(): string {
+  const envRoot = Deno.env.get("SIGMA_ROOT") || Deno.env.get("SIGMA_GARDEN");
+  if (envRoot) return envRoot;
+
+  // Search upwards for .git and protocol.json
+  let curr = Deno.cwd();
+  while (true) {
+    try {
+      const gitDir = `${curr}/.git`;
+      const protocolFile = `${curr}/sigma/m32/protocol.json`;
+      Deno.statSync(gitDir);
+      Deno.statSync(protocolFile);
+      return curr;
+    } catch {
+      const parent = curr.substring(0, curr.lastIndexOf("/"));
+      if (!parent || parent === curr) break;
+      curr = parent;
+    }
+  }
+  throw new Error("Σ-GLYPH FATAL: Repository root discovery failed. Set SIGMA_ROOT.");
+}
+
 // --- Serialization ---
 
 export function serializeNode(node: SigmaNode): Uint8Array {
