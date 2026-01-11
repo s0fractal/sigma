@@ -1,11 +1,11 @@
 --- 
-🪐STRATUM: m08
 GLYPH: 🧫
 🧬DNA: ProteinDNS
 🌈SPECTRUM:
   - sigma
   - md
 ⚖️PHYSICS:
+  ENTROPY: -32768
   🪨MASS: 1kb
   🌀ENTROPY: Low
   🧩COMPLEXITY: O(1)

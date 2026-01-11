@@ -81,8 +81,10 @@ def fix_sigma_keys(root: Path):
         new = text
         new = new.replace("\nSPECTRUM:", "\n🌈SPECTRUM:")
         new = new.replace("\nspectrum:", "\n🌈SPECTRUM:")
-        new = new.replace("\nPHYSICS:", "\n⚖️PHYSICS:")
-        new = new.replace("\nphysics:", "\n⚖️PHYSICS:")
+        new = new.replace("\nPHYSICS:", "\n⚖️PHYSICS:
+  ENTROPY: -1
+        new = new.replace("\nphysics:", "\n⚖️PHYSICS:
+  ENTROPY: -1
         new = new.replace("\nENERGY:", "\n⚡ENERGY:")
         new = new.replace("\nenergy:", "\n⚡ENERGY:")
         new = new.replace("\ndna:", "\n🧬DNA:")

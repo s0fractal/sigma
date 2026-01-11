@@ -1,11 +1,10 @@
 ---
-🪐STRATUM: z00
 GLYPH: lambda
 🏷️TYPE:
   - 🤖ORCHESTRATOR
   - ⚙️TOOL
 ⚖️PHYSICS:
-  🌀ENTROPY: Zero
+  🌀ENTROPY: -1
   🧩COMPLEXITY: Medium
 ---
 

@@ -1,11 +1,11 @@
 ---
-🪐STRATUM: z00
 GLYPH: bootstrap
 🏷️TYPE:
   - ⚙️TOOL
 📁FOLDER: tools
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  ENTROPY: -1
+  🌀ENTROPY: -1
 ---
 
 # Bootstrap

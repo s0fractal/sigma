@@ -1,10 +1,9 @@
 ---
-🪐STRATUM: z00
 GLYPH: evolve_logic
 🏷️TYPE:
   - ⚙️TOOL
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  🌀ENTROPY: -1
 ---
 
 # Evolve Logic

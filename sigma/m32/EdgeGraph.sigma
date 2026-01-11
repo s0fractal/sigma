@@ -1,11 +1,11 @@
 --- 
-🪐STRATUM: m08
 GLYPH: 🕸️
 🧬DNA: EdgeGraph
 🌈SPECTRUM:
   - sigma
   - md
 ⚖️PHYSICS:
+  ENTROPY: -32768
   🪨MASS: 2kb
   🌀ENTROPY: Low
   🧩COMPLEXITY: O(N)
@@ -58,6 +58,7 @@ GLYPH: edge-brew-node-v18
   - sh
   - dns
 ⚖️PHYSICS:
+  ENTROPY: -32768
   🪨MASS: 0.1
   🌀ENTROPY: 0.05
 ---

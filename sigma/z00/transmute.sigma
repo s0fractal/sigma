@@ -1,10 +1,10 @@
 ---
-🪐STRATUM: z00
 GLYPH: transmute
 🏷️TYPE:
   - ⚙️TOOL
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  ENTROPY: -1
+  🌀ENTROPY: -1
 ---
 
 # Transmute

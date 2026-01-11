@@ -1,10 +1,9 @@
 ---
-🪐STRATUM: z00
 GLYPH: auditor
 🏷️TYPE:
   - ⚙️TOOL
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  🌀ENTROPY: -1
 ---
 
 # Auditor

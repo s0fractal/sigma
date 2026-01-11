@@ -1,11 +1,11 @@
 --- 
-🪐STRATUM: m08
 GLYPH: ⚛️
 🧬DNA: ⚛️
 🌈SPECTRUM:
   - sh
   - dna
 ⚖️PHYSICS:
+  ENTROPY: -32768
   🪨MASS: 1.2kb
   🌀ENTROPY: Low
   🧩COMPLEXITY: O(n)

@@ -1,12 +1,11 @@
 ---
-🪐STRATUM: z00
 GLYPH: materializer
 🏷️TYPE:
   - ⚙️TOOL
   - 🛠️ENGINE
 📁FOLDER: tools
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  🌀ENTROPY: -1
   🧩COMPLEXITY: High
 ---
 
@@ -92,6 +91,7 @@ def get_identity(text: str, glyph_name: str) -> bytes:
     return hashlib.sha256(content.encode("utf-8")).digest()
 
 def entropy_to_stratum(entropy: int) -> str:
+    if entropy == -1: return "z00"
     if entropy == 0: return "m00"
     prefix = "m" if entropy < 0 else "p"
     bucket = abs(entropy) // 1024

@@ -1,11 +1,11 @@
 --- 
-🪐STRATUM: m08
 GLYPH: Lambda
 🧬DNA: Lambda
 🌈SPECTRUM:
   - sh
   - dna
 ⚖️PHYSICS:
+  ENTROPY: -32768
   🪨MASS: 2kb
   🌀ENTROPY: Low
   🧩COMPLEXITY: O(1)

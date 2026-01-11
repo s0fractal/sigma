@@ -1,10 +1,9 @@
 ---
-🪐STRATUM: z00
 GLYPH: bridge_node
 🏷️TYPE:
   - ⚙️TOOL
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  🌀ENTROPY: -1
 ---
 
 # Bridge Node

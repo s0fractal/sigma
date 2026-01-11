@@ -1,10 +1,9 @@
 ---
-🪐STRATUM: z00
 GLYPH: generate_dashboard
 🏷️TYPE:
   - ⚙️TOOL
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  🌀ENTROPY: -1
 ---
 
 # Generate Dashboard

@@ -1,9 +1,15 @@
 ---
+⚖️PHYSICS:
+  OP: 0
+  FLAGS: 1
+  PHASE: 0
+  AMPLITUDE: 65535
+  ENTROPY: -32768
+
 🏷️TYPE:
   - 🌈SPECTRUM
   - 📖INTENT
 📁FOLDER: spectrum
-🪐STRATUM: m32
 GLYPH: git
 HEX: '#F05032'
 SYNTAX: sh

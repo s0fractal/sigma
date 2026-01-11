@@ -1,11 +1,11 @@
 --- 
-🪐STRATUM: m08
 GLYPH: Doctor
 🧬DNA: Doctor
 🌈SPECTRUM:
   - sh
   - dna
 ⚖️PHYSICS:
+  ENTROPY: -32768
   🪨MASS: 3kb
   🌀ENTROPY: Low
   🧩COMPLEXITY: O(N)

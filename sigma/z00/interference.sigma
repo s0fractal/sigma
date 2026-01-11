@@ -1,5 +1,4 @@
 ---
-🪐STRATUM: z00
 GLYPH: interference
 🏷️TYPE:
   - ⚙️TOOL
@@ -9,7 +8,7 @@ GLYPH: interference
   FLAGS: 1
   PHASE: 32768
   AMPLITUDE: 65535
-  ENTROPY: -32768
+  ENTROPY: -1
 ---
 
 # Σ-INTERFERENCE
@@ -57,7 +56,7 @@ async function main() {
         console.log(`MIX [${arg1} + ${arg2}]:`);
         console.log(`  PHASE: ${result.ph}`);
         console.log(`  AMPLITUDE: ${result.am}`);
-        console.log(`  ENTROPY: ${result.en}`);
+        console.log(`  ENTROPY: -1
         console.log(`  TARGET PORT: ${getWavePort(result.ph)}`);
     } else {
         console.log("Usage: interference <port|mix> <glyph1> [glyph2]");

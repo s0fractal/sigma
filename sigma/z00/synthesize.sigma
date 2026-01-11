@@ -1,10 +1,9 @@
 ---
-🪐STRATUM: z00
 GLYPH: synthesize
 🏷️TYPE:
   - ⚙️TOOL
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  🌀ENTROPY: -1
 ---
 
 # Synthesize

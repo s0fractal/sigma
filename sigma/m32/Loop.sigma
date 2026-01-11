@@ -1,11 +1,11 @@
 --- 
-🪐STRATUM: m08
 GLYPH: Loop
 🧬DNA: Loop
 🌈SPECTRUM:
   - sh
   - dna
 ⚖️PHYSICS:
+  ENTROPY: -32768
   🪨MASS: 2kb
   🌀ENTROPY: Low
   🧩COMPLEXITY: O(N)

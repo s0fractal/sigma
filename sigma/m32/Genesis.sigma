@@ -1,11 +1,11 @@
 --- 
-🪐STRATUM: m08
 GLYPH: Genesis
 🧬DNA: Genesis
 🌈SPECTRUM:
   - sh
   - dna
 ⚖️PHYSICS:
+  ENTROPY: -32768
   🪨MASS: 4kb
   🌀ENTROPY: Medium
   🧩COMPLEXITY: O(N)

@@ -1,11 +1,10 @@
 ---
-🪐STRATUM: z00
 GLYPH: proteins_sync
 🏷️TYPE:
   - ⚙️TOOL
 📁FOLDER: tools
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  🌀ENTROPY: -1
 ---
 
 # Proteins Sync

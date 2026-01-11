@@ -1,9 +1,15 @@
 ---
+⚖️PHYSICS:
+  OP: 0
+  FLAGS: 1
+  PHASE: 0
+  AMPLITUDE: 65535
+  ENTROPY: -32768
+
 🏷️TYPE:
   - ⚖️LAW
   - 📖INTENT
 📁FOLDER: laws
-🪐STRATUM: m32
 GLYPH: ⊥
 NAME: Axis of Will
 LAYER: 0

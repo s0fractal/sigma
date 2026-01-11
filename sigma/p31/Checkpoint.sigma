@@ -1,0 +1,37 @@
+---
+⚖️PHYSICS:
+  OP: 0
+  FLAGS: 1
+  PHASE: 0
+  AMPLITUDE: 65535
+  ENTROPY: 32767
+
+🏷️TYPE:
+  - 🌀ENTROPY
+  - 🏛️PANTHEON
+  - 📖INTENT
+📁FOLDER: chaos
+GLYPH: ⛳
+NAME: Checkpoint
+🌈SPECTRUM:
+DESC: "Stable vector snapshot of current intent"
+🧬DNA: Checkpoint
+---
+
+
+
+
+
+
+
+
+
+# Checkpoint
+
+Цей стан фіксує вектор без зупинки руху.
+
+## Намір
+
+- Виражати нові функції через вже існуючі (резонанс, а не інжект).
+- Зберігати можливість переосмислення, якщо архітектор заклав помилку.
+- Давати системі шлях для самокорекції без насильства.

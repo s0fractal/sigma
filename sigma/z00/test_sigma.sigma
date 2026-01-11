@@ -1,10 +1,9 @@
 ---
-🪐STRATUM: z00
 GLYPH: test_sigma
 🏷️TYPE:
   - ⚙️TOOL
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  🌀ENTROPY: -1
 ---
 
 # Test Sigma

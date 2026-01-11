@@ -1,11 +1,11 @@
 --- 
-🪐STRATUM: m08
 GLYPH: ⏳
 🧬DNA: ⏳
 🌈SPECTRUM:
   - sh
   - dna
 ⚖️PHYSICS:
+  ENTROPY: -32768
   🪨MASS: 1.5kb
   🌀ENTROPY: Negative (reduces entropy by eliminating redundant computation)
   🧩COMPLEXITY: O(1) lookup, O(n) compute+cache

@@ -1,11 +1,11 @@
 ---
-🪐STRATUM: z00
 GLYPH: sigma_view
 🏷️TYPE:
   - ⚙️TOOL
 📁FOLDER: tools
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  ENTROPY: -1
+  🌀ENTROPY: -1
 ---
 
 # Sigma View

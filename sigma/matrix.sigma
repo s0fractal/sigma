@@ -2,7 +2,14 @@
 *PRINCIPLE: Universal Glyph Uniqueness. Every GLYPH is a unique functional atom across the Sigma field.*
 
 ID      | TYPE      | PATH   | HEX     | SYNTAX | MUTE   | LIFT                 | MASS | ENTROPY | IMPORT
---------|-----------|--------|---------|--------|--------|----------------------|------|---------|---------------------------------
+---
+⚖️PHYSICS:
+  OP: 0
+  FLAGS: 1
+  PHASE: 0
+  AMPLITUDE: 65535
+  ENTROPY: -32768
+-----|-----------|--------|---------|--------|--------|----------------------|------|---------|---------------------------------
 sigma   | submodule | sigma/ | #CC00FF | yaml   | "# "   |                      | 0.0  | 0.0     | # SOURCE: %p
 ts      | submodule | ts/    | #3388FF | ts     | "// "  |                      | 0.5  | 0.4     | import { %n } from "@/%p";
 rs      | submodule | rs/    | #FF4433 | rust   | "/// " | #![no_std]           | 0.9  | 0.1     | use crate::%p;

@@ -1,11 +1,11 @@
 --- 
-🪐STRATUM: m08
 GLYPH: Sync
 🧬DNA: Sync
 🌈SPECTRUM:
   - sh
   - dna
 ⚖️PHYSICS:
+  ENTROPY: -32768
   🪨MASS: 1kb
   🌀ENTROPY: Low
   🧩COMPLEXITY: O(N)

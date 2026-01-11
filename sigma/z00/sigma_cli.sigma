@@ -1,10 +1,9 @@
 ---
-🪐STRATUM: z00
 GLYPH: sigma_cli
 🏷️TYPE:
   - ⚙️TOOL
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  🌀ENTROPY: -1
 ---
 
 # Sigma Cli

@@ -1,10 +1,9 @@
 ---
-🪐STRATUM: z00
 GLYPH: detect_missing_links
 🏷️TYPE:
   - ⚙️TOOL
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  🌀ENTROPY: -1
 ---
 
 # Detect Missing Links

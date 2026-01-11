@@ -1,5 +1,11 @@
 ---
-🪐STRATUM: m32
+⚖️PHYSICS:
+  OP: 0
+  FLAGS: 1
+  PHASE: 0
+  AMPLITUDE: 65535
+  ENTROPY: -32768
+
 GLYPH: m32_glyphs
 🏷️TYPE:
   - 📖INTENT

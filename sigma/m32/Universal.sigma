@@ -1,5 +1,4 @@
 --- 
-🪐STRATUM: m08
 GLYPH: ∞
 🧬DNA: ∞
 🌈SPECTRUM:
@@ -8,6 +7,7 @@ GLYPH: ∞
   - sh
   - dna
 ⚖️PHYSICS:
+  ENTROPY: -32768
   🪨MASS: 1kb
   🌀ENTROPY: Zero
   🧩COMPLEXITY: O(N)

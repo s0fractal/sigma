@@ -3,7 +3,6 @@
   - ⚖️LAW
   - 📖INTENT
 📁FOLDER: laws
-🪐STRATUM: m32
 GLYPH: ToroidalCosmogony
 glyph: 🌀
 name: Toroidal Cosmogony
@@ -11,6 +10,7 @@ name: Toroidal Cosmogony
 type: axiom
 desc: "The Magnetic Torus. Complete topology of the s0fractal universe."
 ⚖️PHYSICS:
+  ENTROPY: -32768
 🪨MASS: 2kb
 🌀ENTROPY: Zero
 🧩COMPLEXITY: O(∞)

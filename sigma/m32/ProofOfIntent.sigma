@@ -3,7 +3,6 @@
   - ⚖️LAW
   - 📖INTENT
 📁FOLDER: laws
-🪐STRATUM: m32
 GLYPH: ProofOfIntent
 glyph: §
 name: Proof of Intent
@@ -11,6 +10,7 @@ name: Proof of Intent
 type: axiom
 desc: "The Bridge between Truth (Sigma) and Reality (Code). Ensures the Chain of Custody."
 ⚖️PHYSICS:
+  ENTROPY: -32768
 🪨MASS: 0.8kb
 🌀ENTROPY: Zero
 🧩COMPLEXITY: O(1)

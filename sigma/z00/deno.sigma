@@ -1,10 +1,9 @@
 ---
-🪐STRATUM: z00
 GLYPH: deno
 🏷️TYPE:
   - ⚙️CONFIG
 ⚖️PHYSICS:
-  🌀ENTROPY: Low
+  🌀ENTROPY: -1
 ---
 
 # Deno Configuration

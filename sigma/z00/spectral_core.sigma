@@ -1,11 +1,10 @@
 ---
-🪐STRATUM: z00
 GLYPH: spectral_core
 🏷️TYPE:
   - 📚LIBRARY
   - 🛠️UTILITY
 ⚖️PHYSICS:
-  🌀ENTROPY: Zero
+  🌀ENTROPY: -1
   🧩COMPLEXITY: Low
 ---
 

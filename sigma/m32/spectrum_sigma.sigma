@@ -3,7 +3,6 @@
   - 🌈SPECTRUM
   - 📖INTENT
 📁FOLDER: spectrum
-🪐STRATUM: m32
 GLYPH: sigma
 HEX: '#CC00FF'
 SYNTAX: yaml
@@ -67,7 +66,7 @@ Rules:
 ```
 ⚖️PHYSICS:
   🪨MASS: <0..1>
-  🌀ENTROPY: <0..1>
+  🌀ENTROPY: -32768
   🧩COMPLEXITY: <O(1)..O(N^2)>
 ```
 
