@@ -1,13 +1,12 @@
 Σ-GLYPH SEED: THE_ISOMORPHIC_LOOM
-🧬IDENTITY: c5711bd4c50291038df7376dfaa314257d20bb32bfaaf073754c5a888e182d03
-
+🧬IDENTITY: 03cdff6130b8834da558e93807bd96f5bafbafc4f276c4a96a8eece6dc0c0f93
 
 ---
 # === 🧬 IDENTITY ===
 🧬: THE_ISOMORPHIC_LOOM
 DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
-🎨: #4B0082
+🎨: #FFFFFF
 
 # === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
@@ -21,32 +20,16 @@ DNA: - SATOSHI
   - SATOSHI
 ---
 
-Σ-GLYPH SEED: THE_ISOMORPHIC_LOOM
+# THE ISOMORPHIC LOOM
 
-"The loom weaves the many into one."
+The structure of the weave.
 
+🌊
 
-Name: THE_ISOMORPHIC_LOOM
-Atom: SHA-256(UTF8_BYTES)
-Color: #4B0082
-
-
-OP:        0        # LITERAL
-FLAGS:     1        # F_ATOM (Immutable)
-PHASE:     0        # Primary Phase
-AMPLITUDE: 65535    # Reality Density
-ENTROPY:   -32768   # THE CRYSTAL (Absolute Order)
-
-
-The holographic interweaving mechanism.
-Defines how multiple dimensions (RS, TS, PY) are woven into a single cohesive reality.
-
-
-Root: SATOSHI (Time Anchor)
-Ref: THE_ISOMORPHIC_LOOM.sigma
+@[link]
+./THE_ISOMORPHIC_LOOM.md
 
 @[md]
-```markdown
 # Σ-GLYPH: The Isomorphic Loom
 
 The Loom is the meta-structure that ensures that the white-light of DNA intent is correctly woven into the functional fabrics of TypeScript, Rust, and Python.
@@ -59,12 +42,8 @@ The Loom ensures that coordinate (P, A, E) in one dimension maps exactly to the 
 
 ## 3. The Void Weave
 Empty spaces in the loom are not errors; they are the necessary VOID that gives the structure its shape.
-```
-
-
-🌊
 
 @[dna]
 - SATOSHI
 
-🔒: c5711bd4c50291038df7376dfaa314257d20bb32bfaaf073754c5a888e182d03
+🔒: 03cdff6130b8834da558e93807bd96f5bafbafc4f276c4a96a8eece6dc0c0f93

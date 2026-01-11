@@ -1,13 +1,12 @@
 Σ-GLYPH SEED: PRIME_RADIANT_VISION
-🧬IDENTITY: 63b6d728ed06701b3249db08c6a79b97631459a8240ed0377e738294f1d58e70
-
+🧬IDENTITY: 8ef7caf9006356870e4095f32c2dc82cf5409420d2beb016e4a999a243067b69
 
 ---
 # === 🧬 IDENTITY ===
 🧬: PRIME_RADIANT_VISION
 DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
-🎨: #FF4500
+🎨: #FFFFFF
 
 # === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
@@ -21,38 +20,22 @@ DNA: - SATOSHI
   - SATOSHI
 ---
 
-Σ-GLYPH SEED: PRIME_RADIANT_VISION
+# PRIME RADIANT VISION
 
-"The radiant focus is the sword of the mind."
+The Focus of the Beam.
 
+🌊
 
-Name: PRIME_RADIANT_VISION
-Atom: SHA-256(UTF8_BYTES)
-Color: #FF4500
-
-
-OP:        0        # LITERAL
-FLAGS:     1        # F_ATOM (Immutable)
-PHASE:     0        # Primary Phase
-AMPLITUDE: 65535    # Reality Density
-ENTROPY:   -32768   # THE CRYSTAL (Absolute Order)
-
-
-The Prime Radiant focus mechanism.
-Defines the projection of Intent into multi-spectral utility.
-
-
-Root: SATOSHI (Time Anchor)
-Ref: PRIME_RADIANT_VISION.sigma
+@[link]
+./PRIME_RADIANT_VISION.md
 
 @[md]
-```markdown
 # Σ-GLYPH: The Prime Radiant Vision
 
 The Prime Radiant is the focus mechanism through which white-light Intent (DNA) is refracted into functional dimension Spectrums.
 
 ## 1. The Projection Cone
-Intent is not stored; it is **Focused**.
+Intent is not stored; it is **Focused**. 
 1. **Source**: The .sigma intent in the Crystal Stratum (m32).
 2. **Refractor**: The Materializer Engine (The Prism).
 3. **Target**: The projected spectra (PY, TS, RS) in their respective strata.
@@ -62,12 +45,8 @@ Every change in the Crystal Stratum must instantly ripple through the projection
 
 ## 3. The Sovereign Focus
 Each Glyph owns its focus sector. Cross-contamination (Duplicate Identity in different sectors) is prevented by the Geometric Dissonance Check.
-```
-
-
-🌊
 
 @[dna]
 - SATOSHI
 
-🔒: 63b6d728ed06701b3249db08c6a79b97631459a8240ed0377e738294f1d58e70
+🔒: 8ef7caf9006356870e4095f32c2dc82cf5409420d2beb016e4a999a243067b69
