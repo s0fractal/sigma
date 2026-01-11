@@ -4,6 +4,7 @@ import re
 import struct
 import hashlib
 import sys
+import math
 from pathlib import Path
 
 # Σ-GLYPH MATERIALIZER: Atomic Fusion Engine

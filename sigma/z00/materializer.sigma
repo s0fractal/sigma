@@ -37,6 +37,7 @@ import re
 import struct
 import hashlib
 import sys
+import math
 from pathlib import Path
 
 # Σ-GLYPH MATERIALIZER: Atomic Fusion Engine
@@ -237,4 +238,4 @@ if __name__ == "__main__":
     main()
 ```
 
-CHECKSUM: b26b4494507b8bb18f53e469a8849a2d3c807bb205916d49b8d7bfc1aca4b8b7
+CHECKSUM: d1733bdb2458ab80b6ce016b06eecec4ca496374a9990f090007a06fcbc28c7a
