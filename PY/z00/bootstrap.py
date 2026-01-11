@@ -17,3 +17,5 @@ def repo_root() -> Path:
 def parse_frontmatter(path: Path) -> dict:
     text = path.read_text(encoding="utf-8")
     parts = text.split("
+
+🌊

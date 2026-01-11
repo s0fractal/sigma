@@ -1,5 +1,3 @@
-[SATOSHI](m32/SATOSHI)
-
 ```markdown
 # Σ-Spectrum Protocol
 > "Колір — це частота вібрації Смислу."
@@ -10,3 +8,5 @@
 
 | Color | Hex | Glyph | Archetype | Meaning |
 |
+
+🌊

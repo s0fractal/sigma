@@ -12,3 +12,5 @@ entropy_to_stratum() {
     printf "%s%02d\n" "$prefix" "$bucket"
 }
 ```
+
+🌊

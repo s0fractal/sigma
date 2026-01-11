@@ -7,8 +7,7 @@ from pathlib import Path
 # Σ-GLYPH CLI: The System Orchestrator
 # V2.3.1 - Deterministic Resonance: Absolute Path Immunity
 
-import core_materialize
-import heuristic_materialize
+import materializer
 import guard
 import protocol
 import physics
@@ -157,12 +156,7 @@ def main():
     args = parser.parse_args()
 
     if args.command == "sync":
-        print("🔘 Syncing CORE...")
-        core_materialize.materialize_core()
-        if not args.core_only:
-            print("🔘 Syncing HEURISTICS...")
-            heuristic_materialize.materialize_heuristics()
-        print("✅ Sync complete.")
+        materializer.materialize()
     elif args.command == "check":
         violations = guard.audit_lattice(fix=args.fix)
         if violations:

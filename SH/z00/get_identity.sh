@@ -8,3 +8,5 @@ get_identity() {
     echo -n "${glyph_name}" | shasum -a 256 | awk '{print $1}'
 }
 ```
+
+🌊

@@ -1,5 +1,3 @@
-source \"$REPO_ROOT/m32/SATOSHI\
-
 # 🔗 Git Bindings for Sigma
 
 # Save the current state (Snapshot)

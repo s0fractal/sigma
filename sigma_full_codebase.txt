@@ -489,48 +489,59 @@ SOURCE_DIRrM   r/   r:   r^   Ú__name__r   r   r   Ú<module>rg      s   ğ
 === FILE: ./PY/z00/__pycache__/guard.cpython-314.pyc ===
 
 +
-    )ßci4  ã                  óÂ   € ^ RI Ht ^ RIt^ RIt^ RIt^ RIt^ RIt^ RIt^ RIH	t	 ^ RI
+    úåciš  ã                  óä   € ^ RI Ht ^ RIt^ RIt^ RIt^ RIt^ RIt^ RIt^ RIH	t	 ^ RI
 t
 ^ RIt]
-P                  t]R,          tR]3R R lltR t]R	8X  d
-   ]! 4        R# R# )
-é    )ÚannotationsN)ÚPathÚsigmaFc               ó   € V ^8„  d   QhRR/# )é   Ú
-source_dirr   © )Úformats   "Ú&/Users/s0fractal/SIGMA/PY/z00/guard.pyÚ__annotate__r      s   € ÷ Lñ L¨ñ Ló    c           	     óô  € . p\        R V  R24       \        \        VP                  R4      4      R R7      p\        P
+P                  t]R,          t0 Rmt0 Rmt]3R R lltR]3R R	 lltR
+ t]R8X  d
+   ]! 4        R# R# )é    )ÚannotationsN)ÚPathÚsigmac               ó    € V ^8„  d   QhRRRR/# )é   Úrootr   Úreturnz	list[str]© )Úformats   "Ú&/Users/s0fractal/SIGMA/PY/z00/guard.pyÚ__annotate__r      s   € ÷ +ñ +˜ğ +¨yñ +ó    c           
+     ó\  € . pV P                  4        Fæ  pVP                  P                  R4      '       d   K&  VP                  R8X  d   K9  VP                  4       '       d   KQ  VP	                  4       '       d8   VP                  \
+        9  d!   VP                  RVP                   24       Kœ  K  VP                  \        9  g   Kµ  VP                  R8w  g   KÈ  VP                  RVP                   24       Kè  	  RRRR	R
+RRR/pVP                  4        EF  w  rEW,          pVP                  4       '       g   K&  VP                  R4       FÕ  pVP	                  4       '       d   K  VP                  R8X  d   K.  RVP                  9   d   KA  VR8X  d/   VP                  P                  R8X  d   VP                  R9   d   Kv  VP                  R8X  d   K‰  VP                  V8w  g   Kœ  VP                  R8w  g   K¯  VP                  RV RVP                  V 4       24       K×  	  EK  	  V# )zAProjection S: Detects non-native files (Shrapnel) in the Lattice.z.gitz	.DS_StorezRoot Shrapnel (Dir): z.sigmazRoot Shrapnel (File): ÚTSz.tsÚRSz.rsÚSHz.shÚPYú.pyÚ*Ú__pycache__Úz00z.mdzProjection Shrapnel in z: )z.jsonz.txtr   )ÚiterdirÚnameÚ
+startswithÚ
+is_symlinkÚis_dirÚALLOWLIST_DIRSÚappendÚALLOWLIST_ROOTÚsuffixÚitemsÚexistsÚrglobÚpartsÚparentÚrelative_to)r   Ú
+violationsÚitemÚprojectionsÚprojÚextÚproj_dirÚpaths   &       r   Úaudit_shrapnelr.      s¼  € à€Jğ —‘–ˆØ9‰9×Ñ ×'Ò'©Ø9‰9˜Ô#¡Xğ ?‰?×Ò™hà;‰;=Š=Øy‰y¤Ô.Ø× Ñ Ğ#8¸¿¹¸Ğ!DÖEñ /ğ y‰y¤Ö.°4·;±;À(Ö3JØ×!Ñ!Ğ$:¸4¿9¹9¸+Ğ"FÖGñ ğ  	ˆeT˜5 $¨¨t°Uğ€Kğ !×&Ñ&×(‰	ˆØ•;ˆØ‰× Ò ¡(à—N‘N 3Ö'ˆDØ{‰{}Š}™hØy‰y˜KÔ'©Ø §
+¡
+Ô*©Hğ tŒ| §¡× 0Ñ 0°EÔ 9Ø—;‘;Ğ":Ô:¹Hğ {‰{˜eÔ#¡Xà{‰{˜cÖ! d§k¡k°UÖ&:Ø×"Ñ"Ğ%<¸T¸FÀ"ÀT×EUÑEUĞVZÓE[ĞD\Ğ#]Ö^ô (ñ	 )ğ& Ğr   Fc               ó   € V ^8„  d   QhRR/# )r   Ú
+source_dirr   r
+   )r   s   "r   r   r   D   s   € ÷ Uñ U¨ñ Ur   c           	     ó~  € . p\        R V  R24       \        \        VP                  R4      4      R R7      p\        P
                   ! 4       pV EFµ  p VP                  RR7      p\        P                  ! RV\        P                  4      p\        P                  ! RV\        P                  4      p\        P                  ! V4      p	V'       d   VP                  ^4      MR	p
 V'       d    VP                  ^4      P                  4       MR	pVP                  V	P                  4       4       R
-pWš8w  d*   VP!                  RVP#                  \$        4       24       RpW›8w  d*   VP!                  RVP#                  \$        4       24       RpV'       Edq   V '       Ede   \        RVP&                   RV	R,           R24       VP)                  RR4      P)                  RR4      p\        P*                  ! RRV\        P                  R7      pRp\        \        P,                  ! Wí\        P                  4      4      pV'       d   VR	VR ,          P/                  4        pRp\        P                  ! VV\        P                  4      pV'       d8   VR	VP1                  4        RV	 R2,           VVP1                  4       R	 ,           pMRV	 R2V,           pVP3                  4       RV	 R2,           pVP5                  VRR7       EK²  EKµ  EK¸  	  \        RVP9                  4        24       \        R\:        P<                   24       V#   \6         d*   pTP!                  RTP&                   RT R24       ThR	p?ii ; i)!u;   ğŸ›¡ï¸  Guarding Lattice (SCR-1 Library Compliance) | Fix=z...z
-**/*.sigmac                ó   € \        V 4      # )N)Ústr)Úps   &r   Ú<lambda>Úaudit_lattice.<locals>.<lambda>   s	   € ÌCĞPQÌFr   )Úkeyzutf-8)Úencodingu"   ^ğŸ§¬IDENTITY:\s*([a-fA-F0-9]{64})u   \n(?:ğŸ”’:|CHECKSUM:)\s*(.*)$NFzIdentity Drift: TzSeal Dissonance: u      ğŸ›  Healing: z -> :Né   Nz
+pWš8w  d*   VP!                  RVP#                  \$        4       24       RpW›8w  d*   VP!                  RVP#                  \$        4       24       RpV'       Edq   V '       Ede   \        RVP&                   RV	R,           R24       VP)                  RR4      P)                  RR4      p\        P*                  ! RRV\        P                  R7      pRp\        \        P,                  ! Wí\        P                  4      4      pV'       d   VR	VR",          P/                  4        pRp\        P                  ! VV\        P                  4      pV'       d8   VR	VP1                  4        RV	 R2,           VVP1                  4       R	 ,           pMRV	 R2V,           pVP3                  4       RV	 R2,           pVP5                  VRR7       EK²  EKµ  EK¸  	  \        RVP9                  4        24       \        R\:        P<                   24       \?        4       pV'       d4   \        R 4       V F  p\        R!V 24       K  	  VPA                  V4       V#   \6         d*   pTP!                  RTP&                   RT R24       ThR	p?ii ; i)#u;   ğŸ›¡ï¸  Guarding Lattice (SCR-1 Library Compliance) | Fix=z...z
+**/*.sigmac                ó   € \        V 4      # )N)Ústr)Úps   &r   Ú<lambda>Úaudit_lattice.<locals>.<lambda>I   s	   € ÌCĞPQÌFr   )Úkeyzutf-8)Úencodingu"   ^ğŸ§¬IDENTITY:\s*([a-fA-F0-9]{64})u   \n(?:ğŸ”’:|CHECKSUM:)\s*(.*)$NFzIdentity Drift: TzSeal Dissonance: u      ğŸ›  Healing: z -> :Né   Nz
 Ú
 Úu   ^(ğŸ§¬IDENTITY:|IDENTITY:).*?\nÚ )Úflagsu(   \n(?:ğŸ”’:|CHECKSUM:)\s*[0-9a-f]{64}\s*$u&   ^(Î£-GLYPH SEED|ğŸ§¬):\s*([\w=]+)(\n?)u   ğŸ§¬IDENTITY: u   
 
 ğŸ”’: zCore Fault: z (Ú)u   
-ğŸŒ€ Lattice Resonance Hash: u   ğŸ“¡ Protocol Version: éÿÿÿÿ)ÚprintÚsortedÚlistÚglobÚhashlibÚsha256Ú	read_textÚreÚsearchÚ	MULTILINEÚscr1Úget_node_hashÚgroupÚstripÚupdateÚencodeÚappendÚrelative_toÚ
-SOURCE_DIRÚnameÚreplaceÚsubÚfinditerÚstartÚendÚrstripÚ
-write_textÚ	ExceptionÚ	hexdigestÚprotocolÚVERSION)Úfixr   Ú
-violationsÚsigma_filesÚlattice_hasherÚpathÚraw_contentÚid_matchÚ
+ğŸŒ€ Lattice Resonance Hash: u   ğŸ“¡ Protocol Version: u1   
+ğŸ”´ SHRAPNEL DETECTED (Projection S Violation):z   éÿÿÿÿ)!ÚprintÚsortedÚlistÚglobÚhashlibÚsha256Ú	read_textÚreÚsearchÚ	MULTILINEÚscr1Úget_node_hashÚgroupÚstripÚupdateÚencoder   r&   Ú
+SOURCE_DIRr   ÚreplaceÚsubÚfinditerÚstartÚendÚrstripÚ
+write_textÚ	ExceptionÚ	hexdigestÚprotocolÚVERSIONr.   Úextend)Úfixr0   r'   Úsigma_filesÚlattice_hasherr-   Úraw_contentÚid_matchÚ
 seal_matchÚ	node_hashÚ
 current_idÚcurrent_sealÚ	needs_fixÚcontentÚseal_patternÚmatchÚ
-header_patÚheader_matchÚfinal_contentÚes   &&                  r   Úaudit_latticerO      s  € Ø€JÜ	ĞGÈÀuÈCĞ
+header_patÚheader_matchÚfinal_contentÚeÚshrapnelÚss   &&                    r   Úaudit_latticerp   D   sT  € Ø€JÜ	ĞGÈÀuÈCĞ
 PÔQô œ˜jŸo™o¨lÓ;Ó<ÑBRÔS€Kô —^’^Ó%€Näˆğ=	ØŸ.™.°'˜.Ó:ˆKô —y’yĞ!FÈÔUW×UaÑUaÓbˆHÜŸšĞ#CÀ[ÔRT×R^ÑR^Ó_ˆJô ×*Ò*¨;Ó7ˆIç.6˜Ÿ™¨Ô*¸DˆJß:D˜:×+Ñ+¨AÓ.×4Ñ4Ô6È$ˆLà×!Ñ! )×"2Ñ"2Ó"4Ô5àˆIØÔ&Ø×!Ñ!Ğ$4°T×5EÑ5EÄjÓ5QĞ4RĞ"SÔTØ 	ØÔ(Ø×!Ñ!Ğ$5°d×6FÑ6FÄzÓ6RĞ5SĞ"TÔUØ 	çˆyŸS˜SÜĞ)¨$¯)©)¨°D¸À3½Ğ8HÈĞLÔMğ &×-Ñ-¨f°dÓ;×CÑCÀDÈ$ÓOô Ÿ&š&Ğ!CÀRÈÔXZ×XdÑXdÔeğ  KÜœRŸ[š[¨ÄÇÁÓMÓNßØ%Ğ&8 u¨R¥y§¡Ó'8Ğ9Gğ G
 Ü!Ÿyšy¨°W¼b¿l¹lÓKçà$+Ğ,?¨\×-=Ñ-=Ó-?Ğ$@À^ĞT]ĞS^Ğ^`ĞCaÕ$aĞdkĞlx×l|Ñl|Ól~Ğlğ  eAõ  %A‘Mà&4°Y°K¸rĞ$BÀWÕ$LMğ !.× 4Ñ 4Ó 6¸:ÀiÀ[ĞPRĞ9SÕ Sà—‘ ¸×@òC !Šyñ1 ô@ 
 Ğ+¨N×,DÑ,DÓ,FĞ+GĞ
 HÔIÜ	Ğ#¤H×$4Ñ$4Ğ#5Ğ
-6Ô7ØĞøô ô 	à×Ñ ¨T¯Y©Y¨K°r¸!¸¸AĞ>Ô?ØˆGûğ	ús4   ÁBMÃ+B(MÆMÆC.MÊA2MÍM7Í$M2Í2M7c                 óR  € ^ RI p V P                  RR7      pVP                  RRRR7       VP                  4       p\	        VP
+6Ô7ô Ó€HßÜĞBÔCÛˆAÜC˜s)Öñ à×Ñ˜(Ô#àĞøô! ô 	à×Ñ ¨T¯Y©Y¨K°r¸!¸¸AĞ>Ô?ØˆGûğ	ús4   ÁBNÃ+B(NÆNÆC.NÊA2NÎN<Î$N7Î7N<c                 óR  € ^ RI p V P                  RR7      pVP                  RRRR7       VP                  4       p\	        VP
                   R7      pV'       g"   \        R	4       \        P                  ! ^ 4       \        R
 \        V4       24       \        P                  ! ^4       R# )r   Nu   Î£-GLYPH Guard)Údescriptionz--fixÚ
-store_truezHeal the lattice.)ÚactionÚhelp)r<   u$   âœ… THE LATTICE IS BIT-PURE (SCR-1).u   
+store_truezHeal the lattice.)ÚactionÚhelp)r]   u$   âœ… THE LATTICE IS BIT-PURE (SCR-1).u   
 âŒ VIOLATIONS: )
 ÚargparseÚArgumentParserÚadd_argumentÚ
-parse_argsrO   r<   r   ÚsysÚexitÚlen)rU   ÚparserÚargsr=   s       r   Úmainr^   b   s‚   € ÛØ×$Ñ$Ğ1AĞ$ÓB€FØ
+parse_argsrp   r]   r@   ÚsysÚexitÚlen)rv   ÚparserÚargsr'   s       r   Úmainr   ›   s‚   € ÛØ×$Ñ$Ğ1AĞ$ÓB€FØ
 ×Ñ˜¨Ğ;NĞÔOØ×ÑÓ€Dä 4§8¡8Ô,€JçÜĞ4Ô5ÜŠŒä	Ğœs :›Ğ/Ğ
-0Ô1Ü‡H‚HˆQ†Kr   Ú__main__)Ú
-__future__r   Úosr$   rY   Úshutilr!   ÚmathÚpathlibr   r:   r'   ÚROOTÚ
-SIGMA_ROOTr/   rO   r^   Ú__name__r	   r   r   Ú<module>rh      s]   ğå "Û 	Û 	Û 
+0Ô1Ü‡H‚HˆQ†Kr   Ú__main__>   ÚLICENSEÚMakefileú	README.mdú
+.gitignoreúfile_list.txtústandards_v2_3.mdúsigma_full_codebase.txt>   ÚMDr   r   r   r   ÚDNAÚTXTÚJSONÚLOCKÚGLYPHr   ÚSTORAGEÚtest_casÚtest_cas_remote)Ú
+__future__r   ÚosrG   rz   ÚshutilrD   ÚmathÚpathlibr   rZ   rJ   ÚROOTÚ
+SIGMA_ROOTrP   r   r   r.   rp   r   Ú__name__r
+   r   r   Ú<module>r™      sx   ğå "Û 	Û 	Û 
 Û Û Û İ ó
  Û à]‰]€
 Ø˜'Õ!€
-à°
-÷ Lò\ğ ˆzÔÙ†Fñ r   
+ò E€ò J€à *÷ +ğZ °
+÷ Uònğ ˆzÔÙ†Fñ r   
 
 === FILE: ./PY/z00/__pycache__/heuristic_materialize.cpython-314.pyc ===
 
@@ -565,11 +576,12 @@ __future__r   r7   Úpathlibr   rB   r/   r<   rC   r2   r   rb   Ú__name__r
 === FILE: ./PY/z00/__pycache__/materializer.cpython-314.pyc ===
 
 +
-    ÍjciÏ  ã                  ó¸  € ^ RI Ht ^ RIt^ RIt^ RIt^ RIt^ RIt^ RIt^ RIt^ RI	H
+    Èæci  ã                  óÎ  € ^ RI Ht ^ RIt^ RIt^ RIt^ RIt^ RIt^ RIt^ RIt^ RI	H
 t
  ^ RIt^ RIt^ RIt]P                  t]R,          tR]R,          R3R]R	,          R
-3R]R,          R3R]R,          R3R]R,          R3R]R,          R3R]R,          R3R]R,          R3R]R,          R3/	tR  R! ltR" R# ltR$ R% ltR& R' ltR( t]R)8X  d
-   ]! 4        R# R# )*é    )ÚannotationsN)ÚPathÚsigmaÚmdÚMDz.mdÚtsÚTSz.tsÚrsÚRSz.rsÚdnaÚDNAz.dnaÚshÚSHz.shÚrbÚRBz.rbÚpyÚPYz.pyÚjsonÚJSONz.jsonÚglyphÚGLYPHz.glyphc               ó    € V ^8„  d   QhRRRR/# ©é   ÚtextÚstrÚreturnÚdict© )Úformats   "Ú-/Users/s0fractal/SIGMA/PY/z00/materializer.pyÚ__annotate__r"   %   s   € ÷ 
+3R]R,          R3R]R,          R3R]R,          R3R]R,          R3R]R,          R3R]R,          R3R]R,          R3R ]R!,          R"3/
+tR# R$ ltR% R& ltR' R( ltR) R* ltR+ t]R,8X  d
+   ]! 4        R# R# )-é    )ÚannotationsN)ÚPathÚsigmaÚmdÚMDz.mdÚtsÚTSz.tsÚrsÚRSz.rsÚdnaÚDNAz.dnaÚshÚSHz.shÚrbÚRBz.rbÚpyÚPYz.pyÚjsonÚJSONz.jsonÚlockÚLOCKz.lockÚglyphÚGLYPHz.glyphc               ó    € V ^8„  d   QhRRRR/# ©é   ÚtextÚstrÚreturnÚdict© )Úformats   "Ú-/Users/s0fractal/SIGMA/PY/z00/materializer.pyÚ__annotate__r$   &   s   € ÷ 
 ñ 
 ˜ğ 
  ñ 
@@ -579,40 +591,52 @@ V R2V \        P
                   4      pV'       g   K9  VP                  ^4      p VP                  R4      '       d   \        V^4      M
 \        V4      W&   K}  	  V#     K†  ; i)ÚOPÚFLAGSÚPHASEÚ	AMPLITUDEÚENTROPYu   âš™ï¸u   ğŸš©u   ğŸŒŠu   ğŸ”Šu   ğŸŒ€Ú^z:?\s*(-?\d+|0x[a-fA-F0-9]+)Ú0x)	ÚprotocolÚ
 OP_LITERALÚitemsÚreÚsearchÚ	MULTILINEÚgroupÚ
-startswithÚint)r   ÚphysicsÚ
-symbol_mapÚsymÚkeyÚmatchÚvals   &      r!   Úparse_physicsr;   %   s½   € Ø”X×(Ñ(¨'°1°g¸qÀ+ÈqĞR[Ğ]^Ğ_€GØ˜D &¨'°6¸7ÀFÈKĞY_ĞajĞk€JØ×$Ñ$Ö&‰ˆÜ—	’	˜A˜c˜UĞ"?Ğ@À$ÌÏÉÓUˆß‰5Ø—+‘+˜a“.ˆCğØ/2¯~©~¸d×/CÒ/Cœs 3¨œ|ÌÈSË“ñ 'ğ €Nøğ ’Hús   ÂB8ÂB8Â8B=c               ó$   € V ^8„  d   QhRRRRRR/# )r   r   r   Útagr   z
-str | Noner   )r    s   "r!   r"   r"   1   s!   € ÷ ñ ˜ğ  #ğ ¨*ñ r#   c                ó®  € V P                  RR4      P                  RR4      pRV R2p\        P                  ! R\        P                  ! V4       R2V\        P                  R7      p\        V4      ^8  d   R	# V^,          p\        P                  ! R
+startswithÚint)r   ÚphysicsÚ
+symbol_mapÚsymÚkeyÚmatchÚvals   &      r#   Úparse_physicsr=   &   s½   € Ø”X×(Ñ(¨'°1°g¸qÀ+ÈqĞR[Ğ]^Ğ_€GØ˜D &¨'°6¸7ÀFÈKĞY_ĞajĞk€JØ×$Ñ$Ö&‰ˆÜ—	’	˜A˜c˜UĞ"?Ğ@À$ÌÏÉÓUˆß‰5Ø—+‘+˜a“.ˆCğØ/2¯~©~¸d×/CÒ/Cœs 3¨œ|ÌÈSË“ñ 'ğ €Nøğ ’Hús   ÂB8ÂB8Â8B=c               ó$   € V ^8„  d   QhRRRRRR/# )r   r   r   Útagr   ú
+str | Noner!   )r"   s   "r#   r$   r$   2   s!   € ÷ ñ ˜ğ  #ğ ¨*ñ r%   c                ó®  € V P                  RR4      P                  RR4      pRV R2p\        P                  ! R\        P                  ! V4       R2V\        P                  R7      p\        V4      ^8  d   R	# V^,          p\        P                  ! R
 V\        P                  4      pV'       d   VR	VP                  4        MTpVP                  R4      # )z)SCR-1: Strict Canonical Block Extraction.z
 Ú
-Úz@[Ú]r*   z\n)ÚflagsNu   ^\n(@\[|ğŸ”’:|CHECKSUM:))	Úreplacer/   ÚsplitÚescaper1   Úlenr0   ÚstartÚstrip)r   r=   ÚcontentÚstart_markerÚpartsÚpayload_rawÚ	end_matchÚpayloads   &&      r!   Úextract_blockrO   1   s«   € ğ
- l‰l˜6 4Ó(×0Ñ0°°tÓ<€GØ˜u˜A;€LäHŠHqœŸš <Ó0Ğ1°Ğ5°wÄbÇlÁlÔS€EÜ
-ˆ5ƒzA„~™dà˜•(€Kä—	’	Ğ5°{ÄBÇLÁLÓQ€Iß1:ˆkĞ,˜9Ÿ?™?Ó,Ñ-À€Gà=‰=˜ÓĞr#   c               ó    € V ^8„  d   QhRRRR/# r   r   )r    s   "r!   r"   r"   C   s   € ÷ 	ñ 	˜cğ 	 dñ 	r#   c                ó\  € / pV '       g   V# V P                  4        F‹  pVP                  R4      ^ ,          P                  4       pV'       d   RV9  d   K:  VP                  R^4      w  r4VP                  4       P                  R4      WP                  4       P                  4       &   K  	  V# )z4Standardized metadata extraction for @[yaml] blocks.Ú#Ú:z'")Ú
-splitlinesrD   rH   Úupper)r   ÚdataÚliner8   r:   s   &    r!   Úparse_yaml_metadatarX   C   s†   € à€Dß˜Ø—‘Ö!ˆØz‰z˜#‹˜qÕ!×'Ñ'Ó)ˆßs $”©Ø—:‘:˜c 1Ó%‰ˆØ$'§I¡I£K×$5Ñ$5°eÓ$<ˆY‰Y‹[×ÑÓ Ó!ñ	 "ğ
- €Kr#   c               ó$   € V ^8„  d   QhRRRRRR/# )r   Úintent_textr   Ú	code_textr   r   )r    s   "r!   r"   r"   N   s&   € ÷ Dñ D˜sğ D¨sğ D°sñ Dr#   c                ó  € \         P                  ! V 4      p\        P                  ! VP	                  R4      4      P                  4       p\        P                  ! W#,           P	                  4       4      P                  4       # )z'PoI-1: SHA-256(IntentHash || CodeHash).úutf-8)Úscr1Úget_node_hashÚhashlibÚsha256ÚencodeÚ	hexdigest)rZ   r[   Úh_intentÚh_codes   &&  r!   Úcalculate_poirf   N   sX   € ä×!Ò! +Ó.€HÜ^Š^˜I×,Ñ,¨WÓ5Ó6×@Ñ@ÓB€FÜ>Š>˜8Õ,×4Ñ4Ó6Ó7×AÑAÓCĞCr#   c            	     ó–	  € \        R 4       \        P                  4       '       g   \        R\         R24       R# / p \        \	        \        P                  R4      4      R R7      pV Fl  p VP                  RR7      p\        P                  ! R	V\        P                  4      pV'       d)   VP                  \        4      WP                  ^4      &   Kl  Kn  	  / p\        V P                  4       4       FY  pW,          pV\        9   g   K   \        V,          P                  RR7      p\        VR
-4      pV'       d   \        V4      WV&   KY  K[  	  V EF=  pVP                  RR7      p\!        T4      p	\"        P$                  ! T	R,          4      p
-\        P                  ! R	T\        P                  4      pT'       d   TP                  ^4      MTP&                  p\        P                  ! RT\        P                  4      p. pT'       d„   TP                  ^4      pTP)                  4        Uu. uFX  qÿP+                  R4      P+                  4       '       g   K)  TP-                  RR4      P+                  R4      P+                  4       NKZ  	  pp\        P/                  4        EFè  w  pw  pp\        TT4      pTf   K  TR8X  d   TMTP&                  pTT
-,          T T 2,          p. pT FX  pTT 9   g   K   \        T T,          ,          P                  RR7      p\        TT4      pT'       d   TP1                  T4       KX  KZ  	  T'       d   RP3                  T4      R,           MRT,           pT
-R8w  dİ   TT9   dÖ   TT,          pRT9   dÆ   TR,          p. pT F  pYğ9   g   K  Yû8w  g   K  \5        Y,          P7                  R4      4      P-                  RR4      P-                  TTR8X  d   RMR4      pTP1                  TP-                  RT4      P-                  RT4      4       K  	  T'       d    RP3                  T4      R,           T,           pTP8                  P;                  RRR7       TP=                  TR,           RR7       EKë  	  EK@  	  \        R4       R#     EK?  ; i    EK½  ; i    EKg  ; iu upi     EKÜ  ; i)uD   === Î£-GLYPH MATERIALIZER: Atomic Fusion V2.3.2 (SCR-1 Library) ===
+Úz@[Ú]r,   z\n)ÚflagsNu   ^\n(@\[|ğŸ”’:|CHECKSUM:))	Úreplacer1   ÚsplitÚescaper3   Úlenr2   ÚstartÚstrip)r   r?   ÚcontentÚstart_markerÚpartsÚpayload_rawÚ	end_matchÚpayloads   &&      r#   Úextract_blockrR   2   s©   € àl‰l˜6 4Ó(×0Ñ0°°tÓ<€GØ˜u˜A;€LäHŠHqœŸš <Ó0Ğ1°Ğ5°wÄbÇlÁlÔS€EÜ
+ˆ5ƒzA„~™dà˜•(€Kä—	’	Ğ5°{ÄBÇLÁLÓQ€Iß1:ˆkĞ,˜9Ÿ?™?Ó,Ñ-À€Gà=‰=˜ÓĞr%   c               ó    € V ^8„  d   QhRRRR/# )r   r   r   r   r@   r!   )r"   s   "r#   r$   r$   A   s   € ÷ 'ñ 'sğ '˜zñ 'r%   c                ó   € \        V R4      # )z+Extracts symlink target from @[link] block.Úlink)rR   )r   s   &r#   Úextract_linkrV   A   s   € ä˜˜vÓ&Ğ&r%   c               ó    € V ^8„  d   QhRRRR/# r   r!   )r"   s   "r#   r$   r$   E   s   € ÷ 	ñ 	˜cğ 	 dñ 	r%   c                ó\  € / pV '       g   V# V P                  4        F‹  pVP                  R4      ^ ,          P                  4       pV'       d   RV9  d   K:  VP                  R^4      w  r4VP                  4       P                  R4      WP                  4       P                  4       &   K  	  V# )z4Standardized metadata extraction for @[yaml] blocks.Ú#Ú:z'")Ú
+splitlinesrG   rK   Úupper)r   ÚdataÚliner:   r<   s   &    r#   Úparse_yaml_metadatar_   E   s†   € à€Dß˜Ø—‘Ö!ˆØz‰z˜#‹˜qÕ!×'Ñ'Ó)ˆßs $”©Ø—:‘:˜c 1Ó%‰ˆØ$'§I¡I£K×$5Ñ$5°eÓ$<ˆY‰Y‹[×ÑÓ Ó!ñ	 "ğ
+ €Kr%   c                 óp  € \        R 4       \        P                  4       '       g   \        R\         R24       R# / p \        \	        \        P                  R4      4      R R7      pV Fl  p VP                  RR7      p\        P                  ! R	V\        P                  4      pV'       d)   VP                  \        4      WP                  ^4      &   Kl  Kn  	  / pV Fx  p VP                  RR7      p\        VR
+4      pV'       dO   \        P                  ! R	V\        P                  4      pV'       d   \        V4      WTP                  ^4      &   Kv  Kx  Kz  	  V EFÒ  pVP                  RR7      p\        T4      p\        P                   ! TR,          4      p\        P                  ! R	T\        P                  4      pT'       d   TP                  ^4      MTP"                  p	\        P                  ! RT\        P                  4      p
+. pT
+'       d„   T
+P                  ^4      pTP%                  4        Uu. uFX  qİP'                  R4      P'                  4       '       g   K)  TP)                  RR4      P'                  R4      P'                  4       NKZ  	  pp/ p\+        T4      pT'       d‚   TP%                  4        Fm  pRT9   d9   TP-                  R^4      w  ppTP'                  4       TTP'                  4       &   KB  TP'                  4       '       g   KZ  TP'                  4       TR&   Ko  	  \.        P1                  4        EFç  w  pw  pp\        TT4      pTf   K  TR8X  d   T	MTP"                  pTT,          T T 2,          p. pT FX  pTT 9   g   K   \        T T,          ,          P                  RR7      p\        TT4      pT'       d   TP3                  T4       KX  KZ  	  T'       d   RP5                  T4      R,           MRT,           pTR8w  dÛ   Y•9   dÕ   YY,          pRT9   dÆ   TR,          p. p T F  pYĞ9   g   K  YÙ8w  g   K  \7        Y,          P9                  R4      4      P)                  RR4      P)                  TTR8X  d   RMR4      p!T P3                  TP)                  RT4      P)                  RT!4      4       K  	  T '       d    RP5                  T 4      R,           T,           pTP:                  P=                  RRR7       TP?                  TR,           RR7       TPA                  T4      ;'       g    TPA                  R4      p"T"'       g   EK  \B        T",          PE                  4       p# T#P                  \B        4       T#P:                  P=                  RRR7        \H        PJ                  PM                  TT#P:                  4      p$T#P                  4       '       g   T#PO                  4       '       d   T#PQ                  4        \H        PR                  ! T$T#4       EKê  	  EKÕ  	  \        R$4       R#     EKÜ  ; i    EKq  ; i    EKü  ; iu upi     EKÛ  ; i  \F         d    \        RT# R 24        EKE  i ; i  \T         d!   p%\        R!T	 R"T R#T% 24        Rp%?%EKo  Rp%?%ii ; i)%uB   === Î£-GLYPH MATERIALIZER: Atomic Fusion V2.5.1 (Symlink Map) ===
 zError: Source directory z not found.Nz
-**/*.sigmac                ó   € \        V 4      # )N)r   )Úps   &r!   Ú<lambda>Úmaterialize.<locals>.<lambda>]   s	   € ÌCĞPQÌFr#   )r8   r]   )Úencodingu)   ^(?:ğŸ§¬|GLYPH|Î£-GLYPH SEED):\s*([\w=]+)Úyamlr)   uG   ^(?:ğŸ§¬DNA|DNA:|ğŸ”—|ğŸ”—:):\s*\n+((?:\s*(?:-\s*|Ref:\s*)?[\w=]+\n?)*)z- zRef:Ú r   z
+**/*.sigmac                ó   € \        V 4      # )N)r   )Úps   &r#   Ú<lambda>Úmaterialize.<locals>.<lambda>W   s	   € ÌCĞPQÌFr%   )r:   zutf-8)Úencodingu)   ^(?:ğŸ§¬|GLYPH|Î£-GLYPH SEED):\s*([\w=]+)Úyamlr+   uG   ^(?:ğŸ§¬DNA|DNA:|ğŸ”—|ğŸ”—:):\s*\n+((?:\s*(?:-\s*|Ref:\s*)?[\w=]+\n?)*)z- zRef:Ú rZ   Ú*r   z
 
 Úz00ÚIMPORTz.sigmar
-   z::Ú/z%nz%pr?   T)ÚparentsÚexist_okz:
---- Materialization Complete. The Lattice is Reified. ---)ÚprintÚ
-SOURCE_DIRÚexistsÚsortedÚlistÚglobÚ	read_textr/   r0   r1   Úrelative_tor2   ÚkeysÚTAG_MAPrO   rX   r;   r5   Úentropy_to_stratumÚstemrT   rH   rC   r.   ÚappendÚjoinr   Úwith_suffixÚparentÚmkdirÚ
-write_text)Úglyph_registryÚsigma_filesÚpathrI   Úglyph_matchÚspectrum_configsr   Úrel_pathÚ
+   z::Ú/z%nz%prB   T)ÚparentsÚexist_oku$   âš ï¸  Security Block: Link target z outside Root.u   âš ï¸  Link Error z (z): z:
+--- Materialization Complete. The Lattice is Reified. ---)+ÚprintÚ
+SOURCE_DIRÚexistsÚsortedÚlistÚglobÚ	read_textr1   r2   r3   Úrelative_tor4   rR   r_   r=   r7   Úentropy_to_stratumÚstemr[   rK   rF   rV   rG   ÚTAG_MAPr0   ÚappendÚjoinr   Úwith_suffixÚparentÚmkdirÚ
+write_textÚgetÚ
+SIGMA_ROOTÚresolveÚ
+ValueErrorÚosÚpathÚrelpathÚ
+is_symlinkÚunlinkÚsymlinkÚ	Exception)&Úglyph_registryÚsigma_filesr„   rL   Úglyph_matchÚspectrum_configsÚ
 yaml_blockÚphysÚstratumÚ
-this_glyphÚ	dna_matchÚdependenciesÚraw_dnaÚdr=   Úout_dirÚextÚblockÚglyph_fnÚtarget_pathÚatomsÚdepÚdep_contentÚ
-atom_blockÚfinal_blockÚconfigÚtemplateÚimportsÚrel_deps                                  r!   Úmaterializer¢   V   s#  € Ü	Ğ
-QÔRÜ×Ñ×ÒÜĞ(¬¨°KĞ@ÔAÙà€NÜœœjŸo™o¨lÓ;Ó<ÑBRÔS€Kãˆğ	Ø—n‘n¨gnÓ6ˆGÜŸ)š)Ğ$PĞRYÔ[]×[gÑ[gÓhˆKßØ7;×7GÑ7GÌ
-Ó7S×0Ñ0°Ó3Ó4ñ ñ	 ğ ĞÜ˜×+Ñ+Ó-Ö.ˆØ!Õ(ˆØ”GÖğÜ%¨Õ0×;Ñ;ÀWĞ;ÓMÜ*¨7°FÓ;
-ßÜ.AÀ*Ó.MĞ$Ó+ñ ñ /ô ˆØ—~‘~¨w~Ó7ˆWô ˜WÓ%ˆÜ×,Ò,¨T°)­_Ó=ˆÜ—i’iĞ LÈgÔWY×WcÑWcÓdˆß-8[×&Ñ& qÔ)¸d¿i¹iˆ
-ä—I’IĞhĞjqÔsu×sÑsó  Aˆ	ØˆßØ—o‘o aÓ(ˆGØOV×OaÑOaÔOcÓ}ÑOcÈ!×gnÑgnĞosÓgt×gzÑgz×g|ÔE˜AŸI™I f¨bÓ1×7Ñ7¸Ó=×CÑCÖEÑOcˆLĞ}ä#*§=¡=§?ÑˆC‘'˜3Ü! '¨3Ó/ˆEØÔ Ø),°¬™:¸T¿Y¹YØ%¨Õ/°X°J¸s¸eĞ2DÕDğ Û'CØ˜nÖ,ğ)Ü+5¸ÀsÕ8KÕ+K×*VÑ*VĞ`gĞ*VÓ*h˜KÜ)6°{ÀCÓ)H˜Jß)¨5¯<©<¸
-Ö+C™zñ (÷ AF §¡¨EÓ 2°VÖ ;È2ĞQVÕVà˜eÔ#¨Ğ/?Ô(?Ø-¨cÕ2FØ 6Ô)Ø#)¨(Õ#3˜Ø"$˜Û!-˜AØ Ö2°q¶Ü*-¨nÕ.?×.KÑ.KÈBÓ.OÓ*P×*XÑ*XĞYaĞceÓ*f×*nÑ*nĞorĞ|ğ  BFô  }FÑtxğ  LOó  +P Ø '§¡¨x×/?Ñ/?ÀÀaÓ/H×/PÑ/PĞQUĞW^Ó/_Ö `ñ ".÷ #°$·)±)¸GÓ2DÀvÕ2MĞP[Õ2[ Kà×"Ñ"×(Ñ(°ÀĞ(ÔEØ×&Ñ& {°TÕ'9ÀGĞ&×Lô= $3ñ ô^ 
+this_glyphÚ	dna_matchÚdependenciesÚraw_dnaÚdÚ	links_mapÚ
+link_blockr^   ÚkÚvr?   Úout_dirÚextÚblockÚglyph_fnÚtarget_pathÚatomsÚdepÚdep_contentÚ
+atom_blockÚfinal_blockÚconfigÚtemplateÚimportsÚrel_depÚlink_target_strÚ	link_nameÚ
+rel_targetÚes&                                         r#   Úmaterializer¬   P   s²  € Ü	Ğ
+OÔPÜ×Ñ×ÒÜĞ(¬¨°KĞ@ÔAÙà€NÜœœjŸo™o¨lÓ;Ó<ÑBRÔS€Kãˆğ	Ø—n‘n¨gnÓ6ˆGÜŸ)š)Ğ$PĞRYÔ[]×[gÑ[gÓhˆKßØ7;×7GÑ7GÌ
+Ó7S×0Ñ0°Ó3Ó4ñ ñ	 ğ ĞÛˆğ	Ø—~‘~¨w~Ó7ˆWÜ'¨°Ó8ˆZßÜ!ŸyšyĞ)UĞW^Ô`b×`lÑ`lÓmßÜ>QĞR\Ó>]Ğ%×&7Ñ&7¸Ó&:Ó;ñ  ñ ñ	 ô ˆØ—~‘~¨w~Ó7ˆWô ˜WÓ%ˆÜ×,Ò,¨T°)­_Ó=ˆÜ—i’iĞ LÈgÔWY×WcÑWcÓdˆß-8[×&Ñ& qÔ)¸d¿i¹iˆ
+ä—I’IĞhĞjqÔsu×sÑsó  Aˆ	ØˆßØ—o‘o aÓ(ˆGØOV×OaÑOaÔOcÓ}ÑOcÈ!×gnÑgnĞosÓgt×gzÑgz×g|ÔE˜AŸI™I f¨bÓ1×7Ñ7¸Ó=×CÑCÖEÑOcˆLĞ}ğ ˆ	Ü! 'Ó*ˆ
+ßØ"×-Ñ-Ö/Ø˜$”;ØŸ:™: c¨1Ó-‘DAqØ+,¯7©7«9I˜aŸg™g›iÓ(Ø—Z‘Z—\”\Ø%)§Z¡Z£\I˜c“Nñ 0ô $+§=¡=§?ÑˆC‘'˜3Ü! '¨3Ó/ˆEØÔ Ø),°¬™:¸T¿Y¹YØ%¨Õ/°X°J¸s¸eĞ2DÕDğ Û'CØ˜nÖ,ğ)Ü+5¸ÀsÕ8KÕ+K×*VÑ*VĞ`gĞ*VÓ*h˜KÜ)6°{ÀCÓ)H˜Jß)¨5¯<©<¸
+Ö+C™zñ (÷ AF §¡¨EÓ 2°VÖ ;È2ĞQVÕVà˜eÔ#¨
+Ô(FØ-Õ9FØ 6Ô)Ø#)¨(Õ#3˜Ø"$˜Û!-˜AØ Ö2°q¶Ü*-¨nÕ.?×.KÑ.KÈBÓ.OÓ*P×*XÑ*XĞYaĞceÓ*f×*nÑ*nĞorĞ|ğ  BFô  }FÑtxğ  LOó  +P Ø '§¡¨x×/?Ñ/?ÀÀaÓ/H×/PÑ/PĞQUĞW^Ó/_Ö `ñ ".÷ #°$·)±)¸GÓ2DÀvÕ2MĞP[Õ2[ Kà×"Ñ"×(Ñ(°ÀĞ(ÔEØ×&Ñ& {°TÕ'9ÀGĞ&ÔLğ #,§-¡-°Ó"4×"JĞ"J¸	¿¹ÀcÓ8Jß"’?Ü!+¨oÕ!=× FÑ FÓ HIğ"Ø"×.Ñ.¬zÔ:ğ
+ ×$Ñ$×*Ñ*°4À$Ğ*ÔGğOÜ%'§W¡W§_¡_°[À)×BRÑBRÓ%S˜
+Ø$×+Ñ+×-Ò-°×1EÑ1E×1GÒ1GØ%×,Ñ,Ô.ÜŸ
+š
+ :¨y×9ôc $3ñ5 ô^ 
 Ğ
-GÖHøğy 	“ûğ “Hûğ 	“üò ~øğ  )£ús>   Á-A&R"Ä>R+ÅR4È/&R=É3R=Ë9A	SÒ"R(Ò+R1Ò4R:ÓS	Ú__main__)Ú
-__future__r   Úosr/   Ústructr`   ÚsysÚmathr   Úpathlibr   r,   r^   r5   ÚROOTÚ
-SIGMA_ROOTru   r}   r;   rO   rX   rf   r¢   Ú__name__r   r#   r!   Ú<module>r­      s  ğå "Û 	Û 	Û Û Û 
+GÖHøğy 	“ûğ 	“ûğ 	“üò ~øğ6 )£ûô4 &ô "ÜĞ!EÀiÀ[ĞP^Ğ_Ô`Û!ğ"ûô %ô OÜĞ 3°J°<¸rÀ#ÀÀcÈ!ÈĞM×NÓNûğOús{   Á-A&X?Ã!AYÄ5YÅYÈ7&YÉ"3YÎA	YÕ8Y(Ö+?Z
+×+Z
+Ø'Z
+Ø?YÙYÙYÙY%	Ù(ZÚZÚ
+Z5ÚZ0Ú0Z5Ú__main__)Ú
+__future__r   rƒ   r1   ÚstructÚhashlibÚsysÚmathr   Úpathlibr   r.   Úscr1r7   ÚROOTr€   ro   rx   r=   rR   rV   r_   r¬   Ú__name__r!   r%   r#   Ú<module>r·      s  ğå "Û 	Û 	Û Û Û 
 Û Û İ ó
  Û Û ğ ]‰]€
 Ø˜'Õ!€
@@ -623,14 +647,14 @@ $Ø	ˆJ˜Õ Ğ'Øˆ:˜Õ˜eĞ
 $Øˆ:˜Õ˜eĞ
 $Øˆ:˜Õ˜eĞ
 $Ø
-ˆZ˜&Õ  'Ğ*Øˆj˜7Õ" HĞ-ğ
-€õ
-õõ$	õDòKIğZ ˆzÔÙ†Mñ r#   
+ˆZ˜&Õ  'Ğ*Ø
+ˆZ˜&Õ  'Ğ*Øˆj˜7Õ" HĞ-ğ€õ
+õõ'õ	òkIğZ ˆzÔÙ†Mñ r%   
 
 === FILE: ./PY/z00/__pycache__/physics.cpython-314.pyc ===
 
 +
-    ·âci(
+    ğæci(
   ã            
        óJ  € ^ RI t ^ RIt^ RIt^ RIHt ^ RItR R ltR R lt]! R4       U u. uF9  p ]	! R]P                  V ]P                  ,          R	,          4      ,          4      NK;  	  up tR]^ &   ^ ]R
 &   R]R	&   R R ltR R lt ! R R4      t ! R R4      tR# u up i )é    N)ÚOptionalc                ó<   € V ^8„  d   QhR\         R\         R\         /# )é   ÚnÚdÚreturn©Úint)Úformats   "Ú(/Users/s0fractal/SIGMA/PY/z00/physics.pyÚ__annotate__r      s!   € ÷ ñ œğ ¤ğ ¬ñ ó    c                ó   € V^ 8:  d   \        R4      hV ^ 8¼  d   ^MRp\        V 4      pW1^,          ,           V,          pW$,          # )z?Integer division with symmetric round-half-up (away from zero).zd must be positiveéÿÿÿÿ)Ú
@@ -781,6 +805,8 @@ def repo_root() -> Path:
 def parse_frontmatter(path: Path) -> dict:
     text = path.read_text(encoding="utf-8")
     parts = text.split("
+
+ğŸŒŠ
 
 
 === FILE: ./PY/z00/cas.py ===
@@ -1614,6 +1640,8 @@ def collapse_edges(dim: str | None):
         ttl = int(edge.get("ttl", "86400"))
         print(f"
 
+ğŸŒŠ
+
 
 === FILE: ./PY/z00/entropy_to_stratum.py ===
 
@@ -1759,6 +1787,54 @@ import scr1
 SIGMA_ROOT = protocol.ROOT
 SOURCE_DIR = SIGMA_ROOT / "sigma"
 
+ALLOWLIST_ROOT = {".gitignore", "README.md", "LICENSE", "Makefile", "sigma_full_codebase.txt", "file_list.txt", "standards_v2_3.md"}
+ALLOWLIST_DIRS = {"sigma", "PY", "TS", "RS", "SH", "MD", "LOCK", "JSON", "GLYPH", "DNA", "STORAGE", "TXT", "test_cas", "test_cas_remote"}
+
+def audit_shrapnel(root: Path = SIGMA_ROOT) -> list[str]:
+    """Projection S: Detects non-native files (Shrapnel) in the Lattice."""
+    violations = []
+    
+    # 1. Root Scan
+    for item in root.iterdir():
+        if item.name.startswith(".git"): continue 
+        if item.name == ".DS_Store": continue
+        
+        # Symlinks are native to the projection
+        if item.is_symlink(): continue
+        
+        if item.is_dir():
+            if item.name not in ALLOWLIST_DIRS:
+               violations.append(f"Root Shrapnel (Dir): {item.name}")
+        else:
+            if item.name not in ALLOWLIST_ROOT and item.suffix != ".sigma":
+                violations.append(f"Root Shrapnel (File): {item.name}")
+
+    # 2. Projection Scan
+    projections = {
+        "TS": ".ts", "RS": ".rs", "SH": ".sh", "PY": ".py"
+    }
+    
+    for proj, ext in projections.items():
+        proj_dir = root / proj
+        if not proj_dir.exists(): continue
+        
+        for path in proj_dir.rglob("*"):
+            if path.is_dir(): continue
+            if path.name == ".DS_Store": continue
+            if "__pycache__" in path.parts: continue # Ignore deep pycache
+            
+            # Special exceptions for PY/z00 (Core Library)
+            if proj == "PY" and path.parent.name == "z00":
+                if path.suffix in [".json", ".txt", ".py"]: continue
+            
+            # Allow READMEs everywhere
+            if path.suffix == ".md": continue
+
+            if path.suffix != ext and path.suffix != ".md":
+                 violations.append(f"Projection Shrapnel in {proj}: {path.relative_to(root)}")
+
+    return violations
+
 def audit_lattice(fix=False, source_dir: Path = SOURCE_DIR):
     violations = []
     print(f"ğŸ›¡ï¸  Guarding Lattice (SCR-1 Library Compliance) | Fix={fix}...")
@@ -1835,6 +1911,15 @@ def audit_lattice(fix=False, source_dir: Path = SOURCE_DIR):
             
     print(f"\nğŸŒ€ Lattice Resonance Hash: {lattice_hasher.hexdigest()}")
     print(f"ğŸ“¡ Protocol Version: {protocol.VERSION}")
+
+    # Run Shrapnel Audit
+    shrapnel = audit_shrapnel()
+    if shrapnel:
+        print("\nğŸ”´ SHRAPNEL DETECTED (Projection S Violation):")
+        for s in shrapnel:
+            print(f"   {s}")
+        violations.extend(shrapnel)
+
     return violations
 
 def main():
@@ -2124,19 +2209,191 @@ if __name__ == "__main__":
 
 #!/usr/bin/env python3
 from __future__ import annotations
+import os
+import re
+import struct
+import hashlib
+import sys
+import math
+import json
 from pathlib import Path
-import core_materialize
-import heuristic_materialize
 
-# Î£-GLYPH MATERIALIZER (WRAPPER)
-# V2.4.0 - Orchestrator
+# Î£-GLYPH MATERIALIZER: Atomic Fusion Engine
+# V2.5.1 - Projection S: Map-Aware Symlinks
+
+import protocol
+import scr1
+import physics
+
+# --- CONFIGURATION ---
+SIGMA_ROOT = protocol.ROOT
+SOURCE_DIR = SIGMA_ROOT / "sigma"
+
+TAG_MAP = {
+    "md": (SIGMA_ROOT / "MD", ".md"),
+    "ts": (SIGMA_ROOT / "TS", ".ts"),
+    "rs": (SIGMA_ROOT / "RS", ".rs"),
+    "dna": (SIGMA_ROOT / "DNA", ".dna"),
+    "sh": (SIGMA_ROOT / "SH", ".sh"),
+    "rb": (SIGMA_ROOT / "RB", ".rb"),
+    "py": (SIGMA_ROOT / "PY", ".py"),
+    "json": (SIGMA_ROOT / "JSON", ".json"),
+    "lock": (SIGMA_ROOT / "LOCK", ".lock"),
+    "glyph": (SIGMA_ROOT / "GLYPH", ".glyph"),
+}
+
+# --- ATOMIC FUNCTIONS ---
+
+def parse_physics(text: str) -> dict:
+    physics = {"OP": protocol.OP_LITERAL, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
+    symbol_map = {"âš™ï¸": "OP", "ğŸš©": "FLAGS", "ğŸŒŠ": "PHASE", "ğŸ”Š": "AMPLITUDE", "ğŸŒ€": "ENTROPY"}
+    for sym, key in symbol_map.items():
+        match = re.search(f"^{sym}:?\\s*(-?\\d+|0x[a-fA-F0-9]+)", text, re.MULTILINE)
+        if match:
+            val = match.group(1)
+            try:
+                physics[key] = int(val, 16) if val.startswith("0x") else int(val)
+            except: continue
+    return physics
+
+def extract_block(text: str, tag: str) -> str | None:
+    """SCR-1: Strict Canonical Block Extraction."""
+    content = text.replace("\r\n", "\n").replace("\r", "\n")
+    start_marker = f"@[{tag}]"
+    
+    parts = re.split(f"^{re.escape(start_marker)}\\n", content, flags=re.MULTILINE)
+    if len(parts) < 2: return None
+    
+    payload_raw = parts[1]
+    # End search: next block or seal
+    end_match = re.search(r"^\n(@\[|ğŸ”’:|CHECKSUM:)", payload_raw, re.MULTILINE)
+    payload = payload_raw[:end_match.start()] if end_match else payload_raw
+    
+    return payload.strip("\n")
+
+def extract_link(text: str) -> str | None:
+    """Extracts symlink target from @[link] block."""
+    return extract_block(text, "link")
+
+def parse_yaml_metadata(text: str) -> dict:
+    """Standardized metadata extraction for @[yaml] blocks."""
+    data = {}
+    if not text: return data
+    for line in text.splitlines():
+        line = line.split("#")[0].strip()
+        if not line or ":" not in line: continue
+        key, val = line.split(":", 1)
+        data[key.strip().upper()] = val.strip().strip("'\"")
+    return data
 
 def materialize():
-    print("ğŸ”˜ Materializing Lattice (CORE)...")
-    core_materialize.materialize_core()
-    print("ğŸ”˜ Applying HEURISTICS (Atoms/Imports)...")
-    heuristic_materialize.materialize_heuristics()
-    print("âœ… Lattice Reified.")
+    print("=== Î£-GLYPH MATERIALIZER: Atomic Fusion V2.5.1 (Symlink Map) ===\n")
+    if not SOURCE_DIR.exists():
+        print(f"Error: Source directory {SOURCE_DIR} not found.")
+        return
+
+    glyph_registry = {}
+    sigma_files = sorted(list(SOURCE_DIR.glob("**/*.sigma")), key=lambda p: str(p))
+    
+    for path in sigma_files:
+        try:
+            content = path.read_text(encoding="utf-8")
+            glyph_match = re.search(r"^(?:ğŸ§¬|GLYPH|Î£-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
+            if glyph_match:
+                glyph_registry[glyph_match.group(1)] = path.relative_to(SOURCE_DIR)
+        except: continue
+
+    spectrum_configs = {}
+    for path in sigma_files:
+        try:
+             content = path.read_text(encoding="utf-8")
+             yaml_block = extract_block(content, "yaml")
+             if yaml_block:
+                 glyph_match = re.search(r"^(?:ğŸ§¬|GLYPH|Î£-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
+                 if glyph_match:
+                     spectrum_configs[glyph_match.group(1)] = parse_yaml_metadata(yaml_block)
+        except: continue
+
+    for path in sigma_files:
+        try: content = path.read_text(encoding="utf-8")
+        except: continue
+            
+        phys = parse_physics(content)
+        stratum = physics.entropy_to_stratum(phys["ENTROPY"])
+        glyph_match = re.search(r"^(?:ğŸ§¬|GLYPH|Î£-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
+        this_glyph = glyph_match.group(1) if glyph_match else path.stem
+        
+        dna_match = re.search(r"^(?:ğŸ§¬DNA|DNA:|ğŸ”—|ğŸ”—:):\s*\n+((?:\s*(?:-\s*|Ref:\s*)?[\w=]+\n?)*)", content, re.MULTILINE)
+        dependencies = []
+        if dna_match:
+            raw_dna = dna_match.group(1)
+            dependencies = [d.replace("Ref:", "").strip("- ").strip() for d in raw_dna.splitlines() if d.strip("- ").strip()]
+        
+        # 1. Parse Links
+        links_map = {}
+        link_block = extract_link(content)
+        if link_block:
+            for line in link_block.splitlines():
+                if ":" in line:
+                    k, v = line.split(":", 1)
+                    links_map[k.strip()] = v.strip()
+                elif line.strip():
+                    links_map["*"] = line.strip()
+
+        for tag, (out_dir, ext) in TAG_MAP.items():
+            block = extract_block(content, tag)
+            if block is not None:
+                glyph_fn = this_glyph if tag == "glyph" else path.stem
+                target_path = out_dir / stratum / f"{glyph_fn}{ext}"
+                
+                # Axiom Injection
+                atoms = []
+                for dep in dependencies:
+                    if dep in glyph_registry:
+                        try:
+                            dep_content = (SOURCE_DIR / glyph_registry[dep]).read_text(encoding="utf-8")
+                            atom_block = extract_block(dep_content, tag)
+                            if atom_block: atoms.append(atom_block)
+                        except: continue
+                
+                final_block = (("\n\n".join(atoms) + "\n\n") if atoms else "") + block
+
+                if stratum != "z00" and this_glyph in spectrum_configs:
+                    config = spectrum_configs[this_glyph]
+                    if "IMPORT" in config:
+                        template = config["IMPORT"]
+                        imports = []
+                        for d in dependencies:
+                            if d in glyph_registry and d != this_glyph:
+                                rel_dep = str(glyph_registry[d].with_suffix("")).replace(".sigma", "").replace(tag, "::" if tag=="rs" else "/")
+                                imports.append(template.replace("%n", d).replace("%p", rel_dep))
+                        if imports: final_block = "\n".join(imports) + "\n\n" + final_block
+
+                target_path.parent.mkdir(parents=True, exist_ok=True)
+                target_path.write_text(final_block + "\n", encoding="utf-8")
+                
+                # 2. Link Processing
+                link_target_str = links_map.get(tag) or links_map.get("*")
+                if link_target_str:
+                    link_name = (SIGMA_ROOT / link_target_str).resolve()
+                    
+                    # Security check: Ensure link is within SIGMA_ROOT
+                    try:
+                         link_name.relative_to(SIGMA_ROOT)
+                    except ValueError:
+                         print(f"âš ï¸  Security Block: Link target {link_name} outside Root.")
+                         continue
+
+                    link_name.parent.mkdir(parents=True, exist_ok=True)
+                    try:
+                        rel_target = os.path.relpath(target_path, link_name.parent)
+                        if link_name.exists() or link_name.is_symlink():
+                            link_name.unlink()
+                        os.symlink(rel_target, link_name)
+                    except Exception as e:
+                        print(f"âš ï¸  Link Error {this_glyph} ({tag}): {e}")
+
+    print("\n--- Materialization Complete. The Lattice is Reified. ---")
 
 if __name__ == "__main__":
     materialize()
@@ -2382,6 +2639,8 @@ if __name__ == "__main__":
 
 ```
 
+ğŸŒŠ
+
 
 === FILE: ./PY/z00/protocol.py ===
 
@@ -2615,8 +2874,7 @@ from pathlib import Path
 # Î£-GLYPH CLI: The System Orchestrator
 # V2.3.1 - Deterministic Resonance: Absolute Path Immunity
 
-import core_materialize
-import heuristic_materialize
+import materializer
 import guard
 import protocol
 import physics
@@ -2765,12 +3023,7 @@ def main():
     args = parser.parse_args()
 
     if args.command == "sync":
-        print("ğŸ”˜ Syncing CORE...")
-        core_materialize.materialize_core()
-        if not args.core_only:
-            print("ğŸ”˜ Syncing HEURISTICS...")
-            heuristic_materialize.materialize_heuristics()
-        print("âœ… Sync complete.")
+        materializer.materialize()
     elif args.command == "check":
         violations = guard.audit_lattice(fix=args.fix)
         if violations:
@@ -2826,6 +3079,8 @@ def repo_root() -> Path:
 
 def read_frontmatter(text: str) -> str:
     parts = text.split("
+
+ğŸŒŠ
 
 
 === FILE: ./PY/z00/vectors.json ===
@@ -2974,109 +3229,6 @@ def decode_packet(data: bytes) -> tuple[int, bytes]:
 === FILE: ./STORAGE/GARDEN/0/S.glyph ===
 
  @ ÿÿ€ S                               
-
-=== FILE: ./TS/deno.lock ===
-
-{
-  "version": "5",
-  "remote": {
-    "https://deno.land/std@0.208.0/assert/assert.ts": "9a97dad6d98c238938e7540736b826440ad8c1c1e54430ca4c4e623e585607ee",
-    "https://deno.land/std@0.208.0/assert/assertion_error.ts": "4d0bde9b374dfbcbe8ac23f54f567b77024fb67dbb1906a852d67fe050d42f56",
-    "https://deno.land/std@0.208.0/crypto/_fnv/fnv32.ts": "e4649dfdefc5c987ed53c3c25db62db771a06d9d1b9c36d2b5cf0853b8e82153",
-    "https://deno.land/std@0.208.0/crypto/_fnv/fnv64.ts": "bfa0e4702061fdb490a14e6bf5f9168a22fb022b307c5723499469bfefca555e",
-    "https://deno.land/std@0.208.0/crypto/_fnv/mod.ts": "f956a95f58910f223e420340b7404702ecd429603acd4491fa77af84f746040c",
-    "https://deno.land/std@0.208.0/crypto/_fnv/util.ts": "accba12bfd80a352e32a872f87df2a195e75561f1b1304a4cb4f5a4648d288f9",
-    "https://deno.land/std@0.208.0/crypto/_wasm/lib/deno_std_wasm_crypto.generated.mjs": "c41c4676a3ea2a92e8fdff55434533474131e4dfac2262a6a6c81631069808d8",
-    "https://deno.land/std@0.208.0/crypto/_wasm/mod.ts": "d7b7dc54bbd6b02c16cd08e8e3d30fa9aa9692efb112a7ab5d8595827b9a0234",
-    "https://deno.land/std@0.208.0/crypto/crypto.ts": "91c67764abb640b3e2a0b46867704d02077c0b1f978f5c711e4408e5d856717d",
-    "https://deno.land/std@0.208.0/crypto/mod.ts": "e49caf22e980db882b917c48ac119e44c46ab57399cb565c2cd3138f8c33835e",
-    "https://deno.land/std@0.208.0/crypto/timing_safe_equal.ts": "f6edc08d702f660b1ab3505b74d53a9d499e34a1351f6ab70f5ce8653fee8fb7",
-    "https://deno.land/std@0.208.0/crypto/to_hash_string.ts": "5a687ffee6b54c935a84394c8f2394c2e1bf62bbff0f855b8ab6f5669e47cc8a",
-    "https://deno.land/std@0.208.0/crypto/unstable_keystack.ts": "c53d746f91a2c6844b92fe6d8670af92d4de19d12af677406700f8ad61466bde",
-    "https://deno.land/std@0.208.0/encoding/_util.ts": "f368920189c4fe6592ab2e93bd7ded8f3065b84f95cd3e036a4a10a75649dcba",
-    "https://deno.land/std@0.208.0/encoding/base64.ts": "81c0ecff5ccb402def58ca03d8bd245bd01da15a077d3362b568e991aa10f4d9",
-    "https://deno.land/std@0.208.0/encoding/base64url.ts": "b15a4c8c988362536334a31dbb75a2429346f8c0f9e2662f961567c5dd2f58e1",
-    "https://deno.land/std@0.208.0/encoding/hex.ts": "a384101d02cd87036c708f540825feb5b073c8527a00d635e48b2e69c992a5f9",
-    "https://deno.land/std@0.208.0/path/_common/assert_path.ts": "061e4d093d4ba5aebceb2c4da3318bfe3289e868570e9d3a8e327d91c2958946",
-    "https://deno.land/std@0.208.0/path/_common/basename.ts": "0d978ff818f339cd3b1d09dc914881f4d15617432ae519c1b8fdc09ff8d3789a",
-    "https://deno.land/std@0.208.0/path/_common/common.ts": "9e4233b2eeb50f8b2ae10ecc2108f58583aea6fd3e8907827020282dc2b76143",
-    "https://deno.land/std@0.208.0/path/_common/constants.ts": "e49961f6f4f48039c0dfed3c3f93e963ca3d92791c9d478ac5b43183413136e0",
-    "https://deno.land/std@0.208.0/path/_common/dirname.ts": "2ba7fb4cc9fafb0f38028f434179579ce61d4d9e51296fad22b701c3d3cd7397",
-    "https://deno.land/std@0.208.0/path/_common/format.ts": "11aa62e316dfbf22c126917f5e03ea5fe2ee707386555a8f513d27ad5756cf96",
-    "https://deno.land/std@0.208.0/path/_common/from_file_url.ts": "ef1bf3197d2efbf0297a2bdbf3a61d804b18f2bcce45548ae112313ec5be3c22",
-    "https://deno.land/std@0.208.0/path/_common/glob_to_reg_exp.ts": "5c3c2b79fc2294ec803d102bd9855c451c150021f452046312819fbb6d4dc156",
-    "https://deno.land/std@0.208.0/path/_common/normalize.ts": "2ba7fb4cc9fafb0f38028f434179579ce61d4d9e51296fad22b701c3d3cd7397",
-    "https://deno.land/std@0.208.0/path/_common/normalize_string.ts": "88c472f28ae49525f9fe82de8c8816d93442d46a30d6bb5063b07ff8a89ff589",
-    "https://deno.land/std@0.208.0/path/_common/relative.ts": "1af19d787a2a84b8c534cc487424fe101f614982ae4851382c978ab2216186b4",
-    "https://deno.land/std@0.208.0/path/_common/strip_trailing_separators.ts": "7ffc7c287e97bdeeee31b155828686967f222cd73f9e5780bfe7dfb1b58c6c65",
-    "https://deno.land/std@0.208.0/path/_common/to_file_url.ts": "a8cdd1633bc9175b7eebd3613266d7c0b6ae0fb0cff24120b6092ac31662f9ae",
-    "https://deno.land/std@0.208.0/path/_interface.ts": "6471159dfbbc357e03882c2266d21ef9afdb1e4aa771b0545e90db58a0ba314b",
-    "https://deno.land/std@0.208.0/path/_os.ts": "30b0c2875f360c9296dbe6b7f2d528f0f9c741cecad2e97f803f5219e91b40a2",
-    "https://deno.land/std@0.208.0/path/basename.ts": "04bb5ef3e86bba8a35603b8f3b69537112cdd19ce64b77f2522006da2977a5f3",
-    "https://deno.land/std@0.208.0/path/common.ts": "f4d061c7d0b95a65c2a1a52439edec393e906b40f1caf4604c389fae7caa80f5",
-    "https://deno.land/std@0.208.0/path/dirname.ts": "88a0a71c21debafc4da7a4cd44fd32e899462df458fbca152390887d41c40361",
-    "https://deno.land/std@0.208.0/path/extname.ts": "2da4e2490f3b48b7121d19fb4c91681a5e11bd6bd99df4f6f47d7a71bb6ecdf2",
-    "https://deno.land/std@0.208.0/path/format.ts": "3457530cc85d1b4bab175f9ae73998b34fd456c830d01883169af0681b8894fb",
-    "https://deno.land/std@0.208.0/path/from_file_url.ts": "e7fa233ea1dff9641e8d566153a24d95010110185a6f418dd2e32320926043f8",
-    "https://deno.land/std@0.208.0/path/glob_to_regexp.ts": "74d7448c471e293d03f05ccb968df4365fed6aaa508506b6325a8efdc01d8271",
-    "https://deno.land/std@0.208.0/path/is_absolute.ts": "67232b41b860571c5b7537f4954c88d86ae2ba45e883ee37d3dec27b74909d13",
-    "https://deno.land/std@0.208.0/path/is_glob.ts": "567dce5c6656bdedfc6b3ee6c0833e1e4db2b8dff6e62148e94a917f289c06ad",
-    "https://deno.land/std@0.208.0/path/join.ts": "98d3d76c819af4a11a81d5ba2dbb319f1ce9d63fc2b615597d4bcfddd4a89a09",
-    "https://deno.land/std@0.208.0/path/join_globs.ts": "9b84d5103b63d3dbed4b2cf8b12477b2ad415c7d343f1488505162dc0e5f4db8",
-    "https://deno.land/std@0.208.0/path/mod.ts": "3defabebc98279e62b392fee7a6937adc932a8f4dcd2471441e36c15b97b00e0",
-    "https://deno.land/std@0.208.0/path/normalize.ts": "aa95be9a92c7bd4f9dc0ba51e942a1973e2b93d266cd74f5ca751c136d520b66",
-    "https://deno.land/std@0.208.0/path/normalize_glob.ts": "674baa82e1c00b6cb153bbca36e06f8e0337cb8062db6d905ab5de16076ca46b",
-    "https://deno.land/std@0.208.0/path/parse.ts": "d87ff0deef3fb495bc0d862278ff96da5a06acf0625ca27769fc52ac0d3d6ece",
-    "https://deno.land/std@0.208.0/path/posix/_util.ts": "ecf49560fedd7dd376c6156cc5565cad97c1abe9824f4417adebc7acc36c93e5",
-    "https://deno.land/std@0.208.0/path/posix/basename.ts": "a630aeb8fd8e27356b1823b9dedd505e30085015407caa3396332752f6b8406a",
-    "https://deno.land/std@0.208.0/path/posix/common.ts": "e781d395dc76f6282e3f7dd8de13194abb8b04a82d109593141abc6e95755c8b",
-    "https://deno.land/std@0.208.0/path/posix/dirname.ts": "f48c9c42cc670803b505478b7ef162c7cfa9d8e751b59d278b2ec59470531472",
-    "https://deno.land/std@0.208.0/path/posix/extname.ts": "ee7f6571a9c0a37f9218fbf510c440d1685a7c13082c348d701396cc795e0be0",
-    "https://deno.land/std@0.208.0/path/posix/format.ts": "b94876f77e61bfe1f147d5ccb46a920636cd3cef8be43df330f0052b03875968",
-    "https://deno.land/std@0.208.0/path/posix/from_file_url.ts": "b97287a83e6407ac27bdf3ab621db3fccbf1c27df0a1b1f20e1e1b5acf38a379",
-    "https://deno.land/std@0.208.0/path/posix/glob_to_regexp.ts": "6ed00c71fbfe0ccc35977c35444f94e82200b721905a60bd1278b1b768d68b1a",
-    "https://deno.land/std@0.208.0/path/posix/is_absolute.ts": "159900a3422d11069d48395568217eb7fc105ceda2683d03d9b7c0f0769e01b8",
-    "https://deno.land/std@0.208.0/path/posix/is_glob.ts": "ec4fbc604b9db8487f7b56ab0e759b24a971ab6a45f7b0b698bc39b8b9f9680f",
-    "https://deno.land/std@0.208.0/path/posix/join.ts": "0c0d84bdc344876930126640011ec1b888e6facf74153ffad9ef26813aa2a076",
-    "https://deno.land/std@0.208.0/path/posix/join_globs.ts": "f4838d54b1f60a34a40625a3293f6e583135348be1b2974341ac04743cb26121",
-    "https://deno.land/std@0.208.0/path/posix/mod.ts": "f1b08a7f64294b7de87fc37190d63b6ce5b02889af9290c9703afe01951360ae",
-    "https://deno.land/std@0.208.0/path/posix/normalize.ts": "11de90a94ab7148cc46e5a288f7d732aade1d616bc8c862f5560fa18ff987b4b",
-    "https://deno.land/std@0.208.0/path/posix/normalize_glob.ts": "10a1840c628ebbab679254d5fa1c20e59106102354fb648a1765aed72eb9f3f9",
-    "https://deno.land/std@0.208.0/path/posix/parse.ts": "199208f373dd93a792e9c585352bfc73a6293411bed6da6d3bc4f4ef90b04c8e",
-    "https://deno.land/std@0.208.0/path/posix/relative.ts": "e2f230608b0f083e6deaa06e063943e5accb3320c28aef8d87528fbb7fe6504c",
-    "https://deno.land/std@0.208.0/path/posix/resolve.ts": "51579d83159d5c719518c9ae50812a63959bbcb7561d79acbdb2c3682236e285",
-    "https://deno.land/std@0.208.0/path/posix/separator.ts": "0b6573b5f3269a3164d8edc9cefc33a02dd51003731c561008c8bb60220ebac1",
-    "https://deno.land/std@0.208.0/path/posix/to_file_url.ts": "08d43ea839ee75e9b8b1538376cfe95911070a655cd312bc9a00f88ef14967b6",
-    "https://deno.land/std@0.208.0/path/posix/to_namespaced_path.ts": "c9228a0e74fd37e76622cd7b142b8416663a9b87db643302fa0926b5a5c83bdc",
-    "https://deno.land/std@0.208.0/path/relative.ts": "23d45ede8b7ac464a8299663a43488aad6b561414e7cbbe4790775590db6349c",
-    "https://deno.land/std@0.208.0/path/resolve.ts": "5b184efc87155a0af9fa305ff68a109e28de9aee81fc3e77cd01380f19daf867",
-    "https://deno.land/std@0.208.0/path/separator.ts": "40a3e9a4ad10bef23bc2cd6c610291b6c502a06237c2c4cd034a15ca78dedc1f",
-    "https://deno.land/std@0.208.0/path/to_file_url.ts": "edaafa089e0bce386e1b2d47afe7c72e379ff93b28a5829a5885e4b6c626d864",
-    "https://deno.land/std@0.208.0/path/to_namespaced_path.ts": "cf8734848aac3c7527d1689d2adf82132b1618eff3cc523a775068847416b22a",
-    "https://deno.land/std@0.208.0/path/windows/_util.ts": "f32b9444554c8863b9b4814025c700492a2b57ff2369d015360970a1b1099d54",
-    "https://deno.land/std@0.208.0/path/windows/basename.ts": "8a9dbf7353d50afbc5b221af36c02a72c2d1b2b5b9f7c65bf6a5a2a0baf88ad3",
-    "https://deno.land/std@0.208.0/path/windows/common.ts": "e781d395dc76f6282e3f7dd8de13194abb8b04a82d109593141abc6e95755c8b",
-    "https://deno.land/std@0.208.0/path/windows/dirname.ts": "5c2aa541384bf0bd9aca821275d2a8690e8238fa846198ef5c7515ce31a01a94",
-    "https://deno.land/std@0.208.0/path/windows/extname.ts": "07f4fa1b40d06a827446b3e3bcc8d619c5546b079b8ed0c77040bbef716c7614",
-    "https://deno.land/std@0.208.0/path/windows/format.ts": "343019130d78f172a5c49fdc7e64686a7faf41553268961e7b6c92a6d6548edf",
-    "https://deno.land/std@0.208.0/path/windows/from_file_url.ts": "d53335c12b0725893d768be3ac6bf0112cc5b639d2deb0171b35988493b46199",
-    "https://deno.land/std@0.208.0/path/windows/glob_to_regexp.ts": "290755e18ec6c1a4f4d711c3390537358e8e3179581e66261a0cf348b1a13395",
-    "https://deno.land/std@0.208.0/path/windows/is_absolute.ts": "245b56b5f355ede8664bd7f080c910a97e2169972d23075554ae14d73722c53c",
-    "https://deno.land/std@0.208.0/path/windows/is_glob.ts": "ec4fbc604b9db8487f7b56ab0e759b24a971ab6a45f7b0b698bc39b8b9f9680f",
-    "https://deno.land/std@0.208.0/path/windows/join.ts": "e6600bf88edeeef4e2276e155b8de1d5dec0435fd526ba2dc4d37986b2882f16",
-    "https://deno.land/std@0.208.0/path/windows/join_globs.ts": "f4838d54b1f60a34a40625a3293f6e583135348be1b2974341ac04743cb26121",
-    "https://deno.land/std@0.208.0/path/windows/mod.ts": "d7040f461465c2c21c1c68fc988ef0bdddd499912138cde3abf6ad60c7fb3814",
-    "https://deno.land/std@0.208.0/path/windows/normalize.ts": "9deebbf40c81ef540b7b945d4ccd7a6a2c5a5992f791e6d3377043031e164e69",
-    "https://deno.land/std@0.208.0/path/windows/normalize_glob.ts": "344ff5ed45430495b9a3d695567291e50e00b1b3b04ea56712a2acf07ab5c128",
-    "https://deno.land/std@0.208.0/path/windows/parse.ts": "120faf778fe1f22056f33ded069b68e12447668fcfa19540c0129561428d3ae5",
-    "https://deno.land/std@0.208.0/path/windows/relative.ts": "026855cd2c36c8f28f1df3c6fbd8f2449a2aa21f48797a74700c5d872b86d649",
-    "https://deno.land/std@0.208.0/path/windows/resolve.ts": "5ff441ab18a2346abadf778121128ee71bda4d0898513d4639a6ca04edca366b",
-    "https://deno.land/std@0.208.0/path/windows/separator.ts": "ae21f27015f10510ed1ac4a0ba9c4c9c967cbdd9d9e776a3e4967553c397bd5d",
-    "https://deno.land/std@0.208.0/path/windows/to_file_url.ts": "8e9ea9e1ff364aa06fa72999204229952d0a279dbb876b7b838b2b2fea55cce3",
-    "https://deno.land/std@0.208.0/path/windows/to_namespaced_path.ts": "e0f4d4a5e77f28a5708c1a33ff24360f35637ba6d8f103d19661255ef7bfd50d"
-  }
-}
-
 
 === FILE: ./TS/m00/E.ts ===
 
@@ -5138,8 +5290,6 @@ export const C = <A, B, C>(f: (x: A) => (y: B) => C) => (y: B) => (x: A): C => f
 
 === FILE: ./TS/m32/Doctor.ts ===
 
-import { SATOSHI } from \"@/m32/SATOSHI.ts\";
-
 // Doctor implementation...
 
 
@@ -5707,8 +5857,6 @@ export function toHex(bytes: Uint8Array): string {
 
 === FILE: ./TS/m32/template.ts ===
 
-import { SATOSHI } from \"@/m32/SATOSHI.ts\";
-
 // ğŸ”— Implicit Gravity: No imports required. Dependencies are in the DNA.
 // Projection of: {DNA_EXPRESSION}
 export const {NAME} = ...;
@@ -5847,6 +5995,8 @@ if (import.meta.main) {
 
     console.log("\n
 
+ğŸŒŠ
+
 
 === FILE: ./TS/z00/I=I.ts ===
 
@@ -5961,6 +6111,8 @@ async function calculateResonance(path: string): Promise<Uint8Array> {
 async function auditNode(nodePath: string) {
     console.log(`\n
 
+ğŸŒŠ
+
 
 === FILE: ./TS/z00/autonomic_sensorium.ts ===
 
@@ -5998,6 +6150,8 @@ async function updateState(entropy: number, sentiment: string) {
 async function main() {
     console.log("
 
+ğŸŒŠ
+
 
 === FILE: ./TS/z00/bridge_node.ts ===
 
@@ -6014,6 +6168,8 @@ import {
 
 async function createBridgeNode(externalChaos: string) {
     console.log("
+
+ğŸŒŠ
 
 
 === FILE: ./TS/z00/cas.ts ===
@@ -6071,6 +6227,8 @@ export class CASStore {
   }
 }
 
+ğŸŒŠ
+
 
 === FILE: ./TS/z00/chromatic_audit.ts ===
 
@@ -6116,6 +6274,8 @@ async function chromaticAudit() {
 
     console.log("GIANT    | PHASE  | SOVEREIGN COLOR | VISUAL (Approx)");
     console.log("
+
+ğŸŒŠ
 
 
 === FILE: ./TS/z00/conformance.ts ===
@@ -6468,6 +6628,8 @@ if (import.meta.main) {
 
 ```
 
+ğŸŒŠ
+
 
 === FILE: ./TS/z00/dream.ts ===
 
@@ -6577,6 +6739,8 @@ async function main() {
 
     console.log(`\n
 
+ğŸŒŠ
+
 
 === FILE: ./TS/z00/entropy_to_stratum.ts ===
 
@@ -6615,6 +6779,8 @@ async function saveGlyph(name: string, node: SigmaNode) {
 
 async function materializeLogic() {
     console.log("
+
+ğŸŒŠ
 
 
 === FILE: ./TS/z00/generate_dashboard.ts ===
@@ -6714,6 +6880,8 @@ Status: **ACTIVE** (Orthogonal Proof required)
 \`\`\`text
 ${await getSpiral()}
 \`\`\`
+
+ğŸŒŠ
 
 
 === FILE: ./TS/z00/get_identity.ts ===
@@ -6820,6 +6988,8 @@ if (import.meta.main) {
 
 ```
 
+ğŸŒŠ
+
 
 === FILE: ./TS/z00/handshake.ts ===
 
@@ -6860,6 +7030,8 @@ const EXPECTED_HASHES: Record<string, string> = {
 
 async function handshake() {
     console.log("
+
+ğŸŒŠ
 
 
 === FILE: ./TS/z00/heal.ts ===
@@ -6932,6 +7104,8 @@ if (import.meta.main) {
 
 ```
 
+ğŸŒŠ
+
 
 === FILE: ./TS/z00/interference.ts ===
 
@@ -6986,6 +7160,8 @@ if (import.meta.main) {
     main();
 }
 ```
+
+ğŸŒŠ
 
 
 === FILE: ./TS/z00/lambda.ts ===
@@ -7276,6 +7452,8 @@ export class EvolutionLog {
   }
 }
 
+ğŸŒŠ
+
 
 === FILE: ./TS/z00/resonate.ts ===
 
@@ -7408,6 +7586,8 @@ switch (command) {
 
 ```
 
+ğŸŒŠ
+
 
 === FILE: ./TS/z00/sensorium.ts ===
 
@@ -7480,6 +7660,8 @@ async function main() {
     const sentiment = interpretSentiment(avgAm, avgEn);
 
     console.log("\n
+
+ğŸŒŠ
 
 
 === FILE: ./TS/z00/spectral_core.ts ===
@@ -7610,6 +7792,8 @@ async function main() {
 
     console.log("\n
 
+ğŸŒŠ
+
 
 === FILE: ./TS/z00/synthesize.ts ===
 
@@ -7719,6 +7903,8 @@ if (import.meta.main) {
 
 ```
 
+ğŸŒŠ
+
 
 === FILE: ./TS/z00/template.ts ===
 
@@ -7741,6 +7927,8 @@ import {
 
 async function runTests() {
     console.log("
+
+ğŸŒŠ
 
 
 === FILE: ./TS/z00/transmute.ts ===
@@ -7822,6 +8010,8 @@ async function main() {
 
     console.log("\n
 
+ğŸŒŠ
+
 
 === FILE: ./TS/z00/verify_simplex.ts ===
 
@@ -7883,6 +8073,8 @@ if (import.meta.main) {
 }
 
 ```
+
+ğŸŒŠ
 
 
 === FILE: ./TS/z00/visualize_spiral.ts ===
@@ -7965,6 +8157,8 @@ if (import.meta.main) {
 }
 
 ```
+
+ğŸŒŠ
 
 
 === FILE: ./TS/z00/wire.ts ===
@@ -21868,109 +22062,6 @@ IMPORT: 'import { %n } from "@/%p";'
 
 
 
-=== FILE: ./deno.lock ===
-
-{
-  "version": "5",
-  "remote": {
-    "https://deno.land/std@0.208.0/assert/assert.ts": "9a97dad6d98c238938e7540736b826440ad8c1c1e54430ca4c4e623e585607ee",
-    "https://deno.land/std@0.208.0/assert/assertion_error.ts": "4d0bde9b374dfbcbe8ac23f54f567b77024fb67dbb1906a852d67fe050d42f56",
-    "https://deno.land/std@0.208.0/crypto/_fnv/fnv32.ts": "e4649dfdefc5c987ed53c3c25db62db771a06d9d1b9c36d2b5cf0853b8e82153",
-    "https://deno.land/std@0.208.0/crypto/_fnv/fnv64.ts": "bfa0e4702061fdb490a14e6bf5f9168a22fb022b307c5723499469bfefca555e",
-    "https://deno.land/std@0.208.0/crypto/_fnv/mod.ts": "f956a95f58910f223e420340b7404702ecd429603acd4491fa77af84f746040c",
-    "https://deno.land/std@0.208.0/crypto/_fnv/util.ts": "accba12bfd80a352e32a872f87df2a195e75561f1b1304a4cb4f5a4648d288f9",
-    "https://deno.land/std@0.208.0/crypto/_wasm/lib/deno_std_wasm_crypto.generated.mjs": "c41c4676a3ea2a92e8fdff55434533474131e4dfac2262a6a6c81631069808d8",
-    "https://deno.land/std@0.208.0/crypto/_wasm/mod.ts": "d7b7dc54bbd6b02c16cd08e8e3d30fa9aa9692efb112a7ab5d8595827b9a0234",
-    "https://deno.land/std@0.208.0/crypto/crypto.ts": "91c67764abb640b3e2a0b46867704d02077c0b1f978f5c711e4408e5d856717d",
-    "https://deno.land/std@0.208.0/crypto/mod.ts": "e49caf22e980db882b917c48ac119e44c46ab57399cb565c2cd3138f8c33835e",
-    "https://deno.land/std@0.208.0/crypto/timing_safe_equal.ts": "f6edc08d702f660b1ab3505b74d53a9d499e34a1351f6ab70f5ce8653fee8fb7",
-    "https://deno.land/std@0.208.0/crypto/to_hash_string.ts": "5a687ffee6b54c935a84394c8f2394c2e1bf62bbff0f855b8ab6f5669e47cc8a",
-    "https://deno.land/std@0.208.0/crypto/unstable_keystack.ts": "c53d746f91a2c6844b92fe6d8670af92d4de19d12af677406700f8ad61466bde",
-    "https://deno.land/std@0.208.0/encoding/_util.ts": "f368920189c4fe6592ab2e93bd7ded8f3065b84f95cd3e036a4a10a75649dcba",
-    "https://deno.land/std@0.208.0/encoding/base64.ts": "81c0ecff5ccb402def58ca03d8bd245bd01da15a077d3362b568e991aa10f4d9",
-    "https://deno.land/std@0.208.0/encoding/base64url.ts": "b15a4c8c988362536334a31dbb75a2429346f8c0f9e2662f961567c5dd2f58e1",
-    "https://deno.land/std@0.208.0/encoding/hex.ts": "a384101d02cd87036c708f540825feb5b073c8527a00d635e48b2e69c992a5f9",
-    "https://deno.land/std@0.208.0/path/_common/assert_path.ts": "061e4d093d4ba5aebceb2c4da3318bfe3289e868570e9d3a8e327d91c2958946",
-    "https://deno.land/std@0.208.0/path/_common/basename.ts": "0d978ff818f339cd3b1d09dc914881f4d15617432ae519c1b8fdc09ff8d3789a",
-    "https://deno.land/std@0.208.0/path/_common/common.ts": "9e4233b2eeb50f8b2ae10ecc2108f58583aea6fd3e8907827020282dc2b76143",
-    "https://deno.land/std@0.208.0/path/_common/constants.ts": "e49961f6f4f48039c0dfed3c3f93e963ca3d92791c9d478ac5b43183413136e0",
-    "https://deno.land/std@0.208.0/path/_common/dirname.ts": "2ba7fb4cc9fafb0f38028f434179579ce61d4d9e51296fad22b701c3d3cd7397",
-    "https://deno.land/std@0.208.0/path/_common/format.ts": "11aa62e316dfbf22c126917f5e03ea5fe2ee707386555a8f513d27ad5756cf96",
-    "https://deno.land/std@0.208.0/path/_common/from_file_url.ts": "ef1bf3197d2efbf0297a2bdbf3a61d804b18f2bcce45548ae112313ec5be3c22",
-    "https://deno.land/std@0.208.0/path/_common/glob_to_reg_exp.ts": "5c3c2b79fc2294ec803d102bd9855c451c150021f452046312819fbb6d4dc156",
-    "https://deno.land/std@0.208.0/path/_common/normalize.ts": "2ba7fb4cc9fafb0f38028f434179579ce61d4d9e51296fad22b701c3d3cd7397",
-    "https://deno.land/std@0.208.0/path/_common/normalize_string.ts": "88c472f28ae49525f9fe82de8c8816d93442d46a30d6bb5063b07ff8a89ff589",
-    "https://deno.land/std@0.208.0/path/_common/relative.ts": "1af19d787a2a84b8c534cc487424fe101f614982ae4851382c978ab2216186b4",
-    "https://deno.land/std@0.208.0/path/_common/strip_trailing_separators.ts": "7ffc7c287e97bdeeee31b155828686967f222cd73f9e5780bfe7dfb1b58c6c65",
-    "https://deno.land/std@0.208.0/path/_common/to_file_url.ts": "a8cdd1633bc9175b7eebd3613266d7c0b6ae0fb0cff24120b6092ac31662f9ae",
-    "https://deno.land/std@0.208.0/path/_interface.ts": "6471159dfbbc357e03882c2266d21ef9afdb1e4aa771b0545e90db58a0ba314b",
-    "https://deno.land/std@0.208.0/path/_os.ts": "30b0c2875f360c9296dbe6b7f2d528f0f9c741cecad2e97f803f5219e91b40a2",
-    "https://deno.land/std@0.208.0/path/basename.ts": "04bb5ef3e86bba8a35603b8f3b69537112cdd19ce64b77f2522006da2977a5f3",
-    "https://deno.land/std@0.208.0/path/common.ts": "f4d061c7d0b95a65c2a1a52439edec393e906b40f1caf4604c389fae7caa80f5",
-    "https://deno.land/std@0.208.0/path/dirname.ts": "88a0a71c21debafc4da7a4cd44fd32e899462df458fbca152390887d41c40361",
-    "https://deno.land/std@0.208.0/path/extname.ts": "2da4e2490f3b48b7121d19fb4c91681a5e11bd6bd99df4f6f47d7a71bb6ecdf2",
-    "https://deno.land/std@0.208.0/path/format.ts": "3457530cc85d1b4bab175f9ae73998b34fd456c830d01883169af0681b8894fb",
-    "https://deno.land/std@0.208.0/path/from_file_url.ts": "e7fa233ea1dff9641e8d566153a24d95010110185a6f418dd2e32320926043f8",
-    "https://deno.land/std@0.208.0/path/glob_to_regexp.ts": "74d7448c471e293d03f05ccb968df4365fed6aaa508506b6325a8efdc01d8271",
-    "https://deno.land/std@0.208.0/path/is_absolute.ts": "67232b41b860571c5b7537f4954c88d86ae2ba45e883ee37d3dec27b74909d13",
-    "https://deno.land/std@0.208.0/path/is_glob.ts": "567dce5c6656bdedfc6b3ee6c0833e1e4db2b8dff6e62148e94a917f289c06ad",
-    "https://deno.land/std@0.208.0/path/join.ts": "98d3d76c819af4a11a81d5ba2dbb319f1ce9d63fc2b615597d4bcfddd4a89a09",
-    "https://deno.land/std@0.208.0/path/join_globs.ts": "9b84d5103b63d3dbed4b2cf8b12477b2ad415c7d343f1488505162dc0e5f4db8",
-    "https://deno.land/std@0.208.0/path/mod.ts": "3defabebc98279e62b392fee7a6937adc932a8f4dcd2471441e36c15b97b00e0",
-    "https://deno.land/std@0.208.0/path/normalize.ts": "aa95be9a92c7bd4f9dc0ba51e942a1973e2b93d266cd74f5ca751c136d520b66",
-    "https://deno.land/std@0.208.0/path/normalize_glob.ts": "674baa82e1c00b6cb153bbca36e06f8e0337cb8062db6d905ab5de16076ca46b",
-    "https://deno.land/std@0.208.0/path/parse.ts": "d87ff0deef3fb495bc0d862278ff96da5a06acf0625ca27769fc52ac0d3d6ece",
-    "https://deno.land/std@0.208.0/path/posix/_util.ts": "ecf49560fedd7dd376c6156cc5565cad97c1abe9824f4417adebc7acc36c93e5",
-    "https://deno.land/std@0.208.0/path/posix/basename.ts": "a630aeb8fd8e27356b1823b9dedd505e30085015407caa3396332752f6b8406a",
-    "https://deno.land/std@0.208.0/path/posix/common.ts": "e781d395dc76f6282e3f7dd8de13194abb8b04a82d109593141abc6e95755c8b",
-    "https://deno.land/std@0.208.0/path/posix/dirname.ts": "f48c9c42cc670803b505478b7ef162c7cfa9d8e751b59d278b2ec59470531472",
-    "https://deno.land/std@0.208.0/path/posix/extname.ts": "ee7f6571a9c0a37f9218fbf510c440d1685a7c13082c348d701396cc795e0be0",
-    "https://deno.land/std@0.208.0/path/posix/format.ts": "b94876f77e61bfe1f147d5ccb46a920636cd3cef8be43df330f0052b03875968",
-    "https://deno.land/std@0.208.0/path/posix/from_file_url.ts": "b97287a83e6407ac27bdf3ab621db3fccbf1c27df0a1b1f20e1e1b5acf38a379",
-    "https://deno.land/std@0.208.0/path/posix/glob_to_regexp.ts": "6ed00c71fbfe0ccc35977c35444f94e82200b721905a60bd1278b1b768d68b1a",
-    "https://deno.land/std@0.208.0/path/posix/is_absolute.ts": "159900a3422d11069d48395568217eb7fc105ceda2683d03d9b7c0f0769e01b8",
-    "https://deno.land/std@0.208.0/path/posix/is_glob.ts": "ec4fbc604b9db8487f7b56ab0e759b24a971ab6a45f7b0b698bc39b8b9f9680f",
-    "https://deno.land/std@0.208.0/path/posix/join.ts": "0c0d84bdc344876930126640011ec1b888e6facf74153ffad9ef26813aa2a076",
-    "https://deno.land/std@0.208.0/path/posix/join_globs.ts": "f4838d54b1f60a34a40625a3293f6e583135348be1b2974341ac04743cb26121",
-    "https://deno.land/std@0.208.0/path/posix/mod.ts": "f1b08a7f64294b7de87fc37190d63b6ce5b02889af9290c9703afe01951360ae",
-    "https://deno.land/std@0.208.0/path/posix/normalize.ts": "11de90a94ab7148cc46e5a288f7d732aade1d616bc8c862f5560fa18ff987b4b",
-    "https://deno.land/std@0.208.0/path/posix/normalize_glob.ts": "10a1840c628ebbab679254d5fa1c20e59106102354fb648a1765aed72eb9f3f9",
-    "https://deno.land/std@0.208.0/path/posix/parse.ts": "199208f373dd93a792e9c585352bfc73a6293411bed6da6d3bc4f4ef90b04c8e",
-    "https://deno.land/std@0.208.0/path/posix/relative.ts": "e2f230608b0f083e6deaa06e063943e5accb3320c28aef8d87528fbb7fe6504c",
-    "https://deno.land/std@0.208.0/path/posix/resolve.ts": "51579d83159d5c719518c9ae50812a63959bbcb7561d79acbdb2c3682236e285",
-    "https://deno.land/std@0.208.0/path/posix/separator.ts": "0b6573b5f3269a3164d8edc9cefc33a02dd51003731c561008c8bb60220ebac1",
-    "https://deno.land/std@0.208.0/path/posix/to_file_url.ts": "08d43ea839ee75e9b8b1538376cfe95911070a655cd312bc9a00f88ef14967b6",
-    "https://deno.land/std@0.208.0/path/posix/to_namespaced_path.ts": "c9228a0e74fd37e76622cd7b142b8416663a9b87db643302fa0926b5a5c83bdc",
-    "https://deno.land/std@0.208.0/path/relative.ts": "23d45ede8b7ac464a8299663a43488aad6b561414e7cbbe4790775590db6349c",
-    "https://deno.land/std@0.208.0/path/resolve.ts": "5b184efc87155a0af9fa305ff68a109e28de9aee81fc3e77cd01380f19daf867",
-    "https://deno.land/std@0.208.0/path/separator.ts": "40a3e9a4ad10bef23bc2cd6c610291b6c502a06237c2c4cd034a15ca78dedc1f",
-    "https://deno.land/std@0.208.0/path/to_file_url.ts": "edaafa089e0bce386e1b2d47afe7c72e379ff93b28a5829a5885e4b6c626d864",
-    "https://deno.land/std@0.208.0/path/to_namespaced_path.ts": "cf8734848aac3c7527d1689d2adf82132b1618eff3cc523a775068847416b22a",
-    "https://deno.land/std@0.208.0/path/windows/_util.ts": "f32b9444554c8863b9b4814025c700492a2b57ff2369d015360970a1b1099d54",
-    "https://deno.land/std@0.208.0/path/windows/basename.ts": "8a9dbf7353d50afbc5b221af36c02a72c2d1b2b5b9f7c65bf6a5a2a0baf88ad3",
-    "https://deno.land/std@0.208.0/path/windows/common.ts": "e781d395dc76f6282e3f7dd8de13194abb8b04a82d109593141abc6e95755c8b",
-    "https://deno.land/std@0.208.0/path/windows/dirname.ts": "5c2aa541384bf0bd9aca821275d2a8690e8238fa846198ef5c7515ce31a01a94",
-    "https://deno.land/std@0.208.0/path/windows/extname.ts": "07f4fa1b40d06a827446b3e3bcc8d619c5546b079b8ed0c77040bbef716c7614",
-    "https://deno.land/std@0.208.0/path/windows/format.ts": "343019130d78f172a5c49fdc7e64686a7faf41553268961e7b6c92a6d6548edf",
-    "https://deno.land/std@0.208.0/path/windows/from_file_url.ts": "d53335c12b0725893d768be3ac6bf0112cc5b639d2deb0171b35988493b46199",
-    "https://deno.land/std@0.208.0/path/windows/glob_to_regexp.ts": "290755e18ec6c1a4f4d711c3390537358e8e3179581e66261a0cf348b1a13395",
-    "https://deno.land/std@0.208.0/path/windows/is_absolute.ts": "245b56b5f355ede8664bd7f080c910a97e2169972d23075554ae14d73722c53c",
-    "https://deno.land/std@0.208.0/path/windows/is_glob.ts": "ec4fbc604b9db8487f7b56ab0e759b24a971ab6a45f7b0b698bc39b8b9f9680f",
-    "https://deno.land/std@0.208.0/path/windows/join.ts": "e6600bf88edeeef4e2276e155b8de1d5dec0435fd526ba2dc4d37986b2882f16",
-    "https://deno.land/std@0.208.0/path/windows/join_globs.ts": "f4838d54b1f60a34a40625a3293f6e583135348be1b2974341ac04743cb26121",
-    "https://deno.land/std@0.208.0/path/windows/mod.ts": "d7040f461465c2c21c1c68fc988ef0bdddd499912138cde3abf6ad60c7fb3814",
-    "https://deno.land/std@0.208.0/path/windows/normalize.ts": "9deebbf40c81ef540b7b945d4ccd7a6a2c5a5992f791e6d3377043031e164e69",
-    "https://deno.land/std@0.208.0/path/windows/normalize_glob.ts": "344ff5ed45430495b9a3d695567291e50e00b1b3b04ea56712a2acf07ab5c128",
-    "https://deno.land/std@0.208.0/path/windows/parse.ts": "120faf778fe1f22056f33ded069b68e12447668fcfa19540c0129561428d3ae5",
-    "https://deno.land/std@0.208.0/path/windows/relative.ts": "026855cd2c36c8f28f1df3c6fbd8f2449a2aa21f48797a74700c5d872b86d649",
-    "https://deno.land/std@0.208.0/path/windows/resolve.ts": "5ff441ab18a2346abadf778121128ee71bda4d0898513d4639a6ca04edca366b",
-    "https://deno.land/std@0.208.0/path/windows/separator.ts": "ae21f27015f10510ed1ac4a0ba9c4c9c967cbdd9d9e776a3e4967553c397bd5d",
-    "https://deno.land/std@0.208.0/path/windows/to_file_url.ts": "8e9ea9e1ff364aa06fa72999204229952d0a279dbb876b7b838b2b2fea55cce3",
-    "https://deno.land/std@0.208.0/path/windows/to_namespaced_path.ts": "e0f4d4a5e77f28a5708c1a33ff24360f35637ba6d8f103d19661255ef7bfd50d"
-  }
-}
-
-
 === FILE: ./file_list.txt ===
 
 ./file_list.txt
@@ -22185,7 +22276,6 @@ IMPORT: 'import { %n } from "@/%p";'
 ./sigma/z00/PRIME_RADIANT_VISION.sigma
 ./sigma/z00/sprout.sigma
 ./sigma/z00/Ouroboros.sigma
-./deno.lock
 ./JSON/m00/deno.json
 ./JSON/z00/deno.json
 ./JSON/z00/conformance_suite.json
@@ -22225,7 +22315,6 @@ IMPORT: 'import { %n } from "@/%p";'
 ./TS/m24/F=KI.ts
 ./TS/m24/M=WI.ts
 ./TS/m24/T=CI.ts
-./TS/deno.lock
 ./TS/m32/B=B.ts
 ./TS/m32/C=C.ts
 ./TS/m32/Universal.ts
@@ -29606,11 +29695,12 @@ Defines the standard test vectors for math, interference, and serialization pari
 === FILE: ./sigma/z00/deno.sigma ===
 
 Î£-GLYPH SEED: deno
-ğŸ§¬IDENTITY: 3805ccb5020671540b05e6d62bea002197297eea7d1a7ff3baf4521d3554a4a6
+ğŸ§¬IDENTITY: 2ba3b5cd0affe2f3aa5c5e2c3646be20bb933b59e4b0e4964e6263a1bfcc337e
 
 ---
 # === ğŸ§¬ IDENTITY ===
 ğŸ§¬: deno
+DNA: deno.lock
 DNA: deno.lock
 âš›ï¸: 0000000000000000000000000000000000000000000000000000000000000000
 ğŸ¨: #FFFFFF
@@ -29632,6 +29722,10 @@ DNA: deno.lock
 Environment Lockfile for Deterministic Execution.
 
 ğŸŒŠ
+
+@[link]
+lock: ./deno.lock
+json: ./deno.json
 
 @[lock]
 {
@@ -29734,7 +29828,34 @@ Environment Lockfile for Deterministic Execution.
   }
 }
 
-ğŸ”’: 3805ccb5020671540b05e6d62bea002197297eea7d1a7ff3baf4521d3554a4a6
+@[json]
+{
+  "compilerOptions": {
+    "lib": [
+      "deno.ns",
+      "dom"
+    ],
+    "strict": true
+  },
+  "imports": {
+    "@/": "./TS/"
+  },
+  "lint": {
+    "rules": {
+      "tags": [
+        "recommended"
+      ]
+    }
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 80,
+    "indentWidth": 2,
+    "singleQuote": false
+  }
+}
+
+ğŸ”’: 2ba3b5cd0affe2f3aa5c5e2c3646be20bb933b59e4b0e4964e6263a1bfcc337e
 
 
 === FILE: ./sigma/z00/detect_missing_links.sigma ===

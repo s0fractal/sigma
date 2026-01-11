@@ -1,5 +1,3 @@
-[SATOSHI](m32/SATOSHI)
-
 ```markdown
 # 🎱 Glyph Protocol: Operators
 
@@ -9,3 +7,5 @@
 
 | Glyph | Name | Meaning | Context Example |
 | :
+
+🌊

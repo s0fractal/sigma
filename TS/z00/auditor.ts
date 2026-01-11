@@ -35,3 +35,5 @@ async function calculateResonance(path: string): Promise<Uint8Array> {
 
 async function auditNode(nodePath: string) {
     console.log(`\n
+
+🌊

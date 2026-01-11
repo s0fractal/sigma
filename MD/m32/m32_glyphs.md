@@ -1,5 +1,3 @@
-[SATOSHI](m32/SATOSHI)
-
 ```markdown
 # m32 GLYPH Stratum: Memory of the Mesh
 
@@ -11,3 +9,5 @@ It represents the "Ground State" of the system—historical truth-atoms folded i
 - **LEIBNIZ**, **TESLA**, **EINSTEIN**: Scientific pillars.
 - **CHROMA**: Primary harmonic oscillators.
 ```
+
+🌊

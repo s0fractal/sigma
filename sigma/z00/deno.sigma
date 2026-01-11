@@ -1,9 +1,10 @@
 Σ-GLYPH SEED: deno
-🧬IDENTITY: 3805ccb5020671540b05e6d62bea002197297eea7d1a7ff3baf4521d3554a4a6
+🧬IDENTITY: 2ba3b5cd0affe2f3aa5c5e2c3646be20bb933b59e4b0e4964e6263a1bfcc337e
 
 ---
 # === 🧬 IDENTITY ===
 🧬: deno
+DNA: deno.lock
 DNA: deno.lock
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
@@ -25,6 +26,10 @@ DNA: deno.lock
 Environment Lockfile for Deterministic Execution.
 
 🌊
+
+@[link]
+lock: ./deno.lock
+json: ./deno.json
 
 @[lock]
 {
@@ -127,4 +132,31 @@ Environment Lockfile for Deterministic Execution.
   }
 }
 
-🔒: 3805ccb5020671540b05e6d62bea002197297eea7d1a7ff3baf4521d3554a4a6
+@[json]
+{
+  "compilerOptions": {
+    "lib": [
+      "deno.ns",
+      "dom"
+    ],
+    "strict": true
+  },
+  "imports": {
+    "@/": "./TS/"
+  },
+  "lint": {
+    "rules": {
+      "tags": [
+        "recommended"
+      ]
+    }
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 80,
+    "indentWidth": 2,
+    "singleQuote": false
+  }
+}
+
+🔒: 2ba3b5cd0affe2f3aa5c5e2c3646be20bb933b59e4b0e4964e6263a1bfcc337e

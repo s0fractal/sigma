@@ -17,6 +17,54 @@ import scr1
 SIGMA_ROOT = protocol.ROOT
 SOURCE_DIR = SIGMA_ROOT / "sigma"
 
+ALLOWLIST_ROOT = {".gitignore", "README.md", "LICENSE", "Makefile", "sigma_full_codebase.txt", "file_list.txt", "standards_v2_3.md"}
+ALLOWLIST_DIRS = {"sigma", "PY", "TS", "RS", "SH", "MD", "LOCK", "JSON", "GLYPH", "DNA", "STORAGE", "TXT", "test_cas", "test_cas_remote"}
+
+def audit_shrapnel(root: Path = SIGMA_ROOT) -> list[str]:
+    """Projection S: Detects non-native files (Shrapnel) in the Lattice."""
+    violations = []
+    
+    # 1. Root Scan
+    for item in root.iterdir():
+        if item.name.startswith(".git"): continue 
+        if item.name == ".DS_Store": continue
+        
+        # Symlinks are native to the projection
+        if item.is_symlink(): continue
+        
+        if item.is_dir():
+            if item.name not in ALLOWLIST_DIRS:
+               violations.append(f"Root Shrapnel (Dir): {item.name}")
+        else:
+            if item.name not in ALLOWLIST_ROOT and item.suffix != ".sigma":
+                violations.append(f"Root Shrapnel (File): {item.name}")
+
+    # 2. Projection Scan
+    projections = {
+        "TS": ".ts", "RS": ".rs", "SH": ".sh", "PY": ".py"
+    }
+    
+    for proj, ext in projections.items():
+        proj_dir = root / proj
+        if not proj_dir.exists(): continue
+        
+        for path in proj_dir.rglob("*"):
+            if path.is_dir(): continue
+            if path.name == ".DS_Store": continue
+            if "__pycache__" in path.parts: continue # Ignore deep pycache
+            
+            # Special exceptions for PY/z00 (Core Library)
+            if proj == "PY" and path.parent.name == "z00":
+                if path.suffix in [".json", ".txt", ".py"]: continue
+            
+            # Allow READMEs everywhere
+            if path.suffix == ".md": continue
+
+            if path.suffix != ext and path.suffix != ".md":
+                 violations.append(f"Projection Shrapnel in {proj}: {path.relative_to(root)}")
+
+    return violations
+
 def audit_lattice(fix=False, source_dir: Path = SOURCE_DIR):
     violations = []
     print(f"🛡️  Guarding Lattice (SCR-1 Library Compliance) | Fix={fix}...")
@@ -93,6 +141,15 @@ def audit_lattice(fix=False, source_dir: Path = SOURCE_DIR):
             
     print(f"\n🌀 Lattice Resonance Hash: {lattice_hasher.hexdigest()}")
     print(f"📡 Protocol Version: {protocol.VERSION}")
+
+    # Run Shrapnel Audit
+    shrapnel = audit_shrapnel()
+    if shrapnel:
+        print("\n🔴 SHRAPNEL DETECTED (Projection S Violation):")
+        for s in shrapnel:
+            print(f"   {s}")
+        violations.extend(shrapnel)
+
     return violations
 
 def main():

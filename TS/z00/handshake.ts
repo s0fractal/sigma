@@ -35,3 +35,5 @@ const EXPECTED_HASHES: Record<string, string> = {
 
 async function handshake() {
     console.log("
+
+🌊

@@ -67,3 +67,5 @@ async function main() {
     const sentiment = interpretSentiment(avgAm, avgEn);
 
     console.log("\n
+
+🌊

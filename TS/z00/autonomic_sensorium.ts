@@ -31,3 +31,5 @@ async function updateState(entropy: number, sentiment: string) {
 
 async function main() {
     console.log("
+
+🌊
