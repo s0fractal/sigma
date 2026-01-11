@@ -16,3 +16,8 @@ __pycache__/
 # Local/Temp
 /TXT/
 /STORAGE/
+
+# Test artifacts
+/test_cas/
+/test_cas_remote/
+

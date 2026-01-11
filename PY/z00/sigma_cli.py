@@ -160,11 +160,18 @@ def main():
     elif args.command == "check":
         violations = guard.audit_lattice(fix=args.fix)
         if violations:
+            # Check if shrapnel was detected
+            has_shrapnel = any("Shrapnel" in v for v in violations)
+            if has_shrapnel:
+                print("\n🔴 SHRAPNEL DETECTED - System integrity compromised.")
+            
             if args.strict:
                 print("\n❌ STRICT MODE: Dissonance detected. Blocking evolution.")
                 sys.exit(1)
             else:
                 print(f"\n⚠️  Total Violations: {len(violations)}")
+                # Always exit with code 1 if violations exist
+                sys.exit(1)
     elif args.command == "test":
         if args.suite == "path-check": cmd_path_check()
     elif args.command == "calc":

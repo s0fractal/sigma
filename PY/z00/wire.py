@@ -24,3 +24,5 @@ def decode_packet(data: bytes) -> tuple[int, bytes]:
         raise ValueError("Wire Corruption: Checksum mismatch")
     
     return ptype, payload
+
+# Σ-PoI: 1c9b567c331fd4395c67cd0786d17ce2773b0e8f824b97dabc07d403306fdb5d

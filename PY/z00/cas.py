@@ -30,3 +30,5 @@ class CASStore:
 
     def exists(self, h: str) -> bool:
         return self._get_path(h).exists()
+
+# Σ-PoI: 4bc1ef65242804362931bf5b129e1363b76ff8dbadfd9f751809f906daf5c9d9

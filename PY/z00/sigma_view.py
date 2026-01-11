@@ -17,3 +17,5 @@ def read_frontmatter(text: str) -> str:
     parts = text.split("
 
 🌊
+
+# Σ-PoI: 7d2f7aeb67dd0e7624179ec0159a10ae91332c5744962c4fc79cd4acc92c5ef1

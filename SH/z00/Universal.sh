@@ -31,3 +31,5 @@
     fi
 }
 ```
+
+# Σ-PoI: 6792bf0b57b18bed654bb741a76c311c70fd5f2eb3c8d7346ee9818e7a71cd03

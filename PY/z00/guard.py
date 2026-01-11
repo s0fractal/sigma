@@ -18,40 +18,53 @@ SIGMA_ROOT = protocol.ROOT
 SOURCE_DIR = SIGMA_ROOT / "sigma"
 
 ALLOWLIST_ROOT = {".gitignore", "README.md", "LICENSE", "Makefile", "file_list.txt"}
-ALLOWLIST_DIRS = {"sigma", "PY", "TS", "RS", "SH", "MD", "LOCK", "JSON", "GLYPH", "DNA", "STORAGE", "TXT", "test_cas", "test_cas_remote"}
+ALLOWLIST_DIRS = {"sigma", "PY", "TS", "RS", "SH", "MD", "LOCK", "JSON", "GLYPH", "DNA", "TXT"}
 
-def audit_shrapnel(root: Path = SIGMA_ROOT) -> list[str]:
+def check_shrapnel(root: Path = SIGMA_ROOT) -> list[str]:
     """Projection S: Detects non-native files (Shrapnel) in the Lattice."""
     violations = []
     
-    # 1. Root Scan
-    for item in root.iterdir():
+    # 1. Root Scan (Sorted)
+    # prompt: only dim folders and whitelist (README.md, .gitignore, LICENSE, Makefile)
+    # plus symlinks for configs
+    strict_root_whitelist = {".gitignore", "README.md", "LICENSE", "Makefile"}
+    
+    # Sort for deterministic reporting
+    items = sorted(list(root.iterdir()), key=lambda p: p.name)
+    
+    for item in items:
         if item.name.startswith(".git"): continue 
         if item.name == ".DS_Store": continue
         
-        # Symlinks are native to the projection
+        # Symlinks allowed (e.g. deno.json -> JSON/...)
         if item.is_symlink(): continue
         
         if item.is_dir():
+            # Allowlist dirs: Dim folders + Tools
             if item.name not in ALLOWLIST_DIRS:
                violations.append(f"Root Shrapnel (Dir): {item.name}")
         else:
-            if item.name not in ALLOWLIST_ROOT and item.suffix != ".sigma":
+            if item.name not in strict_root_whitelist and item.suffix != ".sigma":
                 violations.append(f"Root Shrapnel (File): {item.name}")
 
-    # 2. Projection Scan
+    # 2. Projection Scan (Sorted)
     projections = {
         "TS": ".ts", "RS": ".rs", "SH": ".sh", "PY": ".py"
     }
     
-    for proj, ext in projections.items():
+    # Sorted keys for determinism
+    for proj in sorted(projections.keys()):
+        ext = projections[proj]
         proj_dir = root / proj
         if not proj_dir.exists(): continue
         
-        for path in proj_dir.rglob("*"):
+        # Sorted rglob
+        all_files = sorted(list(proj_dir.rglob("*")), key=lambda p: str(p))
+        
+        for path in all_files:
             if path.is_dir(): continue
             if path.name == ".DS_Store": continue
-            if "__pycache__" in path.parts: continue # Ignore deep pycache
+            if "__pycache__" in path.parts: continue 
             
             # Special exceptions for PY/z00 (Core Library)
             if proj == "PY" and path.parent.name == "z00":
@@ -143,7 +156,7 @@ def audit_lattice(fix=False, source_dir: Path = SOURCE_DIR):
     print(f"📡 Protocol Version: {protocol.VERSION}")
 
     # Run Shrapnel Audit
-    shrapnel = audit_shrapnel()
+    shrapnel = check_shrapnel()
     if shrapnel:
         print("\n🔴 SHRAPNEL DETECTED (Projection S Violation):")
         for s in shrapnel:

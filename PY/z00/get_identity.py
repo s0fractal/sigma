@@ -9,3 +9,5 @@ def get_identity(text: str, glyph_name: str) -> bytes:
     content = first_block_match.group(1).strip() if first_block_match else glyph_name
     return hashlib.sha256(content.encode("utf-8")).digest()
 ```
+
+# Σ-PoI: 0c8ca15da615017725adcb5c9b0bf2054b2f5a0230f010995228958a4a300cf2

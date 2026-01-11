@@ -14,3 +14,5 @@ While `.sigma` files are human-readable seeds, `.glyph` files are 40-byte binary
 ```
 
 🌊
+
+<!-- Σ-PoI: dd9228e630f757d84602de0916f2682fa7d8a415221f5f7e3da59ee81474e0c2 -->

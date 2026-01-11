@@ -178,3 +178,5 @@ def collapse_edges(dim: str | None):
         print(f"
 
 🌊
+
+# Σ-PoI: fc219defa43f0cae0a2c988b0d053f66b19ee57025bb7535ae82d7f6acc26a83

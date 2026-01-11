@@ -37,3 +37,5 @@ class EvolutionLog:
             if hashlib.sha256(event_str.encode()).hexdigest() != h: return False
             expected_prev = h
         return True
+
+# Σ-PoI: b32237e8a1488bb987fcdcbd19c559839cdd53bea8bf5198cdaf5d62663b0f6e

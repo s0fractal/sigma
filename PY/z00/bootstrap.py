@@ -19,3 +19,5 @@ def parse_frontmatter(path: Path) -> dict:
     parts = text.split("
 
 🌊
+
+# Σ-PoI: fb960528d84ae4efb664939051cb1d0e9e497cf94414e0b8a6276ecc1c645dfe

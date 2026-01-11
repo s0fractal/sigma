@@ -15,3 +15,5 @@ This intent serves as the **Psychohistorical Engine** of the Σ-GLYPH Citadel. H
 ```
 
 🌊
+
+<!-- Σ-PoI: 7a3fe2cb6147d819361a415c0360fdfdb4a837cf4f56dbd7c8e06c12dd45d43f -->

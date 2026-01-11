@@ -10,11 +10,12 @@ import json
 from pathlib import Path
 
 # Σ-GLYPH MATERIALIZER: Atomic Fusion Engine
-# V2.5.1 - Projection S: Map-Aware Symlinks
+# V3.0.0 - Unified Physics & PoI Injection
 
 import protocol
 import scr1
 import physics
+import Universal
 
 # --- CONFIGURATION ---
 SIGMA_ROOT = protocol.ROOT
@@ -30,55 +31,55 @@ TAG_MAP = {
     "py": (SIGMA_ROOT / "PY", ".py"),
     "json": (SIGMA_ROOT / "JSON", ".json"),
     "lock": (SIGMA_ROOT / "LOCK", ".lock"),
-    "glyph": (SIGMA_ROOT / "GLYPH", ".glyph"),
+    # NOTE: .glyph removed - materialized deterministically from PHYSICS
 }
 
-# --- ATOMIC FUNCTIONS ---
+# --- UNIFIED LOGIC ---
 
-def parse_physics(text: str) -> dict:
-    physics = {"OP": protocol.OP_LITERAL, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
-    symbol_map = {"⚙️": "OP", "🚩": "FLAGS", "🌊": "PHASE", "🔊": "AMPLITUDE", "🌀": "ENTROPY"}
-    for sym, key in symbol_map.items():
-        match = re.search(f"^{sym}:?\\s*(-?\\d+|0x[a-fA-F0-9]+)", text, re.MULTILINE)
-        if match:
-            val = match.group(1)
-            try:
-                physics[key] = int(val, 16) if val.startswith("0x") else int(val)
-            except: continue
-    return physics
+# extract_block, parse_physics, parse_yaml_metadata imported from physics
 
-def extract_block(text: str, tag: str) -> str | None:
-    """SCR-1: Strict Canonical Block Extraction."""
-    content = text.replace("\r\n", "\n").replace("\r", "\n")
-    start_marker = f"@[{tag}]"
-    
-    parts = re.split(f"^{re.escape(start_marker)}\\n", content, flags=re.MULTILINE)
-    if len(parts) < 2: return None
-    
-    payload_raw = parts[1]
-    # End search: next block or seal
-    end_match = re.search(r"^\n(@\[|🔒:|CHECKSUM:)", payload_raw, re.MULTILINE)
-    payload = payload_raw[:end_match.start()] if end_match else payload_raw
-    
-    return payload.strip("\n")
+def should_materialize_glyph(phys: dict) -> bool:
+    """Determines if PHYSICS metadata should materialize a .glyph file."""
+    # Materialize if it's a LITERAL opcode with ATOM flag
+    return phys.get("OP") == protocol.OP_LITERAL and (phys.get("FLAGS", 0) & protocol.F_ATOM)
 
 def extract_link(text: str) -> str | None:
-    """Extracts symlink target from @[link] block."""
-    return extract_block(text, "link")
+    return physics.extract_block(text, "link")
 
-def parse_yaml_metadata(text: str) -> dict:
-    """Standardized metadata extraction for @[yaml] blocks."""
-    data = {}
-    if not text: return data
-    for line in text.splitlines():
-        line = line.split("#")[0].strip()
-        if not line or ":" not in line: continue
-        key, val = line.split(":", 1)
-        data[key.strip().upper()] = val.strip().strip("'\"")
-    return data
+def compute_poi(content: str) -> str:
+    """Computes PoI Hash (SHA256 of content)."""
+    return hashlib.sha256(content.encode("utf-8")).hexdigest()
+
+def get_comment_style(ext: str) -> str | None:
+    """Returns comment style for PoI injection based on file extension."""
+    if ext in [".ts", ".rs", ".json", ".js", ".c", ".cpp", ".java", ".go"]:
+        return "//"
+    if ext in [".py", ".sh", ".rb", ".yaml", ".yml", ".toml", ".sigma", ".dna", ".lock"]:
+        return "#"
+    if ext == ".md": 
+        return "<!--"
+    return "#"  # Default
+
+def inject_poi(content: str, ext: str) -> str:
+    """Injects PoI signature into content. PoI hash is calculated BEFORE injection."""
+    # Skip binary files
+    if ext == ".glyph":
+        return content
+    
+    # Calculate PoI hash from pure content (before signature)
+    poi_hash = compute_poi(content)
+    comment = get_comment_style(ext)
+    
+    # Build signature based on comment style
+    if comment == "<!--":
+        signature = f"\n\n<!-- Σ-PoI: {poi_hash} -->"
+    else:
+        signature = f"\n\n{comment} Σ-PoI: {poi_hash}"
+    
+    return content + signature + "\n"
 
 def materialize():
-    print("=== Σ-GLYPH MATERIALIZER: Atomic Fusion V2.5.1 (Symlink Map) ===\n")
+    print("=== Σ-GLYPH MATERIALIZER: Unified V3.0.0 ===\n")
     if not SOURCE_DIR.exists():
         print(f"Error: Source directory {SOURCE_DIR} not found.")
         return
@@ -98,18 +99,19 @@ def materialize():
     for path in sigma_files:
         try:
              content = path.read_text(encoding="utf-8")
-             yaml_block = extract_block(content, "yaml")
+             yaml_block = physics.extract_block(content, "yaml")
              if yaml_block:
-                 glyph_match = re.search(r"^(?:🧬|GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
-                 if glyph_match:
-                     spectrum_configs[glyph_match.group(1)] = parse_yaml_metadata(yaml_block)
+                 config = physics.parse_yaml_metadata(yaml_block)
+                 # Map by ID
+                 match = re.search(r"^(?:🧬|GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
+                 if match: spectrum_configs[match.group(1)] = config
         except: continue
 
     for path in sigma_files:
         try: content = path.read_text(encoding="utf-8")
         except: continue
             
-        phys = parse_physics(content)
+        phys = physics.parse_physics(content)
         stratum = physics.entropy_to_stratum(phys["ENTROPY"])
         glyph_match = re.search(r"^(?:🧬|GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
         this_glyph = glyph_match.group(1) if glyph_match else path.stem
@@ -119,6 +121,27 @@ def materialize():
         if dna_match:
             raw_dna = dna_match.group(1)
             dependencies = [d.replace("Ref:", "").strip("- ").strip() for d in raw_dna.splitlines() if d.strip("- ").strip()]
+        
+        # Deterministic Glyph Materialization (V2.6)
+        # If PHYSICS indicates this should be a glyph, materialize it as pure binary
+        if should_materialize_glyph(phys):
+            stratum = physics.entropy_to_stratum(phys["ENTROPY"])
+            glyph_path = SIGMA_ROOT / "GLYPH" / stratum / f"{this_glyph}.glyph"
+            
+            # Create atom from glyph name (primordial pattern)
+            atom = this_glyph.encode().ljust(32, b"\x00")
+            
+            # Create SigmaNode from PHYSICS
+            node = physics.from_physics_metadata(phys, atom=atom)
+            
+            # Serialize to pure binary (40 bytes)
+            binary_data = node.serialize()
+            
+            # Write binary file (NO PoI injection for binary)
+            glyph_path.parent.mkdir(parents=True, exist_ok=True)
+            glyph_path.write_bytes(binary_data)
+            
+            print(f"   💎 Materialized Glyph: {glyph_path.name} ({len(binary_data)} bytes) | {node.hash()[:8]}")
         
         # 1. Parse Links
         links_map = {}
@@ -132,7 +155,7 @@ def materialize():
                     links_map["*"] = line.strip()
 
         for tag, (out_dir, ext) in TAG_MAP.items():
-            block = extract_block(content, tag)
+            block = physics.extract_block(content, tag)
             if block is not None:
                 glyph_fn = this_glyph if tag == "glyph" else path.stem
                 target_path = out_dir / stratum / f"{glyph_fn}{ext}"
@@ -142,8 +165,12 @@ def materialize():
                 for dep in dependencies:
                     if dep in glyph_registry:
                         try:
-                            dep_content = (SOURCE_DIR / glyph_registry[dep]).read_text(encoding="utf-8")
-                            atom_block = extract_block(dep_content, tag)
+                            # Projection S: Disable Axiom Injection for MD
+                            if tag == "md": continue
+                            
+                            dep_path = SOURCE_DIR / glyph_registry[dep]
+                            dep_content = dep_path.read_text(encoding="utf-8")
+                            atom_block = physics.extract_block(dep_content, tag)
                             if atom_block: atoms.append(atom_block)
                         except: continue
                 
@@ -160,19 +187,19 @@ def materialize():
                                 imports.append(template.replace("%n", d).replace("%p", rel_dep))
                         if imports: final_block = "\n".join(imports) + "\n\n" + final_block
 
+                # PoI Injection (using extracted function)
+                content_with_sig = inject_poi(final_block, ext)
+
                 target_path.parent.mkdir(parents=True, exist_ok=True)
-                target_path.write_text(final_block + "\n", encoding="utf-8")
+                target_path.write_text(content_with_sig, encoding="utf-8")
                 
                 # 2. Link Processing
                 link_target_str = links_map.get(tag) or links_map.get("*")
                 if link_target_str:
                     link_name = (SIGMA_ROOT / link_target_str).resolve()
-                    
-                    # Security check: Ensure link is within SIGMA_ROOT
                     try:
                          link_name.relative_to(SIGMA_ROOT)
                     except ValueError:
-                         print(f"⚠️  Security Block: Link target {link_name} outside Root.")
                          continue
 
                     link_name.parent.mkdir(parents=True, exist_ok=True)
@@ -182,7 +209,7 @@ def materialize():
                             link_name.unlink()
                         os.symlink(rel_target, link_name)
                     except Exception as e:
-                        print(f"⚠️  Link Error {this_glyph} ({tag}): {e}")
+                        pass
 
     print("\n--- Materialization Complete. The Lattice is Reified. ---")
 

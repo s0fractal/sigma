@@ -23,3 +23,5 @@ sigma_wipe() {
     git add .
     git commit -m "Σ: GENESIS (t=0)"
 }
+
+# Σ-PoI: cddf7b011c065d8192c9703b2f8167d270e27260f413c65488c8d651e35a2d6b

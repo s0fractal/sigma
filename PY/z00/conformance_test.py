@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+print("DEBUG: Conformance Test Starting...")
 import sys
 import json
 import hashlib
