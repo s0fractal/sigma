@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: C
-DNA: C
+DNA: - SATOSHI - I - B
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000005
 🎨: #00FF7F
 
@@ -17,8 +17,6 @@ DNA: C
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
   - SATOSHI
-  - I
-  - B
 ---
 
 # C - Exchange Axiom
@@ -28,26 +26,7 @@ C f x y = f y x.
 
 🌊
 
-@[ts]
-export const C = <A, B, C>(f: (x: A) => (y: B) => C) => (y: B) => (x: A): C => f(x)(y);
-
-@[rs]
-pub fn C<A, B, C, F>(f: F, y: B, x: A) -> C
-where
-    F: Fn(A) -> Box<dyn Fn(B) -> C>,
-{
-    f(x)(y)
-}
-
-@[sh]
-C() {
-    local f="$1"
-    local x="$2"
-    local y="$3"
-    echo "C-Exchange: $f $y $x"
-}
-
 @[dna]
-C
+- SATOSHI - I - B
 
 🔒: VALIDATING...

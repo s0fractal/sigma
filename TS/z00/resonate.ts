@@ -123,3 +123,7 @@ switch (command) {
     default:
         console.log("Usage: resonate <audit|seal|check>");
 }
+
+```
+
+🌊

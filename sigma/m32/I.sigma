@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: I
-DNA: I
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FF00FF
 
@@ -26,18 +26,7 @@ I x = x.
 
 🌊
 
-@[ts]
-export const I = <T>(x: T): T => x;
-
-@[rs]
-pub fn I<T>(x: T) -> T { x }
-
-@[sh]
-I() {
-    printf '%s\n' "$1"
-}
-
 @[dna]
-I
+- SATOSHI
 
 🔒: VALIDATING...

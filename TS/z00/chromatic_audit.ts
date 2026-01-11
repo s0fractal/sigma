@@ -1,3 +1,4 @@
+
 import {
     hashNode,
     toHex,
@@ -37,24 +38,6 @@ async function chromaticAudit() {
     }
 
     console.log("GIANT    | PHASE  | SOVEREIGN COLOR | VISUAL (Approx)");
-    console.log("---------|--------|-----------------|----------------");
-    results.forEach(r => {
-        const visual = getAnsiColor(r.hex);
-        console.log(`${r.name.padEnd(8)} | ${r.ph.toString().padStart(6)} | ${r.hex.padEnd(15)} | ${visual} ■■■\x1b[0m`);
-    });
+    console.log("
 
-    console.log("\n[INTUITION]:");
-    console.log("- Does the color 'feel' like the entity?");
-    console.log("- Is there a topological drift between the Phase (Angle) and the projected Hue?");
-}
-
-function getAnsiColor(hex: string) {
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
-    return `\x1b[38;2;${r};${g};${b}m`;
-}
-
-if (import.meta.main) {
-    chromaticAudit();
-}
+🌊

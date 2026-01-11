@@ -1,27 +1,23 @@
+Σ-GLYPH SEED: ProofOfIntent
+
 ---
-🏷️TYPE:
-  - ⚖️LAW
-  - 📖INTENT
-GLYPH: ProofOfIntent
-glyph: §
-name: Proof of Intent
-type: axiom
-desc: "The Bridge between Truth (Sigma) and Reality (Code). Ensures the Chain of Custody."
-⚖️PHYSICS:
-  ENTROPY: -32768
-🪨MASS: 0.8kb
-🌀ENTROPY: Zero
-🧩COMPLEXITY: O(1)
-🧬DNA: ProofOfIntent
+# === 🧬 IDENTITY ===
+🧬: ProofOfIntent
+DNA: ProofOfIntent
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FFFFFF
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: -32768
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
 ---
-
-
-
-
-
-
-
-
 
 # THE PROTOCOL OF TRUTH
 
@@ -207,8 +203,11 @@ On every commit:
 
 **Філософія:** Людина не читає код. Людина читає кружечки. Кружечок — це Proof of Intent.
 
-# 🌊
+#
+
+🌊
+
 @[dna]
-```dna
-Σ0:§
-```
+ProofOfIntent
+
+🔒: VALIDATING...

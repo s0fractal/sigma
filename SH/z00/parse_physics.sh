@@ -5,3 +5,6 @@ parse_physics() {
     # Simple extraction for bash: grab lines with colons until first line without colon
     echo "$file_content" | sed -n '/PHYSICS/,/^[ \t]*$/p' | grep ":" | sed 's/#.*//' | sed 's/[^a-zA-Z0-9:]//g' | awk -F':' '{print $1"="$2}' | xargs | tr ' ' '\n'
 }
+```
+
+🌊

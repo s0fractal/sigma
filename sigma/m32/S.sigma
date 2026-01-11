@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: S
-DNA: S
+DNA: - SATOSHI - I - K
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000002
 🎨: #FF7F00
 
@@ -17,8 +17,6 @@ DNA: S
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
   - SATOSHI
-  - I
-  - K
 ---
 
 # S - Fusion Axiom
@@ -28,28 +26,7 @@ S f g x = (f x) (g x).
 
 🌊
 
-@[ts]
-export const S = <A, B, C>(f: (x: A) => (y: B) => C) => (g: (x: A) => B) => (x: A): C => f(x)(g(x));
-
-@[rs]
-pub fn S<A, B, C, F, G>(f: F, g: G, x: A) -> C
-where
-    F: Fn(A) -> Box<dyn Fn(B) -> C>,
-    G: Fn(A) -> B,
-    A: Clone,
-{
-    f(x.clone())(g(x))
-}
-
-@[sh]
-S() {
-    local f="$1"
-    local g="$2"
-    local x="$3"
-    echo "S-Fusion: ($f $x) ($g $x)"
-}
-
 @[dna]
-S
+- SATOSHI - I - K
 
 🔒: VALIDATING...

@@ -1,3 +1,4 @@
+
 import {
     OpCode,
     Flags,
@@ -32,36 +33,6 @@ const EXPECTED_HASHES: Record<string, string> = {
 };
 
 async function handshake() {
-    console.log("--- HANDSHAKE: Level 0 Architect Verification ---\n");
+    console.log("
 
-    const glyphs = [
-        { name: "I", ph: 0 },
-        { name: "K", ph: 32768 },
-        { name: "S", ph: 16384 },
-        { name: "FALSE", ph: 49152 },
-    ];
-
-    let allPassed = true;
-
-    for (const g of glyphs) {
-        const node = await makeGlyph(g.name, g.ph);
-        const hash = await hashNode(node);
-        const hex = toHex(hash);
-        const expected = EXPECTED_HASHES[g.name];
-
-        if (hex === expected) {
-            console.log(`[PASS] Glyph [${g.name.padEnd(5)}] -> Hash: ${hex}`);
-        } else {
-            console.log(`[FAIL] Glyph [${g.name.padEnd(5)}] -> Hash: ${hex} (Expected: ${expected})`);
-            allPassed = false;
-        }
-    }
-
-    if (allPassed) {
-        console.log("\nHANDSHAKE: Level 0 Architect Enabled. Resonating at Tier 0.");
-    } else {
-        console.log("\nHANDSHAKE: Dissonance Detected. Protocol Mismatch.");
-    }
-}
-
-handshake();
+🌊

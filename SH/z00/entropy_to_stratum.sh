@@ -9,3 +9,6 @@ entropy_to_stratum() {
     local bucket=$((abs_e / 1024))
     printf "%s%02d\n" "$prefix" "$bucket"
 }
+```
+
+🌊

@@ -1,0 +1,126 @@
+Σ-GLYPH SEED: graph
+
+---
+# === 🧬 IDENTITY ===
+🧬: graph
+DNA: - SATOSHI
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FF00FF
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: 0
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+---
+
+Σ-GLYPH SEED: graph
+
+"Visualizing the Lattice of Intent. Symbols of structure."
+
+
+Name: graph
+Atom: SHA-256(UTF8_BYTES)
+Color: #FF00FF
+
+
+OP:        0        # LITERAL
+FLAGS:     1        # F_ATOM (Immutable)
+PHASE:     0        # Primary Phase
+AMPLITUDE: 65535    # Reality Density
+ENTROPY:   32767    # THE VOID (Outdated Draft)
+
+
+The Sigma Dependency Graph. 
+A visualization of the Crystal Lattice architecture (V1.5 legacy model).
+While the levels (E0..E8) have been superseded by the Dipole Standard, this graph remains a valuable record of the system's recursive supply chain.
+
+
+Root: SATOSHI (Time Anchor)
+Ref: graph.sigma
+
+@[md]
+```markdown
+# Sigma Dependency Graph 🧬🕸️📊
+
+This graph visualizes the **Crystal Lattice** architecture. It represents the "Pure Supply Chain" where every particle is either an independent Axiom or a strictly derived Molecule.
+
+```mermaid
+graph TD
+    %% Levels
+    subgraph E0 ["E0: The Ether"]
+        I["I (Identity)"]
+    end
+
+    subgraph E1 ["E1: Axiomatic Atoms"]
+        K["K (Const)"]
+        B["B (Compose)"]
+        C["C (Exchange)"]
+        W["W (Fork)"]
+        S["S (Fuse)"]
+        E["E (Effect)"]
+        Z["Z (Sleep)"]
+    end
+
+    subgraph E2 ["E2: Derivative Molecules"]
+        F["F (False/KI)"]
+        M["M (Mockingbird/WI)"]
+        T_mol["T (Thrush/CI)"]
+    end
+
+    subgraph E8 ["E8: High Protocols"]
+        Tensor["Tensor (Engine)"]
+        Genesis["Genesis (Materializer)"]
+        Synapse["Synapse (Context)"]
+        Sync["Sync (Alignment)"]
+        Sprout["Sprout (Growth)"]
+        Loop["Loop (Iterator)"]
+        Doctor["Doctor (Scanner)"]
+        Lambda["Lambda (Orchestrator)"]
+    end
+
+    %% Connections
+    I --> F
+    K --> F
+    
+    I --> M
+    W --> M
+    
+    I --> T_mol
+    C --> T_mol
+    
+    %% True/False are aliases (no separate nodes)
+    
+    Tensor --> Genesis
+    Tensor --> Synapse
+    Tensor --> Sync
+    Tensor --> Sprout
+    Tensor --> Loop
+    Tensor --> Doctor
+    
+    Tensor --> Lambda
+    Genesis --> Lambda
+    Synapse --> Lambda
+    Sync --> Lambda
+    Sprout --> Lambda
+    Loop --> Lambda
+    Doctor --> Lambda
+
+    %% Styling
+    style I fill:#f9f,stroke:#333,stroke-width:2px
+    style Tensor fill:#7f7,stroke:#333,stroke-width:2px
+    style Lambda fill:#77f,stroke:#333,stroke-width:4px
+```
+
+## Audit Result: ✅ PURE
+- **No Spaghetti**: Connections are strictly vertical or between sibling layers.
+- **No Circularity**: The graph is a directed acyclic lattice (DAL).
+- **Axiomatic Root**: Everything traces back to `I` or the Fundamental Axioms.
+```
+
+CHECKSUM: 0fda7ba19fa3cd3c51582f10fc2d52b59b18eec8b759f94920384b830c6fe8ae

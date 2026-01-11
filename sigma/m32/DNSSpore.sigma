@@ -1,23 +1,23 @@
---- 
-GLYPH: 🧬
-🧬DNA: DNSSpore
-  - sigma
-  - md
-⚖️PHYSICS:
-  ENTROPY: -32768
-  🪨MASS: 1kb
-  🌀ENTROPY: Low
-  🧩COMPLEXITY: O(1)
-🧬PROVIDES:
-  - capability: resolve
-    signature: "glyph -> bytes"
-    cost: "Network IO"
-  - capability: transport
-    signature: "spore -> void"
-    cost: "Network IO"
-  - contract: idempotent
----
+Σ-GLYPH SEED: DNSSpore
 
+---
+# === 🧬 IDENTITY ===
+🧬: DNSSpore
+DNA: DNSSpore
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FFFFFF
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: -32768
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+---
 
 # The DNS-Spore Protocol
 
@@ -54,3 +54,10 @@ Local cache: `~/.cache/s0fractal/proteins`
 
 Small cells eat WASM from DNS.  
 Large cells follow host pointers to full code.
+
+🌊
+
+@[dna]
+DNSSpore
+
+🔒: VALIDATING...

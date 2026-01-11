@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: deno
-DNA: deno
+DNA: - SATOSHI
 ⚛️: 00000000000000000000000000000000000000000000000000000000000000DE
 🎨: #FFFFFF
 
@@ -25,18 +25,7 @@ Sigma-anchored configuration for the Deno runtime.
 
 🌊
 
-@[json]
-{
-  "compilerOptions": {
-    "lib": ["deno.ns", "dom"],
-    "strict": true
-  },
-  "imports": {
-    "@/": "./TS/"
-  }
-}
-
 @[dna]
-deno
+- SATOSHI
 
 🔒: VALIDATING...

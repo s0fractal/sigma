@@ -33,43 +33,6 @@ async function calculateResonance(path: string): Promise<Uint8Array> {
 }
 
 async function auditNode(nodePath: string) {
-    console.log(`\n--- Auditing Node: ${nodePath} ---`);
-    const dimensions = ["ts", "rs", "md"];
-    const dimHashes = new Map<string, Uint8Array>();
+    console.log(`\n
 
-    for (const dim of dimensions) {
-        const dimPath = `${nodePath}/${dim}`;
-        try {
-            const h = await calculateResonance(dimPath);
-            dimHashes.set(dim, h);
-            console.log(`Dim [${dim}]: ${toHex(h)}`);
-        } catch (e) {
-            console.log(`Dim [${dim}]: NOT FOUND or EMPTY`);
-        }
-    }
-
-    // Generate SigmaNode for the node's resonance
-    // Conceptual: Node = ts APPLY rs
-    if (dimHashes.has("ts") && dimHashes.has("rs")) {
-        const sigmaNode: SigmaNode = {
-            op: OpCode.APPLY,
-            flags: Flags.F_LEFT | Flags.F_RIGHT,
-            wave: { ph: 0, am: 65535, en: 0 },
-            left: dimHashes.get("ts"),
-            right: dimHashes.get("rs"),
-        };
-        const nodeHash = await hashNode(sigmaNode);
-        console.log(`Full Node Resonance (ts + rs): ${toHex(nodeHash)}`);
-    }
-}
-
-async function main() {
-    const nodes = ["0", "1", "2"];
-    for (const node of nodes) {
-        await auditNode(`/Users/s0fractal/${node}`);
-    }
-}
-
-if (import.meta.main) {
-    main();
-}
+🌊

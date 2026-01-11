@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: B
-DNA: B
+DNA: - SATOSHI - I - S - K
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000004
 🎨: #7F00FF
 
@@ -17,9 +17,6 @@ DNA: B
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
   - SATOSHI
-  - I
-  - S
-  - K
 ---
 
 # B - Composition Axiom
@@ -29,27 +26,7 @@ B f g x = f (g x).
 
 🌊
 
-@[ts]
-export const B = <A, B, C>(f: (y: B) => C) => (g: (x: A) => B) => (x: A): C => f(g(x));
-
-@[rs]
-pub fn B<A, B, C, F, G>(f: F, g: G, x: A) -> C
-where
-    F: Fn(B) -> C,
-    G: Fn(A) -> B,
-{
-    f(g(x))
-}
-
-@[sh]
-B() {
-    local f="$1"
-    local g="$2"
-    local x="$3"
-    echo "B-Composition: $f ($g $x)"
-}
-
 @[dna]
-B
+- SATOSHI - I - S - K
 
 🔒: VALIDATING...

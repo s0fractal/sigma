@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: materializer
-DNA: materializer
+DNA: - SATOSHI
 ⚛️: 7d8a97d330681d7a5c191a9aeaea4856e45dd5581b565080b000000000000000
 🎨: #FF4400
 
@@ -26,10 +26,7 @@ Implements the Wave Card extraction and Spectral Fusion logic.
 
 🌊
 
-@[py]
-# (Source mirrored from materializer.py)
-
 @[dna]
-materializer
+- SATOSHI
 
 🔒: VALIDATING...

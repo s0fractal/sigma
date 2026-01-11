@@ -1,3 +1,4 @@
+
 import {
     OpCode,
     Flags,
@@ -97,6 +98,6 @@ if (import.meta.main) {
         }
     }
 
-    console.log("\n--- Composing First Fugue voices ---");
-    await ForgeManager.generateFugue("BACH", "HEGEL");
-}
+    console.log("\n
+
+🌊

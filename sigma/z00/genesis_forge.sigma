@@ -1,60 +1,31 @@
+Σ-GLYPH SEED: genesis_forge
+
 ---
-GLYPH: genesis_forge
-🏷️TYPE:
-  - ⚙️TOOL
-⚖️PHYSICS:
-  ENTROPY: -1
-  🌀ENTROPY: -1
+# === 🧬 IDENTITY ===
+🧬: genesis_forge
+DNA: - SATOSHI
+⚛️: 0000000000000000000000000000000000000000000000000000000000000063
+🎨: #FF8800
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: -1
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
 ---
 
-# Genesis Forge
+# genesis_forge - Materializing the Simplex
 
-@[py]
-```py
-"""
-Σ-GLYPH: GENESIS FORGE (Materializing the Sacred Simplex)
-Path: /Users/s0fractal/SIGMA/CLI/genesis_forge.py
-"""
+Tool for materializing bit-exact .glyph files for foundational axioms.
 
-import sys
-import os
-from pathlib import Path
+🌊
 
-# Add core to path
-sys.path.append(str(Path(__file__).parent.parent / "CORE" / "PY" / "sigma-core-py"))
+@[dna]
+- SATOSHI
 
-from src.core import SigmaNodeV1, WaveVectorQ
-
-# Primordial Coordinates (V1.9.1 Appendix E.2)
-I_WAVE = WaveVectorQ(ph=0, am=65535, en=-32768)
-K_WAVE = WaveVectorQ(ph=32768, am=65535, en=-32768)
-S_WAVE = WaveVectorQ(ph=16384, am=65535, en=-32768)
-
-def forge_glyph(name: str, node: SigmaNodeV1, target_dir: Path):
-    """Materializes a bit-exact .glyph file."""
-    path = target_dir / f"{name}.glyph"
-    with open(path, "wb") as f:
-        f.write(node.pack())
-    print(f"💎 Materialized {name}: {path.name} ({len(node.pack())} bytes)")
-
-def main():
-    out_dir = Path("/Users/s0fractal/SIGMA/STORAGE/GARDEN/0")
-    out_dir.mkdir(parents=True, exist_ok=True)
-    
-    # Forge the Trinity
-    # OpCode 0x00 (LITERAL), Flag 0x01 (Has Atom)
-    # Atoms for I, K, S are traditionally identified by their own name in bytes, padded.
-    
-    def leaf_atom(char: str):
-        return char.encode().ljust(32, b"\x00")
-
-    forge_glyph("I", SigmaNodeV1(0x00, 0x01, I_WAVE, atom=leaf_atom("I")), out_dir)
-    forge_glyph("K", SigmaNodeV1(0x00, 0x01, K_WAVE, atom=leaf_atom("K")), out_dir)
-    forge_glyph("S", SigmaNodeV1(0x00, 0x01, S_WAVE, atom=leaf_atom("S")), out_dir)
-
-    print("\n🌿 The First Leaf has sprouted in the Garden.")
-
-if __name__ == "__main__":
-    main()
-
-```
+🔒: VALIDATING...

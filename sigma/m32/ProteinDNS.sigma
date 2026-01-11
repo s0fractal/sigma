@@ -1,23 +1,23 @@
---- 
-GLYPH: 🧫
-🧬DNA: ProteinDNS
-  - sigma
-  - md
-⚖️PHYSICS:
-  ENTROPY: -32768
-  🪨MASS: 1kb
-  🌀ENTROPY: Low
-  🧩COMPLEXITY: O(1)
-🧬PROVIDES:
-  - capability: resolve
-    signature: "glyph -> wasm|meta"
-    cost: "DNS IO"
-  - capability: cache
-    signature: "glyph -> ~/.cache/s0fractal/proteins"
-    cost: "O(1)"
-  - contract: "prefer cache"
----
+Σ-GLYPH SEED: ProteinDNS
 
+---
+# === 🧬 IDENTITY ===
+🧬: ProteinDNS
+DNA: ProteinDNS
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FFFFFF
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: -32768
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+---
 
 # Protein DNS Protocol
 
@@ -41,3 +41,10 @@ Rules:
 - Cache path: `~/.cache/s0fractal/proteins/<GLYPH>.wasm`
 - Optional metadata is stored in `~/.cache/s0fractal/proteins/<GLYPH>.meta`
 - Sync only for used glyphs; drop after 30d of inactivity.
+
+🌊
+
+@[dna]
+ProteinDNS
+
+🔒: VALIDATING...

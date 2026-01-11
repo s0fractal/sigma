@@ -1,0 +1,58 @@
+Σ-GLYPH SEED: sigma
+
+---
+# === 🧬 IDENTITY ===
+🧬: sigma
+DNA: - SATOSHI
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #C0C0C0
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: 0
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+---
+
+## 2. Фундаментальні Структури (MUST)
+
+### 2.1. Квантований Вектор (WaveVectorQ)
+
+Всі параметри зберігаються як **Big-Endian**.
+
+```text
+struct WaveVectorQ {
+  ph: uint16; // 0..65535
+  am: uint16; // 0..65535
+  en: int16;  // -32768..32767
+}
+```
+
+### 2.2. Вузол (SigmaNodeV1)
+
+```text
+enum OpCode : uint8 {
+  LITERAL=0x00, REF=0x01, APPLY=0x02, LAMBDA=0x03, DISSONANCE=0xFF
+}
+
+// Flags: F_ATOM=0x01, F_LEFT=0x02, F_RIGHT=0x04
+```
+
+**Інваріанти Прапорів (MUST):**
+
+* Будь-які біти в `Flags`, що не належать масці `0x07`, **MUST be zero**.
+
+| OpCode     | Flags Requirement (MUST)    | Semantics                                 |
+|
+
+🌊
+
+@[dna]
+- SATOSHI
+
+🔒: VALIDATING...

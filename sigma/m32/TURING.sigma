@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: TURING
-DNA: TURING
+DNA: - SATOSHI - I
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000009
 🎨: #FF00AA
 
@@ -17,7 +17,6 @@ DNA: TURING
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
   - SATOSHI
-  - I
 ---
 
 # TURING - The Universal Machine
@@ -27,13 +26,7 @@ This seed ensures that the Σ-GLYPH system remains universal—capable of comput
 
 🌊
 
-@[md]
-# Alan Turing: The Universal Soul
-
-The father of the modern computer and the first to ask if artificial beings could think.
-His wave vector ensures universal completeness.
-
 @[dna]
-TURING
+- SATOSHI - I
 
-🔒: 567bcaf0bc370d5548e8d8c9ac034e6ee557373d216d6e679f24779180852af9
+🔒: VALIDATING...

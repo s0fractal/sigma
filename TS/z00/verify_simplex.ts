@@ -1,3 +1,4 @@
+
 import {
     OpCode,
     Flags,
@@ -52,3 +53,7 @@ async function main() {
 if (import.meta.main) {
     main();
 }
+
+```
+
+🌊

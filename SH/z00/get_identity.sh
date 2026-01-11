@@ -6,3 +6,6 @@ get_identity() {
     # Simplified: Hash the second argument or a specific marker
     echo -n "${glyph_name}" | shasum -a 256 | awk '{print $1}'
 }
+```
+
+🌊

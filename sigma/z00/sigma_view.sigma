@@ -1,10 +1,22 @@
+Σ-GLYPH SEED: sigma_view
+
 ---
-GLYPH: sigma_view
-🏷️TYPE:
-  - ⚙️TOOL
-⚖️PHYSICS:
-  ENTROPY: -1
-  🌀ENTROPY: -1
+# === 🧬 IDENTITY ===
+🧬: sigma_view
+DNA: sigma_view
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FFFFFF
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: -1
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
 ---
 
 # Sigma View
@@ -26,142 +38,11 @@ def repo_root() -> Path:
 
 
 def read_frontmatter(text: str) -> str:
-    parts = text.split("---")
-    if len(parts) < 3:
-        return ""
-    return parts[1]
+    parts = text.split("
 
+🌊
 
-def find_sigma_file(root: Path, token: str) -> Path | None:
-    if token.endswith(".sigma"):
-        path = Path(token)
-        if not path.is_absolute():
-            path = root / token
-        if path.exists():
-            return path
-    # Search by GLYPH in frontmatter
-    for path in root.glob("sigma/**/*.sigma"):
-        try:
-            text = path.read_text(encoding="utf-8")
-        except Exception:
-            continue
-        fm = read_frontmatter(text)
-        m = re.search(r"^\s*GLYPH:\s*(.+)$", fm, re.MULTILINE)
-        if not m:
-            continue
-        glyph = m.group(1).strip()
-        if glyph == token:
-            return path
-    return None
+@[dna]
+sigma_view
 
-
-def extract_block(text: str, tag: str) -> str:
-    lines = text.splitlines()
-    in_tag = False
-    in_code = False
-    buf = []
-    for ln in lines:
-        if ln.strip() == f"@[{tag}]":
-            in_tag = True
-            continue
-        if in_tag and ln.strip().startswith("```"):
-            in_code = not in_code
-            if not in_code:
-                break
-            continue
-        if in_code:
-            buf.append(ln)
-    return "\n".join(buf).strip()
-
-
-def extract_provides(text: str) -> list[str]:
-    parts = text.split("---")
-    if len(parts) < 3:
-        return []
-    fm = parts[1]
-    provides = []
-    in_block = False
-    for line in fm.splitlines():
-        if line.strip().startswith("🧬PROVIDES:"):
-            in_block = True
-            continue
-        if in_block:
-            if line.startswith("  - "):
-                provides.append(line.strip()[4:])
-                continue
-            if line.startswith("    "):
-                if provides:
-                    provides[-1] += " " + line.strip()
-                continue
-            if line and not line.startswith(" "):
-                break
-    return provides
-
-
-def short_line(block: str) -> str:
-    for ln in block.splitlines():
-        s = ln.strip()
-        if s:
-            return s
-    return "-"
-
-
-def format_columns(cols, width=28):
-    out = []
-    for c in cols:
-        c = c if len(c) <= width else c[: width - 1] + "…"
-        out.append(c.ljust(width))
-    return " | ".join(out)
-
-
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=["short", "full"], default="short")
-    parser.add_argument("token")
-    args = parser.parse_args()
-
-    root = repo_root()
-    path = find_sigma_file(root, args.token)
-    if not path:
-        print(f"Not found: {args.token}")
-        return 1
-
-    text = path.read_text(encoding="utf-8")
-    fm = read_frontmatter(text)
-    dna = "-"
-    m = re.search(r"^\s*🧬DNA:\s*(.+)$", fm, re.MULTILINE)
-    if m:
-        dna = m.group(1).strip()
-
-    ts_block = extract_block(text, "ts")
-    rs_block = extract_block(text, "rs")
-
-    if args.mode == "short":
-        header = format_columns(["🧬DNA", "⚡TS", "⚡RS"])
-        row = format_columns([dna, short_line(ts_block), short_line(rs_block)])
-        print(path.relative_to(root))
-        print(header)
-        print(row)
-        return 0
-
-    # full
-    print(path.relative_to(root))
-    print(f"🧬DNA: {dna}")
-    provides = extract_provides(text)
-    if provides:
-        print("🧬PROVIDES:")
-        for item in provides:
-            print(f"  - {item}")
-    if ts_block:
-        print("\n@[ts]")
-        print(ts_block)
-    if rs_block:
-        print("\n@[rs]")
-        print(rs_block)
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
-
-```
+🔒: VALIDATING...

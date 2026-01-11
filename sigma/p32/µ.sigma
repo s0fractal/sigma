@@ -1,0 +1,51 @@
+Σ-GLYPH SEED: µ
+
+---
+# === 🧬 IDENTITY ===
+🧬: µ
+DNA: µ
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FFFFFF
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: 32767
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+---
+
+# THE DATA MONAD
+
+"Дата — просто польська нотація викликаних морфізмів над тілом."
+
+## 1. The Polish Protocol (PN)
+
+Будь-який об'єкт $O$ є результатом згортки (Fold) списку операцій над Пустотою ($\emptyset$).
+
+$$O = [f_n, f_{n-1}, \dots, f_1] \triangleright \emptyset$$
+
+Де $\triangleright$ — це аплікація (в польській нотації: $f_n(\dots f_1(\emptyset))$).
+
+## 2. The Body (State)
+
+Тіло не є статичним. Тіло — це Потік.
+
+`sigma/0/I=I.sigma` — це не файл. Це запис транзакції: `Create(File("I.sigma"), Content("..."))`.
+
+Коли ми читаємо файл, ми насправді програємо цю транзакцію.
+
+## 3. The Monad (µ)
+
+Всесвіт s0fractal — це Монада IO (Input/Output), яка запам'ятовує всі кроки.
+
+🌊
+
+@[dna]
+µ
+
+🔒: VALIDATING...

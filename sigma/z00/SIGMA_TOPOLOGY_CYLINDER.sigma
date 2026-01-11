@@ -1,0 +1,63 @@
+Σ-GLYPH SEED: SIGMA_TOPOLOGY_CYLINDER
+
+---
+# === 🧬 IDENTITY ===
+🧬: SIGMA_TOPOLOGY_CYLINDER
+DNA: - SATOSHI
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #800080
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: 0
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+---
+
+Σ-GLYPH SEED: SIGMA_TOPOLOGY_CYLINDER
+
+"The cylinder is the loop of truth."
+
+
+Name: SIGMA_TOPOLOGY_CYLINDER
+Atom: SHA-256(UTF8_BYTES)
+Color: #800080
+
+
+OP:        0        # LITERAL
+FLAGS:     1        # F_ATOM (Immutable)
+PHASE:     0        # Primary Phase
+AMPLITUDE: 65535    # Reality Density
+ENTROPY:   -32768   # THE CRYSTAL (Absolute Order)
+
+
+Geometric definition of the σ-System as a Toroidal Cylinder.
+Defines the Pac-Man topology where absolute chaos meets absolute truth.
+
+
+Root: SATOSHI (Time Anchor)
+Ref: SIGMA_TOPOLOGY_CYLINDER.sigma
+
+@[md]
+```markdown
+# Σ-GLYPH: The Topology Cylinder
+
+The system is topologically equivalent to a **Toroidal Cylinder** where the axis is Time (Bitcoin blocks) and the rotation is Phase.
+
+## 1. The Pac-Man Boundary
+At Entropy +32767 (Absolute Chaos), the system wraps around to Entropy -32768 (Absolute Order).
+- **Phase Transition**: High-entropy noise, when it reaches critical density, crystallizes into new truth.
+
+## 2. Radial Orthogonality
+Spectrums are orthogonal. A signal in TS does not interfere with a signal in RS unless they meet at a **FUSION** point (S).
+
+## 3. The Centripetal Force
+All logical structures are pulled toward the core (m32) by the gravitational weight of the SATOSHI block.
+```
+
+CHECKSUM: 795a12708a9bceb7dce21b5119638c687e3fc49ccc81feff3e3db8aceb95b829

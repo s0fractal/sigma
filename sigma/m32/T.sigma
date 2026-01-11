@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: T
-DNA: T
+DNA: - SATOSHI - C - I
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000008
 🎨: #007FFF
 
@@ -17,8 +17,6 @@ DNA: T
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
   - SATOSHI
-  - C
-  - I
 ---
 
 # T - Thrush
@@ -28,25 +26,7 @@ T x f = f x.
 
 🌊
 
-@[ts]
-export const T = (x: any) => (f: (x: any) => any) => f(x);
-
-@[rs]
-pub fn T<T, F, U>(x: T, f: F) -> U
-where
-    F: Fn(T) -> U,
-{
-    f(x)
-}
-
-@[sh]
-T() {
-    local x="$1"
-    local f="$2"
-    $f $x
-}
-
 @[dna]
-C I
+- SATOSHI - C - I
 
 🔒: VALIDATING...

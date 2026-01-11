@@ -1,3 +1,4 @@
+
 import {
     SigmaNode,
     interfere,
@@ -100,9 +101,6 @@ async function main() {
         }
     }
 
-    console.log(`\n--- Dream Cycle Complete: ${discovered.length} new entities materialized ---`);
-}
+    console.log(`\n
 
-if (import.meta.main) {
-    main();
-}
+🌊

@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: W
-DNA: W
+DNA: - SATOSHI - I
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000003
 🎨: #00FFFF
 
@@ -17,7 +17,6 @@ DNA: W
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
   - SATOSHI
-  - I
 ---
 
 # W - Fork Axiom
@@ -27,26 +26,7 @@ W f x = f x x.
 
 🌊
 
-@[ts]
-export const W = <A, B>(f: (x: A) => (y: A) => B) => (x: A): B => f(x)(x);
-
-@[rs]
-pub fn W<A, B, F>(f: F, x: A) -> B
-where
-    F: Fn(A) -> Box<dyn Fn(A) -> B>,
-    A: Clone,
-{
-    f(x.clone())(x)
-}
-
-@[sh]
-W() {
-    local f="$1"
-    local x="$2"
-    echo "W-Fork: $f $x $x"
-}
-
 @[dna]
-W
+- SATOSHI - I
 
 🔒: VALIDATING...

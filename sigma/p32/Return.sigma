@@ -1,27 +1,23 @@
+Σ-GLYPH SEED: Return
+
 ---
-⚖️PHYSICS:
-  OP: 0
-  FLAGS: 1
-  PHASE: 0
-  AMPLITUDE: 65535
-  ENTROPY: 32767
+# === 🧬 IDENTITY ===
+🧬: Return
+DNA: Return
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FFFFFF
 
-🏷️TYPE:
-  - 🌀ENTROPY
-  - 🏛️PANTHEON
-  - 📖INTENT
-GLYPH: Return
-DESC: "Return to void intent"
-🧬DNA: Return
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: 32767
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
 ---
-
-
-
-
-
-
-
-
 
 # Return Protocol
 
@@ -39,3 +35,10 @@ Reconstruct state from Sigma plus anchor chain.
 
 - Origin must remain reachable.
 - The chain must remain intact.
+
+🌊
+
+@[dna]
+Return
+
+🔒: VALIDATING...

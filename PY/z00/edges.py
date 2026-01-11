@@ -174,40 +174,6 @@ def collapse_edges(dim: str | None):
         edge = edges[0]
         resolve = edge.get("resolve", "")
         ttl = int(edge.get("ttl", "86400"))
-        print(f"🌊 Collapsing {edge.get('edge','-')}")
-        print(f"   Cost: {edge.get('cost','0')}")
-        print(f"   Cmd: {resolve}")
-        ok = run_cmd(resolve)
-        if ok:
-            save_cache(root, glyph, edge, ttl)
-            print("   ✅ Materialized.")
-        else:
-            print("   ❌ Collapse Failed.")
+        print(f"
 
-
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["list", "missing", "collapse", "sync"])
-    parser.add_argument("dim", nargs="?", default=None)
-    args = parser.parse_args()
-
-    if args.mode == "list":
-        list_edges(args.dim)
-    elif args.mode == "missing":
-        missing_edges(args.dim)
-    elif args.mode == "collapse":
-        collapse_edges(args.dim)
-    else:
-        # sync = clear cache, then collapse
-        root = repo_root()
-        if args.dim:
-            cache_path(root, args.dim).unlink(missing_ok=True)
-        else:
-            for p in cache_dir(root).glob("*.json"):
-                p.unlink(missing_ok=True)
-        collapse_edges(args.dim)
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+🌊

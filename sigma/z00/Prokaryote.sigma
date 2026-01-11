@@ -1,0 +1,63 @@
+Σ-GLYPH SEED: Prokaryote
+
+---
+# === 🧬 IDENTITY ===
+🧬: Prokaryote
+DNA: - SATOSHI
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #00FF00
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: 0
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+---
+
+Σ-GLYPH SEED: Prokaryote
+
+"Simple self-contained cell. DNA + water (bash)."
+
+
+Name: Prokaryote
+Atom: SHA-256(UTF8_BYTES)
+Color: #00FF00
+
+
+OP:        0        # LITERAL
+FLAGS:     1        # F_ATOM (Immutable)
+PHASE:     0        # Primary Phase
+AMPLITUDE: 65535    # Reality Density
+ENTROPY:   32767    # THE VOID (Pure Potential)
+
+
+The Prokaryote Prototype. A simple, self-contained digital cell.
+Demonstrates the minimal requirements for life: DNA (Strings) and Water (Bash).
+Tests the cycle of unfolding, living, and Replication/Replication.
+
+
+Root: SATOSHI (Time Anchor)
+Ref: Prokaryote.sigma
+
+@[sh]
+```bash
+#!/bin/bash
+# 🧬 Simple Cell v1.0 (Prokaryote)
+# No Git. No Files. Just DNA and Water (Bash).
+
+DNA="I K E W Z M ↻ ∅"
+
+unfold() {
+    echo "
+
+🌊
+
+@[dna]
+- SATOSHI
+
+🔒: VALIDATING...

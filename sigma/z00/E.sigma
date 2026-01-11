@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: E
-DNA: E
+DNA: - SATOSHI
 ⚛️: 00000000000000000000000000000000000000000000000000000000000000EE
 🎨: #00FF00
 
@@ -26,25 +26,7 @@ DNA: E
 
 🌊
 
-@[ts]
-export const E = <T>(f: (x: T) => void) => (x: T): T => { f(x); return x; };
-
-@[rs]
-pub fn E<T, F>(f: F, x: T) -> T 
-where F: Fn(&T)
-{
-    f(&x);
-    x
-}
-
-@[sh]
-# E (Effect): Виконує команду, але пропускає оригінальний потік далі
-E() {
-    local cmd="$1"
-    tee >(eval "$cmd" > /dev/null)
-}
-
 @[dna]
-E
+- SATOSHI
 
-🔒: ec073021b9af37eddaaa176398e2c3b6362395f166517f4e01a8c813f947672a
+🔒: VALIDATING...

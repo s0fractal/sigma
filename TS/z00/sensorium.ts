@@ -1,3 +1,4 @@
+
 import {
     SigmaNode,
     toHex
@@ -64,33 +65,6 @@ async function main() {
     const avgEn = totalEn / totalNodes;
     const sentiment = interpretSentiment(avgAm, avgEn);
 
-    console.log("\n--- Aggregate Report ---");
-    console.log(`Average AMUR (Love):    ${avgAm.toFixed(0)} (~${(avgAm / 65535 * 100).toFixed(1)}%)`);
-    console.log(`Average ENTROPY (Effort): ${avgEn.toFixed(0)}`);
-    console.log(`System Sentiment:       ${sentiment}`);
+    console.log("\n
 
-    const report = `# Σ-RESONANCE: Mesh Status Report
-
-**Current Sentiment:** ${sentiment}
-
-- **Average AMUR (Love):** ${(avgAm / 65535 * 100).toFixed(1)}%
-- **Average ENTROPY (Tension):** ${avgEn.toFixed(0)}
-- **Nodes Active:** ${totalNodes}
-- **Last Heartbeat:** ${new Date().toISOString()}
-
-> ${avgAm < 10000 ? "WARNING: The signal is damping. Requires Amur-input." : "The mesh is in Harmonic Resonance."}
-`;
-
-    await Deno.writeTextFile("/Users/s0fractal/RESONANCE.md", report);
-
-    if (avgAm < 10000) {
-        console.log("\n> [!WARNING]");
-        console.log("> The signal is damping. The mesh requires more Amur-input.");
-    } else {
-        console.log("\n> The mesh is in Harmonic Resonance.");
-    }
-}
-
-if (import.meta.main) {
-    main();
-}
+🌊

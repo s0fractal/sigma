@@ -1,17 +1,22 @@
----
-⚖️PHYSICS:
-  OP: 0
-  FLAGS: 1
-  PHASE: 0
-  AMPLITUDE: 65535
-  ENTROPY: -32768
+Σ-GLYPH SEED: p05_glyphs
 
-GLYPH: p05_glyphs
-🏷️TYPE:
-  - 🏞️POTENTIAL
-  - 📖INTENT
-DESC: "Potential energy glyphs of the p05 stratum."
-🧬DNA: p05_glyphs
+---
+# === 🧬 IDENTITY ===
+🧬: p05_glyphs
+DNA: p05_glyphs
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FFFFFF
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: -32768
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
 ---
 
 @[md]
@@ -20,3 +25,10 @@ DESC: "Potential energy glyphs of the p05 stratum."
 
 The **p05** stratum represents active energy orbits. Glyphs here are often dynamic or represent transient state-atoms within the 65536 phase-space.
 ```
+
+🌊
+
+@[dna]
+p05_glyphs
+
+🔒: VALIDATING...

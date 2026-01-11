@@ -1,3 +1,4 @@
+
 import {
     OpCode,
     Flags,
@@ -71,9 +72,6 @@ async function main() {
         }
     }
 
-    console.log("\n--- Transmutation Complete ---");
-}
+    console.log("\n
 
-if (import.meta.main) {
-    main();
-}
+🌊

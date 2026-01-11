@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: K
-DNA: K
+DNA: - SATOSHI - I
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000001
 🎨: #FFFF00
 
@@ -17,7 +17,6 @@ DNA: K
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
   - SATOSHI
-  - I
 ---
 
 # K - Constant Axiom
@@ -27,18 +26,7 @@ K x y = x.
 
 🌊
 
-@[ts]
-export const K = <T>(x: T) => (y: any): T => x;
-
-@[rs]
-pub fn K<T, U>(x: T, _y: U) -> T { x }
-
-@[sh]
-K() {
-    printf '%s\n' "$1"
-}
-
 @[dna]
-K
+- SATOSHI - I
 
 🔒: VALIDATING...

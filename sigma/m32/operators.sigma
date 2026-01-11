@@ -1,19 +1,23 @@
+Σ-GLYPH SEED: operators
+
 ---
-⚖️PHYSICS:
-  OP: 0
-  FLAGS: 1
-  PHASE: 0
-  AMPLITUDE: 65535
-  ENTROPY: -32768
+# === 🧬 IDENTITY ===
+🧬: operators
+DNA: operators
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FFFFFF
 
-🏷️TYPE:
-  - 📖LEXICON
-GLYPH: operators
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: -32768
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
 ---
-
-
-
-
 
 @[md]
 ```markdown
@@ -24,25 +28,11 @@ GLYPH: operators
 ## ⚔️ Basic Action Operators (Дія)
 
 | Glyph | Name | Meaning | Context Example |
-| :---: | :--- | :--- | :--- |
-| **`⊕`** | **Genesis** | Creation, Addition, Expanding the system | `⊕ sigma: lexicon` |
-| **`Δ`** | **Delta** | Mutation, Change, Refactoring | `Δ ts: fix path` |
-| **`∅`** | **Void** | Deletion, Removal, Deprecation | `∅ cache: clear` |
-| **`⋈`** | **Nexus** | Sync, Merge, Integration | `⋈ main: sync` |
-| **`⚡`** | **Spark** | Execution, Trigger, Build | `⚡ deploy: prod` |
-| **`📦`** | **Cargo** | Dependency, Package (Brew/NPM) | `📦 zellij: install` |
-| **`🛡️`** | **Aegis** | Security, Keys, Auth | `🛡️ ssh: add key` |
-| **`🐛`** | **Glitch** | Bug, Error, Incident | `🐛 api: 500` |
-| **`λ`** | **Lambda** | Function, Script, Logic | `λ script: run` |
+| :
 
-## 🚦 State Indicators (Стан)
+🌊
 
-| Glyph | Meaning |
-| :---: | :--- |
-| **`?`** | Query / Waiting |
-| **`!`** | Alert / Important |
-| **`✓`** | Success / Verified |
-| **`✕`** | Failure / Rejected |
+@[dna]
+operators
 
-
-```
+🔒: VALIDATING...

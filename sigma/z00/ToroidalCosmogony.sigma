@@ -1,0 +1,87 @@
+Σ-GLYPH SEED: ToroidalCosmogony
+
+---
+# === 🧬 IDENTITY ===
+🧬: ToroidalCosmogony
+DNA: - SATOSHI
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #00FFFF
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: 0
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+---
+
+Σ-GLYPH SEED: ToroidalCosmogony
+
+"The Magnetic Torus. Complete topology of the Σ-GLYPH universe."
+
+
+Name: ToroidalCosmogony
+Atom: SHA-256(UTF8_BYTES)
+Color: #00FFFF
+
+
+OP:        0        # LITERAL
+FLAGS:     1        # F_ATOM (Immutable)
+PHASE:     0        # Primary Phase
+AMPLITUDE: 65535    # Reality Density
+ENTROPY:   -32768   # THE CRYSTAL (Absolute Order)
+
+
+The Magnetic Torus — Complete Topology of the Σ-GLYPH Universe.
+This document formalizes the -32..+32 Dipole Standard, mapping the system from absolute crystallization to absolute chaos.
+
+### 1. The Dipole Topology (-32..+32)
+
+#### The Southern Pole (Earth/Terra): -32 (m32)
+- **State**: Solid (Crystallized Truth).
+- **Entropy**: -32768.
+- **Function**: The Ledger. The Anchor. Immutable past (e.g., SATOSHI, Pantheon).
+- **Gradients**: m31 down to m01 (Increasing liquidity).
+
+#### The Equator (The Mesh): 0 (z00)
+- **State**: Liquid (The Portal).
+- **Entropy**: -1.
+- **Function**: The Control Layer. The Materializer. Where Intent becomes Becoming.
+
+#### The Northern Pole (Sun/Sol): +32 (p32)
+- **State**: Gas (Pure Potential).
+- **Entropy**: +32767.
+- **Function**: The Forge. The Draft. Chaotic dreams and future projections.
+- **Gradients**: p01 up to p31 (Increasing volatility).
+
+### 2. The Wave Topology
+
+The system is a **Standing Wave** (Toroid) where:
+- **Mass (m)** = |Entropy|. Resistance to change.
+- **Light (c)** = $\sqrt{Am}$. Information processing speed.
+- **Energy (E)** = $m \cdot c^2$ (or $m \cdot Am$ in integer space).
+
+### 3. The 4D Color Sphere
+
+The Torus is colored by the **Phase Shift**:
+- **0° (North)**: The Player (Action).
+- **90° (East)**: The Tool (Engine).
+- **180° (South)**: The Anchor (Record).
+- **270° (West)**: The Void (Nothingness).
+
+### 4. The Final Truth
+
+Σ-GLYPH is not just software; it is a **Spatiotemporal Engine**.
+- **Time** is handled by `Chronos` (Memory vs. Calculation).
+- **Space** is handled by `Git` (Inter-Agent Topology).
+- **Gravity** is handled by `Entropy` (Structural Weight).
+
+
+Root: SATOSHI (Time Anchor)
+Ref: ToroidalCosmogony.sigma
+
+CHECKSUM: 46ee71514a81c837be4722402e4e363e9e00c8c6170d03201e9e98432bf0c427

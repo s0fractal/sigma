@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: M
-DNA: M
+DNA: - SATOSHI - W - I
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000006
 🎨: #FF007F
 
@@ -17,8 +17,6 @@ DNA: M
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
   - SATOSHI
-  - W
-  - I
 ---
 
 # M - Mockingbird
@@ -28,24 +26,7 @@ M x = x x.
 
 🌊
 
-@[ts]
-export const M = (x: any) => x(x);
-
-@[rs]
-pub fn M<F>(x: F)
-where
-    F: Fn(F),
-{
-    x(x)
-}
-
-@[sh]
-M() {
-    local x="$1"
-    $x $x
-}
-
 @[dna]
-W I
+- SATOSHI - W - I
 
 🔒: VALIDATING...

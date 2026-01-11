@@ -1,3 +1,4 @@
+
 import {
     OpCode,
     Flags,
@@ -78,9 +79,6 @@ async function main() {
         await materializeAxiom(ax.name, node);
     }
 
-    console.log("\n--- Layer E1 is Stable ---");
-}
+    console.log("\n
 
-if (import.meta.main) {
-    main();
-}
+🌊

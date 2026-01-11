@@ -1,3 +1,4 @@
+
 import { WaveVectorQ } from "../m32/sigma.ts";
 import { parseNode, toHex } from "../m32/sigma.ts";
 
@@ -92,13 +93,4 @@ Status: **ACTIVE** (Orthogonal Proof required)
 ${await getSpiral()}
 \`\`\`
 
----
-*Last Materialization: ${new_date().toISOString()}*
-`;
-
-    await Deno.writeTextFile("/Users/s0fractal/SIGMA/SENSE/DASHBOARD.md", dashboard);
-}
-
-function new_date() { return new Date(); }
-
-generateDashboard();
+🌊

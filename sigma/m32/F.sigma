@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: F
-DNA: F
+DNA: - SATOSHI - K - I
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000007
 🎨: #7F7F7F
 
@@ -17,8 +17,6 @@ DNA: F
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
   - SATOSHI
-  - K
-  - I
 ---
 
 # F - False Logic
@@ -28,18 +26,7 @@ F x y = y.
 
 🌊
 
-@[ts]
-export const F = (x: any) => (y: any) => y;
-
-@[rs]
-pub fn F<T, U>(_x: T, y: U) -> U { y }
-
-@[sh]
-F() {
-    printf '%s\n' "$2"
-}
-
 @[dna]
-K I
+- SATOSHI - K - I
 
 🔒: VALIDATING...

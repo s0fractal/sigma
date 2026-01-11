@@ -1,3 +1,4 @@
+
 import { SigmaNode, WaveVectorQ } from "../m32/sigma.ts";
 
 interface AutonomicState {
@@ -28,15 +29,6 @@ async function updateState(entropy: number, sentiment: string) {
 }
 
 async function main() {
-    console.log("--- AUTONOMIC SENSORIUM: Directing Internal State ---");
+    console.log("
 
-    // Simulate entropy check (based on verify_simplex results)
-    const entropy = Math.random() * 0.1; // Placeholder for real system dissonance
-    const sentiment = entropy < 0.05 ? "Radiant" : "Dissonant";
-
-    await updateState(entropy, sentiment);
-}
-
-if (import.meta.main) {
-    main();
-}
+🌊
