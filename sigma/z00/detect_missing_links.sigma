@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: detect_missing_links
 
-🧬IDENTITY: fd2267d8e569e7fab45403b674a8a58ddf5da9c1357221231daa72ef07033fb3
+🧬IDENTITY: 86525924ebb1cd7ba9754a19fa62c71424fd66b56bf493d17136d02b3351a4ea
 
 ---
 # === 🧬 IDENTITY ===
@@ -34,7 +34,7 @@ import {
 async function scanGaps() {
     console.log("=== PSYCHOHISTORICAL SCANNER: Analyzing Phase-Space ===\n");
 
-    const seedsDir = "/Users/s0fractal/SIGMA/GLYPH";
+    const seedsDir = "./GLYPH";
     const phases: { name: string, ph: number }[] = [];
 
     for await (const entry of Deno.readDir(seedsDir)) {
@@ -92,4 +92,4 @@ if (import.meta.main) {
 @[dna]
 - SATOSHI
 
-🔒: fd2267d8e569e7fab45403b674a8a58ddf5da9c1357221231daa72ef07033fb3
+🔒: 86525924ebb1cd7ba9754a19fa62c71424fd66b56bf493d17136d02b3351a4ea

@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: heal
 
-🧬IDENTITY: 04ca963ce69f9bad121dbebc26c7f944eac57f01f1a0d62d6367eee42c969dfa
+🧬IDENTITY: 8ff029e62a0add528a24aa55c6b4f067c17b56336a1617a87871818a622450a7
 
 ---
 # === 🧬 IDENTITY ===
@@ -35,9 +35,9 @@ import {
 async function main() {
     console.log("Σ-IMMUNE: Scanning for Dissonance...\n");
 
-    const sealPath = "/Users/s0fractal/SIGMA/SENSE/resonance-seal.json";
-    const seedsDir = "/Users/s0fractal/SIGMA/GLYPH";
-    const echoDir = "/Users/s0fractal/ts_echo";
+    const sealPath = "./SENSE/resonance-seal.json";
+    const seedsDir = "./GLYPH";
+    const echoDir = "~/ts_echo";
 
     try {
         const sealData = JSON.parse(await Deno.readTextFile(sealPath));
@@ -97,4 +97,4 @@ if (import.meta.main) {
 @[dna]
 - SATOSHI
 
-🔒: 04ca963ce69f9bad121dbebc26c7f944eac57f01f1a0d62d6367eee42c969dfa
+🔒: 8ff029e62a0add528a24aa55c6b4f067c17b56336a1617a87871818a622450a7

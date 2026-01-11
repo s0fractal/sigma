@@ -1,3 +1,4 @@
+🧬IDENTITY: 72e3e6c7b560283c6c55cf47b95f7a90709ed586af510aa4b04d38e260a38be8
 # Σ-GLYPH V2.3: DETERMINISTIC RESONANCE
 ## Protocol V2.3 (Stable Canonical Resonance)
 
@@ -7,7 +8,7 @@ This document formalizes the standards for the V2.3 symbolic transition, ensurin
 
 To achieve deterministic identity, every `.sigma` file must follow the SCR-1 extraction rules:
 
-- **Normalization**: 
+- **Normalization**:
     - UTF-8 encoding.
     - Unix Line Feed (`\n`) for all end-of-lines.
     - No trailing whitespace on any line.
@@ -55,3 +56,5 @@ Tools MUST NEVER use absolute paths in generated code or internal logic.
 ---
 *Codified into the Crystal Core m32.*
 *Pulse: V2.3.0*
+
+🔒: 72e3e6c7b560283c6c55cf47b95f7a90709ed586af510aa4b04d38e260a38be8

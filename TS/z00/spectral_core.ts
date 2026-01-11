@@ -4,7 +4,7 @@
 
 export async function findGlyph(name: string): Promise<string> {
     const strata = ["m00", "m01", "m02", "m07", "m08", "m32", "z00", "p05", "p32"];
-    const base = "/Users/s0fractal/SIGMA/GLYPH";
+    const base = "./GLYPH";
 
     for (const s of strata) {
         const stratumPath = `${base}/${s}`;

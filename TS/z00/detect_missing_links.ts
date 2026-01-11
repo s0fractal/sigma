@@ -8,7 +8,7 @@ import {
 async function scanGaps() {
     console.log("=== PSYCHOHISTORICAL SCANNER: Analyzing Phase-Space ===\n");
 
-    const seedsDir = "/Users/s0fractal/SIGMA/GLYPH";
+    const seedsDir = "./GLYPH";
     const phases: { name: string, ph: number }[] = [];
 
     for await (const entry of Deno.readDir(seedsDir)) {

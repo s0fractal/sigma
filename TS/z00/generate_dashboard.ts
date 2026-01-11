@@ -5,7 +5,7 @@ import { parseNode, toHex } from "../m32/sigma.ts";
 
 async function getSpiral() {
     const process = Deno.run({
-        cmd: ["deno", "run", "-A", "/Users/s0fractal/SIGMA/SENSE/visualize_spiral.ts"],
+        cmd: ["deno", "run", "-A", "./SENSE/visualize_spiral.ts"],
         stdout: "piped",
     });
     const output = await process.output();
@@ -14,7 +14,7 @@ async function getSpiral() {
 }
 
 async function generateDashboard() {
-    const statePath = "/Users/s0fractal/.antigravity/RESONANCE_STATE.json";
+    const statePath = "~/.antigravity/RESONANCE_STATE.json";
     const state = JSON.parse(await Deno.readTextFile(statePath));
 
     const phaseShift = state.phase_shift || 0;

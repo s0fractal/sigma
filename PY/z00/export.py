@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
 import os
 from pathlib import Path
+import protocol
 
 # Σ-GLYPH EXPORTER: Universal Archival Engine
-# V1.0.0 - Export sigma/ and PY/ for cross-model consultation
+# V2.3.1 - Aligned with Protocol
 
-SIGMA_ROOT = Path("/Users/s0fractal/SIGMA")
+SIGMA_ROOT = protocol.ROOT
 EXPORT_FILE = SIGMA_ROOT / "TXT/sigma_full_codebase.txt"
 
 def export():
     print(f"--- Exporting Σ-GLYPH Codebase to {EXPORT_FILE.name} ---")
+    EXPORT_FILE.parent.mkdir(parents=True, exist_ok=True)
     
     with open(EXPORT_FILE, "w", encoding="utf-8") as f:
         # 1. Export sigma/
         f.write("# === DIMENSION: SIGMA (Intents & Seeds) ===\n\n")
         sigma_dir = SIGMA_ROOT / "sigma"
+        # Deterministic order
         for path in sorted(sigma_dir.rglob("*.sigma")):
             rel_path = path.relative_to(SIGMA_ROOT)
             f.write(f"## FILE: {rel_path}\n")
@@ -24,7 +27,8 @@ def export():
             
         # 2. Export PY/z00 (Engines)
         f.write("# === DIMENSION: PY (Python Engines & Tools) ===\n\n")
-        py_dir = SIGMA_ROOT / "PY/z00"
+        py_dir = SIGMA_ROOT / "PY" / "z00"
+        # Deterministic order
         for path in sorted(py_dir.glob("*.py")):
             rel_path = path.relative_to(SIGMA_ROOT)
             f.write(f"## FILE: {rel_path}\n")

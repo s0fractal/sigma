@@ -4,14 +4,16 @@ import re
 import sys
 import math
 from pathlib import Path
+import protocol
 
-# Σ-GLYPH: MASS TRANSMUTATION ENGINE (V2.1)
-# Path: /Users/s0fractal/SIGMA/PY/z00/transmute.py
+# Σ-GLYPH: MASS TRANSMUTATION ENGINE (V2.3)
+# Deterministic Path Immunity
 
-SIGMA_ROOT = Path("/Users/s0fractal/SIGMA")
+SIGMA_ROOT = protocol.ROOT
 SOURCE_DIR = SIGMA_ROOT / "sigma"
 
 TEMPLATE = """Σ-GLYPH SEED: {NAME}
+🧬IDENTITY: {ID}
 
 ---
 # === 🧬 IDENTITY ===
@@ -32,6 +34,8 @@ DNA: {DNA}
   - SATOSHI
 ---
 
+# {NAME}
+
 {BODY}
 
 🌊
@@ -39,7 +43,7 @@ DNA: {DNA}
 @[dna]
 {DNA_RAW}
 
-🔒: VALIDATING...
+🔒: {ID}
 """
 
 def entropy_to_stratum(entropy: int) -> str:
@@ -56,6 +60,9 @@ def parse_sigma(path: Path):
     name_match = re.search(r"^(?:GLYPH|Σ-GLYPH SEED|🧬):\s*([\w=]+)", content, re.MULTILINE)
     name = name_match.group(1) if name_match else path.stem
     
+    id_match = re.search(r"^🧬IDENTITY:\s*([a-fA-F0-9]{64})", content, re.MULTILINE)
+    node_id = id_match.group(1) if id_match else "00"*32
+
     dna_match = re.search(r"^(?:🧬DNA|DNA:|🔗|🔗:):\s*\n+((?:\s*(?:-\s*|Ref:\s*)?[\w=]+\n?)*)", content, re.MULTILINE)
     dna_raw = " ".join(dna_match.group(1).split()) if dna_match else name
     
@@ -72,27 +79,16 @@ def parse_sigma(path: Path):
         m = re.search(f"{sym}:?\\s*(-?\\d+|0x[a-fA-F0-9]+)", content)
         if m: physics[key] = int(m.group(1), 16) if m.group(1).startswith("0x") else int(m.group(1))
     
-    # Legacy Physics Fallback
-    if re.search(r"⚖️PHYSICS:", content):
-        for k in physics:
-            m = re.search(f"{k}:\\s*(-?\\d+|0x[a-fA-F0-9]+)", content)
-            if m: physics[k] = int(m.group(1), 16) if m.group(1).startswith("0x") else int(m.group(1))
-
     # 📜 BODY
-    # Extract everything after the first --- block and before the last @[dna] or CHECKSUM
     parts = content.split("---")
     if len(parts) >= 3:
         body = parts[2].split("🌊")[0].strip()
-        # Clean body of legacy markers
-        body = re.sub(r"🧬 IDENTITY.*?\n", "", body, flags=re.DOTALL)
-        body = re.sub(r"⚖️ PHYSICS.*?\n", "", body, flags=re.DOTALL)
-        body = re.sub(r"📖 INTENT.*?\n", "", body, flags=re.DOTALL)
-        body = re.sub(r"🔗 CONNECTIONS.*?\n", "", body, flags=re.DOTALL)
     else:
         body = content.split("🌊")[0].strip()
 
     return {
         "NAME": name,
+        "ID": node_id,
         "DNA": dna_raw,
         "DNA_RAW": dna_raw,
         "ATOM": atom,
@@ -106,14 +102,14 @@ def parse_sigma(path: Path):
     }
 
 def main():
-    for path in SOURCE_DIR.glob("**/*.sigma"):
+    sigma_files = sorted(list(SOURCE_DIR.glob("**/*.sigma")), key=lambda p: str(p))
+    for path in sigma_files:
         if path.name == "template.sigma": continue
         print(f"Transmuting: {path.relative_to(SOURCE_DIR)}")
         try:
             data = parse_sigma(path)
             stratum = entropy_to_stratum(data["ENTROPY"])
             
-            # Renaming logic (Liquidating I=I.sigma etc)
             clean_name = data["NAME"].replace("=", "")
             target_path = SOURCE_DIR / stratum / f"{clean_name}.sigma"
             
@@ -124,7 +120,7 @@ def main():
             
             if target_path != path:
                 path.unlink()
-                print(f"  -> Moved to: {target_path.relative_to(SOURCE_DIR)}")
+                print(f"  -> Moved: {target_path.relative_to(SOURCE_DIR)}")
         except Exception as e:
             print(f"  !! Error: {e}")
 

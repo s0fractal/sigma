@@ -10,18 +10,12 @@ import json
 from pathlib import Path
 
 # Σ-GLYPH MATERIALIZER: Atomic Fusion Engine
-# V2.3.0 - Deterministic Resonance: SCR-1 Canonical Extraction, PoI-1
+# V2.3.1 - Deterministic Resonance: Sorted Traversal, Path Immunity
 
-def get_repo_root() -> Path:
-    """Deterministic repository root discovery."""
-    cur = Path(__file__).resolve()
-    for parent in [cur] + list(cur.parents):
-        if (parent / ".git").exists():
-            return parent
-    return Path.cwd()
+import protocol
 
 # --- CONFIGURATION ---
-SIGMA_ROOT = get_repo_root()
+SIGMA_ROOT = protocol.ROOT
 SOURCE_DIR = SIGMA_ROOT / "sigma"
 
 TAG_MAP = {
@@ -45,7 +39,7 @@ def normalize_text(text: str) -> str:
     return "\n".join(lines)
 
 def parse_physics(text: str) -> dict:
-    physics = {"OP": 0, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
+    physics = {"OP": protocol.OP_LITERAL, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
     symbol_map = {"⚙️": "OP", "🚩": "FLAGS", "🌊": "PHASE", "🔊": "AMPLITUDE", "🌀": "ENTROPY"}
     for sym, key in symbol_map.items():
         match = re.search(f"^{sym}:?\\s*(-?\\d+|0x[a-fA-F0-9]+)", text, re.MULTILINE)
@@ -96,13 +90,15 @@ def entropy_to_stratum(entropy: int) -> str:
     return f"{prefix}{int(bucket):02}"
 
 def materialize():
-    print("=== Σ-GLYPH MATERIALIZER: Atomic Fusion V2.3.0 (SCR-1) ===\n")
+    print("=== Σ-GLYPH MATERIALIZER: Atomic Fusion V2.3.1 (Deterministic) ===\n")
     if not SOURCE_DIR.exists():
         print(f"Error: Source directory {SOURCE_DIR} not found.")
         return
 
     glyph_registry = {}
-    sigma_files = list(SOURCE_DIR.glob("**/*.sigma"))
+    # DETERMINISTIC: Sorted file list
+    sigma_files = sorted(list(SOURCE_DIR.glob("**/*.sigma")), key=lambda p: str(p))
+    
     for path in sigma_files:
         try:
             content = normalize_text(path.read_text(encoding="utf-8"))
@@ -112,7 +108,9 @@ def materialize():
         except: continue
 
     spectrum_configs = {}
-    for glyph, rel_path in glyph_registry.items():
+    # DETERMINISTIC: Sorted iteration
+    for glyph in sorted(glyph_registry.keys()):
+        rel_path = glyph_registry[glyph]
         if glyph in TAG_MAP:
             try:
                 content = (SOURCE_DIR / rel_path).read_text(encoding="utf-8")
@@ -134,12 +132,12 @@ def materialize():
         dependencies = []
         if dna_match:
             raw_dna = dna_match.group(1)
+            # DETERMINISTIC: Preserving order of DNA lines as they are dependencies
             dependencies = [d.replace("Ref:", "").strip("- ").strip() for d in raw_dna.splitlines() if d.strip("- ").strip()]
         
         for tag, (out_dir, ext) in TAG_MAP.items():
             block = extract_block(content, tag)
             if block is not None:
-                # Ghost warning handled by CLI or Guard in V2.3
                 glyph_fn = this_glyph if tag == "glyph" else path.stem
                 target_path = out_dir / stratum / f"{glyph_fn}{ext}"
                 

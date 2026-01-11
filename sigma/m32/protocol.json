@@ -1,0 +1,21 @@
+{
+  "VERSION": "2.3.0",
+  "OPCODES": {
+    "LITERAL": 0,
+    "REF": 1,
+    "APPLY": 2,
+    "LAMBDA": 3,
+    "DISSONANCE": 255
+  },
+  "FLAGS": {
+    "F_ATOM": 1,
+    "F_LEFT": 2,
+    "F_RIGHT": 4
+  },
+  "WAVE_LIMITS": {
+    "PH_MAX": 65535,
+    "AM_MAX": 65535,
+    "EN_MIN": -32768,
+    "EN_MAX": 32767
+  }
+}

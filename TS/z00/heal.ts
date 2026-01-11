@@ -9,9 +9,9 @@ import {
 async function main() {
     console.log("Σ-IMMUNE: Scanning for Dissonance...\n");
 
-    const sealPath = "/Users/s0fractal/SIGMA/SENSE/resonance-seal.json";
-    const seedsDir = "/Users/s0fractal/SIGMA/GLYPH";
-    const echoDir = "/Users/s0fractal/ts_echo";
+    const sealPath = "./SENSE/resonance-seal.json";
+    const seedsDir = "./GLYPH";
+    const echoDir = "~/ts_echo";
 
     try {
         const sealData = JSON.parse(await Deno.readTextFile(sealPath));

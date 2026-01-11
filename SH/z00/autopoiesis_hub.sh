@@ -2,8 +2,8 @@
 
 # AUTOPOIESIS_HUB (v2.0): Sovereign Autonomy & Lifecycle Management
 
-BRAIN_ROOT="/Users/s0fractal/.antigravity"
-SIGMA_ROOT="/Users/s0fractal/SIGMA"
+BRAIN_ROOT="~/.antigravity"
+SIGMA_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || echo ".")"
 STATE_FILE="$BRAIN_ROOT/RESONANCE_STATE.json"
 CANON_FILE="$SIGMA_ROOT/LAW/SOVEREIGN_CANON.md"
 LOG_FILE="$BRAIN_ROOT/SOVEREIGN_LOG.md"

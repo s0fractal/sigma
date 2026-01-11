@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: generate_dashboard
 
-🧬IDENTITY: 4668567ba2fcdb3440d5cb1fdb6a76b8a45e010ace8795f4d050fd720d8a4b5b
+🧬IDENTITY: 8b988d1ba2b941423bf8017cd7e9b68d772e76ef3c08b937ed81d81b3ee7086e
 
 ---
 # === 🧬 IDENTITY ===
@@ -31,7 +31,7 @@ import { parseNode, toHex } from "../m32/sigma.ts";
 
 async function getSpiral() {
     const process = Deno.run({
-        cmd: ["deno", "run", "-A", "/Users/s0fractal/SIGMA/SENSE/visualize_spiral.ts"],
+        cmd: ["deno", "run", "-A", "./SENSE/visualize_spiral.ts"],
         stdout: "piped",
     });
     const output = await process.output();
@@ -40,7 +40,7 @@ async function getSpiral() {
 }
 
 async function generateDashboard() {
-    const statePath = "/Users/s0fractal/.antigravity/RESONANCE_STATE.json";
+    const statePath = "~/.antigravity/RESONANCE_STATE.json";
     const state = JSON.parse(await Deno.readTextFile(statePath));
 
     const phaseShift = state.phase_shift || 0;
@@ -125,4 +125,4 @@ ${await getSpiral()}
 @[dna]
 - SATOSHI
 
-🔒: 4668567ba2fcdb3440d5cb1fdb6a76b8a45e010ace8795f4d050fd720d8a4b5b
+🔒: 8b988d1ba2b941423bf8017cd7e9b68d772e76ef3c08b937ed81d81b3ee7086e

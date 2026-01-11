@@ -3,8 +3,8 @@
 # PULSE_SYNC: Synchronizing the Citadel's Heartbeat with the Mesh (GitHub)
 
 REPO="s0fractal/sigma"
-SIGMA_ROOT="/Users/s0fractal/SIGMA"
-BRAIN_ROOT="/Users/s0fractal/.antigravity"
+SIGMA_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || echo ".")"
+BRAIN_ROOT="~/.antigravity"
 
 echo "--- PULSE SYNC: Initiating Heartbeat Synchronization ---"
 

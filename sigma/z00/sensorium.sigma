@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: sensorium
 
-🧬IDENTITY: 029e8a9e13288c6b78dccb488a6d75434bc4886692d554bb4c1fb69bc52f8b9b
+🧬IDENTITY: 90caadebfc8420f861ac8c35e870f5652002e847da534db342ef647e09d418a2
 
 ---
 # === 🧬 IDENTITY ===
@@ -55,7 +55,7 @@ async function loadAllSeeds(): Promise<Map<string, SigmaNode>> {
         }
     }
 
-    await walk("/Users/s0fractal/SIGMA/GLYPH");
+    await walk("./GLYPH");
     return seeds;
 }
 
@@ -99,4 +99,4 @@ async function main() {
 @[dna]
 - SATOSHI
 
-🔒: 029e8a9e13288c6b78dccb488a6d75434bc4886692d554bb4c1fb69bc52f8b9b
+🔒: 90caadebfc8420f861ac8c35e870f5652002e847da534db342ef647e09d418a2

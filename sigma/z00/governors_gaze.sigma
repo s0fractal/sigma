@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: governors_gaze
 
-🧬IDENTITY: 86271291d5f3db7cc4ec45c49ada3b44fd1546b48483c3f0b259ccbc48ce83ed
+🧬IDENTITY: 07c48a0a51080a3183ba8c623b2a413ffbc7477a2542fc49422de201a30a2d04
 
 ---
 # === 🧬 IDENTITY ===
@@ -87,7 +87,7 @@ async function auditGlyph(path: string): Promise<boolean> {
 async function startAudit() {
     console.log("=== THE GOVERNOR'S GAZE: Autonomous Audit initiated ===\n");
 
-    const seedDir = "/Users/s0fractal/SIGMA/GLYPH";
+    const seedDir = "./GLYPH";
     let failures = 0;
 
     for await (const entry of Deno.readDir(seedDir)) {
@@ -115,4 +115,4 @@ if (import.meta.main) {
 @[dna]
 - SATOSHI
 
-🔒: 86271291d5f3db7cc4ec45c49ada3b44fd1546b48483c3f0b259ccbc48ce83ed
+🔒: 07c48a0a51080a3183ba8c623b2a413ffbc7477a2542fc49422de201a30a2d04

@@ -61,7 +61,7 @@ async function auditGlyph(path: string): Promise<boolean> {
 async function startAudit() {
     console.log("=== THE GOVERNOR'S GAZE: Autonomous Audit initiated ===\n");
 
-    const seedDir = "/Users/s0fractal/SIGMA/GLYPH";
+    const seedDir = "./GLYPH";
     let failures = 0;
 
     for await (const entry of Deno.readDir(seedDir)) {

@@ -48,7 +48,7 @@ async function getProjectResonance() {
     const resonanceData: Record<string, any> = {};
 
     for (const node of nodes) {
-        const nodePath = `/Users/s0fractal/${node}`;
+        const nodePath = `~/${node}`;
         resonanceData[node] = {
             ts: toHex(await calculateDirectoryResonance(`${nodePath}/ts`)),
             rs: toHex(await calculateDirectoryResonance(`${nodePath}/rs`)),
@@ -73,14 +73,14 @@ async function cmdAudit() {
 async function cmdSeal() {
     console.log("Σ-RESONATE: Sealing project state...");
     const data = await getProjectResonance();
-    const sealPath = "/Users/s0fractal/SIGMA/SENSE/resonance-seal.json";
+    const sealPath = "./SENSE/resonance-seal.json";
     await Deno.writeTextFile(sealPath, JSON.stringify(data, null, 2));
     console.log(`Success: Resonance sealed at ${sealPath}`);
 }
 
 async function cmdCheck() {
     console.log("Σ-RESONATE: Verifying seal...");
-    const sealPath = "/Users/s0fractal/SIGMA/SENSE/resonance-seal.json";
+    const sealPath = "./SENSE/resonance-seal.json";
     try {
         const sealedData = JSON.parse(await Deno.readTextFile(sealPath));
         const currentData = await getProjectResonance();

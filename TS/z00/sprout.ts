@@ -34,7 +34,7 @@ async function loadSeed(name: string): Promise<SigmaNode> {
 async function materializeAxiom(name: string, node: SigmaNode) {
     const bytes = serializeNode(node);
     const hash = await hashNode(node);
-    const path = `/Users/s0fractal/SIGMA/GLYPH/m01/${name}.glyph`;
+    const path = `./GLYPH/m01/${name}.glyph`;
     await Deno.writeFile(path, bytes);
     console.log(`Axiom [${name.padEnd(2)}]: ${toHex(hash)} | ph=${node.wave.ph.toString().padStart(5)}, am=${node.wave.am.toString().padStart(5)}, en=${node.wave.en.toString().padStart(6)}`);
 }

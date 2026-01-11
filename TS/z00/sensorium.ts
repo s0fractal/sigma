@@ -29,7 +29,7 @@ async function loadAllSeeds(): Promise<Map<string, SigmaNode>> {
         }
     }
 
-    await walk("/Users/s0fractal/SIGMA/GLYPH");
+    await walk("./GLYPH");
     return seeds;
 }
 

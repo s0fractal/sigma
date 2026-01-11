@@ -1,6 +1,6 @@
 Σ-GLYPH SEED: evolve_logic
 
-🧬IDENTITY: f76f0e1836dbbee53afc244a71ecec147e3ee83908706efcc2646501ce0080be
+🧬IDENTITY: 3872d39b9bf5e469e6a37180bb3e5a98f93343e8235e596434ccaf31f2f8bb38
 
 ---
 # === 🧬 IDENTITY ===
@@ -39,7 +39,7 @@ import {
 async function saveGlyph(name: string, node: SigmaNode) {
     const bytes = serializeNode(node);
     const hash = await hashNode(node);
-    const path = `/Users/s0fractal/SIGMA/GLYPH/m32/${name}.glyph`;
+    const path = `./GLYPH/m32/${name}.glyph`;
     await Deno.writeFile(path, bytes);
     console.log(`Materialized [${name.padEnd(5)}] -> ${toHex(hash)}`);
 }
@@ -52,4 +52,4 @@ async function materializeLogic() {
 @[dna]
 - SATOSHI
 
-🔒: f76f0e1836dbbee53afc244a71ecec147e3ee83908706efcc2646501ce0080be
+🔒: 3872d39b9bf5e469e6a37180bb3e5a98f93343e8235e596434ccaf31f2f8bb38

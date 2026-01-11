@@ -50,7 +50,7 @@ async function loadAllSeeds(): Promise<Map<string, SigmaNode>> {
         }
     }
 
-    await walk("/Users/s0fractal/SIGMA/GLYPH");
+    await walk("./GLYPH");
     return seeds;
 }
 
@@ -91,7 +91,7 @@ async function main() {
             };
 
             const hash = await hashNode(molecule);
-            const path = `/Users/s0fractal/SIGMA/GLYPH/z00/${dreamName}.glyph`;
+            const path = `./GLYPH/z00/${dreamName}.glyph`;
 
             // Only save if it's truly new or significant
             console.log(`✨ DISCOVERY: [${nameA}] + [${nameB}] resonated into [${dreamName}]`);

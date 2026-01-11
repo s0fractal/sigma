@@ -13,11 +13,11 @@ import {
 async function visualizeSpiral() {
     console.log("=== THE SPIRAL STAVE: Evolutionary Resonance ===\n");
 
-    const statePath = "/Users/s0fractal/.antigravity/RESONANCE_STATE.json";
+    const statePath = "~/.antigravity/RESONANCE_STATE.json";
     const state = JSON.parse(await Deno.readTextFile(statePath));
     const currentCycle = state.last_cycle || 1;
 
-    const seedsDir = "/Users/s0fractal/SIGMA/GLYPH";
+    const seedsDir = "./GLYPH";
     const nodes: { name: string, ph: number, cycle: number }[] = [];
 
     // 1. Gather Nodes

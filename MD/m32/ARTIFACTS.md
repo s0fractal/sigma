@@ -4,9 +4,9 @@ This document preserves the high-level ontological definitions of the Citadel's 
 
 ---
 
-## ARTIFACT:- [**SIGMA_HANDSHAKE.md**](file:///Users/s0fractal/SIGMA/LAW/SIGMA_HANDSHAKE.md): The Inter-Agent Handshake Protocol.
-- [**COSMOLOGY.md**](file:///Users/s0fractal/SIGMA/LAW/COSMOLOGY.md): The Eywa Vision (4D Heliocentric Spiral).
-- [**sigma_cli.py**](file:///Users/s0fractal/SIGMA/CLI/sigma_cli.py): The Sigma Compass (Python CLI).
+## ARTIFACT:- [**SIGMA_HANDSHAKE.md**](file://./LAW/SIGMA_HANDSHAKE.md): The Inter-Agent Handshake Protocol.
+- [**COSMOLOGY.md**](file://./LAW/COSMOLOGY.md): The Eywa Vision (4D Heliocentric Spiral).
+- [**sigma_cli.py**](file://./CLI/sigma_cli.py): The Sigma Compass (Python CLI).
 
 ## ARTIFACT: SATOSHI
 

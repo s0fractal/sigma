@@ -1,20 +1,23 @@
 /**
  * Σ-GLYPH Core Architecture Implementation (RFC v0.2.12 - Refined)
  * Bit-Exact Determinism Reference
+ * V2.3.1 - Aligned with protocol.json
  */
 
+import protocolData from "../../sigma/m32/protocol.json" with { type: "json" };
+
 export enum OpCode {
-  LITERAL = 0x00,
-  REF = 0x01,
-  APPLY = 0x02,
-  LAMBDA = 0x03,
-  DISSONANCE = 0xff,
+  LITERAL = protocolData.OPCODES.LITERAL,
+  REF = protocolData.OPCODES.REF,
+  APPLY = protocolData.OPCODES.APPLY,
+  LAMBDA = protocolData.OPCODES.LAMBDA,
+  DISSONANCE = protocolData.OPCODES.DISSONANCE,
 }
 
 export enum Flags {
-  F_ATOM = 0x01,
-  F_LEFT = 0x02,
-  F_RIGHT = 0x04,
+  F_ATOM = protocolData.FLAGS.F_ATOM,
+  F_LEFT = protocolData.FLAGS.F_LEFT,
+  F_RIGHT = protocolData.FLAGS.F_RIGHT,
 }
 
 export interface WaveVectorQ {
@@ -51,7 +54,7 @@ export function divRoundHalfUp(n: bigint, d: bigint): bigint {
 }
 
 export function clampI16(x: number): number {
-  return Math.max(-32768, Math.min(32767, x));
+  return Math.max(protocolData.WAVE_LIMITS.EN_MIN, Math.min(protocolData.WAVE_LIMITS.EN_MAX, x));
 }
 
 // Canonical LUT generation (満足 Appendices A.2)
@@ -67,23 +70,19 @@ LUT_COS[32768] = -32767;
 export function interfere(w1: WaveVectorQ, w2: WaveVectorQ): WaveVectorQ {
   const new_ph = w1.ph;
 
-  // Promotion to int32 (Number handles this for 16-bit inputs)
   const en1 = BigInt(w1.en);
   const en2 = BigInt(w2.en);
   const new_en = clampI16(Number(divRoundHalfUp(en1 + en2, 2n)));
 
-  // Delta calculation (manual abs/toroidal min)
-  const x = Number(w1.ph) - Number(w2.ph); // Promotion to int32
+  const x = Number(w1.ph) - Number(w2.ph);
   const d32 = Math.abs(x);
   const delta = Math.min(d32, 65536 - d32);
 
-  // Resonance
-  const r = BigInt(LUT_COS[delta]); // Promotion to int32
-  const num = (r + 32767n) * 65535n; // Promotion to int64
-  const amp_factor = divRoundHalfUp(num, 65534n); // 0..65535 (uint16 domain)
+  const r = BigInt(LUT_COS[delta]);
+  const num = (r + 32767n) * 65535n;
+  const amp_factor = divRoundHalfUp(num, 65534n);
 
-  // Amplitude
-  const prod01 = divRoundHalfUp(BigInt(w1.am) * BigInt(w2.am), 65535n); // Promotion to uint64
+  const prod01 = divRoundHalfUp(BigInt(w1.am) * BigInt(w2.am), 65535n);
   const new_am = divRoundHalfUp(prod01 * amp_factor, 65535n);
 
   return {

@@ -2,8 +2,8 @@
 
 # QUIET_PULSE: Background maintenance and sovereign state reporting
 
-BRAIN_ROOT="/Users/s0fractal/.antigravity"
-SIGMA_ROOT="/Users/s0fractal/SIGMA"
+BRAIN_ROOT="~/.antigravity"
+SIGMA_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || echo ".")"
 
 echo "+++ QUIET PULSE: Initiating Background Maintenance +++"
 

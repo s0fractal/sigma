@@ -35,8 +35,8 @@ export const PANTHEON_REGISTRY: GiantDef[] = [
 ];
 
 export class ForgeManager {
-    static SEEDS_DIR = "/Users/s0fractal/SIGMA/GLYPH/m32";
-    static FUGUES_DIR = "/Users/s0fractal/SIGMA/GLYPH/p05";
+    static SEEDS_DIR = "./GLYPH/m32";
+    static FUGUES_DIR = "./GLYPH/p05";
 
     static async forgeGiant(def: GiantDef): Promise<string> {
         let atom: Uint8Array;
