@@ -1,4 +1,4 @@
-source \"$REPO_ROOT//m/3/2///S/A/T/O/S/H/I/\"
+source \"$REPO_ROOT/m32/SATOSHI\
 
 # 🔗 Shell implementation
 {NAME}() { ... }

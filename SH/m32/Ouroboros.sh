@@ -1,5 +1,4 @@
 source \"$REPO_ROOT/m32/SATOSHI\
 
 #!/bin/bash
-# Collider v1.0
-# Usage: λ collide <glyph>
+# 🐍 OUROBOROS (The Breathing Reactor)
