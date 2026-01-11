@@ -21,15 +21,18 @@ DNA: md
 
 # md - Markdown Spectrum
 
-# === METADATA ===
-# SYNTAX: md
-# MUTE: "<!--"
-# LIFT: ""
-# IMPORT: "[%n](file://%p)"
+# === ⚙️ SPECTRUM CONFIG ===
+@[yaml]
+```yaml
+SYNTAX: md
+MUTE: "<!--"
+LIFT: ""
+IMPORT: "[%n](file://%p)"
+```
 
 🌊
 
 @[dna]
 md
 
-🔒: 2006e54be5ff67d0e46d4a8763ebb24f224fe7d5e30f2d508a9290a0503ef01a
+🔒: 3724c3e761d2d644e2a2affcfcc16beceba2c4964cb18055bc0387f124c9c8df

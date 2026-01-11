@@ -12,7 +12,7 @@ DNA: ACCORD_0
 🚩: 2
 🌊: 16384
 🔊: 32767
-🌀: 0
+🌀: -1
 
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
@@ -35,4 +35,4 @@ It is a 40-byte absolute record of historical or logical impact within the Sigma
 @[dna]
 ACCORD_0
 
-🔒: e17377feb9d23ecae95a4e4952520d1f377640a4c283c5d7a6f9b46019a65856
+🔒: c6e05f61b8a1fe49ff97d47f8e13643a4680a71d0152a795a26d453aad6d5513

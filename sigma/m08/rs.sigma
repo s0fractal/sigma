@@ -21,24 +21,27 @@ DNA: rs
 
 # rs - Rust Language Spectrum
 
-# === METADATA ===
-# SYNTAX: rust
-# MUTE: "/// "
-# LIFT: "#![no_std]"
-# IMPORT: "use crate::%p;"
-
-# === PROVISIONING (QDNA) ===
-# brew: "brew install rustup && rustup-init -y"
-# sh: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
-
-# === EDGES ===
-# check: "command -v rustc >/dev/null 2>&1"
-# resolve: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
-# cost: 0.4
+# === ⚙️ SPECTRUM CONFIG ===
+@[yaml]
+```yaml
+SYNTAX: rust
+MUTE: "/// "
+LIFT: "#![no_std]"
+IMPORT: "use crate::%p;"
+QDNA:
+  brew: "brew install rustup && rustup-init -y"
+  sh: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
+EDGES:
+  check: "command -v rustc >/dev/null 2>&1"
+  resolve: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
+  channel: sh
+  cost: 0.4
+  ttl: 86400
+```
 
 🌊
 
 @[dna]
 rs
 
-🔒: 8c4b9e8d1589ee91074206036a7becb31dba1e3e18a6b7d2fe206406e2c4fb8b
+🔒: 76c61387abe7742e65b01c1a30283b76a918acdd6b19e30a27e0f8565ad7c00f

@@ -12,7 +12,7 @@ DNA: E
 🚩: 1
 🌊: 28672
 🔊: 65535
-🌀: 0
+🌀: -1
 
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
@@ -47,4 +47,4 @@ E() {
 @[dna]
 E
 
-🔒: f7be0dffb16d3cc41f40ef863d9a7fdf75644f2d19348790429c447747d467b2
+🔒: ec073021b9af37eddaaa176398e2c3b6362395f166517f4e01a8c813f947672a

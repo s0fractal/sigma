@@ -21,24 +21,27 @@ DNA: sh
 
 # sh - Shell Language Spectrum
 
-# === METADATA ===
-# SYNTAX: bash
-# MUTE: "# "
-# LIFT: "#!/bin/bash"
-# IMPORT: "source \"$REPO_ROOT/%p\""
-
-# === PROVISIONING (QDNA) ===
-# brew: "brew install bash"
-# sh: "command -v bash >/dev/null"
-
-# === EDGES ===
-# check: "command -v bash >/dev/null 2>&1"
-# resolve: "command -v bash >/dev/null 2>&1"
-# cost: 0.1
+# === ⚙️ SPECTRUM CONFIG ===
+@[yaml]
+```yaml
+SYNTAX: bash
+MUTE: "# "
+LIFT: "#!/bin/bash"
+IMPORT: "source \"$REPO_ROOT/%p\""
+QDNA:
+  brew: "brew install bash"
+  sh: "command -v bash >/dev/null"
+EDGES:
+  check: "command -v bash >/dev/null 2>&1"
+  resolve: "command -v bash >/dev/null 2>&1"
+  channel: sh
+  cost: 0.1
+  ttl: 86400
+```
 
 🌊
 
 @[dna]
 sh
 
-🔒: 920b63484bb2a560d37f8d4e4174084d4eca2d51a890e6dd1d24404d5f33fdf8
+🔒: 44445fea1f7e742a0f8314be12af7f218fdd3adcc1fe0af63267c6b19d0156cc

@@ -21,23 +21,27 @@ DNA: ts
 
 # ts - TypeScript Language Spectrum
 
-# === METADATA ===
-# SYNTAX: ts
-# MUTE: "// "
-# LIFT: ""
-# IMPORT: "import { %n } from \"@/%p.ts\";"
-
-# === PROVISIONING (QDNA) ===
-# brew: "brew install node"
-# sh: "curl -fsSL https://fnm.vercel.app/install | bash"
-
-# === EDGES ===
-# check: "command -v node >/dev/null 2>&1"
-# cost: 0.4
+# === ⚙️ SPECTRUM CONFIG ===
+@[yaml]
+```yaml
+SYNTAX: ts
+MUTE: "// "
+LIFT: ""
+IMPORT: "import { %n } from \"@/%p.ts\";"
+QDNA:
+  brew: "brew install node"
+  sh: "curl -fsSL https://fnm.vercel.app/install | bash"
+EDGES:
+  check: "command -v node >/dev/null 2>&1"
+  resolve: "curl -fsSL https://fnm.vercel.app/install | bash"
+  channel: sh
+  cost: 0.4
+  ttl: 86400
+```
 
 🌊
 
 @[dna]
 ts
 
-🔒: 5f48b7ff32594e08a737c6de98c4abd71529ac1a4fa8f8e2663f25cd55434746
+🔒: aad9a5ce773982753e98c8c77c5f095ac171dd2e4b3b17a5c76a60eee835fd5e

@@ -194,9 +194,6 @@ Ph_new = (Ph_op + 16384) mod 65536
 - **MUST NOT**: Sovereign Color MUST NOT affect semantics, evaluation, canonical serialization, or hashing.
 - **NOTE**: Color collisions are possible (24-bit space). Color is an intuition aid only.
 
-**CHECKSUM:** `TRINITY-SIGMA-V1.9.1-ENLIGHTENED-PROOFS`
-
 ---
 
 *Appendix E provides navigation heuristics only. Canonical bytes and hashes define reality. Heuristics may guide search; they must never rewrite truth.*
-```
