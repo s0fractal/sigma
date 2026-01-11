@@ -1,4 +1,4 @@
 # 🔗 Shell implementation
-I() {
+K() {
     printf '%s\n' "$1"
 }

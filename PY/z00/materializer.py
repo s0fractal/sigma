@@ -37,55 +37,34 @@ TAG_MAP = {
 
 def parse_physics(text: str) -> dict:
     physics = {"OP": 0, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
-    
-    # V2.0 Symbolic Keys (Precise Search)
-    symbol_map = {"⚙️": "OP", "🚩": "FLAGS", "🌊": "PHASE", "🔊": "AMPLITUDE", "🌀": "ENTROPY"}
-    for sym, key in symbol_map.items():
-        match = re.search(f"{sym}:?\\s*(-?\\d+|0x[a-fA-F0-9]+)", text)
-        if match:
-            val = match.group(1)
-            try:
-                physics[key] = int(val, 16) if val.startswith("0x") else int(val)
-            except: continue
-
-    # Fallback: Legacy PHYSICS block parsing
-    if all(physics[k] == 0 for k in ["PHASE", "AMPLITUDE", "ENTROPY"]):
-        header_match = re.search(r"(?:⚖️)?\s*PHYSICS(?:\s*\(Wave Function\))?:?\s*\n+", text, re.MULTILINE)
-        if header_match:
-            start_idx = header_match.end()
-            remaining = text[start_idx:].lstrip("\n")
-            found_any = False
-            for line in remaining.split("\n"):
-                clean_line = line.split("#")[0].strip()
-                if not clean_line: continue
-                if ":" in clean_line:
-                    key, val = clean_line.split(":", 1)
-                    key = re.sub(r'[^\w]', '', key).strip().upper()
-                    if key in physics:
-                        found_any = True
-                        val = val.strip()
-                        try:
-                            if val.startswith("0x"): physics[key] = int(val, 16)
-                            else: physics[key] = int(re.search(r'-?\d+', val).group())
-                        except: continue
-                    elif found_any: break
-                else: break
+    header_match = re.search(r"(?:⚖️)?\s*PHYSICS(?:\s*\(Wave Function\))?:?\s*\n+", text, re.MULTILINE)
+    if header_match:
+        start_idx = header_match.end()
+        remaining = text[start_idx:].lstrip("\n")
+        found_any = False
+        for line in remaining.split("\n"):
+            clean_line = line.split("#")[0].strip()
+            if not clean_line: continue
+            if ":" in clean_line:
+                key, val = clean_line.split(":", 1)
+                key = re.sub(r'[^\w]', '', key).strip().upper()
+                if key in physics:
+                    found_any = True
+                    val = val.strip()
+                    try:
+                        if val.startswith("0x"): physics[key] = int(val, 16)
+                        else: physics[key] = int(re.search(r'-?\d+', val).group())
+                    except: continue
+                elif found_any: break
+            else: break
     return physics
 
 def get_identity(text: str, glyph_name: str) -> bytes:
-    # V2.0 ⚛️ and 🧬
-    atom_match = re.search(r"⚛️:\s*([a-fA-F0-9]{64})", text)
-    if atom_match: return bytes.fromhex(atom_match.group(1))
-    
-    # Legacy fallbacks
     atom_match = re.search(r"Atom:\s*([a-fA-F0-9]{64})", text)
     if atom_match: return bytes.fromhex(atom_match.group(1))
     id_match = re.search(r"🧬IDENTITY:\s*([a-fA-F0-9]{64})", text)
-    if not id_match: id_match = re.search(r"🧬:\s*([\w=]+)", text) # V2.0 Name link
-    if id_match and len(id_match.group(1)) == 64: return bytes.fromhex(id_match.group(1))
-
-    # Search for first content block after GRAVITY header if needed
-    first_block_match = re.search(r"(?:@\[\w+\]\n|=== 🔗 GRAVITY ===\n\n🔗:\n\n)(.*?)\n(?=@\[|🔒:|CHECKSUM:|$)", text, re.DOTALL)
+    if id_match: return bytes.fromhex(id_match.group(1))
+    first_block_match = re.search(r"@\[\w+\]\n(.*?)\n(?=@\[|CHECKSUM:|$)", text, re.DOTALL)
     content = first_block_match.group(1).strip() if first_block_match else glyph_name
     return hashlib.sha256(content.encode("utf-8")).digest()
 
@@ -104,7 +83,7 @@ def extract_block(text: str, tag: str) -> str | None:
     start_idx = text.find(start_marker)
     if start_idx == -1: return None
     remaining = text[start_idx + len(start_marker):]
-    end_match = re.search(r"\n@\[|\n🔒:|\n+CHECKSUM:", remaining)
+    end_match = re.search(r"\n@\[|\n+CHECKSUM:", remaining)
     block = remaining[:end_match.start()] if end_match else remaining
     content = block.strip()
     if content.startswith("```"):
@@ -127,15 +106,14 @@ def main():
     for path in sigma_files:
         try:
             content = path.read_text(encoding="utf-8")
-            glyph_match = re.search(r"^(?:GLYPH|Σ-GLYPH SEED|🧬):\s*([\w=]+)", content, re.MULTILINE)
+            glyph_match = re.search(r"(?:GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
             if glyph_match:
                 glyph_registry[glyph_match.group(1)] = path.relative_to(SOURCE_DIR)
             
             # Implicit template detection
             import_match = re.search(r"^IMPORT:\s*'(.*)'", content, re.MULTILINE)
             if import_match:
-                # V2.0 🔗: list
-                dna_match = re.search(r"(?:🧬DNA|🔗|🔗:):\s*\n+((?:\s*(?:-\s*|Ref:\s*)?[\w=]+\n?)*)", content)
+                dna_match = re.search(r"(?:🧬DNA|🔗 CONNECTIONS \(Gravity\)):\s*\n+((?:\s*(?:-\s*|Ref:\s*)[\w=]+\n?)*|(?:\s*[\w=]+\s*)*)", content)
                 if dna_match:
                     raw_dna = dna_match.group(1)
                     deps = [d.replace("Ref:", "").strip("- ").strip() for d in raw_dna.split() if d.strip("- ").strip()]
@@ -152,17 +130,12 @@ def main():
             
         phys = parse_physics(content)
         stratum = entropy_to_stratum(phys["ENTROPY"])
-        glyph_match = re.search(r"^(?:GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
+        glyph_match = re.search(r"(?:GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content)
         this_glyph = glyph_match.group(1) if glyph_match else path.stem
         
         dependencies = []
-        # V2.0 🔗: and DNA:
-        dna_match = re.search(r"^(?:🧬DNA|DNA:|🔗|🔗:):\s*\n+((?:\s*(?:-\s*|Ref:\s*)?[\w=]+\n?)*)", content, re.MULTILINE)
-        if not dna_match: # Inline DNA support
-             dna_match = re.search(r"DNA:\s*([\w\s=]+)\n", content)
-             if dna_match:
-                 dependencies = dna_match.group(1).split()
-        elif dna_match:
+        dna_match = re.search(r"(?:🧬DNA|🔗 CONNECTIONS \(Gravity\)):\s*\n+((?:\s*(?:-\s*|Ref:\s*)[\w=]+\n?)*|(?:\s*[\w=]+\s*)*)", content)
+        if dna_match:
             raw_dna = dna_match.group(1)
             dependencies = [d.replace("Ref:", "").strip("- ").strip() for d in raw_dna.splitlines() if d.strip()]
             if not dependencies:

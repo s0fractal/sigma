@@ -1,56 +1,45 @@
 Σ-GLYPH SEED: {NAME}
 
-=== 🧬 IDENTITY ===
-
+---
+# === 🧬 IDENTITY ===
 🧬: {NAME}               # Glyph Name (e.g., M)
-DNA: {DNA_EXPRESSION}    # The Formula (e.g., W I)
+DNA: {DNA_EXPRESSION}    # The Formula (e.g., W I). NO LISTS!
 ⚛️: {ATOM_HASH}          # SHA-256 of DNA/Content
 🎨: {COLOR_HEX}          # Axiom CP-24 (#RRGGBB)
 
-=== ⚖️ PHYSICS (Wave Function) ===
-
+# === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0                    # OpCode (0=LITERAL, 3=LAMBDA)
 🚩: 1                    # Flags (1=ATOM)
 🌊: {PHASE}              # Phase (0..65535)
 🔊: 65535                # Amplitude (Impact)
 🌀: -32768               # Entropy (-32..+32 mapped)
 
-=== 🔗 GRAVITY (Dependencies) ===
-
+# === 🔗 GRAVITY (Dependencies) ===
 🔗:
+  - SATOSHI
+  - {DEPENDENCY_NAME}
+---
 
-SATOSHI
-
-{DEPENDENCY_NAME}
-
-{NAME} - {TITLE}
+# {NAME} - {TITLE}
 
 {Description of the logic or concept. This is the Intent (📖).}
 
 🌊
 
 @[ts]
-
 // 🔗 Implicit Gravity: No imports required. Dependencies are in the DNA.
 // Projection of: {DNA_EXPRESSION}
 export const {NAME} = ...; 
 
-
 @[rs]
-
 // 🔗 Native implementation
 pub const {NAME}: ... = ...;
 
-
 @[sh]
-
 # 🔗 Shell implementation
 {NAME}() { ... }
 
-
 @[dna]
-
 {DNA_EXPRESSION}
-
 
 🔒: {HASH_OF_THIS_FILE}

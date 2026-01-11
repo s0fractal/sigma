@@ -1,4 +1,4 @@
 # 🔗 Shell implementation
-I() {
-    printf '%s\n' "$1"
+F() {
+    printf '%s\n' "$2"
 }
