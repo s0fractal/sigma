@@ -14,6 +14,10 @@ def canonicalize_sigma(text: str) -> bytes:
     5. Ensure the result ends with exactly one '\n'.
     6. Return UTF-8 bytes.
     """
+    # 0. Empty file check
+    if not text:
+        return b"\n"
+
     # 1. Normalize Line Endings
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     

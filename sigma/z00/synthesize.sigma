@@ -77,7 +77,16 @@ async function loadSeed(name: string): Promise<SigmaNode> {
 async function materializeMolecule(name: string, node: SigmaNode) {
     const bytes = serializeNode(node);
     const hash = await hashNode(node);
-    const path = `/ Users / s0fractal / SIGMA / GLYPH / z00 / ${name}.glyph`;
+    const path = isAbsolute ? \`\${Deno.cwd()}/\${resultName}.glyph\` : \`./\${resultName}.glyph\`;
+    // Or better, just use relative path as intended by the script logic usage.
+    // The original code was: const path = \`/ Users / s0fractal ...\`;
+    // The previous line was: const path = \`/ Users / s0fractal / SIGMA / GLYPH / z00 / \${name}.glyph\`;
+    // We should probably rely on a relative path or an env var.
+    // Let's use "./<name>.glyph" for now as it matches the usage description "synthesize ...".
+    // Or better: use SIGMA_ROOT if available, else cwd.
+    
+    // Using a simpler relative path for now to fix the absolute path violation.
+    const path = \`./\${name}.glyph\`;
     await Deno.writeFile(path, bytes);
     console.log(`Molecule[${name.padEnd(8)}]: ${toHex(hash)} `);
     console.log(`  Wave: ph = ${node.wave.ph}, am = ${node.wave.am}, en = ${node.wave.en} `);
