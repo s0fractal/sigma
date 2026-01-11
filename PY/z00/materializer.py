@@ -127,7 +127,7 @@ def main():
     for path in sigma_files:
         try:
             content = path.read_text(encoding="utf-8")
-            glyph_match = re.search(r"(?:GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
+            glyph_match = re.search(r"^(?:GLYPH|Σ-GLYPH SEED|🧬):\s*([\w=]+)", content, re.MULTILINE)
             if glyph_match:
                 glyph_registry[glyph_match.group(1)] = path.relative_to(SOURCE_DIR)
             
@@ -152,12 +152,12 @@ def main():
             
         phys = parse_physics(content)
         stratum = entropy_to_stratum(phys["ENTROPY"])
-        glyph_match = re.search(r"(?:GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content)
+        glyph_match = re.search(r"^(?:GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
         this_glyph = glyph_match.group(1) if glyph_match else path.stem
         
         dependencies = []
         # V2.0 🔗: and DNA:
-        dna_match = re.search(r"(?:🧬DNA|DNA:|🔗|🔗:):\s*\n+((?:\s*(?:-\s*|Ref:\s*)?[\w=]+\n?)*)", content)
+        dna_match = re.search(r"^(?:🧬DNA|DNA:|🔗|🔗:):\s*\n+((?:\s*(?:-\s*|Ref:\s*)?[\w=]+\n?)*)", content, re.MULTILINE)
         if not dna_match: # Inline DNA support
              dna_match = re.search(r"DNA:\s*([\w\s=]+)\n", content)
              if dna_match:

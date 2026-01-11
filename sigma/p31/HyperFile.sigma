@@ -86,7 +86,7 @@ fi
 
 # --- MATRIX BODY ---
 : << 'TENSOR_BLOCK'
-🧬SG: GLYPH: I | SIG: T->T                 | 📖MD: The Identity Function
+🧬SG: I | SIG: T->T                 | 📖MD: The Identity Function
 ⚡TS: export const I = <T>(x: T): T => x;  | 📖MD: Returns value unchanged
 ⚡RS: pub fn I<T>(x: T) -> T { x }         | 📖MD: Zero-cost abstraction
 TENSOR_BLOCK

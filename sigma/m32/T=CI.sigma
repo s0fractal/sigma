@@ -1,0 +1,65 @@
+Σ-GLYPH SEED: T
+
+=== 🧬 IDENTITY ===
+
+🧬: T
+DNA: T
+⚛️: 0000000000000000000000000000000000000000000000000000000000000008
+🎨: #007FFF
+
+=== ⚖️ PHYSICS (Wave Function) ===
+
+⚙️: 0
+🚩: 1
+🌊: 24576
+🔊: 65535
+🌀: -32768
+
+=== 🔗 GRAVITY (Dependencies) ===
+
+🔗:
+
+SATOSHI
+C
+I
+
+T - Thrush
+
+The Thrush turns the stream around. It applies the second argument to the first.
+T x f = f x.
+
+🌊
+
+@[ts]
+
+// 🔗 Implicit Gravity: No imports required. Dependencies are in the DNA.
+export const T = (x: any) => (f: (x: any) => any) => f(x);
+
+
+@[rs]
+
+// 🔗 Native implementation
+pub fn T<T, F, U>(x: T, f: F) -> U
+where
+    F: Fn(T) -> U,
+{
+    f(x)
+}
+
+
+@[sh]
+
+# 🔗 Shell implementation
+T() {
+    local x="$1"
+    local f="$2"
+    $f $x
+}
+
+
+@[dna]
+
+C I
+
+
+🔒: 9c92afa3fac44ceba40d405798f802595e55931f6dd051c65c2cfa603d323813

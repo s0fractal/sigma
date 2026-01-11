@@ -65,7 +65,7 @@ def get_glyph_registry():
     for path in SOURCE_DIR.glob("**/*.sigma"):
         try:
             content = path.read_text(encoding="utf-8")
-            glyph_match = re.search(r"(?:GLYPH|Σ-GLYPH SEED|🧬):\s*([\w=]+)", content, re.MULTILINE)
+            glyph_match = re.search(r"^(?:GLYPH|Σ-GLYPH SEED|🧬):\s*([\w=]+)", content, re.MULTILINE)
             if glyph_match:
                 glyph = glyph_match.group(1)
                 phys = parse_physics(content)

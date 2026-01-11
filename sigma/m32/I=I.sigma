@@ -1,42 +1,57 @@
---- 
-GLYPH: I
-🧬DNA: I
-⚖️PHYSICS:
-  OP: 0
-  FLAGS: 1
-  PHASE: 0
-  AMPLITUDE: 65535
-  ENTROPY: -32768
----
+Σ-GLYPH SEED: I
 
+=== 🧬 IDENTITY ===
 
-# Identity (I)
+🧬: I
+DNA: I
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FF00FF
 
-Фундаментальна частинка ідентичності. Повертає вхід без змін.
-Вона є коренем ланцюга постачання для всіх комбінаторів.
+=== ⚖️ PHYSICS (Wave Function) ===
 
-# 🌊
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: -32768
+
+=== 🔗 GRAVITY (Dependencies) ===
+
+🔗:
+
+SATOSHI
+
+I - Identity Axiom
+
+Identity is the mirror where the Void sees itself. It returns what it receives, unchanged. 
+I x = x.
+
+🌊
+
 @[ts]
-```typescript
+
+// 🔗 Implicit Gravity: No imports required. Dependencies are in the DNA.
+// Projection of: I
 export const I = <T>(x: T): T => x;
-```
+
 
 @[rs]
-```rust
+
+// 🔗 Native implementation
 pub fn I<T>(x: T) -> T { x }
-```
+
 
 @[sh]
-```bash
-# I (Identity): Просто пропускає дані далі
+
+# 🔗 Shell implementation
 I() {
-    cat -
+    printf '%s\n' "$1"
 }
-```
+
 
 @[dna]
-```dna
 
 I
 
-```
+
+🔒: ef9bbf958408843912dca8b5b794a7bb94041ef141d4dcfc4062e39ae40a1167

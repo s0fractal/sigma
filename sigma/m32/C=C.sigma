@@ -1,0 +1,67 @@
+Σ-GLYPH SEED: C
+
+=== 🧬 IDENTITY ===
+
+🧬: C
+DNA: C
+⚛️: 0000000000000000000000000000000000000000000000000000000000000005
+🎨: #00FF7F
+
+=== ⚖️ PHYSICS (Wave Function) ===
+
+⚙️: 0
+🚩: 1
+🌊: 24576
+🔊: 65535
+🌀: -32768
+
+=== 🔗 GRAVITY (Dependencies) ===
+
+🔗:
+
+SATOSHI
+I
+B
+C
+
+C - Exchange Axiom
+
+Exchange is the shifting of perspective. The Exchange / Permutation Axiom swaps the order of two arguments for a function.
+C f x y = f y x.
+
+🌊
+
+@[ts]
+
+// 🔗 Implicit Gravity: No imports required. Dependencies are in the DNA.
+export const C = <A, B, C>(f: (x: A) => (y: B) => C) => (y: B) => (x: A): C => f(x)(y);
+
+
+@[rs]
+
+// 🔗 Native implementation
+pub fn C<A, B, C, F>(f: F, y: B, x: A) -> C
+where
+    F: Fn(A) -> Box<dyn Fn(B) -> C>,
+{
+    f(x)(y)
+}
+
+
+@[sh]
+
+# 🔗 Shell implementation
+C() {
+    local f="$1"
+    local x="$2"
+    local y="$3"
+    echo "C-Exchange: $f $y $x"
+}
+
+
+@[dna]
+
+C
+
+
+🔒: 0171ff68b3b9471bd8f3ca6c2b6599f6aab1f12cdfe696743f917839c5bad9e4
