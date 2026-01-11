@@ -1,5 +1,5 @@
 Σ-GLYPH SEED: wire
-🧬IDENTITY: 04a327d40bf43c9a1a7251d54aeed5a402a99a034cafdf603c3a6a4f48548f1a
+🧬IDENTITY: 38143eba9740a6854d0a65961efee08e99522b0666db21cd6a9c197a3396450c
 
 ---
 # === 🧬 IDENTITY ===
@@ -113,4 +113,4 @@ export async function decodePacket(data: Uint8Array): Promise<{ type: PacketType
 @[dna]
 - SATOSHI
 
-🔒: 04a327d40bf43c9a1a7251d54aeed5a402a99a034cafdf603c3a6a4f48548f1a
+🔒: 38143eba9740a6854d0a65961efee08e99522b0666db21cd6a9c197a3396450c

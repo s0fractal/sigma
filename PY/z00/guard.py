@@ -92,6 +92,7 @@ def audit_lattice(fix=False, source_dir: Path = SOURCE_DIR):
             raise e
             
     print(f"\n🌀 Lattice Resonance Hash: {lattice_hasher.hexdigest()}")
+    print(f"📡 Protocol Version: {protocol.VERSION}")
     return violations
 
 def main():

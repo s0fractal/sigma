@@ -28,6 +28,8 @@ PROTOCOL_PATH = ROOT / "sigma" / "m32" / "protocol.json"
 # Strict load: Fail hard if protocol.json is missing or corrupted.
 _data = json.loads(PROTOCOL_PATH.read_text())
 
+VERSION = _data["VERSION"]
+
 OP_LITERAL = _data["OPCODES"]["LITERAL"]
 OP_REF = _data["OPCODES"]["REF"]
 OP_APPLY = _data["OPCODES"]["APPLY"]

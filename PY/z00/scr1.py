@@ -30,8 +30,7 @@ def canonicalize_sigma(text: str) -> bytes:
         text = text[:match[-1].start()]
     
     # 3. Process lines: trailing whitespace and Identity filtering
-    lines = text.split("\n")
-    processed_lines = []
+    # 3. Process lines: trailing whitespace and Identity filtering
     lines = text.split("\n")
     processed_lines = []
     

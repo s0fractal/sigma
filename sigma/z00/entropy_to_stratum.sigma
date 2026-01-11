@@ -1,5 +1,5 @@
 Σ-GLYPH SEED: entropy_to_stratum
-🧬IDENTITY: 588ea6e8b5c9bd0b1caf2aa3544a3d7ae1602545f3254bba9cefcf234c03bb84
+🧬IDENTITY: 085d654f25ffdb98c085ecee5ba86beffca66bd5c34ba1e25407c7f3a6b7127c
 
 
 ---
@@ -67,4 +67,4 @@ entropy_to_stratum() {
 @[dna]
 - SATOSHI
 
-🔒: 588ea6e8b5c9bd0b1caf2aa3544a3d7ae1602545f3254bba9cefcf234c03bb84
+🔒: 085d654f25ffdb98c085ecee5ba86beffca66bd5c34ba1e25407c7f3a6b7127c
