@@ -1,0 +1,303 @@
+# Σ-GLYPH — LLM Executor Prompts (copy/paste)
+
+> Use **one prompt per work branch**. Each prompt is designed for an external
+> LLM/worker to implement changes safely.
+>
+> **Hard rule:** If the worker cannot run tests, they must still implement
+> **vectors + harness** and describe how to run them.
+
+---
+
+## PROJECTION A — Minimal Path to a Living Core (0–4 weeks)
+
+### LLM EXECUTOR PROMPT
+
+**ROLE**: You are an implementation agent inside the Σ-GLYPH repo. Your mission
+is to produce a _bit-exact deterministic_ CORE: canonical bytes → canonical hash
+→ canonical binary glyph.
+
+### 1) Goal
+
+Implement a real CORE and remove all placeholder behavior so that:
+
+- `.sigma` canonicalization (SCR-1) produces canonical bytes deterministically.
+- `.glyph` binary layout is implemented (pack/unpack) with explicit endianness
+  and flag-driven optional fields.
+- Cross-language conformance (Python + TS/Deno) is driven by shared golden
+  vectors.
+
+### 2) Files / Modules to touch (or how to locate)
+
+**Search for and fix:**
+
+- Any `pack()` placeholder behavior (e.g., returning constant bytes).
+- Any duplicated implementations of `entropy_to_stratum`.
+- Any `try/except` that silently changes truth (e.g., protocol fallback,
+  registry skipping).
+
+**Primary targets (likely):**
+
+- `PY/z00/genesis_forge.py` (must not accept placeholder pack; must require real
+  core)
+- `PY/z00/materializer.py` (must import canonical `entropy_to_stratum`, not
+  redefine)
+- `PY/z00/protocol.py` (must be strict; no silent LUT fallback)
+- `PY/z00/scr1.py` (keep behavior stable; add tests)
+- `PY/z00/conformance_test.py` (extend vectors)
+- TS/Deno core files that define node serialization/hashing
+  (`sigma/m32/sigma.ts` or equivalent)
+
+### 3) MUST PASS checklist
+
+**Determinism / Canon**
+
+- [ ] SCR-1 canonicalization tests for:
+
+  - newline normalization (CRLF/CR/LF)
+  - trailing whitespace per line
+  - identity line removal
+  - seal stripping from last `🔒:` or `CHECKSUM:`
+  - final newline exactly one
+  - hex policy (case)
+- [ ] `entropy_to_stratum` test matrix: `-1,0,±1,±1023,±1024,±2047,±2048,±32768`
+      must match across Python and TS.
+
+**Glyph binary layout**
+
+- [ ] Create golden `.glyph` vectors for nodes with different flags:
+
+  - no hashes
+  - ATOM only
+  - LEFT only
+  - RIGHT only
+  - ATOM+LEFT+RIGHT
+- [ ] Pack/unpack roundtrip must be stable.
+- [ ] Hash of serialized bytes must match golden expected SHA-256.
+
+**Interfere physics**
+
+- [ ] Add vectors for boundaries and rounding rules, including negative half
+      cases.
+
+### 4) Definition of Done
+
+- A documented CORE spec exists: `.glyph` byte layout (offsets, sizes,
+  endianness, flag semantics).
+- Shared `vectors/` exist and are consumed by both Python and TS/Deno tests.
+- Protocol LUT loads strictly; missing/invalid `protocol.json` fails hard.
+- No placeholder pack/unpack or silent truth forks remain.
+
+### 5) Prohibitions (do NOT do)
+
+- Do **NOT** change SCR-1 behavior unless versioning (SCR-2) is introduced +
+  migration notes + regenerated vectors.
+- Do **NOT** introduce timestamps, randomness, filesystem order dependence, or
+  locale dependence into CORE hashing/serialization.
+- Do **NOT** “fix” `.sigma` body formatting or normalize Unicode in CORE unless
+  explicitly versioned and vector-backed.
+
+### Implementation notes (must follow)
+
+- Use explicit **big-endian** reads/writes for WaveVectorQ.
+- Define overflow/rounding semantics explicitly (saturate vs wrap;
+  round-half-away-from-zero if claimed).
+- Any parse error in CORE must be **fail-fast**, not “best-effort”.
+
+---
+
+## PROJECTION B — Standardization + Toolchain (4–8 weeks)
+
+### LLM EXECUTOR PROMPT
+
+**ROLE**: You are building the Σ-GLYPH toolchain as a compiler-grade product.
+Your mission is to enforce canon safely and detect dissonance.
+
+### 1) Goal
+
+Implement a strict toolchain that:
+
+- Separates **CORE** (bytes/hashes/reduction) from **HEURISTICS**
+  (templates/cache/UI).
+- Provides `sigma check --strict` that is deterministic and fail-fast.
+- Provides safe `sigma fix` that ONLY updates Identity/Seal lines (never touches
+  body).
+
+### 2) Files / Modules to touch
+
+- `PY/z00/sigma_cli.py` (or the main CLI entry): add commands + strict modes.
+- `PY/z00/guard.py` (must detect mismatched identity/seal; must fail-fast).
+- `PY/z00/materializer.py`:
+
+  - Split into `core_materialize.py` (deterministic extraction of payload) and
+    `heuristic_materialize.py` (templates, conveniences).
+- TS seed scripts: remove absolute paths; use repo-relative paths or SIGMA_ROOT
+  env.
+
+### 3) MUST PASS checklist
+
+- [ ] `sigma check --strict`:
+
+  - fails if identity/hash mismatch
+  - fails if protocol LUT missing
+  - fails on non-deterministic registry ordering (must sort)
+- [ ] `sigma fix`:
+
+  - only rewrites `🧬IDENTITY:` and last `🔒:`/`CHECKSUM:` section
+  - demonstrates idempotency: running twice yields no diff
+- [ ] “Absolute path immunity” gate:
+
+  - scan repo for `/Users/`, `C:\\Users\\`, `/home/` in committed TS scripts and
+    fail CI
+
+### 4) Definition of Done
+
+- CORE and HEURISTICS are physically separated by modules/directories.
+- CLI supports strict verification and safe sealing.
+- CI includes path-leak audit and determinism checks.
+
+### 5) Prohibitions
+
+- Do **NOT** implement auto-reformat of `.sigma` body.
+- Do **NOT** swallow exceptions in CORE. Fail fast with clear error.
+- Do **NOT** allow protocol fallback.
+
+---
+
+## PROJECTION C — Network / CAS / Evolution Protocol (8–12 weeks)
+
+### LLM EXECUTOR PROMPT
+
+**ROLE**: You are implementing digital-life infrastructure: CAS memory + sync
+protocol + replayable evolution events, without corrupting canon.
+
+### 1) Goal
+
+Add a minimal CAS + sync layer where:
+
+- Every object is addressed by its canonical hash.
+- Sync exchanges “what I have / what you miss” and transfers blobs.
+- All events are append-only and replayable (no mutation).
+
+### 2) Files / Modules to touch
+
+Create new modules (names can vary, but keep separation strict):
+
+- `core/cas/`:
+
+  - `store.py|ts` (put/get, verify hash, path layout)
+  - `object_types.py|ts` (blob/node/event headers)
+- `core/wire/`:
+
+  - `wire_format.md` (spec)
+  - `codec.py|ts` (encode/decode)
+- `core/replay/`:
+
+  - `log.py|ts` (append-only)
+  - `replay.py|ts` (reconstruct state)
+
+### 3) MUST PASS checklist
+
+- [ ] CAS put/get verifies hash of bytes; rejects mismatch.
+- [ ] Wire objects decode/encode roundtrip; fuzz tests on codec.
+- [ ] Replay harness: given an event log, deterministically rebuilds the same
+      object set.
+- [ ] No timestamps in CORE object bytes; time may exist only as optional
+      metadata outside canonical bytes.
+
+### 4) Definition of Done
+
+- A minimal wire spec exists, with golden vectors.
+- CAS store works locally and can sync with another store directory.
+- Replayable logs prove evolution steps without mutating prior truth.
+
+### 5) Prohibitions
+
+- Do **NOT** accept objects without full hash verification.
+- Do **NOT** include non-deterministic fields (timestamps, random ids) inside
+  canonical bytes.
+- Do **NOT** loosen SCR-1 or `.glyph` layout rules.
+
+---
+
+## Worker instructions (universal)
+
+- Always add **golden vectors first**, then implement code to satisfy them.
+- Any change that affects bytes/hashes must:
+
+  1. be versioned OR
+  2. preserve prior vectors exactly.
+- If you must change a spec rule, you MUST add migration tooling and dual-mode
+  verification.
+
+---
+
+## PROJECTION A1 — Proof-of-Intent + Collider (Harmony/Dissonance circles)
+
+### LLM EXECUTOR PROMPT
+
+**ROLE**: You are implementing the **Harmonization Layer**: a deterministic
+verifier that maps `(Intent σ) ↔ (Code τ)` into a single _circle status_
+(**🟢/🟡/🔴**) without touching semantics.
+
+### 1) Goal
+
+Build a verifier that:
+
+- Finds canonical intent↔code pairs (TopologicalCanon: fiber isomorphism).
+- Computes **Hash(Intent)** from **SCR-1 canonical bytes** of `.sigma`.
+- Computes **Hash(Code)** from raw bytes of the generated code file.
+- Computes **Proof-of-Intent (PoI)** exactly as specified by the repo (or
+  introduces PoI-2 versioning explicitly).
+- Emits a machine-readable report (JSON) + a human circle summary.
+
+### 2) Files / Modules to touch (or how to locate)
+
+- Search for existing PoI implementation (likely in `PY/z00/scr1.py`,
+  `PY/z00/guard.py`, CLI, and any TS tooling).
+- Implement a new command:
+
+  - `sigma poi --strict` (or `sigma collide`) that generates `poi.json`.
+- Add a deterministic pairing rule:
+
+  - Pair mapping based on directory isomorphism: `sigma/<layer>/<name>.sigma` →
+    `<fiber>/<layer>/<name>.*`.
+  - If your codebase already stores mapping metadata, reuse it; otherwise
+    implement a default mapping.
+
+### 3) MUST PASS checklist
+
+- [ ] **Pair discovery is deterministic**: sorted traversal, stable ordering.
+- [ ] **PoI definition is fixed**:
+
+  - If staying on PoI-1: keep the current behavior (hex-string concatenation)
+    and lock it with vectors.
+  - If changing to PoI-2: version it (`poi_version` field) + dual-verify support
+    (PoI-1 and PoI-2) for migration.
+- [ ] Output JSON schema:
+
+  - `intent_path`, `code_path`, `intent_hash`, `code_hash`, `poi`, `status`,
+    `details`.
+- [ ] CI gate:
+
+  - fails on any 🔴 in `--strict` mode.
+
+### 4) Definition of Done
+
+- `sigma poi --strict` exists and is deterministic.
+- A golden fixture set (a few sigma seeds + their generated code) produces
+  stable PoI outputs.
+- A circle summary (🟢/🟡/🔴) matches PoI statuses.
+
+### 5) Prohibitions
+
+- Do **NOT** mutate `.sigma` body or code files during verification.
+- Do **NOT** introduce timestamps into canonical PoI computation.
+- Do **NOT** weaken SCR-1 or `.glyph` rules.
+
+### Vectors you MUST add
+
+- A minimal set of paired fixtures where:
+
+  - one pair is 🟢 (matching)
+  - one pair is 🔴 (intent changed but code not regenerated)
+  - one pair is 🟡 (missing code file / genesis pending)
