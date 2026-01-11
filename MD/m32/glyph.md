@@ -14,5 +14,3 @@ While `.sigma` files are human-readable seeds, `.glyph` files are 40-byte binary
 5. **ENTROPY** (2 bytes, BE): Structural stability.
 6. **IDENTITY** (32 bytes): The "Atom" or cryptographic hash of the intent.
 ```
-
-🌊

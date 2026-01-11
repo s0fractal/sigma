@@ -44,5 +44,18 @@
       "expected_hex": "00010000ffff80000000000000000000000000000000000000000000000000000000000000000049",
       "expected_hash": "2b2f37e95672da8c1fcf5011ea8055ae1c2ecca06834f3cd2c1dcf337f07d324"
     }
+  ],
+  "cas": [
+    {
+      "data_hex": "48656c6c6f",
+      "expected_hash": "185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969"
+    }
+  ],
+  "wire": [
+    {
+      "type": 1,
+      "payload_hex": "48656c6c6f",
+      "expected_packet_hex": "010000000548656c6c6fe2da9281d655b3143951721a74f27880d67fd0b7b37a12cdae83caed2f9d7b2b"
+    }
   ]
 }

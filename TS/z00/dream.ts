@@ -103,5 +103,3 @@ async function main() {
     }
 
     console.log(`\n
-
-🌊

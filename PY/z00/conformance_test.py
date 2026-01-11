@@ -8,6 +8,9 @@ import re
 import protocol
 import scr1
 import physics
+import cas
+import wire
+import shutil
 
 # Σ-GLYPH CONFORMANCE SUITE (Python)
 # V2.3.5 - Bit-Exact CORE Parity
@@ -98,6 +101,50 @@ def test_root_discovery():
         print(f"   [FAIL] Root Discovery: {e}")
         return False
 
+def test_cas(vectors):
+    print("🧪 Testing CAS Store...")
+    errors = 0
+    cas_root = protocol.ROOT / "test_cas"
+    if cas_root.exists(): shutil.rmtree(cas_root)
+    store = cas.CASStore(cas_root)
+    for v in vectors.get("cas", []):
+        data = bytes.fromhex(v["data_hex"])
+        h = store.put(data)
+        if h != v["expected_hash"]:
+            print(f"   [FAIL] Put mismatch\n          Exp: {v['expected_hash']}\n          Act: {h}")
+            errors += 1
+        else:
+            print(f"   [PASS] Put {h[:16]} verified.")
+        
+        checked = store.get(h)
+        if checked != data:
+            print(f"   [FAIL] Get mismatch for {h}")
+            errors += 1
+        else:
+            print(f"   [PASS] Get {h[:16]} verified.")
+    if cas_root.exists(): shutil.rmtree(cas_root)
+    return errors == 0
+
+def test_wire(vectors):
+    print("🧪 Testing Wire Protocol...")
+    errors = 0
+    for v in vectors.get("wire", []):
+        payload = bytes.fromhex(v["payload_hex"])
+        packet = wire.encode_packet(v["type"], payload)
+        if packet.hex() != v["expected_packet_hex"]:
+            print(f"   [FAIL] Packet encode mismatch\n          Exp: {v['expected_packet_hex']}\n          Act: {packet.hex()}")
+            errors += 1
+        else:
+            print(f"   [PASS] Encode Packet verified.")
+        
+        ptype, p_payload = wire.decode_packet(packet)
+        if ptype != v["type"] or p_payload != payload:
+            print(f"   [FAIL] Packet decode mismatch")
+            errors += 1
+        else:
+            print(f"   [PASS] Decode Packet verified.")
+    return errors == 0
+
 if __name__ == "__main__":
     v = load_vectors()
     success = (
@@ -106,7 +153,9 @@ if __name__ == "__main__":
         test_entropy(v["entropy_to_stratum"]) and 
         test_math(v["math"]) and 
         test_glyph(v["glyph"]) and
-        test_root_discovery()
+        test_root_discovery() and
+        test_cas(v) and
+        test_wire(v)
     )
     if not success: sys.exit(1)
     print("\n✅ PYTHON CORE CONFORMANCE SECURED (V2.3.5).")

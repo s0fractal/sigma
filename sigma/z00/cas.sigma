@@ -1,0 +1,120 @@
+Σ-GLYPH SEED: cas
+🧬IDENTITY: 524ccf35ee6eb039efcfcd7a50d01a363d4b441c2b1cb40c5c1e97be61747095
+
+---
+# === 🧬 IDENTITY ===
+🧬: cas
+DNA: - SATOSHI
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FFD700
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: -1
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+---
+
+# cas (Content Addressable Storage)
+
+The memory of the Living Core. Objects are addressed by their SHA-256 hash.
+
+@[py]
+import os
+import hashlib
+from pathlib import Path
+from typing import Optional
+
+class CASStore:
+    def __init__(self, root: Path):
+        self.root = root / "cas"
+        self.root.mkdir(parents=True, exist_ok=True)
+
+    def _get_path(self, h: str) -> Path:
+        return self.root / h[:2] / h[2:]
+
+    def put(self, data: bytes) -> str:
+        h = hashlib.sha256(data).hexdigest()
+        path = self._get_path(h)
+        if not path.exists():
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(data)
+        return h
+
+    def get(self, h: str) -> Optional[bytes]:
+        path = self._get_path(h)
+        if not path.exists(): return None
+        data = path.read_bytes()
+        # Full hash verification
+        if hashlib.sha256(data).hexdigest() != h:
+            raise ValueError(f"CAS Corruption: Hash mismatch for {h}")
+        return data
+
+    def exists(self, h: str) -> bool:
+        return self._get_path(h).exists()
+
+@[ts]
+import { toHex } from "../m32/sigma.ts";
+
+export class CASStore {
+  private root: string;
+
+  constructor(root: string) {
+    this.root = `${root}/cas`;
+    try { Deno.mkdirSync(this.root, { recursive: true }); } catch {}
+  }
+
+  private getPath(h: string): string {
+    return `${this.root}/${h.substring(0, 2)}/${h.substring(2)}`;
+  }
+
+  async put(data: Uint8Array): Promise<string> {
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+    const h = toHex(new Uint8Array(hashBuffer));
+    const path = this.getPath(h);
+    
+    try {
+      await Deno.stat(path);
+    } catch {
+      const dir = path.substring(0, path.lastIndexOf("/"));
+      await Deno.mkdir(dir, { recursive: true });
+      await Deno.writeFile(path, data);
+    }
+    return h;
+  }
+
+  async get(h: string): Promise<Uint8Array | null> {
+    const path = this.getPath(h);
+    try {
+      const data = await Deno.readFile(path);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+      const actual = toHex(new Uint8Array(hashBuffer));
+      if (actual !== h) throw new Error(`CAS Corruption: Hash mismatch for ${h}`);
+      return data;
+    } catch (e) {
+      if (e instanceof Deno.errors.NotFound) return null;
+      throw e;
+    }
+  }
+
+  async exists(h: string): Promise<boolean> {
+    try {
+      await Deno.stat(this.getPath(h));
+      return true;
+    } catch {
+      return false;
+    }
+  }
+}
+
+🌊
+
+@[dna]
+- SATOSHI
+
+🔒: 524ccf35ee6eb039efcfcd7a50d01a363d4b441c2b1cb40c5c1e97be61747095

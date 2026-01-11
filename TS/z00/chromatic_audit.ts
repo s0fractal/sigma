@@ -40,5 +40,3 @@ async function chromaticAudit() {
 
     console.log("GIANT    | PHASE  | SOVEREIGN COLOR | VISUAL (Approx)");
     console.log("
-
-🌊

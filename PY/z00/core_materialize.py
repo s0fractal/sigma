@@ -33,8 +33,8 @@ def extract_block(text: str, tag: str) -> str | None:
     if len(parts) < 2: return None
     
     payload_raw = parts[1]
-    # End search: next block or seal
-    end_match = re.search(r"\n(@\[|🔒:|CHECKSUM:)", payload_raw, re.MULTILINE)
+    # End search: next block or seal, or physics separator
+    end_match = re.search(r"\n(@\[|🔒:|CHECKSUM:|🌊)", payload_raw, re.MULTILINE)
     payload = payload_raw[:end_match.start()] if end_match else payload_raw
     
     return payload.strip("\n")

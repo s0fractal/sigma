@@ -1,0 +1,102 @@
+Σ-GLYPH SEED: replay
+🧬IDENTITY: f51b1b02c0e3ad7b242f449a3dfdaa9f1ec13af8fb62e734f00666f5e7c0274e
+
+---
+# === 🧬 IDENTITY ===
+🧬: replay
+DNA: - SATOSHI
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #8B0000
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: -1
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+---
+
+# replay (Evolution Log)
+
+Append-only event log for deterministic evolution.
+
+@[py]
+import json
+import hashlib
+from pathlib import Path
+
+class EvolutionLog:
+    def __init__(self, path: Path):
+        self.path = path
+        if not self.path.exists():
+            self.path.write_text("", encoding="utf-8")
+
+    def append(self, event_type: str, data: dict):
+        # Deterministic JSON (sort keys)
+        event = {
+            "type": event_type,
+            "data": data,
+            "prev": self.get_last_hash()
+        }
+        event_str = json.dumps(event, sort_keys=True)
+        h = hashlib.sha256(event_str.encode()).hexdigest()
+        
+        with self.path.open("a", encoding="utf-8") as f:
+            f.write(f"{h} {event_str}\n")
+        return h
+
+    def get_last_hash(self) -> str:
+        lines = self.path.read_text(encoding="utf-8").strip().splitlines()
+        if not lines: return "0" * 64
+        return lines[-1].split(" ", 1)[0]
+
+    def verify(self) -> bool:
+        expected_prev = "0" * 64
+        for line in self.path.read_text(encoding="utf-8").strip().splitlines():
+            if not line: continue
+            h, event_str = line.split(" ", 1)
+            event = json.loads(event_str)
+            if event["prev"] != expected_prev: return False
+            if hashlib.sha256(event_str.encode()).hexdigest() != h: return False
+            expected_prev = h
+        return True
+
+@[ts]
+export class EvolutionLog {
+  private path: string;
+
+  constructor(path: string) {
+    this.path = path;
+    try { Deno.statSync(this.path); } catch { Deno.writeTextFileSync(this.path, ""); }
+  }
+
+  async append(eventType: string, data: any): Promise<string> {
+    const prev = this.getLastHash();
+    const event = { type: eventType, data, prev };
+    const eventStr = JSON.stringify(event, Object.keys(event).sort());
+    
+    const hashBuffer = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(eventStr));
+    const h = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+    
+    await Deno.writeTextFile(this.path, `${h} ${eventStr}\n`, { append: true });
+    return h;
+  }
+
+  getLastHash(): string {
+    const content = Deno.readTextFileSync(this.path).trim();
+    if (!content) return "0".repeat(64);
+    const lines = content.split("\n");
+    return lines[lines.length - 1].split(" ")[0];
+  }
+}
+
+🌊
+
+@[dna]
+- SATOSHI
+
+🔒: f51b1b02c0e3ad7b242f449a3dfdaa9f1ec13af8fb62e734f00666f5e7c0274e

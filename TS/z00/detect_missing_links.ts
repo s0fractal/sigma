@@ -60,5 +60,3 @@ if (import.meta.main) {
 }
 
 ```
-
-🌊

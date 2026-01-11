@@ -93,5 +93,3 @@ Status: **ACTIVE** (Orthogonal Proof required)
 \`\`\`text
 ${await getSpiral()}
 \`\`\`
-
-🌊

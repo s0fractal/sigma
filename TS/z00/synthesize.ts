@@ -94,5 +94,3 @@ if (import.meta.main) {
 }
 
 ```
-
-🌊

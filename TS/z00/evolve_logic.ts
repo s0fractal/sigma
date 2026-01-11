@@ -20,5 +20,3 @@ async function saveGlyph(name: string, node: SigmaNode) {
 
 async function materializeLogic() {
     console.log("
-
-🌊

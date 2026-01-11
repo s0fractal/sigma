@@ -9,5 +9,3 @@
 
 | Glyph | Name | Meaning | Context Example |
 | :
-
-🌊

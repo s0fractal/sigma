@@ -10,5 +10,3 @@ import {
 
 async function runTests() {
     console.log("
-
-🌊

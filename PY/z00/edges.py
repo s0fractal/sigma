@@ -176,5 +176,3 @@ def collapse_edges(dim: str | None):
         resolve = edge.get("resolve", "")
         ttl = int(edge.get("ttl", "86400"))
         print(f"
-
-🌊

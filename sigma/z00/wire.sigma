@@ -1,0 +1,116 @@
+Σ-GLYPH SEED: wire
+🧬IDENTITY: 04a327d40bf43c9a1a7251d54aeed5a402a99a034cafdf603c3a6a4f48548f1a
+
+---
+# === 🧬 IDENTITY ===
+🧬: wire
+DNA: - SATOSHI
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #0000FF
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: -1
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+---
+
+# wire (Sync Protocol)
+
+Deterministic wire format for transferring blobs and nodes.
+
+## Wire Spec (V1)
+- [1 byte] Type (0x01: Blob, 0x02: Node, 0x03: Event)
+- [4 bytes] Length (Big-Endian uint32)
+- [N bytes] Payload
+- [32 bytes] SHA-256 Checksum
+
+@[py]
+import struct
+import hashlib
+
+TYPE_BLOB = 0x01
+TYPE_NODE = 0x02
+TYPE_EVENT = 0x03
+
+def encode_packet(ptype: int, payload: bytes) -> bytes:
+    length = len(payload)
+    header = struct.pack(">BI", ptype, length)
+    packet = header + payload
+    checksum = hashlib.sha256(packet).digest()
+    return packet + checksum
+
+def decode_packet(data: bytes) -> tuple[int, bytes]:
+    if len(data) < 5 + 32:
+        raise ValueError("Packet too short")
+    ptype, length = struct.unpack(">BI", data[:5])
+    payload = data[5:5+length]
+    expected_checksum = data[5+length:5+length+32]
+    
+    actual_checksum = hashlib.sha256(data[:5+length]).digest()
+    if actual_checksum != expected_checksum:
+        raise ValueError("Wire Corruption: Checksum mismatch")
+    
+    return ptype, payload
+
+@[ts]
+import { toHex } from "../m32/sigma.ts";
+
+export enum PacketType {
+  BLOB = 0x01,
+  NODE = 0x02,
+  EVENT = 0x03,
+}
+
+export async function encodePacket(type: PacketType, payload: Uint8Array): Promise<Uint8Array> {
+  const buf = new Uint8Array(5 + payload.length + 32);
+  const dv = new DataView(buf.buffer);
+  
+  dv.setUint8(0, type);
+  dv.setUint32(1, payload.length, false);
+  buf.set(payload, 5);
+  
+  const hashBuffer = await crypto.subtle.digest("SHA-256", buf.subarray(0, 5 + payload.length));
+  buf.set(new Uint8Array(hashBuffer), 5 + payload.length);
+  
+  return buf;
+}
+
+export async function decodePacket(data: Uint8Array): Promise<{ type: PacketType; payload: Uint8Array }> {
+  if (data.length < 5 + 32) throw new Error("Packet too short");
+  const dv = new DataView(data.buffer, data.byteOffset, data.byteLength);
+  const type = dv.getUint8(0) as PacketType;
+  const length = dv.getUint32(1, false);
+  const payload = data.slice(5, 5 + length);
+  const expectedChecksum = data.slice(5 + length, 5 + length + 32);
+  
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data.subarray(0, 5 + length));
+  const actualChecksum = new Uint8Array(hashBuffer);
+  
+  if (toHex(actualChecksum) !== toHex(expectedChecksum)) {
+    throw new Error("Wire Corruption: Checksum mismatch");
+  }
+  
+  return { type, payload };
+}
+
+@[md]
+# Wire Format V1
+| Offset | Size | Field | Description |
+| :--- | :--- | :--- | :--- |
+| 0 | 1 | Type | 0x01=Blob, 0x02=Node, 0x03=Event |
+| 1 | 4 | Length | Big-Endian uint32 payload size |
+| 5 | L | Payload | The actual data bytes |
+| 5+L | 32 | HMAC | SHA-256 of bytes [0...5+L-1] |
+
+🌊
+
+@[dna]
+- SATOSHI
+
+🔒: 04a327d40bf43c9a1a7251d54aeed5a402a99a034cafdf603c3a6a4f48548f1a

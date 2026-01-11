@@ -10,5 +10,3 @@
 
 | Color | Hex | Glyph | Archetype | Meaning |
 |
-
-🌊
