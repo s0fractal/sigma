@@ -32,15 +32,12 @@ from typing import Optional
 import protocol
 
 def div_round_half_up(n: int, d: int) -> int:
-    """Integer division with round-half-up (round-away-from-zero)."""
+    """Integer division with symmetric round-half-up (away from zero)."""
     if d <= 0: raise ValueError("d must be positive")
-    s = -1 if n < 0 else 1
-    a = abs(n)
-    q = a // d
-    r = a % d
-    if 2 * r >= d:
-        q += 1
-    return s * q
+    s = 1 if n >= 0 else -1
+    n_abs = abs(n)
+    q_abs = (n_abs + (d // 2)) // d
+    return s * q_abs
 
 def clamp_i16(x: int) -> int:
     return max(-32768, min(32767, x))
@@ -145,12 +142,13 @@ export interface SigmaNode {
 
 export function divRoundHalfUp(n: bigint, d: bigint): bigint {
   if (d <= 0n) throw new Error("d must be positive");
-  const s = n < 0n ? -1n : 1n;
-  const a = n < 0n ? -n : n;
-  let q = a / d;
-  const r = a % d;
-  if (2n * r >= d) q = q + 1n;
-  return s * q;
+  let s = 1n;
+  if (n < 0n) {
+      s = -1n;
+      n = -n;
+  }
+  const half = d / 2n;
+  return s * ((n + half) / d);
 }
 
 export function clampI16(x: number): number {

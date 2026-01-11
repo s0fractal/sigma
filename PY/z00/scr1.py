@@ -28,12 +28,78 @@ def canonicalize_sigma(text: str) -> bytes:
     # 3. Process lines: trailing whitespace and Identity filtering
     lines = text.split("\n")
     processed_lines = []
+    lines = text.split("\n")
+    processed_lines = []
+    
+    in_protected_block = False
+    
     for line in lines:
-        stripped_line = line.rstrip() # Only trailing whitespace
-        # Remove 🧬IDENTITY or IDENTITY lines
-        if re.match(r"^(🧬IDENTITY:|IDENTITY:)", stripped_line.strip()):
+        stripped_line = line.rstrip() 
+        
+        # Check for block markers (simplified check for @[dna])
+        if line.startswith("@[dna]"):
+            in_protected_block = True
+            processed_lines.append(stripped_line) 
             continue
-        processed_lines.append(stripped_line)
+            
+        # If in protected block, check if it ends? 
+        # Actually, blocks end with new blocks or seals or physics separators?
+        # The prompt says: "Modify scr1.py: replace line.rstrip() with logic that removes ONLY trailing spaces OUTSIDE @[dna] blocks."
+        # And "The block @[dna] must be preserved byte-for-byte (except final \n)."
+        
+        # Let's improve the logic. We need to know state.
+        # But SCR-1 strips seals FIRST. So we are iterating through the body.
+        
+        # The separator "🌊" usually ends blocks?
+        # Let's assume a simpler state machine.
+        
+        # Re-eval: The user prompt says "Modify scr1.py: replace line.rstrip() with logic that removes ONLY trailing spaces OUTSIDE @[dna] blocks."
+        
+        if in_protected_block:
+             # Check exit conditions
+             if line.startswith("🔒:") or line.startswith("CHECKSUM:") or line.strip() == "🌊":
+                 in_protected_block = False
+                 # Fall through to normal processing? No, 🌊 is its own line.
+             elif line.startswith("@["):
+                 # New block starts, old one ends.
+                 # Actually, if we hit @[py] or something, we are in a new block.
+                 # But the instruction specifically mentioned @[dna].
+                 # Let's assume generic @[tag] starts a block?
+                 # But the prompt specifically said "OUTSIDE @[dna] blocks". 
+                 # Maybe other blocks *should* be stripped?
+                 # Let's be safe and protect all @[...] blocks?
+                 # The user instruction was explicit about DNA.
+                 pass
+        
+        if line.startswith("@[dna]"):
+             in_protected_block = True
+             processed_lines.append(stripped_line)
+             continue
+             
+        # Detect end of block (empty line before new block? or just next marker?)
+        # Standard sigma blocks are often separated by double newlines.
+        # But here we just iterate lines.
+        
+        # We need a robust state machine if we want "byte-for-byte".
+        # But splitting by "\n" already lost "byte-for-byte" if we had CRLF.
+        # We already normalized to LF.
+        
+        if in_protected_block:
+            # We keep the line as is, BUT we still normalized line endings effectively by split/join.
+            # We just avoid rstrip().
+            
+            # Check for block exit?
+            # If we see a new header-like thing?
+            if line.startswith("🌊") or line.startswith("@[") or line.startswith("🔒:"):
+                in_protected_block = False
+                processed_lines.append(line.rstrip())
+            else:
+                processed_lines.append(line)
+        else:
+            # IDENTITY filtering
+            if re.match(r"^(🧬IDENTITY:|IDENTITY:)", stripped_line.strip()):
+                continue
+            processed_lines.append(stripped_line)
         
     # 4. Join and ensure single final newline
     # Note: strip() might be too aggressive if leading/trailing empty lines are normative.
