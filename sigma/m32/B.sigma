@@ -1,30 +1,28 @@
 Σ-GLYPH SEED: B
 
-=== 🧬 IDENTITY ===
-
+---
+# === 🧬 IDENTITY ===
 🧬: B
 DNA: B
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000004
 🎨: #7F00FF
 
-=== ⚖️ PHYSICS (Wave Function) ===
-
+# === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
 🚩: 1
 🌊: 8192
 🔊: 65535
 🌀: -32768
 
-=== 🔗 GRAVITY (Dependencies) ===
-
+# === 🔗 GRAVITY (Dependencies) ===
 🔗:
+  - SATOSHI
+  - I
+  - S
+  - K
+---
 
-SATOSHI
-I
-S
-K
-
-B - Composition Axiom
+# B - Composition Axiom
 
 Composition is the bridge between moments. The Composition Axiom chains two functions together, passing the output of one as the input to the next.
 B f g x = f (g x).
@@ -32,14 +30,9 @@ B f g x = f (g x).
 🌊
 
 @[ts]
-
-// 🔗 Implicit Gravity: No imports required. Dependencies are in the DNA.
 export const B = <A, B, C>(f: (y: B) => C) => (g: (x: A) => B) => (x: A): C => f(g(x));
 
-
 @[rs]
-
-// 🔗 Native implementation
 pub fn B<A, B, C, F, G>(f: F, g: G, x: A) -> C
 where
     F: Fn(B) -> C,
@@ -48,10 +41,7 @@ where
     f(g(x))
 }
 
-
 @[sh]
-
-# 🔗 Shell implementation
 B() {
     local f="$1"
     local g="$2"
@@ -59,10 +49,7 @@ B() {
     echo "B-Composition: $f ($g $x)"
 }
 
-
 @[dna]
-
 B
 
-
-🔒: 84dc20b7869f7d55005747bbf84ad3dd378ea4ecfdfb6b42cd820ab8f26884e6
+🔒: VALIDATING...

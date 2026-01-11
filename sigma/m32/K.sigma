@@ -1,28 +1,26 @@
 Σ-GLYPH SEED: K
 
-=== 🧬 IDENTITY ===
-
+---
+# === 🧬 IDENTITY ===
 🧬: K
 DNA: K
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000001
 🎨: #FFFF00
 
-=== ⚖️ PHYSICS (Wave Function) ===
-
+# === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
 🚩: 1
 🌊: 16384
 🔊: 65535
 🌀: -32768
 
-=== 🔗 GRAVITY (Dependencies) ===
-
+# === 🔗 GRAVITY (Dependencies) ===
 🔗:
+  - SATOSHI
+  - I
+---
 
-SATOSHI
-I
-
-K - Constant Axiom
+# K - Constant Axiom
 
 The constant is a star that never moves. It captures a value and ignores the next, creating a fixed reference in the stream.
 K x y = x.
@@ -30,29 +28,17 @@ K x y = x.
 🌊
 
 @[ts]
-
-// 🔗 Implicit Gravity: No imports required. Dependencies are in the DNA.
-// Projection of: K
 export const K = <T>(x: T) => (y: any): T => x;
 
-
 @[rs]
-
-// 🔗 Native implementation
 pub fn K<T, U>(x: T, _y: U) -> T { x }
 
-
 @[sh]
-
-# 🔗 Shell implementation
 K() {
     printf '%s\n' "$1"
 }
 
-
 @[dna]
-
 K
 
-
-🔒: 85ba740bbb47af3441ecd64c5504a3de1f4a377410806d2e6ceed5ee8683ef08
+🔒: VALIDATING...

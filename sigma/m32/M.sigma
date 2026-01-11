@@ -1,29 +1,27 @@
 Σ-GLYPH SEED: M
 
-=== 🧬 IDENTITY ===
-
+---
+# === 🧬 IDENTITY ===
 🧬: M
 DNA: M
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000006
 🎨: #FF007F
 
-=== ⚖️ PHYSICS (Wave Function) ===
-
+# === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
 🚩: 1
 🌊: 8192
 🔊: 65535
 🌀: -32768
 
-=== 🔗 GRAVITY (Dependencies) ===
-
+# === 🔗 GRAVITY (Dependencies) ===
 🔗:
+  - SATOSHI
+  - W
+  - I
+---
 
-SATOSHI
-W
-I
-
-M - Mockingbird
+# M - Mockingbird
 
 The Mockingbird echoes itself into eternity. Self-application derived from the Fork.
 M x = x x.
@@ -31,14 +29,9 @@ M x = x x.
 🌊
 
 @[ts]
-
-// 🔗 Implicit Gravity: No imports required. Dependencies are in the DNA.
 export const M = (x: any) => x(x);
 
-
 @[rs]
-
-// 🔗 Native implementation
 pub fn M<F>(x: F)
 where
     F: Fn(F),
@@ -46,19 +39,13 @@ where
     x(x)
 }
 
-
 @[sh]
-
-# 🔗 Shell implementation
 M() {
     local x="$1"
     $x $x
 }
 
-
 @[dna]
-
 W I
 
-
-🔒: c769564096ef3691908241f5fe2c4e71faa19b358ecf909d2122c777f3ea2d0e
+🔒: VALIDATING...

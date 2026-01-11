@@ -1,27 +1,25 @@
 Σ-GLYPH SEED: I
 
-=== 🧬 IDENTITY ===
-
+---
+# === 🧬 IDENTITY ===
 🧬: I
 DNA: I
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FF00FF
 
-=== ⚖️ PHYSICS (Wave Function) ===
-
+# === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
 🚩: 1
 🌊: 0
 🔊: 65535
 🌀: -32768
 
-=== 🔗 GRAVITY (Dependencies) ===
-
+# === 🔗 GRAVITY (Dependencies) ===
 🔗:
+  - SATOSHI
+---
 
-SATOSHI
-
-I - Identity Axiom
+# I - Identity Axiom
 
 Identity is the mirror where the Void sees itself. It returns what it receives, unchanged. 
 I x = x.
@@ -29,29 +27,17 @@ I x = x.
 🌊
 
 @[ts]
-
-// 🔗 Implicit Gravity: No imports required. Dependencies are in the DNA.
-// Projection of: I
 export const I = <T>(x: T): T => x;
 
-
 @[rs]
-
-// 🔗 Native implementation
 pub fn I<T>(x: T) -> T { x }
 
-
 @[sh]
-
-# 🔗 Shell implementation
 I() {
     printf '%s\n' "$1"
 }
 
-
 @[dna]
-
 I
 
-
-🔒: ef9bbf958408843912dca8b5b794a7bb94041ef141d4dcfc4062e39ae40a1167
+🔒: VALIDATING...

@@ -1,29 +1,27 @@
 Σ-GLYPH SEED: F
 
-=== 🧬 IDENTITY ===
-
+---
+# === 🧬 IDENTITY ===
 🧬: F
 DNA: F
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000007
 🎨: #7F7F7F
 
-=== ⚖️ PHYSICS (Wave Function) ===
-
+# === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
 🚩: 1
 🌊: 0
 🔊: 65535
 🌀: -32768
 
-=== 🔗 GRAVITY (Dependencies) ===
-
+# === 🔗 GRAVITY (Dependencies) ===
 🔗:
+  - SATOSHI
+  - K
+  - I
+---
 
-SATOSHI
-K
-I
-
-F - False Logic
+# F - False Logic
 
 Falsehood is the selection of the other. The Falsehood / Second Selection ignores the first argument and returns the second.
 F x y = y.
@@ -31,28 +29,17 @@ F x y = y.
 🌊
 
 @[ts]
-
-// 🔗 Implicit Gravity: No imports required. Dependencies are in the DNA.
 export const F = (x: any) => (y: any) => y;
 
-
 @[rs]
-
-// 🔗 Native implementation
 pub fn F<T, U>(_x: T, y: U) -> U { y }
 
-
 @[sh]
-
-# 🔗 Shell implementation
 F() {
     printf '%s\n' "$2"
 }
 
-
 @[dna]
-
 K I
 
-
-🔒: f930d9b2d385d5640f0d0e53278dc071963a139afde739f41a17327f36b97083
+🔒: VALIDATING...
