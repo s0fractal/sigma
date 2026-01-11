@@ -17,17 +17,13 @@ def canonicalize_sigma(text: str) -> bytes:
     # 1. Normalize Line Endings
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     
-    # 2. Strip Seal (from the last \n🔒: or \nCHECKSUM: to the end)
-    # We find the last occurrence of either marker preceded by a newline.
-    markers = ["\n🔒:", "\nCHECKSUM:"]
-    last_idx = -1
-    for m in markers:
-        idx = text.rfind(m)
-        if idx > last_idx:
-            last_idx = idx
-            
-    if last_idx != -1:
-        text = text[:last_idx]
+    # 2. Strip Seal (Strict Regex Matching)
+    # Specified regex: r"\n(?:🔒:|CHECKSUM:)\s*[0-9a-f]{64}\s*$"
+    # We use MULTILINE to match $ at the end of lines, but we want the VERY last one.
+    seal_pattern = r"\n(?:🔒:|CHECKSUM:)\s*[0-9a-f]{64}\s*$"
+    match = list(re.finditer(seal_pattern, text, re.MULTILINE))
+    if match:
+        text = text[:match[-1].start()]
     
     # 3. Process lines: trailing whitespace and Identity filtering
     lines = text.split("\n")
@@ -58,3 +54,7 @@ def canonicalize_sigma(text: str) -> bytes:
 def get_node_hash(text: str) -> str:
     """Convenience for SHA-256 of canonical bytes."""
     return hashlib.sha256(canonicalize_sigma(text)).hexdigest()
+
+def calculate_poi(intent_hash: str, code_hash: str) -> str:
+    """PoI-1: Proof of Intent. SHA-256(IntentHash || CodeHash)."""
+    return hashlib.sha256((intent_hash + code_hash).encode()).hexdigest()

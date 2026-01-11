@@ -1,16 +1,20 @@
 # Σ-GLYPH Specification V2.3: Deterministic Resonance
 
-## 1. SCR-1: Sigma Canonical Representation
+### 1. SCR-1: Stable Canonical Resonance
 
-To ensure bit-exact reproducibility, the extraction of data from a `.sigma` file
-must follow these rules:
+To achieve deterministic identity, every `.sigma` file MUST follow the SCR-1
+extraction rules:
 
-### A. Byte Normalization
-
-- **Encoding**: UTF-8.
-- **Line Endings**: LF (`0x0A`). All CRLF must be converted to LF before
-  processing.
-- **Whitespace**: No trailing spaces on any line.
+- **Normalization**: UTF-8, LF endings, no trailing whitespace, exactly one
+  final `\n`.
+- **Policy A (Strict Identity)**: Any content change (excluding markers) MUST
+  result in a different NodeHash.
+- **NodeHash Extraction**:
+  1. Strip the seal line using strictly matched regex:
+     `\n(?:🔒:|CHECKSUM:)\s*[0-9a-f]{64}\s*$`.
+  2. Remove the `🧬IDENTITY:` header line.
+  3. Return resulting UTF-8 bytes for hashing.
+- **Seal**: `🔒: <hash>` must match `NodeHash`.
 
 ### B. Block Extraction Algorithm
 

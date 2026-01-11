@@ -1,0 +1,15 @@
+{
+  "vectors": [
+    {
+      "name": "I",
+      "body": "Σ-GLYPH SEED: I\n🧬IDENTITY: 6d790ee9187df21994ac486616c676f1a287af7d87b0530e77afb9844fa0758e\n\n\n---\n# === 🧬 IDENTITY ===\n🧬: I\nDNA: λx.x\n⚛️: 0000000000000000000000000000000000000000000000000000000000000000\n🎨: #FF00FF\n\n# === ⚖️ PHYSICS (Wave Function) ===\n⚙️: 0\n🚩: 1\n🌊: 0\n🔊: 65535\n🌀: -32768\n\n# === 🔗 GRAVITY (Dependencies) ===\n🔗:\n  - SATOSHI\n---\n\n# I - Identity Axiom\n\nIdentity is the mirror where the Void sees itself. It returns what it receives, unchanged.\nI x = x.\n\n🌊\n\n@[dna]\nλx.x\n\n🔒: 6d790ee9187df21994ac486616c676f1a287af7d87b0530e77afb9844fa0758e\n",
+      "expected_hash": "6d790ee9187df21994ac486616c676f1a287af7d87b0530e77afb9844fa0758e"
+    },
+    {
+      "name": "PoI Test",
+      "intent_hash": "6d790ee9187df21994ac486616c676f1a287af7d87b0530e77afb9844fa0758e",
+      "code_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_poi": "a9944523a366da416f4203a455a8237236af1a6cdee45e1fb13645e0b4c4ee66"
+    }
+  ]
+}

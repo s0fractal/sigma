@@ -1,15 +1,26 @@
-# Σ-GLYPH Protocol Constants (Sync with protocol.json)
 from __future__ import annotations
+import os
 import json
 from pathlib import Path
 
 def get_repo_root() -> Path:
-    """Deterministic repository root discovery."""
+    """
+    Ironclad repository root discovery:
+    1. Check env overrides SIGMA_ROOT or SIGMA_GARDEN.
+    2. Traverse up from this file searching for BOTH .git AND sigma/m32/protocol.json.
+    3. Fail with RuntimeError if discovery failed.
+    """
+    override = os.environ.get("SIGMA_ROOT") or os.environ.get("SIGMA_GARDEN")
+    if override:
+        path = Path(override).resolve()
+        if path.exists(): return path
+
     cur = Path(__file__).resolve()
     for parent in [cur] + list(cur.parents):
-        if (parent / ".git").exists():
+        if (parent / ".git").exists() and (parent / "sigma" / "m32" / "protocol.json").exists():
             return parent
-    return Path.cwd()
+            
+    raise RuntimeError("Σ-GLYPH FATAL: Repository root discovery failed. Set SIGMA_ROOT.")
 
 ROOT = get_repo_root()
 PROTOCOL_PATH = ROOT / "sigma" / "m32" / "protocol.json"

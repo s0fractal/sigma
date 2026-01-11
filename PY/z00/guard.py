@@ -17,12 +17,12 @@ import scr1
 SIGMA_ROOT = protocol.ROOT
 SOURCE_DIR = SIGMA_ROOT / "sigma"
 
-def audit_lattice(fix=False):
+def audit_lattice(fix=False, source_dir: Path = SOURCE_DIR):
     violations = []
-    print("🛡️  Guarding Lattice (SCR-1 Library Compliance)...")
+    print(f"🛡️  Guarding Lattice (SCR-1 Library Compliance) | Fix={fix}...")
     
     # DETERMINISTIC: Sorted file list
-    sigma_files = sorted(list(SOURCE_DIR.glob("**/*.sigma")), key=lambda p: str(p))
+    sigma_files = sorted(list(source_dir.glob("**/*.sigma")), key=lambda p: str(p))
     
     # Aggregate Lattice Hash
     lattice_hasher = hashlib.sha256()
@@ -96,8 +96,12 @@ def audit_lattice(fix=False):
     return violations
 
 def main():
-    fix_mode = "--fix" in sys.argv
-    violations = audit_lattice(fix=fix_mode)
+    import argparse
+    parser = argparse.ArgumentParser(description="Σ-GLYPH Guard")
+    parser.add_argument("--fix", action="store_true", help="Heal the lattice.")
+    args = parser.parse_args()
+    
+    violations = audit_lattice(fix=args.fix)
     
     if not violations:
         print("✅ THE LATTICE IS BIT-PURE (SCR-1).")

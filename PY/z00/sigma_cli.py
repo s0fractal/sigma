@@ -77,8 +77,7 @@ def cmd_forge(name: str, phase: int = 0, dna: str = None):
     target_path.write_text(content, encoding="utf-8")
     
     # Self-Seal immediately
-    sys.argv = ["guard.py", "--fix"]
-    guard.main()
+    guard.audit_lattice(fix=True)
     print(f"✨ Forged and Sealed: {name}.sigma")
 
 def cmd_path_check():
@@ -149,8 +148,8 @@ def main():
     if args.command == "sync":
         materializer.materialize()
     elif args.command == "check":
-        sys.argv = ["guard.py"] + (["--fix"] if args.fix else [])
-        guard.main()
+        violations = guard.audit_lattice(fix=args.fix)
+        if violations: sys.exit(1)
     elif args.command == "test":
         if args.suite == "path-check": cmd_path_check()
     elif args.command == "calc":
