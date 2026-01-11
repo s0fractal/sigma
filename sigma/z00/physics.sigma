@@ -70,10 +70,10 @@ def interfere(w1: 'WaveVectorQ', w2: 'WaveVectorQ') -> 'WaveVectorQ':
 
 def entropy_to_stratum(entropy: int) -> str:
     """Canonical entropy-to-stratum mapping."""
-    if entropy == -1: return "z00"
-    if entropy == 0: return "m00"
+    if entropy == -1 or entropy == 0: return "z00"
     prefix = "m" if entropy < 0 else "p"
     bucket = abs(entropy) // 1024
+    if bucket > 32: bucket = 32
     return f"{prefix}{bucket:02}"
 
 class WaveVectorQ:
@@ -184,10 +184,10 @@ export function interfere(w1: WaveVectorQ, w2: WaveVectorQ): WaveVectorQ {
 }
 
 export function entropyToStratum(entropy: number): string {
-  if (entropy === -1) return "z00";
-  if (entropy === 0) return "m00";
+  if (entropy === -1 || entropy === 0) return "z00";
   const prefix = entropy < 0 ? "m" : "p";
-  const bucket = Math.floor(Math.abs(entropy) / 1024);
+  let bucket = Math.floor(Math.abs(entropy) / 1024);
+  if (bucket > 32) bucket = 32;
   return `${prefix}${bucket.toString().padStart(2, "0")}`;
 }
 

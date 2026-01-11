@@ -29,7 +29,7 @@ def canonicalize_sigma(text: str) -> bytes:
     lines = text.split("\n")
     processed_lines = []
     for line in lines:
-        stripped_line = line.rstrip()
+        stripped_line = line.rstrip() # Only trailing whitespace
         # Remove 🧬IDENTITY or IDENTITY lines
         if re.match(r"^(🧬IDENTITY:|IDENTITY:)", stripped_line.strip()):
             continue

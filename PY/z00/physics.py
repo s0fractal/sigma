@@ -43,10 +43,10 @@ def interfere(w1: 'WaveVectorQ', w2: 'WaveVectorQ') -> 'WaveVectorQ':
 
 def entropy_to_stratum(entropy: int) -> str:
     """Canonical entropy-to-stratum mapping."""
-    if entropy == -1: return "z00"
-    if entropy == 0: return "m00"
+    if entropy == -1 or entropy == 0: return "z00"
     prefix = "m" if entropy < 0 else "p"
     bucket = abs(entropy) // 1024
+    if bucket > 32: bucket = 32
     return f"{prefix}{bucket:02}"
 
 class WaveVectorQ:

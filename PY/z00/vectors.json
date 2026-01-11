@@ -16,7 +16,7 @@
   ],
   "entropy_to_stratum": [
     {"input": -1, "expected": "z00"},
-    {"input": 0, "expected": "m00"},
+    {"input": 0, "expected": "z00"},
     {"input": 1, "expected": "p00"},
     {"input": -2, "expected": "m00"},
     {"input": 1023, "expected": "p00"},
@@ -28,7 +28,10 @@
       {"n": 1, "d": 2, "expected": 1},
       {"n": -1, "d": 2, "expected": -1},
       {"n": 3, "d": 2, "expected": 2},
-      {"n": -3, "d": 2, "expected": -2}
+      {"n": -3, "d": 2, "expected": -2},
+      {"n": 1000000000, "d": 3, "expected": 333333333},
+      {"n": 32767, "d": 1, "expected": 32767},
+      {"n": -32768, "d": 1, "expected": -32768}
   ],
   "glyph": [
     {
