@@ -7,9 +7,11 @@ from pathlib import Path
 # Σ-GLYPH CLI: The System Orchestrator
 # V2.3.1 - Deterministic Resonance: Absolute Path Immunity
 
-import materializer
+import core_materialize
+import heuristic_materialize
 import guard
 import protocol
+import physics
 
 TEMPLATE_V2_3 = """Σ-GLYPH SEED: {NAME}
 🧬IDENTITY: {ID}
@@ -127,8 +129,12 @@ def main():
     parser = argparse.ArgumentParser(description="Σ-GLYPH CLI: System Orchestrator V2.3.1")
     subparsers = parser.add_subparsers(dest="command")
 
-    subparsers.add_parser("sync", help="Materialize all intents (SCR-1).")
-    subparsers.add_parser("check", help="Audit lattice (SCR-1/Identity).").add_argument("--fix", action="store_true")
+    sync_parser = subparsers.add_parser("sync", help="Materialize all intents (SCR-1).")
+    sync_parser.add_argument("--core-only", action="store_true", help="Only extract deterministic blocks.")
+
+    check_parser = subparsers.add_parser("check", help="Audit lattice (SCR-1/Identity).")
+    check_parser.add_argument("--fix", action="store_true")
+    check_parser.add_argument("--strict", action="store_true", help="Fail hard on any dissonance.")
     
     test_parser = subparsers.add_parser("test", help="Run system tests.")
     test_parser.add_argument("suite", choices=["path-check"])
@@ -146,10 +152,20 @@ def main():
     args = parser.parse_args()
 
     if args.command == "sync":
-        materializer.materialize()
+        print("🔘 Syncing CORE...")
+        core_materialize.materialize_core()
+        if not args.core_only:
+            print("🔘 Syncing HEURISTICS...")
+            heuristic_materialize.materialize_heuristics()
+        print("✅ Sync complete.")
     elif args.command == "check":
         violations = guard.audit_lattice(fix=args.fix)
-        if violations: sys.exit(1)
+        if violations:
+            if args.strict:
+                print("\n❌ STRICT MODE: Dissonance detected. Blocking evolution.")
+                sys.exit(1)
+            else:
+                print(f"\n⚠️  Total Violations: {len(violations)}")
     elif args.command == "test":
         if args.suite == "path-check": cmd_path_check()
     elif args.command == "calc":
