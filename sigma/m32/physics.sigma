@@ -1,5 +1,5 @@
 Σ-GLYPH SEED: physics
-🧬IDENTITY: 73222b682258a7222cdc482a31b1b27a7953ae178abe6ce2da2ec3562c0e30d8
+🧬IDENTITY: c8628cf261b2ad5546e49479b1b8cb836e102e3b236fa78ee093f6154564c489
 
 ---
 # === 🧬 IDENTITY ===
@@ -103,9 +103,9 @@ export function entropyToStratum(entropy: number): string {
   return `${prefix}${bucket.toString().padStart(2, "0")}`;
 }
 
-🌊
-
 @[dna]
 - SATOSHI
 
-🔒: 73222b682258a7222cdc482a31b1b27a7953ae178abe6ce2da2ec3562c0e30d8
+🌊
+
+🔒: c8628cf261b2ad5546e49479b1b8cb836e102e3b236fa78ee093f6154564c489
