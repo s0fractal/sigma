@@ -1,0 +1,37 @@
+--- 
+🪐STRATUM: m16
+GLYPH: Z
+🧬DNA: Z
+🌈SPECTRUM:
+  - sh
+  - dna
+⚖️PHYSICS:
+  OP: 6
+  FLAGS: 1
+  PHASE: 24576
+  AMPLITUDE: 65535
+  ENTROPY: -32768
+---
+
+
+# Sleep (Z) - Wait
+
+Чиста затримка часу.
+Аксіома очікування.
+
+# 🌊
+@[sh]
+```bash
+# Z (Wait): Засинає на вказаний час
+Z() {
+    sleep "$1"
+    cat -
+}
+```
+
+@[dna]
+```dna
+
+Z
+
+```

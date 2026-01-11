@@ -1,0 +1,37 @@
+---
+🏷️TYPE:
+  - 🌈SPECTRUM
+  - 📖INTENT
+📁FOLDER: spectrum
+🪐STRATUM: m32
+GLYPH: ts
+HEX: '#3388FF'
+SYNTAX: ts
+MUTE: '"// "'
+LIFT: ''
+⚖️PHYSICS:
+  OP: 16
+  FLAGS: 1
+  PHASE: 49152
+  AMPLITUDE: 65535
+  ENTROPY: -16384
+IMPORT: 'import { %n } from "@/%p.ts";'
+🧬QDNA:
+brew: "brew install node"
+sh: "curl -fsSL https://fnm.vercel.app/install | bash"
+🕸️EDGES:
+check: "command -v node >/dev/null 2>&1"
+resolve: "curl -fsSL https://fnm.vercel.app/install | bash"
+channel: sh
+cost: 0.4
+ttl: 86400
+🧬DNA: ts
+---
+
+
+
+
+
+
+
+

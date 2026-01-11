@@ -1,0 +1,48 @@
+--- 
+🪐STRATUM: m24
+GLYPH: M
+🧬DNA: W I
+🌈SPECTRUM:
+  - ts
+  - rs
+  - sh
+  - dna
+⚖️PHYSICS:
+  OP: 8
+  FLAGS: 4
+  PHASE: 8192
+  AMPLITUDE: 65535
+  ENTROPY: -8192
+---
+
+
+# Mockingbird (M) - The W(I) Formula
+
+Похідна молекула. Самовиклик (Self-application).
+M x = x x.
+
+# 🌊
+@[ts]
+```typescript
+export const M = W(I);
+```
+
+@[rs]
+```rust
+pub const M: fn(any) -> any = W(I);
+```
+
+@[sh]
+```bash
+# M (Mockingbird): WI
+M() {
+    W "$I" "$@"
+}
+```
+
+@[dna]
+```dna
+
+W I
+
+```

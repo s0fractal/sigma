@@ -1,0 +1,54 @@
+--- 
+🪐STRATUM: m16
+GLYPH: W
+🧬DNA: W
+🌈SPECTRUM:
+  - ts
+  - rs
+  - sh
+  - dna
+⚖️PHYSICS:
+  OP: 2
+  FLAGS: 1
+  PHASE: 8192
+  AMPLITUDE: 65535
+  ENTROPY: -16384
+---
+
+
+# Witness (W) - Fork
+
+Чисте розмноження ресурсу. Дублює аргумент для функції.
+Аксіома форку.
+
+# 🌊
+@[ts]
+```typescript
+export const W = <A, B>(f: (x: A) => (y: A) => B) => (x: A): B => f(x)(x);
+```
+
+@[rs]
+```rust
+pub fn W<A, B, F>(f: F, x: A) -> B 
+where 
+    F: Fn(A) -> Box<dyn Fn(A) -> B>,
+    A: Clone
+{
+    f(x.clone())(x)
+}
+```
+
+@[sh]
+```bash
+# W (Witness): Дублює потік
+W() {
+    tee >(cat)
+}
+```
+
+@[dna]
+```dna
+
+W
+
+```
