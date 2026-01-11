@@ -17,7 +17,7 @@ import scr1
 SIGMA_ROOT = protocol.ROOT
 SOURCE_DIR = SIGMA_ROOT / "sigma"
 
-ALLOWLIST_ROOT = {".gitignore", "README.md", "LICENSE", "Makefile", "sigma_full_codebase.txt", "file_list.txt", "standards_v2_3.md"}
+ALLOWLIST_ROOT = {".gitignore", "README.md", "LICENSE", "Makefile", "file_list.txt"}
 ALLOWLIST_DIRS = {"sigma", "PY", "TS", "RS", "SH", "MD", "LOCK", "JSON", "GLYPH", "DNA", "STORAGE", "TXT", "test_cas", "test_cas_remote"}
 
 def audit_shrapnel(root: Path = SIGMA_ROOT) -> list[str]:

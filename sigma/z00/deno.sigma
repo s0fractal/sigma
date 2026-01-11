@@ -1,5 +1,5 @@
 Σ-GLYPH SEED: deno
-🧬IDENTITY: 2ba3b5cd0affe2f3aa5c5e2c3646be20bb933b59e4b0e4964e6263a1bfcc337e
+🧬IDENTITY: 5f069bc08eab4f8f1855e91200a7444e5b8a42b714aff2fa85559d19e85e1098
 
 ---
 # === 🧬 IDENTITY ===
@@ -27,9 +27,7 @@ Environment Lockfile for Deterministic Execution.
 
 🌊
 
-@[link]
-lock: ./deno.lock
-json: ./deno.json
+
 
 @[lock]
 {
@@ -159,4 +157,4 @@ json: ./deno.json
   }
 }
 
-🔒: 2ba3b5cd0affe2f3aa5c5e2c3646be20bb933b59e4b0e4964e6263a1bfcc337e
+🔒: 5f069bc08eab4f8f1855e91200a7444e5b8a42b714aff2fa85559d19e85e1098

@@ -1,10 +1,36 @@
-# Σ-GLYPH — LLM Executor Prompts (copy/paste)
+Σ-GLYPH SEED: projections
+🧬IDENTITY: 7e3921b976d5bcf196c7f088bfe8d8ef74f6c5c0f0f88f1c602037f35202851e
+
+---
+# === 🧬 IDENTITY ===
+🧬: projections
+DNA:
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FFFFFF
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: -1
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+---
+
+# PROJECTIONS
+
+Canonical LLM Executor Prompts for the Σ-GLYPH evolution.
+
+🌊
+
+@[md]
+# Σ-GLYPH — LLM Executor Prompts
 
 > Use **one prompt per work branch**. Each prompt is designed for an external
 > LLM/worker to implement changes safely.
->
-> **Hard rule:** If the worker cannot run tests, they must still implement
-> **vectors + harness** and describe how to run them.
 
 ---
 
@@ -301,3 +327,5 @@ Build a verifier that:
   - one pair is 🟢 (matching)
   - one pair is 🔴 (intent changed but code not regenerated)
   - one pair is 🟡 (missing code file / genesis pending)
+
+🔒: 7e3921b976d5bcf196c7f088bfe8d8ef74f6c5c0f0f88f1c602037f35202851e
