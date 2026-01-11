@@ -1,193 +1,79 @@
 #!/usr/bin/env python3
-import argparse
 import os
 import re
-import shutil
-import subprocess
+import sys
 from pathlib import Path
 
+# Σ-GLYPH ENTROPY GUARD
+# V1.3.1 - Emoji Aware
 
-def repo_root() -> Path:
-    try:
-        out = subprocess.check_output(
-            ["git", "rev-parse", "--show-toplevel"], stderr=subprocess.DEVNULL
-        ).decode("utf-8", errors="ignore").strip()
-        if out:
-            return Path(out)
-    except Exception:
-        pass
-    return Path.cwd()
+SIGMA_ROOT = Path("/Users/s0fractal/SIGMA")
+SOURCE_DIR = SIGMA_ROOT / "sigma"
 
+def parse_physics(text: str) -> dict:
+    physics = {"ENTROPY": -32768}
+    phys_match = re.search(r"(?:⚖️)?PHYSICS:\s*\n((?:\s+[\w\W]+?:\s*[\-\dxA-F]+\n?)*)", text, re.MULTILINE)
+    if phys_match:
+        for line in phys_match.group(1).split("\n"):
+            if ":" in line:
+                key, val = line.split(":", 1)
+                key = re.sub(r'[^\w]', '', key).strip()
+                if "ENTROPY" in key.upper():
+                    try:
+                        physics["ENTROPY"] = int(val.strip())
+                    except: continue
+    return physics
 
-def log_err(msg, errors):
-    print(f"❌ RULE BROKEN: {msg}")
-    errors.append(msg)
-
-
-def log_fix(msg):
-    print(f"   🛠  FIXING: {msg}")
-
-
-def find_root_code(root: Path):
-    return [
-        p for p in root.iterdir()
-        if p.is_file() and p.suffix in {".ts", ".rs", ".js"}
-    ]
-
-
-def find_shadow_readmes(root: Path):
-    paths = []
-    for dim in ("ts", "rs", "lean"):
-        dim_dir = root / dim
-        if not dim_dir.exists():
-            continue
-        paths.extend(dim_dir.rglob("README.md"))
-    return paths
-
-
-def find_noncanonical_keys(root: Path):
-    bad = []
-    key_re = re.compile(r"^\s*(dna|DNA|spectrum|SPECTRUM|physics|PHYSICS|"
-                        r"energy|ENERGY|mass|MASS|entropy|ENTROPY|"
-                        r"complexity|COMPLEXITY):")
-    for path in root.glob("sigma/**/*.sigma"):
+def get_glyph_registry():
+    registry = {}
+    for path in SOURCE_DIR.glob("**/*.sigma"):
         try:
-            for i, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
-                if key_re.match(line):
-                    bad.append(f"{path}:{i}:{line}")
-        except Exception:
-            continue
-    return bad
+            content = path.read_text(encoding="utf-8")
+            glyph_match = re.search(r"^GLYPH:\s*([\w=]+)", content, re.MULTILINE)
+            if glyph_match:
+                glyph = glyph_match.group(1)
+                phys = parse_physics(content)
+                dna_match = re.search(r"🧬DNA:\s*\n?((?:\s*-\s*[\w=]+\n?)+|(?:\s*[\w=]+\s*)+)", content)
+                dependencies = []
+                if dna_match:
+                    raw_dna = dna_match.group(1)
+                    dependencies = [d.strip("- ").strip() for d in raw_dna.split() if d.strip("- ").strip()]
+                
+                registry[glyph] = {
+                    "path": path,
+                    "entropy": phys["ENTROPY"],
+                    "deps": dependencies
+                }
+        except: continue
+    return registry
 
-
-def spectrum_missing_glyph(root: Path):
-    missing = []
-    for path in (root / "sigma" / "spectrum").glob("*.sigma"):
-        try:
-            text = path.read_text(encoding="utf-8")
-        except Exception:
-            continue
-        if not re.search(r"^\s*GLYPH:", text, re.MULTILINE):
-            missing.append(str(path))
-    return missing
-
-
-def fix_sigma_keys(root: Path):
-    for path in root.glob("sigma/**/*.sigma"):
-        try:
-            text = path.read_text(encoding="utf-8")
-        except Exception:
-            continue
-        new = text
-        new = new.replace("\nSPECTRUM:", "\n🌈SPECTRUM:")
-        new = new.replace("\nspectrum:", "\n🌈SPECTRUM:")
-        new = new.replace("\nPHYSICS:", "\n⚖️PHYSICS:
-  ENTROPY: -1
-        new = new.replace("\nphysics:", "\n⚖️PHYSICS:
-  ENTROPY: -1
-        new = new.replace("\nENERGY:", "\n⚡ENERGY:")
-        new = new.replace("\nenergy:", "\n⚡ENERGY:")
-        new = new.replace("\ndna:", "\n🧬DNA:")
-        new = new.replace("\nDNA:", "\n🧬DNA:")
-        new = new.replace("\nmass:", "\n🪨MASS:")
-        new = new.replace("\n  mass:", "\n  🪨MASS:")
-        new = new.replace("\nentropy:", "\n🌀ENTROPY:")
-        new = new.replace("\n  entropy:", "\n  🌀ENTROPY:")
-        new = new.replace("\ncomplexity:", "\n🧩COMPLEXITY:")
-        new = new.replace("\n  complexity:", "\n  🧩COMPLEXITY:")
-        # Remove standalone 🌈 marker lines
-        lines = [ln for ln in new.splitlines() if ln.strip() != "🌈"]
-        new = "\n".join(lines)
-        if text.endswith("\n"):
-            new += "\n"
-        if new != text:
-            path.write_text(new, encoding="utf-8")
-
-
-def missing_dna(root: Path):
-    missing = []
-    for level in range(0, 9):
-        for path in (root / "sigma" / str(level)).glob("*.sigma"):
-            try:
-                text = path.read_text(encoding="utf-8")
-            except Exception:
-                continue
-            if not re.search(r"^\s*🧬DNA:", text, re.MULTILINE):
-                missing.append(str(path))
-    return missing
-
+def audit_entropy(registry):
+    violations = []
+    print("🛡️  Auditing Entropy Hierarchy...")
+    for glyph, data in registry.items():
+        if data["entropy"] == -1: continue 
+        for dep in data["deps"]:
+            if dep not in registry: continue
+            dep_data = registry[dep]
+            if dep_data["entropy"] > data["entropy"]:
+                rel_path = data["path"].relative_to(SOURCE_DIR)
+                violations.append({
+                    "src": glyph, "src_e": data["entropy"],
+                    "dep": dep, "dep_e": dep_data["entropy"],
+                    "path": rel_path
+                })
+    return violations
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--fix", action="store_true")
-    args = parser.parse_args()
-
-    root = repo_root()
-    errors = []
-
-    print("🛡️  Guarding the Void...")
-
-    # RULE 1: NO CODE IN VOID ROOT
-    stray = find_root_code(root)
-    if stray:
-        log_err("Code found in Void Root (Must be in nodes/)", errors)
-        for p in stray:
-            print(p)
-        if args.fix:
-            target = root / "intents" / "drafts"
-            target.mkdir(parents=True, exist_ok=True)
-            for p in stray:
-                shutil.move(str(p), str(target / p.name))
-            log_fix("Moved stray code to intents/drafts/")
-
-    # RULE 2: NODES MUST BE SUBMODULES
-    nodes_dir = root / "nodes"
-    if nodes_dir.exists():
-        for node in nodes_dir.iterdir():
-            if node.is_dir() and not (node / ".git").exists():
-                log_err(f"Node {node.name} is a raw folder, not a submodule!", errors)
-
-    # RULE 3: NO README IN CODE DIMENSIONS
-    shadow = find_shadow_readmes(root)
-    if shadow:
-        log_err("Shadow READMEs found in code dimensions (Noise detected)", errors)
-        for p in shadow:
-            print(p)
-        if args.fix:
-            for p in shadow:
-                p.unlink(missing_ok=True)
-            log_fix("Purged shadow READMEs.")
-
-    # RULE 4: SIGMA FRONTMATTER CANON (GLYPH+UPPERCASE KEYS)
-    bad = find_noncanonical_keys(root)
-    if bad:
-        log_err("Non-canonical sigma keys detected (use 🧬DNA, ⚡ENERGY, 🌈SPECTRUM, ⚖️PHYSICS)", errors)
-        for line in bad:
-            print(line)
-        if args.fix:
-            log_fix("Rewriting sigma keys to GLYPH+UPPERCASE")
-            fix_sigma_keys(root)
-
-    missing = missing_dna(root)
-    if missing:
-        log_err("Missing 🧬DNA in sigma frontmatter", errors)
-        for path in missing:
-            print(path)
-
-    spectrum_missing = spectrum_missing_glyph(root)
-    if spectrum_missing:
-        log_err("Spectrum frontmatter missing GLYPH", errors)
-        for path in spectrum_missing:
-            print(path)
-
-    if not errors:
-        print("✅ Structure is Sacred.")
-        return 0
-    print(f"⚠️  Found {len(errors)} violations.")
-    if not args.fix:
-        print("   Run with --fix to attempt auto-repair.")
-    return 1
-
+    registry = get_glyph_registry()
+    violations = audit_entropy(registry)
+    if not violations:
+        print("\n✅ ENTROPY HIERARCHY: Pure. Stability is preserved.")
+        sys.exit(0)
+    print(f"\n❌ VIOLATION: Entropy Inversion Detected ({len(violations)})")
+    for v in violations:
+        print(f"   - {v['path']} ({v['src_e']}) -> imports {v['dep']} ({v['dep_e']})")
+    sys.exit(1)
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()

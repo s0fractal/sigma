@@ -1,0 +1,52 @@
+---
+GLYPH: entropy_to_stratum
+🏷️TYPE:
+  - ⚙️TOOL
+  - 🧪ATOM
+⚖️PHYSICS:
+  OP: 25
+  FLAGS: 1
+  PHASE: 0
+  AMPLITUDE: 65535
+  ENTROPY: -1
+---
+
+# entropy_to_stratum
+
+Atomic function to translate numeric entropy into a physical displacement stratum.
+
+@[py]
+```python
+def entropy_to_stratum(entropy: int) -> str:
+    if entropy == -1: return "z00"
+    if entropy == 0: return "m00"
+    prefix = "m" if entropy < 0 else "p"
+    bucket = abs(entropy) // 1024
+    return f"{prefix}{bucket:02}"
+```
+
+@[ts]
+```typescript
+export function entropyToStratum(entropy: number): string {
+    if (entropy === -1) return "z00";
+    if (entropy === 0) return "m00";
+    const prefix = entropy < 0 ? "m" : "p";
+    const bucket = Math.floor(Math.abs(entropy) / 1024);
+    return `${prefix}${bucket.toString().padStart(2, '0')}`;
+}
+```
+
+@[sh]
+```bash
+# entropy_to_stratum: Predict folder from entropy
+entropy_to_stratum() {
+    local entropy=$1
+    if [ "$entropy" -eq -1 ]; then echo "z00"; return; fi
+    if [ "$entropy" -eq 0 ]; then echo "m00"; return; fi
+    local prefix="p"
+    [ "$entropy" -lt 0 ] && prefix="m"
+    local abs_e=${entropy#-}
+    local bucket=$((abs_e / 1024))
+    printf "%s%02d\n" "$prefix" "$bucket"
+}
+```

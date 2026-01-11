@@ -1,0 +1,71 @@
+---
+GLYPH: parse_physics
+🏷️TYPE:
+  - ⚙️TOOL
+  - 🧪ATOM
+⚖️PHYSICS:
+  OP: 23
+  FLAGS: 1
+  PHASE: 0
+  AMPLITUDE: 65535
+  ENTROPY: -1
+---
+
+# parse_physics
+
+Atomic function to extract wave-physics from a Σ-GLYPH intent.
+Fixed substring matching bug (OP vs ENTROPY).
+
+@[py]
+```python
+import re
+def parse_physics(text: str) -> dict:
+    physics = {"OP": 0, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
+    phys_match = re.search(r"(?:⚖️)?PHYSICS:\s*\n((?:\s+[\w\W]+?:\s*[\-\dxA-F]+\n?)*)", text, re.MULTILINE)
+    if phys_match:
+        block = phys_match.group(1)
+        for line in block.split("\n"):
+            if ":" in line:
+                key, val = line.split(":", 1)
+                key = re.sub(r'[^\w]', '', key).strip().upper()
+                val = val.strip()
+                try:
+                    # EXACT MATCH ONLY
+                    if key in physics:
+                        if val.startswith("0x"): physics[key] = int(val, 16)
+                        else: physics[key] = int(val)
+                except: continue
+    return physics
+```
+
+@[ts]
+```typescript
+export function parsePhysics(text: string): Record<string, number> {
+    const physics: Record<string, number> = { OP: 0, FLAGS: 0, PHASE: 0, AMPLITUDE: 0, ENTROPY: 0 };
+    const match = text.match(/⚖️PHYSICS:\s*\n((?:\s+[\w\W]+?:\s*[\-\dxA-F]+\n?)*)/);
+    if (match) {
+        const block = match[1];
+        block.split("\n").forEach(line => {
+            if (line.includes(":")) {
+                let [key, val] = line.split(":").map(s => s.trim());
+                key = key.replace(/[^\w]/g, "").toUpperCase();
+                if (key in physics) {
+                    if (val.startsWith("0x")) physics[key] = parseInt(val, 16);
+                    else physics[key] = parseInt(val, 10);
+                }
+            }
+        });
+    }
+    return physics;
+}
+```
+
+@[sh]
+```bash
+# parse_physics: Extract entropy from stdin/file
+parse_physics() {
+    local file_content
+    if [ -f "$1" ]; then file_content=$(cat "$1"); else file_content=$(cat -); fi
+    echo "$file_content" | awk '/⚖️PHYSICS:/ {p=1; next} p && /---/ {p=0} p {print}' | sed 's/[^a-zA-Z0-9:]//g' | awk -F':' '{print $1"="$2}' | xargs | tr ' ' '\n'
+}
+```

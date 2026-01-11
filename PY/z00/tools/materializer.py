@@ -1,4 +1,39 @@
 #!/usr/bin/env python3
+
+import re
+def parse_physics(text: str) -> dict:
+    physics = {"OP": 0, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
+    phys_match = re.search(r"(?:⚖️)?PHYSICS:\s*\n((?:\s+[\w\W]+?:\s*[\-\dxA-F]+\n?)*)", text, re.MULTILINE)
+    if phys_match:
+        block = phys_match.group(1)
+        for line in block.split("\n"):
+            if ":" in line:
+                key, val = line.split(":", 1)
+                key = re.sub(r'[^\w]', '', key).strip().upper()
+                val = val.strip()
+                try:
+                    # EXACT MATCH ONLY
+                    if key in physics:
+                        if val.startswith("0x"): physics[key] = int(val, 16)
+                        else: physics[key] = int(val)
+                except: continue
+    return physics
+import re
+import hashlib
+def get_identity(text: str, glyph_name: str) -> bytes:
+    id_match = re.search(r"🧬IDENTITY:\s*([a-fA-F0-9]{64})", text)
+    if id_match: return bytes.fromhex(id_match.group(1))
+    
+    first_block_match = re.search(r"@\[\w+\]\n(.*?)\n(?=@\[|$)", text, re.DOTALL)
+    content = first_block_match.group(1).strip() if first_block_match else glyph_name
+    return hashlib.sha256(content.encode("utf-8")).digest()
+def entropy_to_stratum(entropy: int) -> str:
+    if entropy == -1: return "z00"
+    if entropy == 0: return "m00"
+    prefix = "m" if entropy < 0 else "p"
+    bucket = abs(entropy) // 1024
+    return f"{prefix}{bucket:02}"
+
 import os
 import re
 import struct
@@ -6,8 +41,8 @@ import hashlib
 import sys
 from pathlib import Path
 
-# Σ-GLYPH MATERIALIZER: Unfolding DNA into Spectrums
-# Version: V1.2.0 (Dynamic Equilibrium)
+# Σ-GLYPH MATERIALIZER: Atomic Fusion Edition
+# Version: V1.3.0 (Atomic Architecture)
 
 def repo_root() -> Path:
     cur = Path.cwd()
@@ -32,7 +67,7 @@ TAG_MAP = {
     "glyph": (SIGMA_ROOT / "GLYPH", ".glyph"),
 }
 
-# --- HELPERS ---
+# --- ATOMS WILL BE INJECTED HERE (parse_physics, get_identity, entropy_to_stratum) ---
 
 def extract_block(text: str, tag: str) -> str | None:
     start_marker = f"@[{tag}]\n"
@@ -48,41 +83,8 @@ def extract_block(text: str, tag: str) -> str | None:
         content = content[:-3].strip()
     return content
 
-def parse_physics(text: str) -> dict:
-    physics = {"OP": 0, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
-    # Match block even with varying whitespace
-    phys_match = re.search(r"⚖️PHYSICS:\s*\n((?:\s+[\w\W]+?:\s*[\-\dxA-F]+\n?)*)", text, re.MULTILINE)
-    if phys_match:
-        block = phys_match.group(1)
-        for line in block.split("\n"):
-            if ":" in line:
-                key, val = line.split(":", 1)
-                key, val = key.strip(), val.strip()
-                try:
-                    if val.startswith("0x"): physics[key] = int(val, 16)
-                    else: physics[key] = int(val)
-                except: continue
-    return physics
-
-def get_identity(text: str, glyph_name: str) -> bytes:
-    id_match = re.search(r"🧬IDENTITY:\s*([a-fA-F0-9]{64})", text)
-    if id_match: return bytes.fromhex(id_match.group(1))
-    
-    first_block_match = re.search(r"@\[\w+\]\n(.*?)\n(?=@\[|$)", text, re.DOTALL)
-    content = first_block_match.group(1).strip() if first_block_match else glyph_name
-    return hashlib.sha256(content.encode("utf-8")).digest()
-
-def entropy_to_stratum(entropy: int) -> str:
-    if entropy == -1: return "z00"
-    if entropy == 0: return "m00"
-    prefix = "m" if entropy < 0 else "p"
-    bucket = abs(entropy) // 1024
-    return f"{prefix}{bucket:02}"
-
-# --- MAIN ---
-
 def main():
-    print("=== Σ-GLYPH MATERIALIZER: Initiating Unfolding Cycle (V1.2.0) ===\n")
+    print("=== Σ-GLYPH MATERIALIZER: Atomic Fusion Initiated (V1.3.0) ===\n")
 
     if not SOURCE_DIR.exists():
         print(f"Error: Source directory {SOURCE_DIR} not found.")
@@ -102,9 +104,11 @@ def main():
                 glyph_registry[glyph_match.group(1)] = rel_path
             if "🌈SPECTRUM" in content:
                 import_match = re.search(r"^IMPORT:\s*'(.*)'", content, re.MULTILINE)
-                dna_match = re.search(r"^🧬DNA:\s*(\w+)", content, re.MULTILINE)
+                dna_match = re.search(r"🧬DNA:\s*\n?((?:\s*-\s*\w+\n?)+|(?:\s*\w+\s*)+)", content)
                 if import_match and dna_match:
-                    spectrum_templates[dna_match.group(1)] = import_match.group(1)
+                    raw_dna = dna_match.group(1)
+                    first_dep = [d.strip("- ").strip() for d in raw_dna.split() if d.strip("- ").strip()][0]
+                    spectrum_templates[first_dep] = import_match.group(1)
         except: continue
 
     # Pass 2: Materialize
@@ -117,24 +121,20 @@ def main():
         except: continue
             
         phys = parse_physics(content)
-        stratum_match = re.search(r"🪐STRATUM:\s*(\w+)", content)
-        stratum = stratum_match.group(1) if stratum_match else "m32"
-        
-        # Dynamic Override
-        dynamic_stratum = entropy_to_stratum(phys["ENTROPY"])
-        if stratum.startswith("m") or stratum.startswith("p"):
-            stratum = dynamic_stratum
+        stratum = entropy_to_stratum(phys["ENTROPY"])
             
         glyph_match = re.search(r"GLYPH:\s*([\w=]+)", content)
         this_glyph = glyph_match.group(1) if glyph_match else rel_path.stem
         
-        dna_match = re.search(r"🧬DNA:\s*(.*)", content)
-        dependencies = dna_match.group(1).split() if dna_match else []
+        dna_match = re.search(r"🧬DNA:\s*\n?((?:\s*-\s*\w+\n?)+|(?:\s*\w+\s*)+)", content)
+        dependencies = []
+        if dna_match:
+            raw_dna = dna_match.group(1)
+            dependencies = [d.strip("- ").strip() for d in raw_dna.split() if d.strip("- ").strip()]
         
         folder_match = re.search(r"📁FOLDER:\s*(\w+)", content)
         folder = folder_match.group(1) if folder_match else None
         
-        # Pantheon Logic
         is_pantheon = phys["AMPLITUDE"] >= 65535 and phys["ENTROPY"] <= -32768
         if is_pantheon and folder != "spectrum":
             folder = "pantheon"
@@ -149,38 +149,46 @@ def main():
             # Target path logic
             glyph_fn = this_glyph if tag == "glyph" else rel_path.stem
             if tag == "glyph":
-                if folder:
-                    target_path = target_base / stratum / folder / f"{glyph_fn}{ext_out}"
-                else:
-                    target_path = target_base / stratum / f"{glyph_fn}{ext_out}"
+                target_path = target_base / stratum / (folder if folder else "") / f"{glyph_fn}{ext_out}"
             else:
-                if folder:
-                    target_path = target_base / stratum / folder / f"{rel_path.name.replace('.sigma', ext_out)}"
-                else:
-                    target_path = target_base / stratum / f"{rel_path.name.replace('.sigma', ext_out)}"
+                target_path = target_base / stratum / (folder if folder else "") / f"{rel_path.name.replace('.sigma', ext_out)}"
 
             # GLYPH Crystallization
             if tag == "glyph" and not block:
                 if not materialized_any:
-                    print(f"🧬 Materializing: {rel_path} -> {stratum}")
+                    print(f"🧬 Atomizing: {rel_path} -> {stratum}")
                     materialized_any = True
                 
                 ident = get_identity(content, this_glyph)
                 head = struct.pack(">BBHHh", phys["OP"], phys["FLAGS"], phys["PHASE"], phys["AMPLITUDE"], phys["ENTROPY"])
-                
                 target_path.parent.mkdir(parents=True, exist_ok=True)
-                try:
-                    target_path.write_bytes(head + ident)
-                    print(f"   💎 Crystallized [glyph]: {target_path.relative_to(SIGMA_ROOT)}")
-                except Exception as e:
-                    print(f"   ❌ Error: {e}")
+                target_path.write_bytes(head + ident)
                 continue
 
             if block:
                 if not materialized_any:
-                    print(f"🧬 Materializing: {rel_path} -> {stratum}")
+                    print(f"🧬 Fusing: {rel_path} -> {stratum}")
                     materialized_any = True
                 
+                # Atomic Fusion
+                atoms = []
+                for d in dependencies:
+                    if d in glyph_registry:
+                        atom_path = SOURCE_DIR / glyph_registry[d]
+                        try:
+                            atom_content = atom_path.read_text(encoding="utf-8")
+                            if "🧪ATOM" in atom_content:
+                                atom_block = extract_block(atom_content, tag)
+                                if atom_block: atoms.append(atom_block)
+                        except: continue
+                if atoms:
+                    # Keep shebang at the top if present
+                    if block.startswith("#!"):
+                        lines = block.split("\n")
+                        block = lines[0] + "\n\n" + "\n".join(atoms) + "\n\n" + "\n".join(lines[1:])
+                    else:
+                        block = "\n".join(atoms) + "\n\n" + block
+
                 if stratum != "z00" and tag in spectrum_templates:
                     template = spectrum_templates[tag]
                     imports = [template.replace("%n", d).replace("%p", str(glyph_registry[d].with_suffix("")).replace(".sigma", "").replace("rs" if tag=="rs" else "", "::" if tag=="rs" else "/")) 
@@ -188,13 +196,9 @@ def main():
                     if imports: block = "\n".join(imports) + "\n\n" + block
 
                 target_path.parent.mkdir(parents=True, exist_ok=True)
-                try:
-                    target_path.write_text(block + "\n", encoding="utf-8")
-                    print(f"   -> Projected [{tag}]: {target_path.relative_to(SIGMA_ROOT)}")
-                except Exception as e:
-                    print(f"   ❌ Error: {e}")
+                target_path.write_text(block + "\n", encoding="utf-8")
 
-    print("\n--- Materialization Complete. The Hologram is Synchronized. ---")
+    print("\n--- Materialization Complete. The Atomic Order is Established. ---")
 
 if __name__ == "__main__":
     main()

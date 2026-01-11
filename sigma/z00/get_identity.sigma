@@ -1,0 +1,55 @@
+---
+GLYPH: get_identity
+🏷️TYPE:
+  - ⚙️TOOL
+  - 🧪ATOM
+⚖️PHYSICS:
+  OP: 24
+  FLAGS: 1
+  PHASE: 0
+  AMPLITUDE: 65535
+  ENTROPY: -1
+---
+
+# get_identity
+
+Atomic function to resolve the crystalline identity (HASH) of a glyph.
+
+@[py]
+```python
+import re
+import hashlib
+def get_identity(text: str, glyph_name: str) -> bytes:
+    id_match = re.search(r"🧬IDENTITY:\s*([a-fA-F0-9]{64})", text)
+    if id_match: return bytes.fromhex(id_match.group(1))
+    
+    first_block_match = re.search(r"@\[\w+\]\n(.*?)\n(?=@\[|$)", text, re.DOTALL)
+    content = first_block_match.group(1).strip() if first_block_match else glyph_name
+    return hashlib.sha256(content.encode("utf-8")).digest()
+```
+
+@[ts]
+```typescript
+import { crypto } from "https://deno.land/std/crypto/mod.ts";
+export async function getIdentity(text: string, glyphName: string): Promise<Uint8Array> {
+    const idMatch = text.match(/🧬IDENTITY:\s*([a-fA-F0-9]{64})/);
+    if (idMatch) return new Uint8Array(idMatch[1].match(/.{1,2}/g)!.map(byte => parseInt(byte, 16)));
+
+    const firstBlockMatch = text.match(/@\[\w+\]\n([\s\S]*?)\n(?=@\[|$)/);
+    const content = firstBlockMatch ? firstBlockMatch[1].trim() : glyphName;
+    const hash = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(content));
+    return new Uint8Array(hash);
+}
+```
+
+@[sh]
+```bash
+# get_identity: Resolve SHA256 identity
+get_identity() {
+    local text glyph_name
+    text="$1"
+    glyph_name="$2"
+    # Simplified: Hash the second argument or a specific marker
+    echo -n "${glyph_name}" | shasum -a 256 | awk '{print $1}'
+}
+```
