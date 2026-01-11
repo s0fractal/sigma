@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: CombinatoryLogic
-DNA: CombinatoryLogic
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -63,6 +63,6 @@ function(x) { return x }
 🌊
 
 @[dna]
-CombinatoryLogic
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: ae2970f32a5e066759bd67bcd9590745bc17bf22f2cb0275feb1b039c8c42307

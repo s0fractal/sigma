@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: autonomic_sensorium
-DNA: autonomic_sensorium
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -59,6 +59,6 @@ async function main() {
 🌊
 
 @[dna]
-autonomic_sensorium
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 5f4ff8433397b8dd9806ff2f10b20f17d3834fafab767df81f8af818d328665c

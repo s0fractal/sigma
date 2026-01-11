@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: ObserverLens
-DNA: ObserverLens
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -35,6 +35,6 @@ DNA: ObserverLens
 🌊
 
 @[dna]
-ObserverLens
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: b63ee9efb8f0c751bf2c435098691ebc78f9c8aeb76a972c4bb4e6279a393c05

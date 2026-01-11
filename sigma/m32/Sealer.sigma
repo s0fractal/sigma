@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: Sealer
-DNA: Sealer
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -28,6 +28,6 @@ Locks the current vibration into the Spiral. Creates an immutable snapshot of th
 🌊
 
 @[dna]
-Sealer
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 964a68fcecd85a0eff3d5bccf7bca4e9d965dbdb2fc6bb342650cda65484fd06

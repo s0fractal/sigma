@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: VectorRetina
-DNA: VectorRetina
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -48,6 +48,6 @@ SVG підтримує `<feGaussianBlur>`, `<feColorMatrix>`.
 🌊
 
 @[dna]
-VectorRetina
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: e898ddf05f76fc233de0110a2e41337a83ab63f305f1bc181c9540ae2d07087d

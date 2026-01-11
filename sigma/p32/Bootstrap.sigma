@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: Bootstrap
-DNA: Bootstrap
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -47,6 +47,6 @@ Script: `sh/bootstrap/gitea.sh`
 🌊
 
 @[dna]
-Bootstrap
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 26180391d8144dae0561de3c6e22b4b56cab2e8816b9674ee76f7304a1069e65

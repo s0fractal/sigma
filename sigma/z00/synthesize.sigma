@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: synthesize
-DNA: synthesize
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -122,6 +122,6 @@ if (import.meta.main) {
 🌊
 
 @[dna]
-synthesize
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 4ea6ebd93f7c021be09cef94b9d8912c124395affc1328215d0f8989384f048a

@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: ChronosProtocol
-DNA: ChronosProtocol
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -50,6 +50,6 @@ $$t_{n+1} = t_n + \text{Genesis}(\Delta)$$
 🌊
 
 @[dna]
-ChronosProtocol
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: fb9fac0453db68e03909692756c293d9eb95a0328a7e7729a707ca4422a7b9f2

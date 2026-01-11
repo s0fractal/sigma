@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: proteins_sync
-DNA: proteins_sync
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -141,6 +141,6 @@ if __name__ == "__main__":
 🌊
 
 @[dna]
-proteins_sync
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 0d117d6870688fdcfc1a7d0fccde5bef41bcbb422825156fa603047c9b74e31f

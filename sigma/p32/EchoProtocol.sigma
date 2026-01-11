@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: EchoProtocol
-DNA: EchoProtocol
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -29,6 +29,6 @@ DNA: EchoProtocol
 🌊
 
 @[dna]
-EchoProtocol
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 7b5dba55e54fc3f0b0644290b3bc39590e79dcb8a711ccec901da47632d8cfa9

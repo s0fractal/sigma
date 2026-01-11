@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: auditor
-DNA: auditor
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -63,6 +63,6 @@ async function auditNode(nodePath: string) {
 🌊
 
 @[dna]
-auditor
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: b35bc1358e711c327b9e0534e283bccf9eb0b3731251894dd0849d96fa7fe3ee

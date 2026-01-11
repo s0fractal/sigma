@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: bridge_node
-DNA: bridge_node
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -39,6 +39,6 @@ async function createBridgeNode(externalChaos: string) {
 🌊
 
 @[dna]
-bridge_node
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 73eaa3567f332fab0a98e3ba3af6037707d9897a1d366fec371eaae553079858

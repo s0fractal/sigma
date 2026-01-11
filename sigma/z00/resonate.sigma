@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: resonate
-DNA: resonate
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -154,6 +154,6 @@ switch (command) {
 🌊
 
 @[dna]
-resonate
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 6db40fdc2fe56545ac52e5b9269bca7d2f60670efb9602e90d594254437f9459

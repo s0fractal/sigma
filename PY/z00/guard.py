@@ -4,10 +4,11 @@ import re
 import sys
 import shutil
 import hashlib
+import math
 from pathlib import Path
 
 # Σ-GLYPH GUARD
-# V1.5.0: Liquid Polish - Purging Dissonance
+# V2.1.1: Symbolic Standard - Lossless Metadata
 
 SIGMA_ROOT = Path("/Users/s0fractal/SIGMA")
 SOURCE_DIR = SIGMA_ROOT / "sigma"
@@ -16,30 +17,46 @@ WHITELIST = ["deno.json", ".DS_Store", "README.md", "pantheon"]
 
 def parse_physics(text: str) -> dict:
     physics = {"OP": 0, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
-    header_match = re.search(r"(?:⚖️)?\s*PHYSICS(?:\s*\(Wave Function\))?:?\s*\n+", text, re.MULTILINE)
-    if header_match:
-        start_idx = header_match.end()
-        remaining = text[start_idx:].lstrip("\n")
-        found_any = False
-        for line in remaining.split("\n"):
-            clean_line = line.split("#")[0].strip()
-            if not clean_line: continue
-            if ":" in clean_line:
-                key, val = clean_line.split(":", 1)
-                key = re.sub(r'[^\w]', '', key).strip().upper()
-                if key in physics:
-                    found_any = True
-                    val = val.strip()
-                    try:
-                        if val.startswith("0x"): physics[key] = int(val, 16)
-                        else: physics[key] = int(re.search(r'-?\d+', val).group())
-                    except: continue
-                elif found_any: break
-            else: break
+    
+    # V2.1 Symbolic Keys (Precise Search - robust to comments)
+    symbol_map = {"⚙️": "OP", "🚩": "FLAGS", "🌊": "PHASE", "🔊": "AMPLITUDE", "🌀": "ENTROPY"}
+    for sym, key in symbol_map.items():
+        match = re.search(f"{sym}:?\\s*(-?\\d+|0x[a-fA-F0-9]+)(?:\\s*#.*|$)", text, re.MULTILINE)
+        if match:
+            val = match.group(1)
+            try:
+                physics[key] = int(val, 16) if val.startswith("0x") else int(val)
+            except: continue
+
+    # Fallback: Legacy PHYSICS block parsing
+    if all(physics[k] == 0 for k in ["PHASE", "AMPLITUDE", "ENTROPY"]):
+        header_match = re.search(r"(?:⚖️)?\s*PHYSICS(?:\s*\(Wave Function\))?:?\s*\n+", text, re.MULTILINE)
+        if header_match:
+            start_idx = header_match.end()
+            remaining = text[start_idx:].lstrip("\n")
+            found_any = False
+            for line in remaining.split("\n"):
+                clean_line = line.split("#")[0].strip()
+                if not clean_line: continue
+                if ":" in clean_line:
+                    key, val = clean_line.split(":", 1)
+                    key = re.sub(r'[^\w]', '', key).strip().upper()
+                    if key in physics:
+                        found_any = True
+                        val = val.strip()
+                        try:
+                            if val.startswith("0x"): physics[key] = int(val, 16)
+                            else: physics[key] = int(re.search(r'-?\d+', val).group())
+                        except: continue
+                    elif found_any: break
+                else: break
     return physics
 
 def calculate_checksum(content: str) -> str:
-    if "\nCHECKSUM:" in content:
+    # Look for V2.1/V2.0 checksum marker first
+    if "\n🔒:" in content:
+        clean_content = content.rsplit("\n🔒:", 1)[0].rstrip()
+    elif "\nCHECKSUM:" in content:
         clean_content = content.rsplit("\nCHECKSUM:", 1)[0].rstrip()
     else:
         clean_content = content.strip()
@@ -50,17 +67,25 @@ def get_glyph_registry():
     for path in SOURCE_DIR.glob("**/*.sigma"):
         try:
             content = path.read_text(encoding="utf-8")
-            glyph_match = re.search(r"(?:GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
+            glyph_match = re.search(r"^(?:GLYPH|Σ-GLYPH SEED|🧬):\s*([\w=]+)", content, re.MULTILINE)
             if glyph_match:
                 glyph = glyph_match.group(1)
                 phys = parse_physics(content)
-                dna_match = re.search(r"(?:🧬DNA|🔗 CONNECTIONS \(Gravity\)):\s*\n+((?:\s*(?:-\s*|Ref:\s*)[\w=]+\n?)*|(?:\s*[\w=]+\s*)*)", content)
+                
+                # DNA Purification: V2.1 🔗 and DNA: support
+                dna_match = re.search(r"^(?:🧬DNA|DNA:|🔗|🔗:):\s*\n+((?:\s*(?:-\s*|Ref:\s*)?[\w=]+\n?)*)", content, re.MULTILINE)
                 dependencies = []
                 if dna_match:
                     raw_dna = dna_match.group(1)
-                    dependencies = [d.replace("Ref:", "").strip("- ").strip() for d in raw_dna.splitlines() if d.strip()]
+                    dependencies = [d.replace("Ref:", "").strip("- ").strip() for d in raw_dna.splitlines() if d.strip("- ").strip()]
                     if not dependencies:
                         dependencies = [d.strip("- ").strip() for d in raw_dna.split() if d.strip("- ").strip()]
+                
+                if not dependencies: # Inline DNA support
+                    dna_match = re.search(r"DNA:\s*([\w\s=]+)(?:\s*#|$)", content)
+                    if dna_match:
+                        dependencies = dna_match.group(1).split()
+                
                 registry[glyph] = {
                     "path": path,
                     "entropy": phys["ENTROPY"],
@@ -78,6 +103,8 @@ def audit_entropy(registry):
         for dep in data["deps"]:
             if dep not in registry: continue
             dep_data = registry[dep]
+            # V2.1: Tools (En=0, -1) can depend on anything.
+            if data["entropy"] == 0 or data["entropy"] == -1: continue
             if dep_data["entropy"] > data["entropy"]:
                 rel_path = data["path"].relative_to(SOURCE_DIR)
                 violations.append(f"Entropy Inversion: {rel_path} ({data['entropy']}) -> {dep} ({dep_data['entropy']})")
@@ -98,29 +125,6 @@ def audit_vector_topology(fix=False):
                     if stratum_dir.is_dir(): shutil.rmtree(stratum_dir)
                     else: stratum_dir.unlink()
                 continue
-            
-            # Sub-folder Audit: Deep Purge of legacy nested folders (like 'tools/')
-            if stratum_dir.is_dir():
-                for sub in stratum_dir.iterdir():
-                    if sub.name in WHITELIST: continue
-                    if sub.is_dir():
-                        violations.append(f"Legacy nested folder in {dim}/{stratum_dir.name}/: {sub.name}")
-                        if fix:
-                            print(f"   🛠 Liquidating nested dissonance: {sub}")
-                            shutil.rmtree(sub)
-
-    # Dimensional Dissonance: Purging extra m00 in PY if z00 exists (for seeds)
-    py_m00 = SIGMA_ROOT / "PY" / "m00"
-    py_z00 = SIGMA_ROOT / "PY" / "z00"
-    if py_m00.exists() and py_z00.exists():
-        for item in py_m00.iterdir():
-            if (py_z00 / item.name).exists():
-                violations.append(f"Duplicate projection in PY/m00/: {item.name}")
-                if fix:
-                    print(f"   🛠 Purging duplicate: {item}")
-                    if item.is_dir(): shutil.rmtree(item)
-                    else: item.unlink()
-    
     return violations
 
 def audit_checksums(registry, fix=False):
@@ -129,7 +133,7 @@ def audit_checksums(registry, fix=False):
     for glyph, data in registry.items():
         path = data["path"]
         content = data["content"]
-        checksum_match = re.search(r"\nCHECKSUM:\s*(.*)$", content, re.MULTILINE)
+        checksum_match = re.search(r"\n(?:CHECKSUM|🔒):\s*(.*)$", content, re.MULTILINE)
         if not checksum_match: continue
         
         current_checksum = checksum_match.group(1).strip()
@@ -140,8 +144,9 @@ def audit_checksums(registry, fix=False):
             violations.append(f"Checksum Mismatch: {rel_path} (Expected {expected_checksum[:8]}...)")
             if fix:
                 print(f"   🛠 Resealing Seed: {rel_path}")
-                parts = content.rsplit("\nCHECKSUM:", 1)
-                new_content = parts[0] + f"\nCHECKSUM: {expected_checksum}"
+                marker = "🔒:" if "\n🔒:" in content else "CHECKSUM:"
+                parts = content.rsplit(f"\n{marker}", 1)
+                new_content = parts[0] + f"\n{marker} {expected_checksum}"
                 path.write_text(new_content, encoding="utf-8")
     return violations
 

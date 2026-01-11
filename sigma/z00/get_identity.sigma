@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: get_identity
-DNA: get_identity
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -65,6 +65,6 @@ get_identity() {
 🌊
 
 @[dna]
-get_identity
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: c47574d195bad40e5282c4c65eb1d0671332b00d3546bfc1b10e616cd2319a92

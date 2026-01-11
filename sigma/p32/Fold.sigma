@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: Fold
-DNA: Fold
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -39,6 +39,6 @@ Reconstruct topology from anchors and Sigma intent.
 🌊
 
 @[dna]
-Fold
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 0873a34600b1a42f6a472ee2f0e9e2323d6e3ffc00a654187a46a931efe9b7c4

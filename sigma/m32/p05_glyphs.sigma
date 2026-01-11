@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: p05_glyphs
-DNA: p05_glyphs
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -29,6 +29,6 @@ The **p05** stratum represents active energy orbits. Glyphs here are often dynam
 🌊
 
 @[dna]
-p05_glyphs
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: e0044ae5e1f7990a9c05bfcefc1c568981c79a0b29f9e6cd02bf906aba13cfc7

@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: β
-DNA: β
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -49,6 +49,6 @@ $$ (\lambda x.L) (\emptyset) \to \text{Halt} $$
 🌊
 
 @[dna]
-β
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 37eaa9ad1d76adfe0bd7ec980ea28cef59d06dcf8c0a5286a8bd2672f9aa44f4

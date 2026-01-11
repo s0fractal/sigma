@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: LEIBNIZ
-DNA: LEIBNIZ
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -30,6 +30,6 @@ It is a 40-byte absolute record of historical or logical impact within the Sigma
 🌊
 
 @[dna]
-LEIBNIZ
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 72a7e32b685a78c707be60670d18ea05cc1e60c7c9a7ee4200f8a97b0a2bc71d

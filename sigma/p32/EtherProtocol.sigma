@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: EtherProtocol
-DNA: EtherProtocol
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -43,6 +43,6 @@ WASM — це чиста математика (числа).
 🌊
 
 @[dna]
-EtherProtocol
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 29b31bec6cb647eb79d9ea56ad80c3c097cb77d8219d850ac262ece692149491

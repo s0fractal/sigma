@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: TimeSpiral
-DNA: TimeSpiral
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -48,6 +48,6 @@ Hash(TS) ⊕ Hash(RS) ⊕ Hash(Intent) = Seal
 🌊
 
 @[dna]
-TimeSpiral
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 0ef775037f39e5c41a37d84b7de15558a990db8a3c29aa450ed4fa373b79506a

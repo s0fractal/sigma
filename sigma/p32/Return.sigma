@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: Return
-DNA: Return
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -39,6 +39,6 @@ Reconstruct state from Sigma plus anchor chain.
 🌊
 
 @[dna]
-Return
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: cbb5bd0e081e8d963ced690a35410576b35628e5a49c61e6be86a069b3438686

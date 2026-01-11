@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: CORE
-DNA: CORE
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -65,6 +65,6 @@ $$\text{State}_{n+1} = \text{State}_n \times e^{i\phi}$$
 🌊
 
 @[dna]
-CORE
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 1b2305cada2031ea3fc4c6d6d9563f5363b01e12590a8d7d26062fce6e4b104c

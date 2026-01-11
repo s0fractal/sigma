@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: ManhattanProtocol
-DNA: ManhattanProtocol
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -30,6 +30,6 @@ DNA: ManhattanProtocol
 🌊
 
 @[dna]
-ManhattanProtocol
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 860c56f9e342bebbc68dc0a8ca865b60a1527b3547b1a592d8ea141c6a06b1a7

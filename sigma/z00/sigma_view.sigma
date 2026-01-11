@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: sigma_view
-DNA: sigma_view
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -43,6 +43,6 @@ def read_frontmatter(text: str) -> str:
 🌊
 
 @[dna]
-sigma_view
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: f0e3d4d33d4ed8dff9d5fdea99fd256062a5c2aad24e0848cf9238f099105e83

@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: verify_simplex
-DNA: verify_simplex
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -84,6 +84,6 @@ if (import.meta.main) {
 🌊
 
 @[dna]
-verify_simplex
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 193eb5df82b54290d039e77fc8e88f4d637532348b4861208174dd84008479eb

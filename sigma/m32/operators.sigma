@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: operators
-DNA: operators
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -33,6 +33,6 @@ DNA: operators
 🌊
 
 @[dna]
-operators
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: d5aaec489797bd5f386d5897665431fd4360b6b4d9a252d60e8bb434660ef645

@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: µ
-DNA: µ
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -46,6 +46,6 @@ $$O = [f_n, f_{n-1}, \dots, f_1] \triangleright \emptyset$$
 🌊
 
 @[dna]
-µ
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: eb3c9a2865304634a35b0f1c426bb8ffb9ec5dbc260340d4f5fec0c4bfa739df

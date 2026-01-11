@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: deamons
-DNA: deamons
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -48,6 +48,6 @@ STEP:
 🌊
 
 @[dna]
-deamons
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 35981a4afe8f5c0e539976ebb65ee4de03fe9f70d6df87dfaa9bc1d95194fd4d

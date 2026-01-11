@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: HyperFile
-DNA: HyperFile
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -85,6 +85,6 @@ fi
 🌊
 
 @[dna]
-HyperFile
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 9de3b750b8cb0b637dcc627e988ee80d7eff3febd283bc5c8183cf4bc09158b3

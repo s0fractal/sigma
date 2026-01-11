@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: EvolutionProtocol
-DNA: EvolutionProtocol
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -56,6 +56,6 @@ Materialize: Запусти `λ ⊕`, щоб втілити це в реальн
 🌊
 
 @[dna]
-EvolutionProtocol
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 565be9378ff7d0522c23431d3626075f9d1bb62ef3220bb030afe52360b87f0e

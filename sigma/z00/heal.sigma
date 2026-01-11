@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: heal
-DNA: heal
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -93,6 +93,6 @@ if (import.meta.main) {
 🌊
 
 @[dna]
-heal
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 67f780e687a19d3d2a12989c5985819c88cbcb59c17a1a86bf4700c5e5fc29ad

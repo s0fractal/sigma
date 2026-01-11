@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: spectrum
-DNA: spectrum
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -34,6 +34,6 @@ DNA: spectrum
 🌊
 
 @[dna]
-spectrum
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: fb910738187ee82fcbe15dea0decbfc827fd2e8a3091893c6526245cf5d0ce2b

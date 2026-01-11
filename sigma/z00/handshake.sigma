@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: handshake
-DNA: handshake
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -63,6 +63,6 @@ async function handshake() {
 🌊
 
 @[dna]
-handshake
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 8bdd72036727771d3a06b31622ed9c797ee719e0988b8547932343ad52dd5786

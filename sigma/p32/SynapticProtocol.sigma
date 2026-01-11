@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: SynapticProtocol
-DNA: SynapticProtocol
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -31,6 +31,6 @@ DNA: SynapticProtocol
 🌊
 
 @[dna]
-SynapticProtocol
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 85c9736133a9391f1f40873fbc32bb2c82481183b227576e51a7313bfe811292

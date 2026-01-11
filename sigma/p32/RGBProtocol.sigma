@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: RGBProtocol
-DNA: RGBProtocol
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -62,6 +62,6 @@ $$\Sigma = R \oplus G \oplus B$$
 🌊
 
 @[dna]
-RGBProtocol
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 48d2ac1c31be57a6aaaeecfd0de1fa9f9c56e6f2bd375d44bb736bafc183d25a

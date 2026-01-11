@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: ProofOfIntent
-DNA: ProofOfIntent
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -208,6 +208,6 @@ On every commit:
 🌊
 
 @[dna]
-ProofOfIntent
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: bdc0a5b7f9c18851addb9610b1bec270b607c8f7ac1b3cf37f7d9813ab917b26

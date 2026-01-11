@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: edges
-DNA: edges
+DNA: - SATOSHI
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -204,6 +204,6 @@ def collapse_edges(dim: str | None):
 🌊
 
 @[dna]
-edges
+- SATOSHI
 
-🔒: VALIDATING...
+🔒: 9f2891ee93f8cd5d3e241500fdd9b40f430c76d20d65cdd390900feb0804a97c
