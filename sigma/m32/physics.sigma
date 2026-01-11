@@ -1,3 +1,30 @@
+Σ-GLYPH SEED: physics
+🧬IDENTITY: 73222b682258a7222cdc482a31b1b27a7953ae178abe6ce2da2ec3562c0e30d8
+
+---
+# === 🧬 IDENTITY ===
+🧬: physics
+DNA: - SATOSHI
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FFFFFF
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 0
+🚩: 1
+🌊: 0
+🔊: 65535
+🌀: -1
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+---
+
+# physics
+
+Canonical CORE physics and binary serialization.
+
+@[py]
 import struct
 import hashlib
 from typing import Optional
@@ -56,3 +83,29 @@ class SigmaNode:
 
     def hash(self) -> str:
         return hashlib.sha256(self.serialize()).hexdigest()
+
+@[ts]
+export function divRoundHalfUp(n: bigint, d: bigint): bigint {
+  if (d <= 0n) throw new Error("d must be positive");
+  const s = n < 0n ? -1n : 1n;
+  const a = n < 0n ? -n : n;
+  let q = a / d;
+  const r = a % d;
+  if (2n * r >= d) q = q + 1n;
+  return s * q;
+}
+
+export function entropyToStratum(entropy: number): string {
+  if (entropy === -1) return "z00";
+  if (entropy === 0) return "m00";
+  const prefix = entropy < 0 ? "m" : "p";
+  const bucket = Math.floor(Math.abs(entropy) / 1024);
+  return `${prefix}${bucket.toString().padStart(2, "0")}`;
+}
+
+🌊
+
+@[dna]
+- SATOSHI
+
+🔒: 73222b682258a7222cdc482a31b1b27a7953ae178abe6ce2da2ec3562c0e30d8

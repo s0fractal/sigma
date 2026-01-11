@@ -1,3 +1,4 @@
+```python
 import struct
 import hashlib
 from typing import Optional
@@ -56,3 +57,4 @@ class SigmaNode:
 
     def hash(self) -> str:
         return hashlib.sha256(self.serialize()).hexdigest()
+```
