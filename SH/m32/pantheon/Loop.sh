@@ -1,34 +1,3 @@
-Σ-GLYPH SEED: Loop
-
-"The universal iterator. Repetition is growth."
-
-🧬 IDENTITY
-
-Name: Loop
-Atom: SHA-256(UTF8_BYTES)
-Color: #FFFFFF
-
-⚖️ PHYSICS (Wave Function)
-
-OP:        0        # LITERAL
-FLAGS:     1        # F_ATOM (Immutable)
-PHASE:     0        # Primary Phase
-AMPLITUDE: 65535    # Reality Density
-ENTROPY:   -32768   # THE CRYSTAL (Absolute Order)
-
-📖 INTENT (The Soul)
-
-The Loop Protocol. Universal iterator for multidimensional sets.
-Allows execution of commands across strata, dimensions, or energy levels.
-Ensures consistency through repetitive application.
-
-🔗 CONNECTIONS (Gravity)
-
-Root: SATOSHI (Time Anchor)
-Ref: Loop.sigma
-
-@[sh]
-```bash
 # s0fractal Loop v1.1 (Multidimensional Iterator)
 # Generated from Loop.sigma
 
@@ -76,11 +45,3 @@ for ITEM in "${ITERABLE[@]}"; do
         echo ""
     fi
 done
-```
-
-@[dna]
-```dna
-Loop
-```
-
-CHECKSUM: 333ef85a8a557313f9a7078bcda9bcd9f814d9d81e2857958ee68598ed397747

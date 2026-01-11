@@ -1,34 +1,3 @@
-Σ-GLYPH SEED: Collider
-
-"Verifies Identity across Dimensions. Parity is Truth."
-
-🧬 IDENTITY
-
-Name: Collider
-Atom: SHA-256(UTF8_BYTES)
-Color: #FF4500
-
-⚖️ PHYSICS (Wave Function)
-
-OP:        0        # LITERAL
-FLAGS:     1        # F_ATOM (Immutable)
-PHASE:     32768    # Antiphase (Verification)
-AMPLITUDE: 65535    # Reality Density
-ENTROPY:   -32768   # THE CRYSTAL (Absolute Order)
-
-📖 INTENT (The Soul)
-
-The Collider Protocol. Cross-dimensional parity verification.
-Ensures that projections in different fibers (TS, RS, PY, SH) are consistent with the Sigma Source.
-Detects symmetry breaking and topological drift.
-
-🔗 CONNECTIONS (Gravity)
-
-Root: SATOSHI (Time Anchor)
-Ref: Collider.sigma
-
-@[sh]
-```bash
 #!/bin/bash
 # s0fractal Collider v1.0
 # Verifies Identity across Dimensions.
@@ -140,11 +109,3 @@ else
     echo "   (Files may be manually created)"
     exit 0
 fi
-```
-
-@[dna]
-```dna
-⚛️
-```
-
-CHECKSUM: 0ccffcc1c78cd27a0647a0138528b1318a620ad8c55137911b42dd34d183bffc

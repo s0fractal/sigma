@@ -68,11 +68,10 @@ def get_identity(text: str, glyph_name: str) -> bytes:
     return hashlib.sha256(content.encode("utf-8")).digest()
 
 def entropy_to_stratum(entropy: int) -> str:
-    if entropy == -1: return "z00"
-    if entropy == 0: return "m00"
+    if entropy == -1 or entropy == 0: return "z00"
     prefix = "m" if entropy < 0 else "p"
-    bucket = abs(entropy) // 1024
-    return f"{prefix}{bucket:02}"
+    bucket = math.ceil(abs(entropy) / 1024)
+    return f"{prefix}{int(bucket):02}"
 
 def extract_block(text: str, tag: str) -> str | None:
     # Explicitly check for doc suppression

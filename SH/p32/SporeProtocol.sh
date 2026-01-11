@@ -36,4 +36,3 @@ SIZE=$(du -h "$SPORE_FILE" | cut -f1)
 
 echo "✅ Spore created: $SPORE_FILE ($SIZE)"
 echo "   Copy this file anywhere. It IS the system."
-```

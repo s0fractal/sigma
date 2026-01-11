@@ -1,34 +1,3 @@
-Σ-GLYPH SEED: Chronos
-
-"Never calculate what you can remember."
-
-🧬 IDENTITY
-
-Name: Chronos
-Atom: SHA-256(UTF8_BYTES)
-Color: #FFD700
-
-⚖️ PHYSICS (Wave Function)
-
-OP:        0        # LITERAL
-FLAGS:     1        # F_ATOM (Immutable)
-PHASE:     16384    # Quadrature (Memory)
-AMPLITUDE: 65535    # Reality Density
-ENTROPY:   -32768   # THE CRYSTAL (Absolute Order)
-
-📖 INTENT (The Soul)
-
-The Chronos Protocol. Recursive memory management.
-Ensures that truth is remembered rather than recomputed.
-Maps the axis of Time to the axis of Space (Git).
-
-🔗 CONNECTIONS (Gravity)
-
-Root: SATOSHI (Time Anchor)
-Ref: Chronos.sigma
-
-@[sh]
-```bash
 #!/bin/bash
 # s0fractal Chronos v1.0
 # "Never calculate what you can remember."
@@ -99,11 +68,3 @@ else
     echo "❌ Unknown and no fallback."
     exit 1
 fi
-```
-
-@[dna]
-```dna
-⏳
-```
-
-CHECKSUM: e694e255e7de0f9dbdbc60de9a35e317505acdb6a2e69960c5298688aad184a7

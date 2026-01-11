@@ -1,34 +1,3 @@
-Σ-GLYPH SEED: Doctor
-
-"The scan of vital signs. Harmony is Health."
-
-🧬 IDENTITY
-
-Name: Doctor
-Atom: SHA-256(UTF8_BYTES)
-Color: #00FF7F
-
-⚖️ PHYSICS (Wave Function)
-
-OP:        0        # LITERAL
-FLAGS:     1        # F_ATOM (Immutable)
-PHASE:     0        # Primary Phase
-AMPLITUDE: 65535    # Reality Density
-ENTROPY:   -32768   # THE CRYSTAL (Absolute Order)
-
-📖 INTENT (The Soul)
-
-The Doctor Protocol. Vital signs and topological integrity auditor.
-Diagnoses fractures in the submodule grid and git-state inconsistencies.
-Non-destructive health monitoring of the digital organism.
-
-🔗 CONNECTIONS (Gravity)
-
-Root: SATOSHI (Time Anchor)
-Ref: Doctor.sigma
-
-@[sh]
-```bash
 # s0fractal Doctor v1.1 (Vital Signs)
 # Generated from Doctor.sigma
 
@@ -122,11 +91,3 @@ else
     echo -e "${RED}🔴 CRITICAL FRACTURES DETECTED.${NC}"
     exit 1
 fi
-```
-
-@[dna]
-```dna
-Doctor
-```
-
-CHECKSUM: ca8c268505c5d63eaa4e467502cd299dd9a56a7f7b288964645f1a0022e510b7

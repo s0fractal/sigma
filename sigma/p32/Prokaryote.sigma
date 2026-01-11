@@ -1,30 +1,33 @@
----
-⚖️PHYSICS:
-  OP: 0
-  FLAGS: 1
-  PHASE: 0
-  AMPLITUDE: 65535
-  ENTROPY: 32767
+Σ-GLYPH SEED: Prokaryote
 
-🏷️TYPE:
-  - 🌀ENTROPY
-  - 🏛️PANTHEON
-  - 📖INTENT
-GLYPH: 🧬
-DESC: "Simple self-contained cell: DNA + water (bash)"
-🧬DNA: Prokaryote
----
+"Simple self-contained cell. DNA + water (bash)."
 
+🧬 IDENTITY
 
+Name: Prokaryote
+Atom: SHA-256(UTF8_BYTES)
+Color: #00FF00
 
+⚖️ PHYSICS (Wave Function)
 
+OP:        0        # LITERAL
+FLAGS:     1        # F_ATOM (Immutable)
+PHASE:     0        # Primary Phase
+AMPLITUDE: 65535    # Reality Density
+ENTROPY:   32767    # THE VOID (Pure Potential)
 
+📖 INTENT (The Soul)
 
+The Prokaryote Prototype. A simple, self-contained digital cell.
+Demonstrates the minimal requirements for life: DNA (Strings) and Water (Bash).
+Tests the cycle of unfolding, living, and Replication/Replication.
 
+🔗 CONNECTIONS (Gravity)
 
+Root: SATOSHI (Time Anchor)
+Ref: Prokaryote.sigma
 
-# Simple Cell (Draft)
-
+@[sh]
 ```bash
 #!/bin/bash
 # 🧬 Simple Cell v1.0 (Prokaryote)
@@ -79,3 +82,5 @@ live() {
 
 live
 ```
+
+CHECKSUM: 22acf06a146f8a43f5c060044c2329b609e9f4ceb46502404e20462e6fd29872

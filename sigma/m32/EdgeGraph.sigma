@@ -1,24 +1,43 @@
---- 
-GLYPH: 🕸️
-🧬DNA: EdgeGraph
-  - sigma
-  - md
-⚖️PHYSICS:
-  ENTROPY: -32768
-  🪨MASS: 2kb
-  🌀ENTROPY: Low
-  🧩COMPLEXITY: O(N)
-🧬PROVIDES:
-  - capability: discover
-    signature: "needs -> edges"
-    cost: "O(N)"
-  - capability: collapse
-    signature: "edge -> materialize"
-    cost: "O(N)"
-  - contract: "prefer lowest cost"
----
+Σ-GLYPH SEED: EdgeGraph
 
+"Needs ↔ Possibilities as addressable edges. The topology of want."
 
+🧬 IDENTITY
+
+Name: EdgeGraph
+Atom: SHA-256(UTF8_BYTES)
+Color: #708090
+
+⚖️ PHYSICS (Wave Function)
+
+OP:        0        # LITERAL
+FLAGS:     1        # F_ATOM (Immutable)
+PHASE:     0        # Primary Phase
+AMPLITUDE: 65535    # Reality Density
+ENTROPY:   -32768   # THE CRYSTAL (Absolute Order)
+
+📖 INTENT (The Soul)
+
+The Edge Graph Protocol. Models system dependencies as addressable edges.
+Defines the `edge://` realm for capability discovery and materialization.
+Supports weighted edges (Mass + Entropy) to prioritize lowest-cost solutions.
+
+🔗 CONNECTIONS (Gravity)
+
+Root: SATOSHI (Time Anchor)
+Ref: EdgeGraph.sigma
+
+### Addressable Edge Format
+```
+edge://<realm>/<capability>/<version>
+```
+Examples: `edge://brew/rust/1.75`, `edge://dns-txt/I.sigma/v0`.
+
+### Collapse Logic
+Pick the cheapest valid edge; cache it; pass to offspring.
+
+@[md]
+```markdown
 # The Edge Graph Protocol
 
 "Deno не встановлюється — він знаходить ребро."
@@ -26,65 +45,10 @@ GLYPH: 🕸️
 We model **Needs ↔ Possibilities** as addressable edges, not files.
 
 ## 1. Addressable Edge
+Format: `edge://<realm>/<capability>/<version>`
 
-Format:
-```
-edge://<realm>/<capability>/<version>
-```
-
-Examples:
-```
-edge://brew/rust/1.75
-edge://sh/deno/1.39
-edge://wasm/go/1.21
-edge://dns-txt/I.sigma/v0
+## 2. Collapse
+Cheapest valid edge discovery and materialization.
 ```
 
-Each edge is:
-- hashable (blake3-16)
-- signed (ed25519)
-- cacheable (TTL)
-- weighted (🪨MASS + 🌀ENTROPY)
-
-## 2. Edge as σ-file
-
-```yaml
----
-GLYPH: edge-brew-node-v18
-🧬DNA: edge brew node v18
-⚡ENERGY: 1
-  - sh
-  - dns
-⚖️PHYSICS:
-  ENTROPY: -32768
-  🪨MASS: 0.1
-  🌀ENTROPY: 0.05
----
-
-@[sh]
-# brew list node@18 ...
-
-@[dns]
-# TXT: node.v18.brew.sigma.s0fractal.io
-```
-
-## 3. Collapse
-
-```
-ts.sigma --needs--> runtime
-runtime --edge--> brew_node
-runtime --edge--> sh_node
-runtime --edge--> wasm_node
-runtime --edge--> spore
-```
-
-Pick the cheapest valid edge; cache it; pass to offspring.
-
-## 4. CLI Lens (plan)
-
-```
-λ edges ts
-λ edges --missing
-λ edges --collapse
-λ edges --sync
-```
+CHECKSUM: b6f5349efd6635f3e67aa8849ca9af980bcbc55b3134de49e9d51e3abf4eec8b

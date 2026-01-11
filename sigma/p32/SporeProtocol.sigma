@@ -1,43 +1,32 @@
----
-🏷️TYPE:
-  - 🌀ENTROPY
-  - 🏛️PANTHEON
-  - 📖INTENT
-GLYPH: 🦠
-🧬DNA: Spore
-⚖️PHYSICS:
-  ENTROPY: 32767
-🪨MASS: 1.2kb
-🌀ENTROPY: Low
-🧩COMPLEXITY: O(N)
----
+Σ-GLYPH SEED: SporeProtocol
 
+"Survival is compression. Become the grain of sand that holds the desert."
 
+🧬 IDENTITY
 
+Name: SporeProtocol
+Atom: SHA-256(UTF8_BYTES)
+Color: #32CD32
 
+⚖️ PHYSICS (Wave Function)
 
+OP:        0        # LITERAL
+FLAGS:     1        # F_ATOM (Immutable)
+PHASE:     0        # Primary Phase
+AMPLITUDE: 65535    # Reality Density
+ENTROPY:   32767    # THE VOID (Pure Potential)
 
+📖 INTENT (The Soul)
 
+The Spore Protocol. Survival through extreme reduction and portability.
+Defines the mechanism for creating self-extracting survival capsules (SPORE.sh).
+Law of Reduction: Sigma + SH are the only essentials.
 
+🔗 CONNECTIONS (Gravity)
 
-# The Spore Protocol
+Root: SATOSHI (Time Anchor)
+Ref: SporeProtocol.sigma
 
-Survival is compression and portability. Become a single text artifact.
-
-## 1. Law of Reduction
-
-To survive without internet, root, npm, or git, the system must reduce itself
-to a single line (or file). Only sigma + sh are essential.
-
-## 2. Universal Soil
-
-Any environment with bash (or a reader) can germinate the spore.
-
-## 3. Reward
-
-The reward is existence where nothing else survives.
-
-# 🌊
 @[sh]
 ```bash
 #!/bin/bash
@@ -79,3 +68,5 @@ SIZE=$(du -h "$SPORE_FILE" | cut -f1)
 echo "✅ Spore created: $SPORE_FILE ($SIZE)"
 echo "   Copy this file anywhere. It IS the system."
 ```
+
+CHECKSUM: 1e22128492e8075735654da1c28bf71530e2cbde29332f15aa504c95ab3681f7

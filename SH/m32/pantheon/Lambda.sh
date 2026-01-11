@@ -1,34 +1,3 @@
-Σ-GLYPH SEED: Lambda
-
-"The protocol of divine dispatch. Mapping intent to action."
-
-🧬 IDENTITY
-
-Name: Lambda
-Atom: SHA-256(UTF8_BYTES)
-Color: #FF00FF
-
-⚖️ PHYSICS (Wave Function)
-
-OP:        3        # LAMBDA (Combinatory Engine)
-FLAGS:     1        # F_ATOM (Immutable)
-PHASE:     0        # Primary Phase
-AMPLITUDE: 65535    # Reality Density
-ENTROPY:   -32768   # THE CRYSTAL (Absolute Order)
-
-📖 INTENT (The Soul)
-
-The Lambda Protocol Interpreter. 
-Maps glyphs (symbols of intent) to actions (materialization scripts).
-Provides stateless dispatch and projection lens capabilities.
-
-🔗 CONNECTIONS (Gravity)
-
-Root: SATOSHI (Time Anchor)
-Ref: Lambda.sigma
-
-@[sh]
-```bash
 # --- 0. State ---
 # Find REPO_ROOT by hunting for .git
 REPO_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
@@ -127,11 +96,3 @@ case "$GLYPH" in
         git $GLYPH "$@"
         ;;
 esac
-```
-
-@[dna]
-```dna
-Lambda
-```
-
-CHECKSUM: bdde54263a21acd5bdbfd17a4a54fdea56b0bb31779af59bb6289bfd169d57e2
