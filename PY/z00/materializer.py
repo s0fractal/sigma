@@ -14,6 +14,7 @@ from pathlib import Path
 
 import protocol
 import scr1
+import physics
 
 # --- CONFIGURATION ---
 SIGMA_ROOT = protocol.ROOT
@@ -80,12 +81,7 @@ def calculate_poi(intent_text: str, code_text: str) -> str:
     h_code = hashlib.sha256(code_text.encode("utf-8")).hexdigest()
     return hashlib.sha256((h_intent + h_code).encode()).hexdigest()
 
-def entropy_to_stratum(entropy: int) -> str:
-    if entropy == -1 or entropy == 0: return "z00"
-    prefix = "m" if entropy < 0 else "p"
-    bucket = math.ceil(abs(entropy) / 1024)
-    if bucket > 32: bucket = 32
-    return f"{prefix}{int(bucket):02}"
+# Physics logic is now delegated to physics.py
 
 def materialize():
     print("=== Σ-GLYPH MATERIALIZER: Atomic Fusion V2.3.2 (SCR-1 Library) ===\n")
@@ -120,7 +116,7 @@ def materialize():
         except: continue
             
         phys = parse_physics(content)
-        stratum = entropy_to_stratum(phys["ENTROPY"])
+        stratum = physics.entropy_to_stratum(phys["ENTROPY"])
         glyph_match = re.search(r"^(?:🧬|GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
         this_glyph = glyph_match.group(1) if glyph_match else path.stem
         

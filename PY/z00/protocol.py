@@ -25,14 +25,8 @@ def get_repo_root() -> Path:
 ROOT = get_repo_root()
 PROTOCOL_PATH = ROOT / "sigma" / "m32" / "protocol.json"
 
-try:
-    _data = json.loads(PROTOCOL_PATH.read_text())
-except:
-    # Hardcoded fallback to ensure bootstrapping
-    _data = {
-        "OPCODES": {"LITERAL": 0, "REF": 1, "APPLY": 2, "LAMBDA": 3, "DISSONANCE": 255},
-        "FLAGS": {"F_ATOM": 1, "F_LEFT": 2, "F_RIGHT": 4}
-    }
+# Strict load: Fail hard if protocol.json is missing or corrupted.
+_data = json.loads(PROTOCOL_PATH.read_text())
 
 OP_LITERAL = _data["OPCODES"]["LITERAL"]
 OP_REF = _data["OPCODES"]["REF"]

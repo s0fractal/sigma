@@ -92,6 +92,14 @@ export function interfere(w1: WaveVectorQ, w2: WaveVectorQ): WaveVectorQ {
   };
 }
 
+export function entropyToStratum(entropy: number): string {
+  if (entropy === -1) return "z00";
+  if (entropy === 0) return "m00";
+  const prefix = entropy < 0 ? "m" : "p";
+  const bucket = Math.floor(Math.abs(entropy) / 1024);
+  return `${prefix}${bucket.toString().padStart(2, "0")}`;
+}
+
 // --- Serialization ---
 
 export function serializeNode(node: SigmaNode): Uint8Array {

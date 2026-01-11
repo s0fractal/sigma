@@ -65,22 +65,19 @@ def audit_lattice(fix=False, source_dir: Path = SOURCE_DIR):
                 content = re.sub(r"^(🧬IDENTITY:|IDENTITY:).*?\n", "", content, flags=re.MULTILINE)
                 
                 # Remove seal
-                markers = ["\n🔒:", "\nCHECKSUM:"]
-                last_idx = -1
-                for m in markers:
-                    idx = content.rfind(m)
-                    if idx > last_idx: last_idx = idx
-                if last_idx != -1:
-                    content = content[:last_idx]
+                seal_pattern = r"\n(?:🔒:|CHECKSUM:)\s*[0-9a-f]{64}\s*$"
+                match = list(re.finditer(seal_pattern, content, re.MULTILINE))
+                if match:
+                    content = content[:match[-1].start()]
                 
                 # Now prepend new identity and append new seal
                 # We preserve the header "Σ-GLYPH SEED: ..." or "🧬: ..."
                 header_pat = r"^(Σ-GLYPH SEED|🧬):\s*([\w=]+)(\n?)"
-                match = re.search(header_pat, content, re.MULTILINE)
+                header_match = re.search(header_pat, content, re.MULTILINE)
                 
-                if match:
+                if header_match:
                     # Insert after the first header line
-                    final_content = content[:match.end()] + f"🧬IDENTITY: {node_hash}\n" + content[match.end():]
+                    final_content = content[:header_match.end()] + f"🧬IDENTITY: {node_hash}\n" + content[header_match.end():]
                 else:
                     final_content = f"🧬IDENTITY: {node_hash}\n" + content
                 
@@ -90,7 +87,9 @@ def audit_lattice(fix=False, source_dir: Path = SOURCE_DIR):
                 path.write_text(final_content, encoding="utf-8")
                     
         except Exception as e:
+            # Still report core faults to avoid silent success if a file cannot be read
             violations.append(f"Core Fault: {path.name} ({e})")
+            raise e
             
     print(f"\n🌀 Lattice Resonance Hash: {lattice_hasher.hexdigest()}")
     return violations
