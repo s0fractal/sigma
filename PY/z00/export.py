@@ -6,7 +6,7 @@ from pathlib import Path
 # V1.0.0 - Export sigma/ and PY/ for cross-model consultation
 
 SIGMA_ROOT = Path("/Users/s0fractal/SIGMA")
-EXPORT_FILE = SIGMA_ROOT / "sigma_full_codebase.txt"
+EXPORT_FILE = SIGMA_ROOT / "TXT/sigma_full_codebase.txt"
 
 def export():
     print(f"--- Exporting Σ-GLYPH Codebase to {EXPORT_FILE.name} ---")
