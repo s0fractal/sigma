@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: Doctor
-DNA: - SATOSHI
+DNA: Doctor
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #00FF7F
 
@@ -12,19 +12,23 @@ DNA: - SATOSHI
 🚩: 1
 🌊: 0
 🔊: 65535
-🌀: 0
+🌀: -32768
 
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
   - SATOSHI
 ---
 
-# (Logic starts here)
-#
+# Doctor - System Immunity
+
+Logic for sensing and healing dissonance within the Σ-GLYPH mesh.
 
 🌊
 
-@[dna]
-- SATOSHI
+@[ts]
+// Doctor implementation...
 
-🔒: e14dc44df642a6ecf5098ceb855ad73a3ce6edcdb80cd47e46ddc1d7241d0a26
+@[dna]
+Doctor
+
+🔒: 7300f5731bb6a14659861f61b1f5fe9c0d189a4626d64b6fb881a3d0d7d5ef27

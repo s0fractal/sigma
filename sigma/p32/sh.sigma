@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: sh
-DNA: - SATOSHI
+DNA: sh
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000073
 🎨: #44FF88
 
@@ -21,7 +21,7 @@ DNA: - SATOSHI
 
 # sh - Shell Language Spectrum
 
-# === ⚙️ SPECTRUM CONFIG ===
+# === METADATA ===
 @[yaml]
 ```yaml
 SYNTAX: bash
@@ -42,6 +42,6 @@ EDGES:
 🌊
 
 @[dna]
-- SATOSHI
+sh
 
-🔒: fac43cf3538b9b1ddf453f04237297f846dc27a0d72c22f10a9a7ac6b7c977cb
+🔒: 4ed95fd51e8603bd8bf99aa8dba59f10854dc9e66d9b7a1729b7ee7aaebe19a3

@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: ts
-DNA: - SATOSHI
+DNA: ts
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000074
 🎨: #3388FF
 
@@ -21,7 +21,7 @@ DNA: - SATOSHI
 
 # ts - TypeScript Language Spectrum
 
-# === ⚙️ SPECTRUM CONFIG ===
+# === METADATA ===
 @[yaml]
 ```yaml
 SYNTAX: ts
@@ -42,6 +42,6 @@ EDGES:
 🌊
 
 @[dna]
-- SATOSHI
+ts
 
-🔒: ed1fc94cf0d1ede4701f5c283eb5972fb2d4329e842630a702973af2fd4f926f
+🔒: d49d7ce2958486eefaca9c5b61d8c7dd0335ca7e708bd0f7f0d01a1944ffc170

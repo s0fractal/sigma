@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: md
-DNA: - SATOSHI
+DNA: md
 ⚛️: 000000000000000000000000000000000000000000000000000000000000006D
 🎨: #AAAAAA
 
@@ -21,7 +21,7 @@ DNA: - SATOSHI
 
 # md - Markdown Spectrum
 
-# === ⚙️ SPECTRUM CONFIG ===
+# === METADATA ===
 @[yaml]
 ```yaml
 SYNTAX: md
@@ -33,6 +33,6 @@ IMPORT: "[%n](file://%p)"
 🌊
 
 @[dna]
-- SATOSHI
+md
 
-🔒: d79699d36e44ba91d9005f304456c40a5c4db2fc30515feae0bd036f10d5d360
+🔒: 96b515a17cc302331e4fc54187b59b5bed16b473ddbc896f6fe965658af14514

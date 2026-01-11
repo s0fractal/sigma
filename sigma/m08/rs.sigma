@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: rs
-DNA: - SATOSHI
+DNA: rs
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000072
 🎨: #FF4433
 
@@ -21,7 +21,7 @@ DNA: - SATOSHI
 
 # rs - Rust Language Spectrum
 
-# === ⚙️ SPECTRUM CONFIG ===
+# === METADATA ===
 @[yaml]
 ```yaml
 SYNTAX: rust
@@ -42,6 +42,6 @@ EDGES:
 🌊
 
 @[dna]
-- SATOSHI
+rs
 
-🔒: 4d6d90abfc912d9b731fb233ec729ba0c05e8eb850d08093a03eeba9942e2dc3
+🔒: d8f8cdba731ac76265a617947f6f81082d40c56a38a14e33da3873ba0fff192d
