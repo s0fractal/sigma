@@ -30,3 +30,25 @@ class CASStore:
 
     def exists(self, h: str) -> bool:
         return self._get_path(h).exists()
+
+    def manifest(self) -> set[str]:
+        """Returns a set of all Content-Addressed hashes currently stored."""
+        keys = set()
+        # Structure is root/xx/yyyyyyyy...
+        # We need to traverse deterministically, though set order doesn't matter.
+        if not self.root.exists(): return keys
+        
+        for parent in self.root.iterdir():
+            if parent.is_dir() and len(parent.name) == 2:
+                for child in parent.iterdir():
+                    if child.is_file():
+                        keys.add(parent.name + child.name)
+        return keys
+
+    def delta(self, remote_manifest: set[str]) -> set[str]:
+        """
+        Anti-Entropy: Returns the set of keys present in remote_manifest 
+        but MISSING from this local store. (What I need to pull).
+        """
+        local = self.manifest()
+        return remote_manifest - local

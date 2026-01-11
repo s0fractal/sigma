@@ -58,6 +58,13 @@
       "expected_hash": "185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969"
     }
   ],
+  "evolution": [
+    {
+      "name": "Genesis Event",
+      "event": {"type": "EV_GENESIS", "prev": "0000000000000000000000000000000000000000000000000000000000000000", "data": {"node": "I"}},
+      "expected_hash": "e37367f85733d1452755cc7eff32bd186e065f0551dd454534fc98d2fc4832b8"
+    }
+  ],
   "wire": [
     {
       "type": 1,

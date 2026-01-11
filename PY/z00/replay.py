@@ -15,7 +15,7 @@ class EvolutionLog:
             "data": data,
             "prev": self.get_last_hash()
         }
-        event_str = json.dumps(event, sort_keys=True)
+        event_str = json.dumps(event, sort_keys=True, separators=(',', ':'))
         h = hashlib.sha256(event_str.encode()).hexdigest()
         
         with self.path.open("a", encoding="utf-8") as f:
@@ -37,3 +37,17 @@ class EvolutionLog:
             if hashlib.sha256(event_str.encode()).hexdigest() != h: return False
             expected_prev = h
         return True
+
+    def replay(self, callback) -> None:
+        """
+        Deterministically replays the log, invoking callback(event) for each valid entry.
+        Verifies hash chain integrity on the fly.
+        """
+        if not self.verify():
+            raise ValueError("Evolution Log Corrupted: Hash chain broken.")
+            
+        for line in self.path.read_text(encoding="utf-8").strip().splitlines():
+            if not line: continue
+            _, event_str = line.split(" ", 1)
+            event = json.loads(event_str)
+            callback(event)
