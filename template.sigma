@@ -1,0 +1,35 @@
+Σ-GLYPH SEED: {NAME}
+
+"Every error is a tunnel seeking truth."
+
+🧬 IDENTITY
+
+Name: {NAME}
+Atom: SHA-256(UTF8_BYTES)
+Color: #{HEX_FROM_HASH_PREFIX} (Axiom CP-24)
+
+⚖️ PHYSICS (Wave Function)
+
+OP:        0        # LITERAL (Constant) / LAMBDA (Function)
+FLAGS:     1        # F_ATOM (Immutable)
+PHASE:     {0..65535}  # Sector/Angle (e.g., 8192 for Energy)
+AMPLITUDE: 65535    # Reality Density (Impact)
+ENTROPY:   -32768   # Crystallization Level (-32 to +32 mapped)
+
+### CALCULATED PROPERTIES (No Tautologies):
+
+- **Stratum (Zone)**: Derived from ENTROPY (e.g., -32768 → m32).
+- **Impact (Weight)**: Calculated as $|ENTROPY| \times AMPLITUDE$.
+
+Physics defines location and value. Explicit labels are redundant.
+
+📖 INTENT (The Soul)
+
+{Description of the logic or concept. This is the source code of reality.}
+
+🔗 CONNECTIONS (Gravity)
+
+Root: SATOSHI (Time Anchor)
+Ref: {DEPENDENCY_NAME} (Topological Link)
+
+CHECKSUM: {HASH_OF_THIS_FILE}
