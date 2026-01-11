@@ -16,30 +16,45 @@ WHITELIST = ["deno.json", ".DS_Store", "README.md", "pantheon"]
 
 def parse_physics(text: str) -> dict:
     physics = {"OP": 0, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
-    header_match = re.search(r"(?:⚖️)?\s*PHYSICS(?:\s*\(Wave Function\))?:?\s*\n+", text, re.MULTILINE)
-    if header_match:
-        start_idx = header_match.end()
-        remaining = text[start_idx:].lstrip("\n")
-        found_any = False
-        for line in remaining.split("\n"):
-            clean_line = line.split("#")[0].strip()
-            if not clean_line: continue
-            if ":" in clean_line:
-                key, val = clean_line.split(":", 1)
-                key = re.sub(r'[^\w]', '', key).strip().upper()
-                if key in physics:
-                    found_any = True
-                    val = val.strip()
-                    try:
-                        if val.startswith("0x"): physics[key] = int(val, 16)
-                        else: physics[key] = int(re.search(r'-?\d+', val).group())
-                    except: continue
-                elif found_any: break
-            else: break
+    
+    # V2.0 Symbolic Keys (Precise Search)
+    symbol_map = {"⚙️": "OP", "🚩": "FLAGS", "🌊": "PHASE", "🔊": "AMPLITUDE", "🌀": "ENTROPY"}
+    for sym, key in symbol_map.items():
+        match = re.search(f"{sym}:?\\s*(-?\\d+|0x[a-fA-F0-9]+)", text)
+        if match:
+            val = match.group(1)
+            try:
+                physics[key] = int(val, 16) if val.startswith("0x") else int(val)
+            except: continue
+
+    # Fallback: Legacy PHYSICS block parsing
+    if all(physics[k] == 0 for k in ["PHASE", "AMPLITUDE", "ENTROPY"]):
+        header_match = re.search(r"(?:⚖️)?\s*PHYSICS(?:\s*\(Wave Function\))?:?\s*\n+", text, re.MULTILINE)
+        if header_match:
+            start_idx = header_match.end()
+            remaining = text[start_idx:].lstrip("\n")
+            found_any = False
+            for line in remaining.split("\n"):
+                clean_line = line.split("#")[0].strip()
+                if not clean_line: continue
+                if ":" in clean_line:
+                    key, val = clean_line.split(":", 1)
+                    key = re.sub(r'[^\w]', '', key).strip().upper()
+                    if key in physics:
+                        found_any = True
+                        val = val.strip()
+                        try:
+                            if val.startswith("0x"): physics[key] = int(val, 16)
+                            else: physics[key] = int(re.search(r'-?\d+', val).group())
+                        except: continue
+                    elif found_any: break
+                else: break
     return physics
 
 def calculate_checksum(content: str) -> str:
-    if "\nCHECKSUM:" in content:
+    if "\n🔒:" in content:
+        clean_content = content.rsplit("\n🔒:", 1)[0].rstrip()
+    elif "\nCHECKSUM:" in content:
         clean_content = content.rsplit("\nCHECKSUM:", 1)[0].rstrip()
     else:
         clean_content = content.strip()
@@ -50,11 +65,11 @@ def get_glyph_registry():
     for path in SOURCE_DIR.glob("**/*.sigma"):
         try:
             content = path.read_text(encoding="utf-8")
-            glyph_match = re.search(r"(?:GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
+            glyph_match = re.search(r"(?:GLYPH|Σ-GLYPH SEED|🧬):\s*([\w=]+)", content, re.MULTILINE)
             if glyph_match:
                 glyph = glyph_match.group(1)
                 phys = parse_physics(content)
-                dna_match = re.search(r"(?:🧬DNA|🔗 CONNECTIONS \(Gravity\)):\s*\n+((?:\s*(?:-\s*|Ref:\s*)[\w=]+\n?)*|(?:\s*[\w=]+\s*)*)", content)
+                dna_match = re.search(r"(?:🧬DNA|DNA:|🔗|🔗:):\s*\n+((?:\s*(?:-\s*|Ref:\s*)?[\w=]+\n?)*)", content)
                 dependencies = []
                 if dna_match:
                     raw_dna = dna_match.group(1)
@@ -129,7 +144,7 @@ def audit_checksums(registry, fix=False):
     for glyph, data in registry.items():
         path = data["path"]
         content = data["content"]
-        checksum_match = re.search(r"\nCHECKSUM:\s*(.*)$", content, re.MULTILINE)
+        checksum_match = re.search(r"\n(?:CHECKSUM|🔒):\s*(.*)$", content, re.MULTILINE)
         if not checksum_match: continue
         
         current_checksum = checksum_match.group(1).strip()
@@ -140,8 +155,9 @@ def audit_checksums(registry, fix=False):
             violations.append(f"Checksum Mismatch: {rel_path} (Expected {expected_checksum[:8]}...)")
             if fix:
                 print(f"   🛠 Resealing Seed: {rel_path}")
-                parts = content.rsplit("\nCHECKSUM:", 1)
-                new_content = parts[0] + f"\nCHECKSUM: {expected_checksum}"
+                marker = "🔒:" if "\n🔒:" in content else "CHECKSUM:"
+                parts = content.rsplit(f"\n{marker}", 1)
+                new_content = parts[0] + f"\n{marker} {expected_checksum}"
                 path.write_text(new_content, encoding="utf-8")
     return violations
 

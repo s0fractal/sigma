@@ -1,35 +1,56 @@
 Σ-GLYPH SEED: {NAME}
 
-"Every error is a tunnel seeking truth."
+=== 🧬 IDENTITY ===
 
-🧬 IDENTITY
+🧬: {NAME}               # Glyph Name (e.g., M)
+DNA: {DNA_EXPRESSION}    # The Formula (e.g., W I)
+⚛️: {ATOM_HASH}          # SHA-256 of DNA/Content
+🎨: {COLOR_HEX}          # Axiom CP-24 (#RRGGBB)
 
-Name: {NAME}
-Atom: SHA-256(UTF8_BYTES)
-Color: #{HEX_FROM_HASH_PREFIX} (Axiom CP-24)
+=== ⚖️ PHYSICS (Wave Function) ===
 
-⚖️ PHYSICS (Wave Function)
+⚙️: 0                    # OpCode (0=LITERAL, 3=LAMBDA)
+🚩: 1                    # Flags (1=ATOM)
+🌊: {PHASE}              # Phase (0..65535)
+🔊: 65535                # Amplitude (Impact)
+🌀: -32768               # Entropy (-32..+32 mapped)
 
-OP:        0        # LITERAL (Constant) / LAMBDA (Function)
-FLAGS:     1        # F_ATOM (Immutable)
-PHASE:     {0..65535}  # Sector/Angle (e.g., 8192 for Energy)
-AMPLITUDE: 65535    # Reality Density (Impact)
-ENTROPY:   -32768   # Crystallization Level (-32 to +32 mapped)
+=== 🔗 GRAVITY (Dependencies) ===
 
-### CALCULATED PROPERTIES (No Tautologies):
+🔗:
 
-- **Stratum (Zone)**: Derived from ENTROPY (e.g., -32768 → m32).
-- **Impact (Weight)**: Calculated as $|ENTROPY| \times AMPLITUDE$.
+SATOSHI
 
-Physics defines location and value. Explicit labels are redundant.
+{DEPENDENCY_NAME}
 
-📖 INTENT (The Soul)
+{NAME} - {TITLE}
 
-{Description of the logic or concept. This is the source code of reality.}
+{Description of the logic or concept. This is the Intent (📖).}
 
-🔗 CONNECTIONS (Gravity)
+🌊
 
-Root: SATOSHI (Time Anchor)
-Ref: {DEPENDENCY_NAME} (Topological Link)
+@[ts]
 
-CHECKSUM: {HASH_OF_THIS_FILE}
+// 🔗 Implicit Gravity: No imports required. Dependencies are in the DNA.
+// Projection of: {DNA_EXPRESSION}
+export const {NAME} = ...; 
+
+
+@[rs]
+
+// 🔗 Native implementation
+pub const {NAME}: ... = ...;
+
+
+@[sh]
+
+# 🔗 Shell implementation
+{NAME}() { ... }
+
+
+@[dna]
+
+{DNA_EXPRESSION}
+
+
+🔒: {HASH_OF_THIS_FILE}
