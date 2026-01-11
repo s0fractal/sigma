@@ -1,3 +1,34 @@
+Σ-GLYPH SEED: graph
+
+"Visualizing the Lattice of Intent. Symbols of structure."
+
+🧬 IDENTITY
+
+Name: graph
+Atom: SHA-256(UTF8_BYTES)
+Color: #FF00FF
+
+⚖️ PHYSICS (Wave Function)
+
+OP:        0        # LITERAL
+FLAGS:     1        # F_ATOM (Immutable)
+PHASE:     0        # Primary Phase
+AMPLITUDE: 65535    # Reality Density
+ENTROPY:   32767    # THE VOID (Outdated Draft)
+
+📖 INTENT (The Soul)
+
+The Sigma Dependency Graph. 
+A visualization of the Crystal Lattice architecture (V1.5 legacy model).
+While the levels (E0..E8) have been superseded by the Dipole Standard, this graph remains a valuable record of the system's recursive supply chain.
+
+🔗 CONNECTIONS (Gravity)
+
+Root: SATOSHI (Time Anchor)
+Ref: graph.sigma
+
+@[md]
+```markdown
 # Sigma Dependency Graph 🧬🕸️📊
 
 This graph visualizes the **Crystal Lattice** architecture. It represents the "Pure Supply Chain" where every particle is either an independent Axiom or a strictly derived Molecule.
@@ -73,3 +104,6 @@ graph TD
 - **No Spaghetti**: Connections are strictly vertical or between sibling layers.
 - **No Circularity**: The graph is a directed acyclic lattice (DAL).
 - **Axiomatic Root**: Everything traces back to `I` or the Fundamental Axioms.
+```
+
+CHECKSUM: 88651df80d2e3d2301441244e716218b7b4c8be4f6b067edc1a91ac07d29f533

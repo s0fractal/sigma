@@ -1,0 +1,123 @@
+Σ-GLYPH SEED: conformance_suite
+
+"The metric of truth. Alignment is conformance."
+
+🧬 IDENTITY
+
+Name: conformance_suite
+Atom: SHA-256(UTF8_BYTES)
+Color: #00FF00
+
+⚖️ PHYSICS (Wave Function)
+
+OP:        0        # LITERAL
+FLAGS:     1        # F_ATOM (Immutable)
+PHASE:     0        # Primary Phase
+AMPLITUDE: 65535    # Reality Density
+ENTROPY:   0        # THE PORTAL (Control Layer)
+
+📖 INTENT (The Soul)
+
+The Sigma Conformance Suite (V1.9.1).
+Defines the standard test vectors for math, interference, and serialization parity across all spectra.
+This seed projects the ground truth for cross-dimensional verification.
+
+🔗 CONNECTIONS (Gravity)
+
+Root: SATOSHI (Time Anchor)
+Ref: conformance_suite.sigma
+
+@[json]
+```json
+{
+    "version": "V1.9.1",
+    "name": "Sigma Conformance Suite",
+    "vectors": [
+        {
+            "id": "MATH_DIV_01",
+            "type": "math",
+            "fn": "div_round_half_up",
+            "input": [
+                11,
+                3
+            ],
+            "output": 4
+        },
+        {
+            "id": "MATH_DIV_02",
+            "type": "math",
+            "fn": "div_round_half_up",
+            "input": [
+                5,
+                2
+            ],
+            "output": 3
+        },
+        {
+            "id": "MATH_DIV_03_NEG",
+            "type": "math",
+            "fn": "div_round_half_up",
+            "input": [
+                -5,
+                2
+            ],
+            "output": -3
+        },
+        {
+            "id": "INTERFERENCE_IK",
+            "type": "interference",
+            "w1": {
+                "ph": 0,
+                "am": 65535,
+                "en": -32768
+            },
+            "w2": {
+                "ph": 32768,
+                "am": 65535,
+                "en": -32768
+            },
+            "output": {
+                "ph": 0,
+                "am": 0,
+                "en": -32768
+            }
+        },
+        {
+            "id": "INTERFERENCE_SELF",
+            "type": "interference",
+            "w1": {
+                "ph": 16384,
+                "am": 32768,
+                "en": 0
+            },
+            "w2": {
+                "ph": 16384,
+                "am": 32768,
+                "en": 0
+            },
+            "output": {
+                "ph": 16384,
+                "am": 32768,
+                "en": 0
+            }
+        },
+        {
+            "id": "SERIALIZATION_LITERAL",
+            "type": "serialization",
+            "node": {
+                "op": 0,
+                "flags": 1,
+                "wave": {
+                    "ph": 8192,
+                    "am": 65535,
+                    "en": -32768
+                },
+                "atom": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "output_hex": "00012000ffff80000000000000000000000000000000000000000000000000000000000000000000"
+        }
+    ]
+}
+```
+
+CHECKSUM: caeeda154a1c40f8e1ac292f142941dd08a50712c8b825998a5d855d4dc886fb
