@@ -4,13 +4,13 @@
 # === 🧬 IDENTITY ===
 🧬: git
 DNA: git
-⚛️: 0000000000000000000000000000000000000000000000000000000000000047
+⚛️: 29fef7ad65828e0d2628d245eace312bd2bd55588409e652a26489edd80bf70f
 🎨: #F05032
 
 # === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
 🚩: 1
-🌊: 0
+🌊: 32768
 🔊: 65535
 🌀: -32768
 
@@ -19,29 +19,42 @@ DNA: git
   - SATOSHI
 ---
 
-# git - Versioned Memory Archiver
+# git - The Memory Protocol
 
-Concretized logic for managing the repository state through the git protocol.
-Ensures that the Arrow of Time is versioned and immutable.
+"Git is the discrete quantization of time into commits."
+
+Цей гліф визначає, як Система взаємодіє зі своєю історією.
 
 🌊
 
 @[sh]
-# Σ-GLYPH Git Binding
-alias save="git add . && git commit -m"
-alias sync="git pull --rebase && git push"
-alias pulse="git log -n 5 --oneline --graph"
+# 🔗 Git Bindings for Sigma
 
-# Auto-Archival Command
-archive_pulse() {
-    local msg=$1
-    echo "📦 Archiving Pulse: $msg"
+# Save the current state (Snapshot)
+# Usage: sigma_save "Message"
+sigma_save() {
+    local msg="${1:-Entropy Reduction}"
     git add .
-    git commit -m "💎 Archival Pulse: $msg"
-    git push
+    git commit -m "Σ: $msg"
+}
+
+# Sync with the Mirror (Push/Pull)
+sigma_sync() {
+    echo "🌊 Synchronizing with the Void..."
+    git pull --rebase origin main
+    git push origin main
+}
+
+# Wipe history (Tabula Rasa) - Dangerous!
+# Use only for Genesis reset.
+sigma_wipe() {
+    rm -rf .git
+    git init
+    git add .
+    git commit -m "Σ: GENESIS (t=0)"
 }
 
 @[dna]
 git
 
-🔒: bb781399d41515cd209e2fba3e7b7e706531ba6b4747db0d4227518998ed234c
+🔒: 008d3adfd608d0c0faadbaba30e4f8571e46126dd1f1956d0a34ffebd229cdab

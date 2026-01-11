@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: glyph
-DNA: - SATOSHI
+DNA: glyph
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -38,6 +38,6 @@ While `.sigma` files are human-readable seeds, `.glyph` files are 40-byte binary
 🌊
 
 @[dna]
-- SATOSHI
+glyph
 
-🔒: acfe999cbb56ab2a6073bd8915b30094954ffce413145f51ccc3cb717463b05f
+🔒: d958e9a8d48f37a6a2d857b0c220339c61dece8f14a743a46000256da96e9426

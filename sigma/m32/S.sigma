@@ -3,14 +3,14 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: S
-DNA: - SATOSHI
-⚛️: 0000000000000000000000000000000000000000000000000000000000000002
-🎨: #FF7F00
+DNA: λx.y.z.xz(yz)
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FFFF00
 
 # === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
 🚩: 1
-🌊: 49152
+🌊: 0
 🔊: 65535
 🌀: -32768
 
@@ -21,12 +21,12 @@ DNA: - SATOSHI
 
 # S - Fusion Axiom
 
-Fusion is the birth of the new from the two. The Substitution / Fusion Axiom distributes an argument across two functions and fuses the results.
-S f g x = (f x) (g x).
+S x y z = x z (y z).
+The Starling: distributes the shared context z.
 
 🌊
 
 @[dna]
-- SATOSHI
+λx.y.z.xz(yz)
 
-🔒: 941287a67125d224e77e40d1e88f6bdcd47b4ad2d6ab5a812ca488aa41a074f8
+🔒: 2215ce603863230b575040bd2aab2a1b2d2f57904399e20826eb1497c894dbbc

@@ -3,9 +3,9 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: F
-DNA: - SATOSHI
-⚛️: 0000000000000000000000000000000000000000000000000000000000000007
-🎨: #7F7F7F
+DNA: λx.y.y
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #888888
 
 # === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
@@ -19,14 +19,13 @@ DNA: - SATOSHI
   - SATOSHI
 ---
 
-# F - False Logic
+# F - False Axiom
 
-Falsehood is the selection of the other. The Falsehood / Second Selection ignores the first argument and returns the second.
-F x y = y.
+False/Select Second.
 
 🌊
 
 @[dna]
-- SATOSHI
+λx.y.y
 
-🔒: b9293ed4286c4df22f007d4095fac46d8e8dc354de693bd33f5c2304d69bf1c8
+🔒: 80933e3a1d39ceac6c4bc4ee2f945a92dc9bffa9c93018b7c6cf1f8c8742c2a9

@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: TURING
-DNA: - SATOSHI
+DNA: TURING
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000009
 🎨: #FF00AA
 
@@ -27,6 +27,6 @@ This seed ensures that the Σ-GLYPH system remains universal—capable of comput
 🌊
 
 @[dna]
-- SATOSHI
+TURING
 
-🔒: e68b15e2d862e2bfafe825d2b6b75f18391f43e8c00f591ede9407220f39eaa5
+🔒: 345db65a7ad1c6c2d69de6c54294433b7d222af6e1dac0a46438ca288fe08fd6

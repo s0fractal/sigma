@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: CHROMA_E
-DNA: - SATOSHI
+DNA: CHROMA_E
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -30,6 +30,6 @@ It is a 40-byte absolute record of historical or logical impact within the Sigma
 🌊
 
 @[dna]
-- SATOSHI
+CHROMA_E
 
-🔒: 5581720cf3259e3e2e51aeb11b337130a998833ddb88bf47f46d3484f86a9fd7
+🔒: 2f2854eeddadee42771f33d5ddbec9698dfbf2a95a254905c3cc194b017667b0

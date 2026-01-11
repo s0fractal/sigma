@@ -3,14 +3,14 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: B
-DNA: - SATOSHI
-⚛️: 0000000000000000000000000000000000000000000000000000000000000004
-🎨: #7F00FF
+DNA: λx.y.z.x(yz)
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FF8800
 
 # === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
 🚩: 1
-🌊: 8192
+🌊: 0
 🔊: 65535
 🌀: -32768
 
@@ -21,12 +21,12 @@ DNA: - SATOSHI
 
 # B - Composition Axiom
 
-Composition is the bridge between moments. The Composition Axiom chains two functions together, passing the output of one as the input to the next.
-B f g x = f (g x).
+B x y z = x (y z).
+The Bluebird: composes two functions.
 
 🌊
 
 @[dna]
-- SATOSHI
+λx.y.z.x(yz)
 
-🔒: bd27b69de92d545c4106a993544bd8676968300fd16441709c85d0562aa6a649
+🔒: 9651cfabc6c9ec02113855f3afb4d51edddc216e2a7623a4c96f0ee98a1e9e3d

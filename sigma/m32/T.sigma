@@ -3,14 +3,14 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: T
-DNA: - SATOSHI
-⚛️: 0000000000000000000000000000000000000000000000000000000000000008
-🎨: #007FFF
+DNA: λx.y.yx
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #0000FF
 
 # === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
 🚩: 1
-🌊: 24576
+🌊: 0
 🔊: 65535
 🌀: -32768
 
@@ -19,14 +19,14 @@ DNA: - SATOSHI
   - SATOSHI
 ---
 
-# T - Thrush
+# T - Thrush Axiom
 
-The Thrush turns the stream around. It applies the second argument to the first.
-T x f = f x.
+T x y = y x.
+The Thrush: reverse application.
 
 🌊
 
 @[dna]
-- SATOSHI
+λx.y.yx
 
-🔒: 4aead64e312e55d8969cf66b8cf91b1e89ddc74b093a3be2a8ed9584c66a2ec5
+🔒: eee87d9863d9973e78a91f3a01aed34d4b974b3de0019b6d0cab262e40c7691e

@@ -3,14 +3,14 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: W
-DNA: - SATOSHI
-⚛️: 0000000000000000000000000000000000000000000000000000000000000003
-🎨: #00FFFF
+DNA: λx.y.xyy
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #0088FF
 
 # === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
 🚩: 1
-🌊: 32768
+🌊: 0
 🔊: 65535
 🌀: -32768
 
@@ -19,14 +19,14 @@ DNA: - SATOSHI
   - SATOSHI
 ---
 
-# W - Fork Axiom
+# W - Duplication Axiom
 
-To fork is to see two truths at once. The Diagonal / Fork Axiom duplicates the second argument for the first, creating internal feedback.
-W f x = f x x.
+W x y = x y y.
+The Warbler: duplicates the last argument.
 
 🌊
 
 @[dna]
-- SATOSHI
+λx.y.xyy
 
-🔒: 8b52f54e6c22687978defe3ee0c4b6d0de4d9a6cbda23113c77f7cfc58919e43
+🔒: d2f2f0cf468fb4b67e047cfbcd86850ef24d217848316efa28e51c7c9acf2ea6

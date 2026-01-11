@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: FALSE
-DNA: - SATOSHI
+DNA: FALSE
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -30,6 +30,6 @@ It is a 40-byte absolute record of historical or logical impact within the Sigma
 🌊
 
 @[dna]
-- SATOSHI
+FALSE
 
-🔒: f9a65a48e19f451ddacee461ec7f2fe223565ae87a9f95771386a4b271f14f88
+🔒: c9f4adf5edff6953237d46e1e9c8f41d92d2bea34dbdeaf6d6452a11b1a48b86

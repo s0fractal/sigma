@@ -3,14 +3,14 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: Y
-DNA: - SATOSHI
+DNA: λf.(λx.f(xx))(λx.f(xx))
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
-🎨: #FFFFFF
+🎨: #FF0000
 
 # === ⚖️ PHYSICS (Wave Function) ===
-⚙️: 15
+⚙️: 0
 🚩: 1
-🌊: 57344
+🌊: 0
 🔊: 65535
 🌀: -32768
 
@@ -19,16 +19,13 @@ DNA: - SATOSHI
   - SATOSHI
 ---
 
-# The Sage Bird (Y) - Recursion
+# Y - Fixed Point Combinator
 
-Оператор нерухомої точки. Перетворює Крок на Процес.
-Залежить від `I`.
-
-#
+The Y combinator allows recursion in lambda calculus.
 
 🌊
 
 @[dna]
-- SATOSHI
+λf.(λx.f(xx))(λx.f(xx))
 
-🔒: 869a5ded9294548bf7824df4526d996f67813c1fe89d0fd3f56517a1908fffa8
+🔒: 0eea733e54d72327005ac7cabbba686875b028648408d9afd3d4ce0075bfbac3

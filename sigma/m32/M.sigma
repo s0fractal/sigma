@@ -3,14 +3,14 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: M
-DNA: - SATOSHI
-⚛️: 0000000000000000000000000000000000000000000000000000000000000006
-🎨: #FF007F
+DNA: λx.xx
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #FF0088
 
 # === ⚖️ PHYSICS (Wave Function) ===
 ⚙️: 0
 🚩: 1
-🌊: 8192
+🌊: 0
 🔊: 65535
 🌀: -32768
 
@@ -19,14 +19,14 @@ DNA: - SATOSHI
   - SATOSHI
 ---
 
-# M - Mockingbird
+# M - Mockingbird Axiom
 
-The Mockingbird echoes itself into eternity. Self-application derived from the Fork.
 M x = x x.
+Self-application. The seed of divergence.
 
 🌊
 
 @[dna]
-- SATOSHI
+λx.xx
 
-🔒: 3a0d64ffee992e9d757a2786e24995384bd2e3517659ee519a9a8015fa3536c8
+🔒: 44780a2567acf4eae72277667c933e0a94122b00bda4e42518156b81a77d6b15

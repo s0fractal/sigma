@@ -3,7 +3,7 @@
 ---
 # === 🧬 IDENTITY ===
 🧬: DNSSpore
-DNA: - SATOSHI
+DNA: DNSSpore
 ⚛️: 0000000000000000000000000000000000000000000000000000000000000000
 🎨: #FFFFFF
 
@@ -58,6 +58,6 @@ Large cells follow host pointers to full code.
 🌊
 
 @[dna]
-- SATOSHI
+DNSSpore
 
-🔒: 6a7860ed376a5856f04290a692f32b7160c14a30690f5a7ce3bbc1833acfb2e6
+🔒: 1aeb242de893d6d834a01f4acc8cf29d9d66c1a7ff8d5117fb9981ce3b8a9905
