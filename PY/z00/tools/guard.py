@@ -2,13 +2,16 @@
 import os
 import re
 import sys
+import shutil
 from pathlib import Path
 
-# Σ-GLYPH ENTROPY GUARD
-# V1.3.1 - Emoji Aware
+# Σ-GLYPH GUARD
+# V1.4.0: Entropy Hierarchy & Vector Topology
 
 SIGMA_ROOT = Path("/Users/s0fractal/SIGMA")
 SOURCE_DIR = SIGMA_ROOT / "sigma"
+PROJECTION_DIRS = ["TS", "RS", "SH", "PY", "DNA", "GLYPH"]
+WHITELIST = ["deno.json", ".DS_Store", "README.md"]
 
 def parse_physics(text: str) -> dict:
     physics = {"ENTROPY": -32768}
@@ -17,8 +20,8 @@ def parse_physics(text: str) -> dict:
         for line in phys_match.group(1).split("\n"):
             if ":" in line:
                 key, val = line.split(":", 1)
-                key = re.sub(r'[^\w]', '', key).strip()
-                if "ENTROPY" in key.upper():
+                key = re.sub(r'[^\w]', '', key).strip().upper()
+                if "ENTROPY" in key:
                     try:
                         physics["ENTROPY"] = int(val.strip())
                     except: continue
@@ -57,22 +60,50 @@ def audit_entropy(registry):
             dep_data = registry[dep]
             if dep_data["entropy"] > data["entropy"]:
                 rel_path = data["path"].relative_to(SOURCE_DIR)
-                violations.append({
-                    "src": glyph, "src_e": data["entropy"],
-                    "dep": dep, "dep_e": dep_data["entropy"],
-                    "path": rel_path
-                })
+                violations.append(f"Entropy Inversion: {rel_path} ({data['entropy']}) -> {dep} ({dep_data['entropy']})")
+    return violations
+
+def audit_vector_topology(fix=False):
+    violations = []
+    print("📐 Auditing Vector Topology...")
+    
+    for dim in PROJECTION_DIRS:
+        dim_dir = SIGMA_ROOT / dim
+        if not dim_dir.exists(): continue
+        
+        for item in dim_dir.iterdir():
+            if item.name in WHITELIST: continue
+            
+            # Pattern: stratum (m00, p31, z00)
+            if not re.match(r"^[mpz]\d{2}$", item.name):
+                violations.append(f"Non-vector folder in {dim}/: {item.name}")
+                if fix:
+                    print(f"   🛠 Purging legacy dissonance: {item}")
+                    if item.is_dir(): shutil.rmtree(item)
+                    else: item.unlink()
+    
     return violations
 
 def main():
+    fix_mode = "--fix" in sys.argv
     registry = get_glyph_registry()
-    violations = audit_entropy(registry)
+    
+    entropy_violations = audit_entropy(registry)
+    vector_violations = audit_vector_topology(fix=fix_mode)
+    
+    violations = entropy_violations + vector_violations
+    
     if not violations:
-        print("\n✅ ENTROPY HIERARCHY: Pure. Stability is preserved.")
+        print("\n✅ THE FIELD IS PURE. Hierarchy and Topology are synchronized.")
         sys.exit(0)
-    print(f"\n❌ VIOLATION: Entropy Inversion Detected ({len(violations)})")
+    
+    print(f"\n❌ VIOLATIONS DETECTED ({len(violations)})")
     for v in violations:
-        print(f"   - {v['path']} ({v['src_e']}) -> imports {v['dep']} ({v['dep_e']})")
+        print(f"   - {v}")
+    
+    if not fix_mode:
+        print("\n   [Tip]: Run with --fix to automatically purge legacy dissonance.")
+    
     sys.exit(1)
 
 if __name__ == "__main__":
