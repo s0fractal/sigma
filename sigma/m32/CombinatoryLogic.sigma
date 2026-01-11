@@ -2,11 +2,9 @@
 🏷️TYPE:
   - ⚖️LAW
   - 📖INTENT
-📁FOLDER: laws
 GLYPH: CombinatoryLogic
 glyph: ⛓️
 name: Combinatory Logic Constraint
-🌈SPECTRUM: [sigma, dna]
 desc: "Imperative code is forbidden. Only application of Basis Combinators is allowed."
 ⚖️PHYSICS:
   ENTROPY: -32768

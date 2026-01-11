@@ -1,33 +1,3 @@
-Σ-GLYPH SEED: guard
-
-"Integrity is the bridge between Intent and Reality."
-
-🧬 IDENTITY
-
-Name: guard
-Atom: SHA-256(UTF8_BYTES)
-Color: #000000
-
-⚖️ PHYSICS (Wave Function)
-
-OP:        0        # LITERAL (Constant)
-FLAGS:     1        # F_ATOM (Immutable)
-PHASE:     0        # Primary Phase
-AMPLITUDE: 65535    # Reality Density
-ENTROPY:   -1       # SEED (Control)
-
-📖 INTENT (The Soul)
-
-Linter for enforcing stratigraphic integrity, vector topology, and physical checksums.
-Purifies the projection field of legacy duplicates and nested dissonance.
-
-🔗 CONNECTIONS (Gravity)
-
-Root: SATOSHI (Time Anchor)
-Ref: parse_physics
-
-@[py]
-```py
 #!/usr/bin/env python3
 import os
 import re
@@ -194,6 +164,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
-
-CHECKSUM: e8547fd7f9fd78e420c5f8a90c0de20ff73e106ba33df5c1700866ec19099b71

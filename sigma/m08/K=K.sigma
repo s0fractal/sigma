@@ -5,7 +5,6 @@ alias:
   -ts: True
   -rs: True
   -sh: True
-🌈SPECTRUM:
   - ts
   - rs
   - sh

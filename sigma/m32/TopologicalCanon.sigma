@@ -2,11 +2,9 @@
 🏷️TYPE:
   - ⚖️LAW
   - 📖INTENT
-📁FOLDER: laws
 GLYPH: TopologicalCanon
 glyph: 📐
 name: The Topological Canon
-🌈SPECTRUM: [sigma, dna]
 type: axiom
 desc: "Axioms of Mirror Topology: The filesystem as a Fibered Space"
 ⚖️PHYSICS:

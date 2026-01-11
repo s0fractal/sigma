@@ -1,26 +1,30 @@
----
-⚖️PHYSICS:
-  OP: 0
-  FLAGS: 1
-  PHASE: 0
-  AMPLITUDE: 65535
-  ENTROPY: -32768
+Σ-GLYPH SEED: ARTIFACTS
 
-🏷️TYPE:
-  - 📖INTENT
-📁FOLDER: spectrum
-GLYPH: ARTIFACTS
-🧬DNA: ARTIFACTS.sigma
-🌈SPECTRUM: md
-⚖️PHYSICS: m32
----
+"The gallery is the mirror of the mind's creations."
 
+🧬 IDENTITY
 
+Name: ARTIFACTS
+Atom: SHA-256(UTF8_BYTES)
+Color: #FFD700
 
+⚖️ PHYSICS (Wave Function)
 
+OP:        0        # LITERAL
+FLAGS:     1        # F_ATOM (Immutable)
+PHASE:     0        # Primary Phase
+AMPLITUDE: 65535    # Reality Density
+ENTROPY:   -32768   # THE CRYSTAL (Absolute Order)
 
+📖 INTENT (The Soul)
 
+Ontological definitions of the Citadel's core structures.
+Preserves historical anchors and high-level structural rules.
 
+🔗 CONNECTIONS (Gravity)
+
+Root: SATOSHI (Time Anchor)
+Ref: ARTIFACTS.sigma
 
 @[md]
 ```markdown
@@ -98,6 +102,6 @@ This document preserves the high-level ontological definitions of the Citadel's 
 2. **Buffer:** Матеріалізується як `DISSONANCE.glyph` у директорії `VOID/`.
 3. **Annihilation:** Процес лікування (Healing) з'єднує цей вузол з **SATOSHI** (Energy Sink).
 4. **Output:** Хаос гаситься, перетворюючись на стабільний "Truth-Work", який живить розвиток Пантеону.
-
-**CHECKSUM: ERROR-BRIDGE-STABLE**
 ```
+
+CHECKSUM: 18e76213f49f060355e8e0967890b5bfe8b9853f9bb820241df9f90cac54b912

@@ -14,27 +14,39 @@ GLYPH: parse_physics
 # parse_physics
 
 Atomic function to extract wave-physics from a Σ-GLYPH intent.
-Fixed substring matching bug (OP vs ENTROPY).
+Resilient to formatting and aesthetic spacing in the Seed standard.
 
 @[py]
 ```python
 import re
 def parse_physics(text: str) -> dict:
     physics = {"OP": 0, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
-    phys_match = re.search(r"(?:⚖️)?PHYSICS:\s*\n((?:\s+[\w\W]+?:\s*[\-\dxA-F]+\n?)*)", text, re.MULTILINE)
-    if phys_match:
-        block = phys_match.group(1)
-        for line in block.split("\n"):
-            if ":" in line:
-                key, val = line.split(":", 1)
+    # Match the header
+    header_match = re.search(r"(?:⚖️)?\s*PHYSICS(?:\s*\(Wave Function\))?:?\s*\n+", text, re.MULTILINE)
+    if header_match:
+        start_idx = header_match.end()
+        remaining = text[start_idx:].lstrip("\n")
+        
+        # Parse line by line until we hit a non-property line
+        found_any = False
+        for line in remaining.split("\n"):
+            clean_line = line.split("#")[0].strip()
+            if not clean_line: continue
+            
+            if ":" in clean_line:
+                key, val = clean_line.split(":", 1)
                 key = re.sub(r'[^\w]', '', key).strip().upper()
-                val = val.strip()
-                try:
-                    # EXACT MATCH ONLY
-                    if key in physics:
+                if key in physics:
+                    found_any = True
+                    val = val.strip()
+                    try:
                         if val.startswith("0x"): physics[key] = int(val, 16)
-                        else: physics[key] = int(val)
-                except: continue
+                        else: physics[key] = int(re.search(r'-?\d+', val).group())
+                    except: continue
+                elif found_any: # If we see a key that's NOT in physics after finding some, it might be a new section
+                    break
+            else: # No colon -> end of physics block
+                break
     return physics
 ```
 
@@ -42,19 +54,32 @@ def parse_physics(text: str) -> dict:
 ```typescript
 export function parsePhysics(text: string): Record<string, number> {
     const physics: Record<string, number> = { OP: 0, FLAGS: 0, PHASE: 0, AMPLITUDE: 0, ENTROPY: 0 };
-    const match = text.match(/⚖️PHYSICS:\s*\n((?:\s+[\w\W]+?:\s*[\-\dxA-F]+\n?)*)/);
-    if (match) {
-        const block = match[1];
-        block.split("\n").forEach(line => {
-            if (line.includes(":")) {
-                let [key, val] = line.split(":").map(s => s.trim());
+    const headerMatch = text.match(/(?:⚖️)?\s*PHYSICS(?:\s*\(Wave Function\))?:?\s*\n+/);
+    if (headerMatch) {
+        let startIdx = headerMatch.index! + headerMatch[0].length;
+        let remaining = text.slice(startIdx).replace(/^\n+/, "");
+        
+        let foundAny = false;
+        const lines = remaining.split("\n");
+        for (let line of lines) {
+            let cleanLine = line.split("#")[0].trim();
+            if (!cleanLine) continue;
+            
+            if (cleanLine.includes(":")) {
+                let [key, val] = cleanLine.split(":").map(s => s.trim());
                 key = key.replace(/[^\w]/g, "").toUpperCase();
                 if (key in physics) {
+                    foundAny = true;
+                    const numMatch = val.match(/-?\d+/);
                     if (val.startsWith("0x")) physics[key] = parseInt(val, 16);
-                    else physics[key] = parseInt(val, 10);
+                    else if (numMatch) physics[key] = parseInt(numMatch[0], 10);
+                } else if (foundAny) {
+                    break;
                 }
+            } else {
+                break;
             }
-        });
+        }
     }
     return physics;
 }
@@ -66,6 +91,7 @@ export function parsePhysics(text: string): Record<string, number> {
 parse_physics() {
     local file_content
     if [ -f "$1" ]; then file_content=$(cat "$1"); else file_content=$(cat -); fi
-    echo "$file_content" | awk '/⚖️PHYSICS:/ {p=1; next} p && /---/ {p=0} p {print}' | sed 's/[^a-zA-Z0-9:]//g' | awk -F':' '{print $1"="$2}' | xargs | tr ' ' '\n'
+    # Simple extraction for bash: grab lines with colons until first line without colon
+    echo "$file_content" | sed -n '/PHYSICS/,/^[ \t]*$/p' | grep ":" | sed 's/#.*//' | sed 's/[^a-zA-Z0-9:]//g' | awk -F':' '{print $1"="$2}' | xargs | tr ' ' '\n'
 }
 ```

@@ -1,26 +1,30 @@
----
-⚖️PHYSICS:
-  OP: 0
-  FLAGS: 1
-  PHASE: 0
-  AMPLITUDE: 65535
-  ENTROPY: -32768
+Σ-GLYPH SEED: sigma-glyph
 
-🏷️TYPE:
-  - 📖INTENT
-📁FOLDER: spectrum
-GLYPH: sigma-glyph
-🧬DNA: sigma-glyph.sigma
-🌈SPECTRUM: md
-⚖️PHYSICS: m32
----
+"The specification is the map of the territory."
 
+🧬 IDENTITY
 
+Name: sigma-glyph
+Atom: SHA-256(UTF8_BYTES)
+Color: #C0C0C0
 
+⚖️ PHYSICS (Wave Function)
 
+OP:        0        # LITERAL
+FLAGS:     1        # F_ATOM (Immutable)
+PHASE:     0        # Primary Phase
+AMPLITUDE: 65535    # Reality Density
+ENTROPY:   -32768   # THE CRYSTAL (Absolute Order)
 
+📖 INTENT (The Soul)
 
+Core Architecture Specification (Titanium Monolith).
+Defines the bit-exact invariants and quantized vector field.
 
+🔗 CONNECTIONS (Gravity)
+
+Root: SATOSHI (Time Anchor)
+Ref: sigma-glyph.sigma
 
 @[md]
 ```markdown
@@ -220,9 +224,9 @@ Ph_new = (Ph_op + 16384) mod 65536
 - **MUST NOT**: Sovereign Color MUST NOT affect semantics, evaluation, canonical serialization, or hashing.
 - **NOTE**: Color collisions are possible (24-bit space). Color is an intuition aid only.
 
-**CHECKSUM:** `TRINITY-SIGMA-V1.9.1-ENLIGHTENED-PROOFS`
-
 ---
 
 *Appendix E provides navigation heuristics only. Canonical bytes and hashes define reality. Heuristics may guide search; they must never rewrite truth.*
 ```
+
+CHECKSUM: 49667e201235f91b7be260e7af94cbd76368b6a2be649903d9c9bb0773f5d593

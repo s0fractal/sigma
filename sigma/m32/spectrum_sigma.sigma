@@ -1,8 +1,6 @@
 ---
 🏷️TYPE:
-  - 🌈SPECTRUM
   - 📖INTENT
-📁FOLDER: spectrum
 GLYPH: sigma
 HEX: '#CC00FF'
 SYNTAX: yaml
@@ -35,7 +33,6 @@ Canonical keys:
 - `🧬QDNA`  : quantum DNA (multiple valid collapse paths).
 - `🧬PROVIDES`: declared capabilities/contracts (E7–E8 only).
 - `⚡ENERGY`: layer index (0..8).
-- `🌈SPECTRUM`: list of projections (ts, rs, sh, dna, md, json, rb).
 - `⚖️PHYSICS`: material coefficients.
 - `alias`   : optional mutations by dimension (only differences from GLYPH).
 

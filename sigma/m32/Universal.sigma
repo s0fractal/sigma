@@ -1,34 +1,32 @@
---- 
-GLYPH: ∞
-🧬DNA: ∞
-🌈SPECTRUM:
-  - ts
-  - rs
-  - sh
-  - dna
-⚖️PHYSICS:
-  ENTROPY: -32768
-  🪨MASS: 1kb
-  🌀ENTROPY: Zero
-  🧩COMPLEXITY: O(N)
-🧬PROVIDES:
-  - capability: apply
-    signature: "x,f,... -> y"
-    cost: "O(N)"
-  - capability: map
-    signature: "[x] -> [y]"
-    cost: "O(N)"
-  - capability: fold
-    signature: "[x],f,init -> y"
-    cost: "O(N)"
----
+Σ-GLYPH SEED: ∞
 
+"Everything is a transformation of Being into Becoming."
 
-# The Universal Function
+🧬 IDENTITY
 
-Це єдина функція, яка потрібна. Всі інші — її окремі випадки.
+Name: Universal
+Atom: SHA-256(UTF8_BYTES)
+Color: #00FFFF
 
-# 🌊
+⚖️ PHYSICS (Wave Function)
+
+OP:        3        # LAMBDA (Combinatory Engine)
+FLAGS:     1        # F_ATOM (Immutable)
+PHASE:     0        # Primary Phase
+AMPLITUDE: 65535    # Reality Density
+ENTROPY:   -1       # THE SEED (Control/Root)
+
+📖 INTENT (The Soul)
+
+The Universal Polymorphic Engine (λ).
+Provides a single, unified interface for application, mapping, folding, and piping across all dimensions.
+It is the only function required; all others are specific instances of its resonance.
+
+🔗 CONNECTIONS (Gravity)
+
+Root: SATOSHI (Time Anchor)
+Ref: Universal.sigma
+
 @[ts]
 ```typescript
 /**
@@ -62,9 +60,38 @@ export const λ = (x: any, f?: any, ...xs: any[]): any => {
 export const fn = λ; 
 ```
 
+@[py]
+```python
+def λ(x, f=None, *xs):
+    """
+    λ - The Universal Polymorphic Engine (Python Implementation)
+    """
+    if f is None:
+        return x
+    
+    # Map: λ([x], f)
+    if isinstance(x, (list, tuple)) and callable(f) and not xs:
+        return type(x)(map(f, x))
+    
+    # Fold: λ([x], (a,b)=>a+b, init)
+    if isinstance(x, (list, tuple)) and callable(f) and len(xs) == 1:
+        from functools import reduce
+        return reduce(f, x, xs[0])
+    
+    # Pipe / Composition: λ(x, f, g)
+    if xs:
+        return λ(f(x), *xs)
+    
+    # Basic Application
+    return f(x)
+
+fn = λ
+```
+
 @[rs]
 ```rust
-// Polymorphic λ in Rust (simplified approach using traits or enums)
+// Polymorphic λ in Rust 
+// Using a simplified approach for the engine context.
 pub fn lambda<T, F>(x: T, f: Option<F>) -> T 
 where F: Fn(T) -> T {
     match f {
@@ -90,19 +117,30 @@ pub use lambda as function;
     local f="$1"
     shift
     
+    # Check if f is a function or command
+    if ! command -v "$f" >/dev/null 2>&1; then
+        # If not a command, treat as literal/echo
+        if [ $# -gt 0 ]; then
+            λ "$f" "$@"
+        else
+            echo "$f"
+        fi
+        return
+    fi
+
     # Recursive Pipe
     if [ $# -gt 0 ]; then
-        local result=$(eval "$f" "$x")
+        local result=$( "$f" "$x" )
         λ "$result" "$@"
     else
-        eval "$f" "$x"
+        "$f" "$x"
     fi
 }
 ```
 
 @[dna]
 ```dna
-
 ∞
-
 ```
+
+CHECKSUM: VALIDATING...

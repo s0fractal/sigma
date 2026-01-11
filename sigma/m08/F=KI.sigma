@@ -6,7 +6,6 @@ alias:
   -rs: False
   -sh: False
   -dna: KI
-🌈SPECTRUM:
   - ts
   - rs
   - sh

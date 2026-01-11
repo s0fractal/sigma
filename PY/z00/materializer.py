@@ -1,39 +1,4 @@
 #!/usr/bin/env python3
-
-import re
-def parse_physics(text: str) -> dict:
-    physics = {"OP": 0, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
-    phys_match = re.search(r"(?:⚖️)?PHYSICS:\s*\n((?:\s+[\w\W]+?:\s*[\-\dxA-F]+\n?)*)", text, re.MULTILINE)
-    if phys_match:
-        block = phys_match.group(1)
-        for line in block.split("\n"):
-            if ":" in line:
-                key, val = line.split(":", 1)
-                key = re.sub(r'[^\w]', '', key).strip().upper()
-                val = val.strip()
-                try:
-                    # EXACT MATCH ONLY
-                    if key in physics:
-                        if val.startswith("0x"): physics[key] = int(val, 16)
-                        else: physics[key] = int(val)
-                except: continue
-    return physics
-import re
-import hashlib
-def get_identity(text: str, glyph_name: str) -> bytes:
-    id_match = re.search(r"🧬IDENTITY:\s*([a-fA-F0-9]{64})", text)
-    if id_match: return bytes.fromhex(id_match.group(1))
-    
-    first_block_match = re.search(r"@\[\w+\]\n(.*?)\n(?=@\[|$)", text, re.DOTALL)
-    content = first_block_match.group(1).strip() if first_block_match else glyph_name
-    return hashlib.sha256(content.encode("utf-8")).digest()
-def entropy_to_stratum(entropy: int) -> str:
-    if entropy == -1: return "z00"
-    if entropy == 0: return "m00"
-    prefix = "m" if entropy < 0 else "p"
-    bucket = abs(entropy) // 1024
-    return f"{prefix}{bucket:02}"
-
 import os
 import re
 import struct
@@ -41,8 +6,8 @@ import hashlib
 import sys
 from pathlib import Path
 
-# Σ-GLYPH MATERIALIZER: Atomic Fusion Edition
-# Version: V1.3.0 (Atomic Architecture)
+# Σ-GLYPH MATERIALIZER: Atomic Fusion Engine
+# V1.5.2 - Spectral Autonomy: Implicit Projection, doc-block suppression
 
 def repo_root() -> Path:
     cur = Path.cwd()
@@ -67,15 +32,59 @@ TAG_MAP = {
     "glyph": (SIGMA_ROOT / "GLYPH", ".glyph"),
 }
 
-# --- ATOMS WILL BE INJECTED HERE (parse_physics, get_identity, entropy_to_stratum) ---
+# --- ATOMIC FUNCTIONS ---
+
+def parse_physics(text: str) -> dict:
+    physics = {"OP": 0, "FLAGS": 0, "PHASE": 0, "AMPLITUDE": 0, "ENTROPY": 0}
+    header_match = re.search(r"(?:⚖️)?\s*PHYSICS(?:\s*\(Wave Function\))?:?\s*\n+", text, re.MULTILINE)
+    if header_match:
+        start_idx = header_match.end()
+        remaining = text[start_idx:].lstrip("\n")
+        found_any = False
+        for line in remaining.split("\n"):
+            clean_line = line.split("#")[0].strip()
+            if not clean_line: continue
+            if ":" in clean_line:
+                key, val = clean_line.split(":", 1)
+                key = re.sub(r'[^\w]', '', key).strip().upper()
+                if key in physics:
+                    found_any = True
+                    val = val.strip()
+                    try:
+                        if val.startswith("0x"): physics[key] = int(val, 16)
+                        else: physics[key] = int(re.search(r'-?\d+', val).group())
+                    except: continue
+                elif found_any: break
+            else: break
+    return physics
+
+def get_identity(text: str, glyph_name: str) -> bytes:
+    atom_match = re.search(r"Atom:\s*([a-fA-F0-9]{64})", text)
+    if atom_match: return bytes.fromhex(atom_match.group(1))
+    id_match = re.search(r"🧬IDENTITY:\s*([a-fA-F0-9]{64})", text)
+    if id_match: return bytes.fromhex(id_match.group(1))
+    first_block_match = re.search(r"@\[\w+\]\n(.*?)\n(?=@\[|CHECKSUM:|$)", text, re.DOTALL)
+    content = first_block_match.group(1).strip() if first_block_match else glyph_name
+    return hashlib.sha256(content.encode("utf-8")).digest()
+
+def entropy_to_stratum(entropy: int) -> str:
+    if entropy == -1: return "z00"
+    if entropy == 0: return "m00"
+    prefix = "m" if entropy < 0 else "p"
+    bucket = abs(entropy) // 1024
+    return f"{prefix}{bucket:02}"
 
 def extract_block(text: str, tag: str) -> str | None:
+    # Explicitly check for doc suppression
+    suppressed_marker = f"@[{tag}:doc]\n"
+    if suppressed_marker in text: return None
+
     start_marker = f"@[{tag}]\n"
     start_idx = text.find(start_marker)
     if start_idx == -1: return None
     remaining = text[start_idx + len(start_marker):]
-    end_idx = remaining.find("\n@[")
-    block = remaining[:end_idx] if end_idx != -1 else remaining
+    end_match = re.search(r"\n@\[|\n+CHECKSUM:", remaining)
+    block = remaining[:end_match.start()] if end_match else remaining
     content = block.strip()
     if content.startswith("```"):
         content = re.sub(r"^```[ \w]*\n", "", content)
@@ -84,81 +93,75 @@ def extract_block(text: str, tag: str) -> str | None:
     return content
 
 def main():
-    print("=== Σ-GLYPH MATERIALIZER: Atomic Fusion Initiated (V1.3.0) ===\n")
-
+    print("=== Σ-GLYPH MATERIALIZER: Atomic Fusion V1.5.2 (Spectral Autonomy) ===\n")
     if not SOURCE_DIR.exists():
         print(f"Error: Source directory {SOURCE_DIR} not found.")
         return
 
-    # Pass 1: Build Registry
     glyph_registry = {}
     spectrum_templates = {}
     sigma_files = list(SOURCE_DIR.glob("**/*.sigma"))
     
+    # Pre-scan for registry and templates (Global implicit search)
     for path in sigma_files:
-        rel_path = path.relative_to(SOURCE_DIR)
         try:
             content = path.read_text(encoding="utf-8")
-            glyph_match = re.search(r"^GLYPH:\s*([\w=]+)", content, re.MULTILINE)
+            glyph_match = re.search(r"(?:GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content, re.MULTILINE)
             if glyph_match:
-                glyph_registry[glyph_match.group(1)] = rel_path
-            if "🌈SPECTRUM" in content:
-                import_match = re.search(r"^IMPORT:\s*'(.*)'", content, re.MULTILINE)
-                dna_match = re.search(r"🧬DNA:\s*\n?((?:\s*-\s*\w+\n?)+|(?:\s*\w+\s*)+)", content)
-                if import_match and dna_match:
+                glyph_registry[glyph_match.group(1)] = path.relative_to(SOURCE_DIR)
+            
+            # Implicit template detection
+            import_match = re.search(r"^IMPORT:\s*'(.*)'", content, re.MULTILINE)
+            if import_match:
+                dna_match = re.search(r"(?:🧬DNA|🔗 CONNECTIONS \(Gravity\)):\s*\n+((?:\s*(?:-\s*|Ref:\s*)[\w=]+\n?)*|(?:\s*[\w=]+\s*)*)", content)
+                if dna_match:
                     raw_dna = dna_match.group(1)
-                    first_dep = [d.strip("- ").strip() for d in raw_dna.split() if d.strip("- ").strip()][0]
-                    spectrum_templates[first_dep] = import_match.group(1)
+                    deps = [d.replace("Ref:", "").strip("- ").strip() for d in raw_dna.split() if d.strip("- ").strip()]
+                    if deps:
+                        spectrum_templates[deps[0]] = import_match.group(1)
         except: continue
 
-    # Pass 2: Materialize
     target_tags = sys.argv[1:] if len(sys.argv) > 1 else TAG_MAP.keys()
     
     for path in sigma_files:
-        rel_path = path.relative_to(SOURCE_DIR)
         try:
             content = path.read_text(encoding="utf-8")
         except: continue
             
         phys = parse_physics(content)
         stratum = entropy_to_stratum(phys["ENTROPY"])
-            
-        glyph_match = re.search(r"GLYPH:\s*([\w=]+)", content)
-        this_glyph = glyph_match.group(1) if glyph_match else rel_path.stem
+        glyph_match = re.search(r"(?:GLYPH|Σ-GLYPH SEED):\s*([\w=]+)", content)
+        this_glyph = glyph_match.group(1) if glyph_match else path.stem
         
-        dna_match = re.search(r"🧬DNA:\s*\n?((?:\s*-\s*\w+\n?)+|(?:\s*\w+\s*)+)", content)
         dependencies = []
+        dna_match = re.search(r"(?:🧬DNA|🔗 CONNECTIONS \(Gravity\)):\s*\n+((?:\s*(?:-\s*|Ref:\s*)[\w=]+\n?)*|(?:\s*[\w=]+\s*)*)", content)
         if dna_match:
             raw_dna = dna_match.group(1)
-            dependencies = [d.strip("- ").strip() for d in raw_dna.split() if d.strip("- ").strip()]
+            dependencies = [d.replace("Ref:", "").strip("- ").strip() for d in raw_dna.splitlines() if d.strip()]
+            if not dependencies:
+                 dependencies = [d.strip("- ").strip() for d in raw_dna.split() if d.strip("- ").strip()]
         
-        folder_match = re.search(r"📁FOLDER:\s*(\w+)", content)
-        folder = folder_match.group(1) if folder_match else None
+        rel_sigma_path = path.relative_to(SOURCE_DIR)
+        sub_folders = rel_sigma_path.parent.parts[1:]
+        folder_path = Path(*sub_folders) if sub_folders else None
         
         is_pantheon = phys["AMPLITUDE"] >= 65535 and phys["ENTROPY"] <= -32768
-        if is_pantheon and folder != "spectrum":
-            folder = "pantheon"
-        
+        if is_pantheon:
+            folder_path = Path("pantheon")
+
         materialized_any = False
         for tag in target_tags:
             if tag not in TAG_MAP: continue
-            
             target_base, ext_out = TAG_MAP[tag]
             block = extract_block(content, tag)
             
-            # Target path logic
-            glyph_fn = this_glyph if tag == "glyph" else rel_path.stem
-            if tag == "glyph":
-                target_path = target_base / stratum / (folder if folder else "") / f"{glyph_fn}{ext_out}"
-            else:
-                target_path = target_base / stratum / (folder if folder else "") / f"{rel_path.name.replace('.sigma', ext_out)}"
+            glyph_fn = this_glyph if tag == "glyph" else path.stem
+            target_path = target_base / stratum / (folder_path if folder_path else "") / (f"{glyph_fn}{ext_out}" if tag == "glyph" else f"{path.name.replace('.sigma', ext_out)}")
 
-            # GLYPH Crystallization
             if tag == "glyph" and not block:
                 if not materialized_any:
-                    print(f"🧬 Atomizing: {rel_path} -> {stratum}")
+                    print(f"🧬 Atomizing: {path.name} -> {stratum}")
                     materialized_any = True
-                
                 ident = get_identity(content, this_glyph)
                 head = struct.pack(">BBHHh", phys["OP"], phys["FLAGS"], phys["PHASE"], phys["AMPLITUDE"], phys["ENTROPY"])
                 target_path.parent.mkdir(parents=True, exist_ok=True)
@@ -167,10 +170,9 @@ def main():
 
             if block:
                 if not materialized_any:
-                    print(f"🧬 Fusing: {rel_path} -> {stratum}")
+                    print(f"🧬 Fusing: {path.name} -> {stratum}")
                     materialized_any = True
                 
-                # Atomic Fusion
                 atoms = []
                 for d in dependencies:
                     if d in glyph_registry:
@@ -182,7 +184,6 @@ def main():
                                 if atom_block: atoms.append(atom_block)
                         except: continue
                 if atoms:
-                    # Keep shebang at the top if present
                     if block.startswith("#!"):
                         lines = block.split("\n")
                         block = lines[0] + "\n\n" + "\n".join(atoms) + "\n\n" + "\n".join(lines[1:])
