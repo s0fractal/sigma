@@ -12,6 +12,7 @@ import heuristic_materialize
 import guard
 import protocol
 import physics
+import collider
 
 TEMPLATE_V2_3 = """Σ-GLYPH SEED: {NAME}
 🧬IDENTITY: {ID}
@@ -142,6 +143,10 @@ def main():
     calc_parser = subparsers.add_parser("calc", help="Spectral analysis.")
     calc_parser.add_argument("text")
 
+    poi_parser = subparsers.add_parser("poi", help="Harmonization Layer (PoI).")
+    poi_parser.add_argument("--strict", action="store_true", help="Fail on 🔴.")
+    poi_parser.add_argument("--json", action="store_true", help="Output JSON report.")
+
     forge_parser = subparsers.add_parser("forge", help="Forge seed (V2.3).")
     forge_parser.add_argument("name")
     forge_parser.add_argument("--phase", type=int, default=0)
@@ -171,6 +176,18 @@ def main():
     elif args.command == "calc":
         h, color = calc_spectral_analysis(args.text)
         print(f"🧬 Spectral Analysis:\n   Atom:  {h}\n   Color: {color}")
+    elif args.command == "poi":
+        results = collider.collide()
+        if args.json:
+            print(collider.generate_report(results, "json"))
+        else:
+            print(collider.generate_report(results, "human"))
+        
+        if args.strict:
+            has_red = any(r.status == "🔴" for r in results)
+            if has_red:
+                print("\n❌ STRICT MODE: Dissonance (🔴) detected.")
+                sys.exit(1)
     elif args.command == "forge":
         cmd_forge(args.name, args.phase, args.dna)
     elif args.command == "version":

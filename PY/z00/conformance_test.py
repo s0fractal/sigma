@@ -10,6 +10,7 @@ import scr1
 import physics
 import cas
 import wire
+import collider
 import shutil
 
 # Σ-GLYPH CONFORMANCE SUITE (Python)
@@ -145,6 +146,45 @@ def test_wire(vectors):
             print(f"   [PASS] Decode Packet verified.")
     return errors == 0
 
+def test_collider(vectors):
+    print("🧪 Testing Harmonization Layer (Collider)...")
+    test_root = protocol.ROOT / "PY" / "test_collider"
+    if test_root.exists(): shutil.rmtree(test_root)
+    test_root.mkdir(parents=True)
+    
+    # 1. Setup Environment
+    for v in vectors.get("collider", []):
+        s_path = test_root / v["sigma_path"]
+        s_path.parent.mkdir(parents=True, exist_ok=True)
+        s_path.write_text(v["sigma_content"], encoding="utf-8")
+        
+        if v["code_content"] is not None:
+            c_path = test_root / v["code_path"]
+            c_path.parent.mkdir(parents=True, exist_ok=True)
+            c_path.write_text(v["code_content"], encoding="utf-8")
+            
+    # 2. Run Collider
+    results = collider.collide(root=test_root)
+    
+    status_map = {}
+    for r in results:
+        name = Path(r.intent_path).name
+        status_map[name] = r.status
+
+    errors = 0
+    # 3. Verify
+    for v in vectors.get("collider", []):
+        name = Path(v["sigma_path"]).name
+        actual = status_map.get(name)
+        if actual == v["expected_status"]:
+            print(f"   [PASS] {v['name']} ({name} -> {actual})")
+        else:
+            print(f"   [FAIL] {v['name']}: Exp {v['expected_status']}, Got {actual}")
+            errors += 1
+
+    if test_root.exists(): shutil.rmtree(test_root)
+    return errors == 0
+
 if __name__ == "__main__":
     v = load_vectors()
     success = (
@@ -155,7 +195,8 @@ if __name__ == "__main__":
         test_glyph(v["glyph"]) and
         test_root_discovery() and
         test_cas(v) and
-        test_wire(v)
+        test_wire(v) and
+        test_collider(v)
     )
     if not success: sys.exit(1)
     print("\n✅ PYTHON CORE CONFORMANCE SECURED (V2.3.5).")

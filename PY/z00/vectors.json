@@ -57,5 +57,31 @@
       "payload_hex": "48656c6c6f",
       "expected_packet_hex": "010000000548656c6c6fe2da9281d655b3143951721a74f27880d67fd0b7b37a12cdae83caed2f9d7b2b"
     }
+  ],
+  "collider": [
+    {
+      "name": "Green (Harmony)",
+      "sigma_path": "sigma/z00/green.sigma",
+      "sigma_content": "Σ-GLYPH SEED: green\n🧬IDENTITY: 0000\n🌀: -1\n\n\n@[py]\nprint('green')\n\n🔒: 0000",
+      "code_path": "PY/z00/green.py",
+      "code_content": "print('green')\n",
+      "expected_status": "🟢"
+    },
+    {
+      "name": "Red (Dissonance)",
+      "sigma_path": "sigma/z00/red.sigma",
+      "sigma_content": "Σ-GLYPH SEED: red\n🧬IDENTITY: 1111\n🌀: -1\n\n\n@[py]\nprint('red_intent')\n\n🔒: 1111",
+      "code_path": "PY/z00/red.py",
+      "code_content": "print('red_code_mismatch')\n",
+      "expected_status": "🔴"
+    },
+    {
+      "name": "Yellow (Void)",
+      "sigma_path": "sigma/z00/yellow.sigma",
+      "sigma_content": "Σ-GLYPH SEED: yellow\n🧬IDENTITY: 2222\n🌀: -1\n\n\n@[py]\nprint('yellow')\n\n🔒: 2222",
+      "code_path": "PY/z00/yellow.py",
+      "code_content": null,
+      "expected_status": "🟡"
+    }
   ]
 }
