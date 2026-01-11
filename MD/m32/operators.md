@@ -24,6 +24,3 @@
 | **`!`** | Alert / Important |
 | **`✓`** | Success / Verified |
 | **`✕`** | Failure / Rejected |
-
-
-```

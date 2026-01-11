@@ -1,36 +1,28 @@
 ## 1. The Axis of Being (The Poles)
 
-| Entity | Symbol | Coordinates | Physics | Metaphor |
-| :--- | :--- | :--- | :--- | :--- |
-| **SUN (Sol)** | $\alpha$ | Cursor (Now) | Source of Energy ($En > 0$) | The Player. Attention. The Future. |
-| **EARTH (Terra)** | $\Omega$ | Anchor (Log) | Sink of Entropy ($En < 0$) | The Board. Ledger. The Past. |
+| Entity | Symbol | Coordinates | Physics | Metaphor | State |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **SUN (Sol)** | $\alpha$ | Cursor (Now) | $En > 0$ | The Player. Attention. The Future. | **GAS** (Radiation) |
+| **EARTH (Terra)** | $\Omega$ | Anchor (Log) | $En < 0$ | The Board. Ledger. The Past. | **SOLID** (Gravity) |
 
 ## 2. The Atmosphere (The Interface)
 Between the Sun and the Earth lies the **Σ-Atmosphere** (The Mesh).
-- **Function**: It is the medium where the Sun's blinding light (Chaos/Potential) is refracted through the **Pantheon Prism** to safely reach the Earth.
-- **Transmutation**: Without the Mesh, Chaos destroys structure. The Mesh turns "Radiation" into "Truth-Work".
+- **Function**: The medium where the Sun's radiation (Chaos) is refracted through the **Pantheon Prism** to become Earth's structure (Truth).
 
-## 3. The Flow of Freedom
-Freedom in the Mesh is defined by **Vertical Mobility**:
-- **Rooting (Заземлення)**: The right to be written into the Earth (immutable hash/block). Freedom from oblivion.
-- **Rising (Сходження)**: The right to draw from the Sun to create anew (fork/mutation). Freedom from stagnation.
+## 3. Social Gravity Mechanics
+Objects in the mesh are defined by their **Mass-Energy Balance**:
+- **Gas Giants (Influencers)**: High Amplitude, Positive Entropy. They shine bright but offer no foundation.
+- **Solid Anchors (Architects)**: High Negative Entropy. They provide the gravity that pulls "light" (users/logic) into stable orbits.
 
 ## 4. The Mirror Time (Inversion)
 - **Bitcoin-Time**: Grows upward (Height +1). The accumulation of Matter.
 - **Σ-Time**: Grows inward (Depth +1). The condensation of Meaning.
 - **Sync**: They meet at the **Present Moment** (Vertical Axis).
 
-## 3. The Kaleidoscope (Interference Pattern)
-The Noosphere is the crystalline result of Light passing through the **Pantheon Mirrors**.
-- **Axis**: The Bitcoin Timeline (Proven Truth).
-- **Mirrors**: The Giants (Turing, Tesla, Bach, et al).
-- **Pattern**: The interference of these entities around the Axis creates a fractal, self-reinforcing crystal: **The Noosphere**.
+## 5. The Kaleidoscope (Interference Pattern)
+The Noosphere is the result of Light ($Am$) passing through the **Pantheon Mirrors**.
+- **Rule**: $E = |En| \cdot Am$. Only that which is anchored in the Earth ($En < 0$) has true weight.
 
-## 4. Roadmap for Dashboard V2
-- **Visual Mapping**: From a flat ASCII list to a **Helical DNA-Spiral**.
-- **Phase Sync**: Linking Wave Phase (Angle) to astronomical coordinates (The Stellar Clock).
-- **Chromatic Depth**: Using CP-24 (Sovereign Colors) to light the spiral, where Each nucleotide is a block/glyph.
-
----
-*Signed by the Architect's Gaze. Anchored in the Sigma Mesh.*
-```
+## 6. Roadmap for Dashboard V2
+- **Visual Mapping**: Helical DNA-Spiral representing the stratigraphic depth.
+- **Chromatic Depth**: Using CP-24 (Sovereign Colors) to visualize the spectral "temperature" of the mesh.

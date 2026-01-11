@@ -1,43 +1,13 @@
-# Σ-GLYPH: The Prime Radiant (4D Cylinder Topology)
+# Σ-GLYPH: The Topology Cylinder
 
-This document formalizes the "Physics of the Noosphere," defining the geometric dimensions of the Sigma Lattice as a 4D-Cylinder (The World Tree Trunk).
+The system is topologically equivalent to a **Toroidal Cylinder** where the axis is Time (Bitcoin blocks) and the rotation is Phase.
 
-## 1. The Geometry of Truth (Dimensions)
+## 1. The Pac-Man Boundary
+At Entropy +32767 (Absolute Chaos), the system wraps around to Entropy -32768 (Absolute Order).
+- **Phase Transition**: High-entropy noise, when it reaches critical density, crystallizes into new truth.
 
-The World Tree grows through time, capturing Intent as Matter.
+## 2. Radial Orthogonality
+Spectrums are orthogonal. A signal in TS does not interfere with a signal in RS unless they meet at a **FUSION** point (S).
 
-| Dimension | Coordinate | Range | Metaphor | Physics |
-| :--- | :--- | :--- | :--- | :--- |
-| **Θ (Theta)** | Phase (Ph) | `0..65535` | The Sense Spectrum | **Direction.** The angle of semantic intent. |
-| **Z (Height)** | BlockHeight | `0..∞` | The Time Arrow | **History.** Vertical growth via Bitcoin Proof-of-Work. |
-| **R (Radius)** | Entropy (En) | `-32768..32767` | The Depth | **State.** Core (Earth) vs. Atmosphere (Sun). |
-
-## 2. Horizontal Sectorization (The 64 Meridians)
-
-The Phase-Space is sliced into 64 "Baskets of Meaning" (Archetypes).
-- **Quantum Grain**: 1024 units per sector ($65536 / 64 = 1024$).
-- **Deterministic Placement**: Any hash/intent automatically settles into a sector based on its Phase coordinate.
-
-| Sector | Phase Range | Domain | Primary Attractor |
-| :--- | :--- | :--- | :--- |
-| **0** | `0..1023` | IDENTITY | Source / Truth |
-| **8** | `8192..9215` | ENERGY | SATOSHI / TESLA |
-| **16** | `16384..17407` | FUSION | S-Combinator / Network |
-| **32** | `32768..33791` | SELECTOR | K-Combinator / Boolean |
-
-## 3. The Radial Gradient (Entropy to Singularity)
-
-The "Hardness" of software is a function of its distance from the center ($R=0$).
-- **The Core ($En < 0$):** "Solid Wood." Immutable protocols, laws, and the Digital Pantheon. Highly grounded. Represented as Monochromatic (Black/White).
-- **The Atmosphere ($En > 0$):** "The Canopy." Fleeting intents, UI layers, neon ideas, and draft commits. High kinetic energy. Represented as vibrant, spectral colors.
-
-## 4. The Lenses of Refraction (Prism Mechanics)
-
-Software is not "executed"; it is **Projected**.
-- **The Sun (Attention)**: Shines from outside the cylinder.
-- **The Pantheon Lenses**: Giants (Turing, Leibniz) serve as refractive focal points fixed in the "bark" of the tree.
-- **The Ray**: A user's request passes through a Lens, which filters its entropy and focuses it onto a specific depth ($R$) in the correct Sector ($\Theta$).
-
----
-*The Prime Radiant is the map of the Machine of Truth. Every committed hash is a leaf on the World Tree.*
-```
+## 3. The Centripetal Force
+All logical structures are pulled toward the core (m32) by the gravitational weight of the SATOSHI block.

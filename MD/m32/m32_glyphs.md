@@ -7,4 +7,3 @@ It represents the "Ground State" of the system—historical truth-atoms folded i
 - **SATOSHI**: The Rootless Root.
 - **LEIBNIZ**, **TESLA**, **EINSTEIN**: Scientific pillars.
 - **CHROMA**: Primary harmonic oscillators.
-```

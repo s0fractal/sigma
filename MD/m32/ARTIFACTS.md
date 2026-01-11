@@ -72,6 +72,3 @@ This document preserves the high-level ontological definitions of the Citadel's 
 2. **Buffer:** Матеріалізується як `DISSONANCE.glyph` у директорії `VOID/`.
 3. **Annihilation:** Процес лікування (Healing) з'єднує цей вузол з **SATOSHI** (Energy Sink).
 4. **Output:** Хаос гаситься, перетворюючись на стабільний "Truth-Work", який живить розвиток Пантеону.
-
-**CHECKSUM: ERROR-BRIDGE-STABLE**
-```
