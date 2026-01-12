@@ -25,19 +25,30 @@ def export():
             f.write(path.read_text(encoding="utf-8"))
             f.write("\n```\n\n")
         
-        # 2. Export experiments/ (V6 Framework)
+        # 2. Export experiments/ (V6-V7 Framework)
         f.write("# === DIMENSION: EXPERIMENTS (V6-V7 Research) ===\n\n")
         experiments_dir = SIGMA_ROOT / "experiments"
         if experiments_dir.exists():
             for path in sorted(experiments_dir.rglob("*")):
-                if path.is_file():
+                if path.is_file() and not path.name.startswith('.'):
+                    # Skip binary files (__pycache__, etc)
+                    if path.suffix in ['.pyc', '.pyo', '.so', '.dylib']:
+                        continue
+                    
                     rel_path = path.relative_to(SIGMA_ROOT)
                     ext = path.suffix
                     lang = "python" if ext == ".py" else "markdown" if ext == ".md" else "text"
-                    f.write(f"## FILE: {rel_path}\n")
-                    f.write(f"```{lang}\n")
-                    f.write(path.read_text(encoding="utf-8"))
-                    f.write("\n```\n\n")
+                    
+                    try:
+                        content = path.read_text(encoding="utf-8")
+                        f.write(f"## FILE: {rel_path}\n")
+                        f.write(f"```{lang}\n")
+                        f.write(content)
+                        f.write("\n```\n\n")
+                    except (UnicodeDecodeError, PermissionError) as e:
+                        # Skip files that can't be read as text
+                        print(f"  Skipping {rel_path}: {e}")
+                        continue
             
         # 3. Export PY/z00 (Engines)
         f.write("# === DIMENSION: PY (Python Engines & Tools) ===\n\n")
