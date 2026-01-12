@@ -1,7 +1,7 @@
 /**
  * Σ-GLYPH Core Architecture Implementation (RFC v0.2.12 - Refined)
  * Bit-Exact Determinism Reference
- * V2.3.1 - Aligned with protocol.json
+ * V2.4.0 - Core Determinism Stabilization
  */
 
 import protocolData from "../../sigma/m32/protocol.json" with { type: "json" };

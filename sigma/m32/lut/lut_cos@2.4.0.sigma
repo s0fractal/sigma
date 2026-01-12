@@ -1,0 +1,58 @@
+Σ-GLYPH SEED: lut_cos@2.4.0
+🧬IDENTITY: 0000000000000000000000000000000000000000000000000000000000000000
+
+---
+# === 🧬 IDENTITY ===
+🧬: lut_cos@2.4.0
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+
+# === ⚖️ PHYSICS ===
+⚙️: 0
+🚩: 0
+🌊: 0
+🔊: 0
+🌀: -32768
+
+# === 📊 LUT AUTHORITY ===
+LUT_NAME: LUT_COS
+LUT_VERSION: 2.4.0
+ENCODING: int16be
+SIZE: 32769
+BLOB_SHA256: c16701c44851da342f5d1f977ba5284e66dde3abd2c6740b979e39ac1d4d38b2
+DESCRIPTION: Canonical cosine lookup table for interference calculations (Appendix A.2)
+
+# === 🔗 GRAVITY ===
+🔗:
+  - SATOSHI
+
+---
+
+# LUT_COS Authority
+
+This manifest defines the canonical LUT_COS blob for Σ-GLYPH physics v2.4.0.
+
+**Encoding:** int16 big-endian (>h)  
+**Size:** 32769 values  
+**Hash:** `c16701c44851da342f5d1f977ba5284e66dde3abd2c6740b979e39ac1d4d38b2`
+
+The blob is stored in Akasha CAS and loaded by hash. No runtime cos() computation.
+
+## Usage
+
+```python
+import akasha
+import lut_codec
+
+store = akasha.AkashaStore(protocol.ROOT)
+blob = store.get("c16701c44851da342f5d1f977ba5284e66dde3abd2c6740b979e39ac1d4d38b2")
+LUT_COS = lut_codec.blob_to_lut(blob)
+```
+
+## Invariants
+
+- Blob is immutable (content-addressed)
+- Missing blob = fatal error (fail-fast)
+- No float cos() in deterministic paths
+- Hash verification on every load
+
+🔒: 0000000000000000000000000000000000000000000000000000000000000000

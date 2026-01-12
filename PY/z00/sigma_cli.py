@@ -151,6 +151,11 @@ def main():
     forge_parser.add_argument("--phase", type=int, default=0)
     forge_parser.add_argument("--dna")
 
+    akasha_parser = subparsers.add_parser("akasha", help="Akasha Record Store operations.")
+    akasha_subparsers = akasha_parser.add_subparsers(dest="subcommand", required=True)
+    akasha_subparsers.add_parser("init", help="Initialize Akasha with canonical LUT blobs.")
+    akasha_subparsers.add_parser("verify", help="Verify LUT blob exists and is valid.")
+
     subparsers.add_parser("version", help="System version.")
 
     args = parser.parse_args()
@@ -172,6 +177,56 @@ def main():
                 print(f"\n⚠️  Total Violations: {len(violations)}")
                 # Always exit with code 1 if violations exist
                 sys.exit(1)
+    
+    elif args.command == "akasha":
+        if args.subcommand == "init":
+            # Initialize Akasha with canonical LUT blobs
+            store = akasha.AkashaStore(protocol.ROOT)
+            
+            # Convert LUT JSON to blob
+            lut_json = protocol.ROOT / "sigma" / "m32" / "lut_cos.json"
+            if not lut_json.exists():
+                print(f"❌ LUT JSON not found: {lut_json}")
+                sys.exit(1)
+            
+            print("🔄 Converting LUT JSON to canonical blob...")
+            blob_bytes, blob_hash = lut_codec.json_to_canonical_blob(lut_json)
+            
+            print(f"   Size: {len(blob_bytes)} bytes")
+            print(f"   Hash: {blob_hash}")
+            
+            # Store in Akasha
+            print("🔄 Storing blob in Akasha...")
+            stored_hash = store.put(blob_bytes)
+            
+            print(f"\n✅ LUT_COS blob stored in Akasha")
+            print(f"   Hash: {stored_hash}")
+            print(f"   Path: {store._blob_path(stored_hash)}")
+            
+            # Verify
+            if store.verify(stored_hash):
+                print(f"✅ Blob verified")
+            else:
+                print(f"❌ Blob verification failed")
+                sys.exit(1)
+        
+        elif args.subcommand == "verify":
+            # Verify LUT blob exists and is valid
+            store = akasha.AkashaStore(protocol.ROOT)
+            
+            if store.verify(lut_codec.LUT_COS_HASH):
+                print(f"✅ LUT_COS blob verified")
+                print(f"   Hash: {lut_codec.LUT_COS_HASH}")
+            else:
+                print(f"❌ LUT_COS blob missing or corrupted")
+                print(f"   Expected: {lut_codec.LUT_COS_HASH}")
+                print(f"   Run: sigma akasha init")
+                sys.exit(1)
+        
+        else:
+            print(f"Unknown akasha subcommand: {args.subcommand}")
+            sys.exit(1)
+    
     elif args.command == "test":
         if args.suite == "path-check": cmd_path_check()
     elif args.command == "calc":

@@ -15,7 +15,7 @@ import collider
 import shutil
 
 # Σ-GLYPH CONFORMANCE SUITE (Python)
-# V2.3.5 - Bit-Exact CORE Parity
+# V2.4.0 - Core Determinism Stabilization
 
 def load_vectors():
     vec_path = protocol.ROOT / "PY" / "z00" / "vectors.json"
@@ -297,4 +297,4 @@ if __name__ == "__main__":
         test_collider(v)
     )
     if not success: sys.exit(1)
-    print("\n✅ PYTHON CORE CONFORMANCE SECURED (V2.3.5).")
+    print("\n✅ PYTHON CORE CONFORMANCE SECURED (V2.4.0).")
