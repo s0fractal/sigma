@@ -1,5 +1,6 @@
 import sys
 import os
+import re
 import argparse
 import hashlib
 from pathlib import Path
@@ -12,6 +13,8 @@ import guard
 import protocol
 import physics
 import collider
+import akasha
+import lut_codec
 
 TEMPLATE_V2_3 = """Σ-GLYPH SEED: {NAME}
 🧬IDENTITY: {ID}
@@ -156,7 +159,131 @@ def main():
     akasha_subparsers.add_parser("init", help="Initialize Akasha with canonical LUT blobs.")
     akasha_subparsers.add_parser("verify", help="Verify LUT blob exists and is valid.")
 
+    resonance_parser = subparsers.add_parser("resonance", help="Check self-explanation quality (Prism compliance).")
+    resonance_parser.add_argument("file", nargs="?", help="Specific .sigma file to check (optional)")
+
     subparsers.add_parser("version", help="System version.")
+
+    args = parser.parse_args()
+
+def calculate_resonance(sigma_file: Path) -> dict:
+    """
+    Calculate resonance score for .sigma file.
+    
+    Resonance = measure of self-explanation quality
+    100% = perfect metadata-implementation alignment
+    """
+    content = sigma_file.read_text()
+    score = 0
+    max_score = 100
+    issues = []
+    
+    # Check 1: Prism header exists (20 points)
+    if "# === 🌈 The Isomorphic Prism ===" in content:
+        score += 20
+    else:
+        issues.append("Missing Prism header")
+    
+    # Check 2: @[md] block exists and non-empty (30 points)
+    md_block = physics.extract_block(content, "md")
+    if md_block and len(md_block) > 50:
+        score += 30
+    elif md_block:
+        score += 15
+        issues.append("@[md] block too short")
+    else:
+        score += 0
+        issues.append("BLIND SPOT: @[md] block missing")
+    
+    # Check 3: DNA parity (30 points)
+    dna_header = re.search(r'^DNA:\s*(.+)$', content, re.MULTILINE)
+    dna_block = physics.extract_block(content, "dna")
+    
+    if dna_header and dna_block:
+        header_dna = dna_header.group(1).strip()
+        block_dna = dna_block.strip()
+        
+        # Normalize whitespace
+        header_norm = re.sub(r'\s+', ' ', header_dna)
+        block_norm = re.sub(r'\s+', ' ', block_dna)
+        
+        if header_norm == block_norm:
+            score += 30
+        else:
+            issues.append(f"DNA DISSONANCE: header='{header_dna}' ≠ block='{block_dna}'")
+    else:
+        if not dna_header:
+            issues.append("Missing DNA header")
+        if not dna_block:
+            issues.append("Missing @[dna] block")
+    
+    # Check 4: No floating artifacts (20 points)
+    lines = content.split('\n')
+    floating_waves = []
+    for i, line in enumerate(lines):
+        if line.strip() == '🌊':
+            context = '\n'.join(lines[max(0, i-5):i+5])
+            if 'PHYSICS' not in context and 'PHASE' not in context and 'AMPLITUDE' not in context:
+                floating_waves.append(i+1)
+    
+    if not floating_waves:
+        score += 20
+    else:
+        issues.append(f"Floating wave symbols at lines: {floating_waves}")
+    
+    return {
+        "file": sigma_file.name,
+        "score": score,
+        "max": max_score,
+        "percentage": (score / max_score) * 100,
+        "issues": issues
+    }
+
+def cmd_resonance(file_pattern: str = None):
+    """Check resonance across .sigma files."""
+    if file_pattern:
+        files = [Path(file_pattern)]
+    else:
+        files = sorted(Path("sigma").rglob("*.sigma"))
+    
+    results = []
+    for f in files:
+        try:
+            res = calculate_resonance(f)
+            results.append(res)
+            
+            # Print result
+            pct = res['percentage']
+            if pct == 100:
+                status = "✅"
+            elif pct >= 80:
+                status = "🟡"
+            else:
+                status = "🔴"
+            
+            print(f"{status} {res['file']}: Resonance {pct:.0f}%")
+            
+            for issue in res['issues']:
+                if "BLIND SPOT" in issue:
+                    print(f"   ⚠️  {issue}")
+                elif "DISSONANCE" in issue:
+                    print(f"   🔴 {issue}")
+                else:
+                    print(f"   • {issue}")
+        except Exception as e:
+            print(f"❌ {f.name}: Error - {e}")
+    
+    if not results:
+        print("No .sigma files found")
+        return
+    
+    # Summary
+    avg_resonance = sum(r['percentage'] for r in results) / len(results)
+    print(f"\n📊 Average Resonance: {avg_resonance:.1f}%")
+    
+    if avg_resonance < 80:
+        print("⚠️  System is failing to explain itself.")
+        sys.exit(1)
 
     args = parser.parse_args()
 
@@ -226,6 +353,9 @@ def main():
         else:
             print(f"Unknown akasha subcommand: {args.subcommand}")
             sys.exit(1)
+    
+    elif args.command == "resonance":
+        cmd_resonance(args.file if hasattr(args, 'file') else None)
     
     elif args.command == "test":
         if args.suite == "path-check": cmd_path_check()

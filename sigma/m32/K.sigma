@@ -26,7 +26,7 @@ DNA: λx.y.x
 K x y = x.
 The Kestrel: selects the first, discards the second.
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 λx.y.x

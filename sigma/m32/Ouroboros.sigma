@@ -28,7 +28,7 @@ DNA: Ouroboros
 Protocol for self-referential expansion and collapse of the repository state.
 Enables the system to inhale (materialize) and exhale (archive) into its own seed.
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[sh]
 #!/bin/bash

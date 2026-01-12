@@ -15,11 +15,52 @@ def div_round_half_up(n: int, d: int) -> int:
 def clamp_i16(x: int) -> int:
     return max(-32768, min(32767, x))
 
-# Canonical LUT generation (満足 Appendices A.2)
-LUT_COS = [round(32767 * math.cos((i * math.pi) / 32768)) for i in range(32769)]
-LUT_COS[0] = 32767
-LUT_COS[16384] = 0
-LUT_COS[32768] = -32767
+# Canonical LUT loading from Akasha (V2.4.0 - LUT Authority)
+# NO runtime cos() generation - fail-fast on missing blob
+_akasha_store = None
+_lut_cos_cache = None
+
+def _load_lut_cos():
+    """
+    Load LUT_COS from Akasha by hash (fail-fast).
+    
+    This eliminates float cos() from deterministic paths.
+    Missing blob = fatal error (no fallback).
+    """
+    global _akasha_store, _lut_cos_cache
+    
+    if _lut_cos_cache is not None:
+        return _lut_cos_cache
+    
+    # Lazy import to avoid circular dependency
+    import akasha
+    import lut_codec
+    
+    if _akasha_store is None:
+        _akasha_store = akasha.AkashaStore(protocol.ROOT)
+    
+    # Expected hash from manifest (lut_cos@2.4.0.sigma)
+    LUT_HASH = lut_codec.LUT_COS_HASH
+    
+    try:
+        blob_bytes = _akasha_store.get(LUT_HASH)
+        _lut_cos_cache = lut_codec.blob_to_lut(blob_bytes)
+        return _lut_cos_cache
+    except FileNotFoundError:
+        raise RuntimeError(
+            f"FATAL: LUT_COS blob not found in Akasha.\n"
+            f"Expected hash: {LUT_HASH}\n"
+            f"Run: python3 PY/z00/sigma_cli.py akasha init"
+        )
+    except Exception as e:
+        raise RuntimeError(f"FATAL: Failed to load LUT_COS from Akasha: {e}")
+
+# Lazy-loaded LUT (replaces runtime generation)
+def get_lut_cos():
+    """Get canonical LUT_COS from Akasha."""
+    return _load_lut_cos()
+
+LUT_COS = None  # Will be loaded on first use
 
 def interfere(w1: 'WaveVectorQ', w2: 'WaveVectorQ') -> 'WaveVectorQ':
     new_ph = w1.ph
@@ -29,7 +70,9 @@ def interfere(w1: 'WaveVectorQ', w2: 'WaveVectorQ') -> 'WaveVectorQ':
     d32 = abs(x)
     delta = min(d32, 65536 - d32)
 
-    r = LUT_COS[delta]
+    # Load LUT from Akasha (lazy, fail-fast)
+    lut = get_lut_cos()
+    r = lut[delta]
     num = (r + 32767) * 65535
     amp_factor = div_round_half_up(num, 65534)
 

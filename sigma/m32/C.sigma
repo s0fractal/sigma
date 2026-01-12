@@ -26,7 +26,7 @@ DNA: λx.y.z.xzy
 C x y z = x z y.
 The Cardinal: swaps the order of arguments.
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 λx.y.z.xzy

@@ -199,7 +199,7 @@ def interfere(wave1, wave2):
     return [new_phase, min(new_amp, 2.0), new_entropy]
 ```
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 - SATOSHI

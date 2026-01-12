@@ -26,7 +26,7 @@ DNA: λx.y.xyy
 W x y = x y y.
 The Warbler: duplicates the last argument.
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 λx.y.xyy

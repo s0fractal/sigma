@@ -43,7 +43,7 @@ Input (GB) $\to$ Retina $\to$ Projection (KB) $\to$ Brain.
 
 Ми використовуємо WASM для решітки (бо це швидко і паралельно), а TS — для передачі проекції.
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 - SATOSHI

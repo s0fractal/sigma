@@ -44,7 +44,7 @@ Rules:
 - Optional metadata is stored in `./.cache/s0fractal/proteins/<GLYPH>.meta`
 - Sync only for used glyphs; drop after 30d of inactivity.
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 ProteinDNS

@@ -26,7 +26,7 @@ DNA: λx.x
 Identity is the mirror where the Void sees itself. It returns what it receives, unchanged.
 I x = x.
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 λx.x

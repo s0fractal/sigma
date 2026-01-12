@@ -291,6 +291,6 @@ export function toHex(bytes: Uint8Array): string {
 @[dna]
 - SATOSHI
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 🔒: 62b0e306b663b8fdba5852ab1c4200cdd08386ae1e87d05fd05a3dc283ce743d

@@ -47,7 +47,7 @@ SVG підтримує `<feGaussianBlur>`, `<feColorMatrix>`.
 Якщо ШІ хоче "сфокусуватися" на проблемі, він змінює параметри SVG
 (зменшує Blur на секторі ts).
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 - SATOSHI

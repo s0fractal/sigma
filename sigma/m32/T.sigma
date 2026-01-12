@@ -26,7 +26,7 @@ DNA: λx.y.yx
 T x y = y x.
 The Thrush: reverse application.
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 λx.y.yx

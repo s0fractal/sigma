@@ -38,7 +38,7 @@ import {
 async function createBridgeNode(externalChaos: string) {
     console.log("
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 - SATOSHI

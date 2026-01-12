@@ -12,8 +12,8 @@ DNA: {DNA_EXPRESSION}    # The Formula (e.g., W I). NO LISTS!
 ⚙️: 0                    # OpCode (0=LITERAL, 3=LAMBDA)
 🚩: 1                    # Flags (1=ATOM)
 🌊: {PHASE}              # Phase (0..65535)
-🔊: 65535                # Amplitude (Impact)
-🌀: -32768               # Entropy (-32..+32 mapped)
+🔊: {Amplitude}          # Amplitude (Impact)
+🌀: {ENTROPY}            # Entropy (-32..+32 mapped)
 
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
@@ -25,7 +25,7 @@ DNA: {DNA_EXPRESSION}    # The Formula (e.g., W I). NO LISTS!
 
 {Description of the logic or concept. This is the Intent (📖).}
 
-🌊
+# === � The Isomorphic Prism ===
 
 @[ts]
 // 🔗 Implicit Gravity: No imports required. Dependencies are in the DNA.

@@ -52,7 +52,7 @@ enum OpCode : uint8 {
 | OpCode     | Flags Requirement (MUST)    | Semantics                                 |
 |
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 - SATOSHI

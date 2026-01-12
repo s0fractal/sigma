@@ -25,7 +25,7 @@ DNA: λf.(λx.f(xx))(λx.f(xx))
 
 The Y combinator allows recursion in lambda calculus.
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 λf.(λx.f(xx))(λx.f(xx))

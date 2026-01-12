@@ -44,7 +44,7 @@ def parse_frontmatter(path: Path) -> dict:
     text = path.read_text(encoding="utf-8")
     parts = text.split("
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 - SATOSHI

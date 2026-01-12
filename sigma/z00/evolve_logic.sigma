@@ -47,7 +47,7 @@ async function saveGlyph(name: string, node: SigmaNode) {
 async function materializeLogic() {
     console.log("
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 - SATOSHI

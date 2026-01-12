@@ -48,7 +48,7 @@ $$ (\lambda x.L) (\emptyset) \to \text{Halt} $$
 
 ## 3. Implementation (The Infinite Loop)
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 - SATOSHI

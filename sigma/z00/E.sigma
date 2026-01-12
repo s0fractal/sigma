@@ -26,7 +26,7 @@ DNA: E
 Чиста побічна дія. Пропускає аргумент через ефект.
 Аксіома впливу.
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[ts]
 export const E = <T>(f: (x: T) => void) => (x: T): T => { f(x); return x; };

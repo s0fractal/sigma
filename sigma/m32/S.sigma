@@ -26,7 +26,7 @@ DNA: λx.y.z.xz(yz)
 S x y z = x z (y z).
 The Starling: distributes the shared context z.
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 λx.y.z.xz(yz)

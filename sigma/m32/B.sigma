@@ -26,7 +26,7 @@ DNA: λx.y.z.x(yz)
 B x y z = x (y z).
 The Bluebird: composes two functions.
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 λx.y.z.x(yz)

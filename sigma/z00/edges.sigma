@@ -203,7 +203,7 @@ def collapse_edges(dim: str | None):
         ttl = int(edge.get("ttl", "86400"))
         print(f"
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 - SATOSHI

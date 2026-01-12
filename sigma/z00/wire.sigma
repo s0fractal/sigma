@@ -108,7 +108,7 @@ export async function decodePacket(data: Uint8Array): Promise<{ type: PacketType
 | 5 | L | Payload | The actual data bytes |
 | 5+L | 32 | HMAC | SHA-256 of bytes [0...5+L-1] |
 
-🌊
+# === 🌈 The Isomorphic Prism ===
 
 @[dna]
 - SATOSHI
