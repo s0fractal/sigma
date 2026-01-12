@@ -99,6 +99,15 @@ def angular_distance(angle1: float, angle2: float) -> float:
     diff = abs(angle1 - angle2)
     return min(diff, 2 * math.pi - diff)
 
+def encode_angle(radians: float) -> int:
+    """Convert 0..2π to 0..65535 (u16)."""
+    normalized = radians % (2 * math.pi)
+    return int((normalized / (2 * math.pi)) * 65536) & 0xFFFF
+
+def decode_angle(value: int) -> float:
+    """Convert 0..65535 to 0..2π."""
+    return (value / 65536) * 2 * math.pi
+
 def klein_geodesic_distance(
     p1: Tuple[float, float],
     p2: Tuple[float, float],
