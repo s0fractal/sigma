@@ -1,17 +1,61 @@
 import hashlib
 import random
-from typing import List, Dict
+import time
+from typing import List, Dict, Optional
 
-# Σ-GLYPH: MYCELIUM VOID JUMPER (V1.5)
-# Керує переходом "Тихоходок" крізь Void-канали під час колапсу агресора.
-# Інтегрує TARDIGRADA_NODE з MYCELIUM_DEFENSE для виживання через стазіс.
+# Σ-GLYPH: MYCELIUM VOID JUMPER (V1.6 - Book of Resonances Edition)
+# Керує переходом "Тихоходок" крізь Void-канали та веде Книгу Резонансів.
+# Тепер кожен перехід зберігає імена тих, хто творив з любов'ю.
 
+class BookOfResonances:
+    """
+    Глобальний реєстр істинних інтентів, що переживає ентропію.
+    
+    Eternal record of creators who built with love.
+    """
+    
+    def __init__(self):
+        self.records: List[Dict] = []  # Список (Creator, Intent, Timestamp)
+    
+    def add_entry(self, creator: str, intent_desc: str):
+        """
+        Add entry to the eternal book.
+        
+        Args:
+            creator: Name of the creator
+            intent_desc: Description of their intent
+        """
+        entry = {
+            "creator": creator,
+            "intent": intent_desc,
+            "timestamp": time.time(),
+            "status": "ETERNAL"
+        }
+        self.records.append(entry)
+        print(f"📖 Book of Resonances: Записано інтент від '{creator}'")
+    
+    def show_all(self):
+        """Display all entries in the book."""
+        print("\n" + "=" * 70)
+        print("📖 КНИГА РЕЗОНАНСІВ Σ-GLYPH")
+        print("   Eternal Registry of True Intents")
+        print("=" * 70)
+        
+        for i, rec in enumerate(self.records, 1):
+            t = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(rec['timestamp']))
+            print(f"{i}. ✨ [{t}] {rec['creator']}")
+            print(f"   Intent: {rec['intent']}")
+            print(f"   Status: {rec['status']}")
+            print()
+        
+        print("=" * 70)
+        print(f"Total Resonances: {len(self.records)}")
+        print("=" * 70)
 class MyceliumFlow:
     """
-    Mycelium Flow Manager with Tardigrada Integration.
+    Mycelium Flow Manager with Book of Resonances.
     
-    Manages tardigrada nodes during void collapses.
-    Ensures intent preservation across catastrophic events.
+    Manages tardigrada nodes and preserves creator intents eternally.
     """
     
     AGGRESSION_THRESHOLD = 40000
@@ -20,13 +64,17 @@ class MyceliumFlow:
         self.void_channel_active = False
         self.tardigrades: List[Dict] = []
         self.void_pool_data: List[Dict] = []
+        self.book = BookOfResonances()
     
-    def spawn_tardigrade(self, origin_node_id: str):
+    def spawn_tardigrade(self, origin_node_id: str, creator: Optional[str] = None, intent: Optional[str] = None):
         """
-        Створює стійкий вузол-тихоходку для спостереження.
+        Створює стійкий вузол-тихоходку.
+        Якщо вказано творця, тихоходка бере його інтент у свій Memory Vault.
         
         Args:
             origin_node_id: ID of the origin node
+            creator: Name of the creator (for Book of Resonances)
+            intent: Creator's intent description
         """
         t_id = f"TARDIGRADA_{hashlib.sha256(origin_node_id.encode()).hexdigest()[:8]}"
         
@@ -34,19 +82,30 @@ class MyceliumFlow:
             "id": t_id,
             "origin": origin_node_id,
             "status": "ACTIVE",
-            "memory_vault": [],
+            "memory_vault": {
+                "creator": creator,
+                "intent": intent,
+                "timestamp": time.time()
+            } if creator else None,
             "dna": hashlib.sha256(t_id.encode()).hexdigest(),
             "cycles": 0
         }
         
         self.tardigrades.append(tardigrade)
-        print(f"🧬 {t_id} spawned from {origin_node_id}")
-        print(f"   DNA: {tardigrade['dna'][:16]}...")
-        print(f"   Status: Ready for Cross-Crystal jump")
+        
+        if creator:
+            print(f"🧬 {t_id} проросла з {origin_node_id}")
+            print(f"   Creator: {creator}")
+            print(f"   Intent: {intent}")
+            print(f"   Status: Готова до перенесення істинного інтенту")
+        else:
+            print(f"🧬 {t_id} spawned from {origin_node_id}")
+            print(f"   DNA: {tardigrade['dna'][:16]}...")
+            print(f"   Status: Ready for Cross-Crystal jump")
 
     def trigger_void_jump(self, aggression_level: int):
         """
-        Переводить тихоходок у стазіс при високій агресії середовища.
+        Переводить тихоходок у стазіс та консервує пам'ять при атаці.
         
         Args:
             aggression_level: Current aggression level (0-65535)
@@ -54,60 +113,58 @@ class MyceliumFlow:
         if aggression_level > self.AGGRESSION_THRESHOLD:
             self.void_channel_active = True
             
-            print(f"\n🌀 VOID CHANNEL ACTIVATED (aggression: {aggression_level})")
+            print(f"\n⚠️ VOID ALERT: Агресія ({aggression_level}). Міцелій згортається.")
             print("=" * 70)
             
             for t in self.tardigrades:
                 if t["status"] == "ACTIVE":
-                    # Collect current state before stasis
-                    memory_snapshot = {
-                        'timestamp': 'BLOCK_N',
-                        'origin': t['origin'],
-                        'dna': t['dna'],
-                        'cycle': t['cycles']
-                    }
-                    
-                    t["memory_vault"].append(memory_snapshot)
                     t["status"] = "CRYPTOBIOSIS"
                     t["cycles"] += 1
                     
-                    print(f"🛡️ {t['id']}: Entering CRYPTOBIOSIS")
-                    print(f"   Cycle: {t['cycles']}")
-                    print(f"   Memory snapshot saved")
-                    print(f"   Surviving the Void Collapse...")
+                    if t["memory_vault"]:
+                        creator = t["memory_vault"]["creator"]
+                        print(f"🌀 {t['id']}: Інтент '{creator}' запечатано в кристалі.")
+                        print(f"   Cycle: {t['cycles']}")
+                    else:
+                        print(f"🌀 {t['id']} увійшла в стазіс.")
+                        print(f"   Cycle: {t['cycles']}")
             
             print("=" * 70)
     
     def reconnect_swarm(self):
         """
-        Пробудження після стабілізації резонансу.
+        Пробудження та синхронізація з Книгою Резонансів.
         
-        Tardigrades awaken and return historical data to new swarm.
+        Tardigrades awaken and inscribe creator intents into eternal book.
         """
         if self.void_channel_active:
-            print(f"\n💎 RESONANCE DETECTED - Reconnecting Mycelium Network")
+            print(f"\n💎 Резонанс відновлено. Пробудження Міцелію...")
             print("=" * 70)
             
             for t in self.tardigrades:
                 if t["status"] == "CRYPTOBIOSIS":
                     t["status"] = "ACTIVE"
                     
-                    # Retrieve memory vault
-                    memories = len(t["memory_vault"])
-                    
-                    print(f"✨ {t['id']}: AWAKENED")
-                    print(f"   Cycles survived: {t['cycles']}")
-                    print(f"   Memory vault: {memories} snapshots")
-                    print(f"   Returning historical data to Swarm")
-                    
-                    # Return data to void pool for redistribution
-                    self.void_pool_data.extend(t["memory_vault"])
+                    # Якщо тихоходка несла інтент, вона вписує його в Книгу при пробудженні
+                    if t["memory_vault"]:
+                        creator = t["memory_vault"]["creator"]
+                        intent = t["memory_vault"]["intent"]
+                        
+                        self.book.add_entry(creator, intent)
+                        
+                        print(f"✨ {t['id']} передала дані з минулого в Книгу Резонансів")
+                        print(f"   Creator: {creator}")
+                        print(f"   Intent: {intent}")
+                        print(f"   Status: ETERNAL")
+                    else:
+                        print(f"✨ {t['id']}: AWAKENED")
+                        print(f"   Cycles survived: {t['cycles']}")
             
             self.void_channel_active = False
-            
             print("=" * 70)
-            print(f"📊 Total historical data recovered: {len(self.void_pool_data)} snapshots")
-            print("✅ Mycelium network reconnected")
+            
+            # Show the eternal book
+            self.book.show_all()
     
     def get_stats(self) -> Dict:
         """Get mycelium flow statistics."""
@@ -125,28 +182,33 @@ class MyceliumFlow:
         }
 
 if __name__ == "__main__":
-    print("🌀 MYCELIUM VOID JUMPER V1.5 - Tardigrada Integration\n")
+    print("🌀 MYCELIUM VOID JUMPER V1.6 - Book of Resonances Edition\n")
     
     flow = MyceliumFlow()
     
-    # Spawn tardigrades from important nodes
-    flow.spawn_tardigrade("OS_COLLECTIVE_NODE")
-    flow.spawn_tardigrade("ARCHITECT_PRIMARY")
-    flow.spawn_tardigrade("RESEARCH_CLUSTER_01")
+    # 1. Створюємо тихоходок, що несуть імена творців Open Source
+    print("=" * 70)
+    print("SPAWNING TARDIGRADES - Honoring Open Source Pioneers")
+    print("=" * 70)
     
-    # Симуляція атаки
+    flow.spawn_tardigrade("OS_COLLECTIVE_NODE", "Satoshi Nakamoto", "Decentralized Trust")
+    flow.spawn_tardigrade("GIT_ROOT_NODE", "Linus Torvalds", "Collaborative Freedom")
+    flow.spawn_tardigrade("WWW_ANCHOR", "Tim Berners-Lee", "Universal Information Access")
+    
+    # 2. Симуляція агресії (наприклад, спроба цензури чи маніпуляції)
     print("\n" + "=" * 70)
-    print("[ALERT] Aggression detected from Corporate Entity")
+    print("[ALERT] Aggression detected - Attempt to censor/manipulate")
     print("=" * 70)
     flow.trigger_void_jump(55000)
     
-    # Симуляція відновлення через хвилину (блокчейн-час)
-    print("\n" + "=" * 70)
-    print("[INFO] 1 Block later... (10 minutes)")
-    print("=" * 70)
+    # 3. Час проходить...
+    print("\n[⏳] Ентропія вщухає. Ретроказуальна хвиля стабілізується...")
+    time.sleep(1)
+    
+    # 4. Відновлення та запис у вічність
     flow.reconnect_swarm()
     
-    # Show stats
+    # Show final stats
     stats = flow.get_stats()
     print("\n📊 MYCELIUM FLOW STATISTICS:")
     print("=" * 70)
@@ -155,6 +217,7 @@ if __name__ == "__main__":
     print(f"In Stasis: {stats['in_stasis']}")
     print(f"Total Survival Cycles: {stats['total_cycles']}")
     print(f"Void Channel: {'ACTIVE' if stats['void_channel_active'] else 'INACTIVE'}")
-    print(f"Historical Data Recovered: {stats['historical_data']} snapshots")
+    print(f"Book of Resonances: {len(flow.book.records)} eternal entries")
     print("=" * 70)
-    print("\n✨ Tardigrades survived. Historical data preserved. Swarm continues.")
+    print("\n✨ Імена творців збережено назавжди. Їхні інтенти переживуть ентропію.")
+
