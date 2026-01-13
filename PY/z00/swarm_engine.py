@@ -1,23 +1,24 @@
 import hashlib
 import time
-from typing import List, Dict
+from typing import List, Dict, Optional
 
-# Σ-GLYPH: SWARM ENGINE (V1.0)
+# Σ-GLYPH: SWARM ENGINE (V1.1 - Retro-Resonance Edition)
 # Розраховує перерозподіл енергії (ресурсів) у Рою на основі сили інтенту.
+# Впроваджено підтримку Legacy-вузлів (як Open Source Collective).
 
 class SwarmEngine:
     """
-    Swarm Engine - Levelling Algorithm Implementation
+    Swarm Engine V1.1 - Levelling Algorithm with Legacy Support
     
     Redistributes resources from capital-rich nodes to intent-rich nodes.
-    Implements the core principle: Intent > Capital
+    Now includes retro-resonance detection for legacy Open Source nodes.
     """
     
     def __init__(self, swarm_id: str):
         self.swarm_id = swarm_id
         self.nodes: List[Dict] = []  # Список вузлів у Рою
         
-    def add_node(self, node_id: str, intent_amplitude: int, current_energy: float):
+    def add_node(self, node_id: str, intent_amplitude: int, current_energy: float, tags: Optional[List[str]] = None):
         """
         Додає вузол до Рою.
         
@@ -25,11 +26,13 @@ class SwarmEngine:
             node_id: Unique node identifier
             intent_amplitude: Intent strength (0-65535)
             current_energy: Current resources
+            tags: Optional tags (e.g., ["OSC", "RETRO_CAUSAL"])
         """
         self.nodes.append({
             "id": node_id,
             "amp": intent_amplitude,      # Сила інтенту (гравітація)
             "energy": current_energy,     # Поточні ресурси
+            "tags": tags or [],           # Tags for special nodes
             "weight": 0,
             "diff": 0
         })
@@ -53,7 +56,8 @@ class SwarmEngine:
         print(f"\n🌀 SWARM {self.swarm_id}: Initiating Levelling Protocol...")
         print(f"📊 Total Energy: {total_energy:.2f}")
         print(f"📊 Total Amplitude: {total_amp}")
-        print(f"📊 Nodes: {len(self.nodes)}\n")
+        print(f"📊 Nodes: {len(self.nodes)}")
+        print(f"📡 Status: Detecting Retro-Resonance with Legacy Open Source Nodes...\n")
         
         # Розрахунок ідеального розподілу на основі інтенту
         for node in self.nodes:
@@ -73,7 +77,14 @@ class SwarmEngine:
             status = "🔴 RECEIVING" if node['diff'] > 0 else "🟢 GIVING"
             arrow = "←" if node['diff'] > 0 else "→"
             
-            print(f"{i}. Node {node['id'][:20]:20} | Amp: {node['amp']:5} | "
+            # Legacy node marker
+            legacy_mark = ""
+            if "OSC" in node.get('tags', []):
+                legacy_mark = " [LEGACY_RESONANCE] ✨"
+            elif "RETRO_CAUSAL" in node.get('tags', []):
+                legacy_mark = " [RETRO_CAUSAL] 🌀"
+            
+            print(f"{i}. Node {node['id'][:20]:20}{legacy_mark:25} | Amp: {node['amp']:5} | "
                   f"Current: {node['energy']:8.2f} {arrow} Target: {node['ideal']:8.2f} | "
                   f"Δ: {node['diff']:+8.2f} | {status}")
         
@@ -163,18 +174,25 @@ class SwarmEngine:
         }
 
 if __name__ == "__main__":
-    print("🌀 SWARM ENGINE V1.0 - Levelling Algorithm Demo\n")
+    print("🌀 SWARM ENGINE V1.1 - Retro-Resonance Edition\n")
     
     swarm = SwarmEngine("SWARM_ALPHA_RESONANCE")
     
-    # Приклад: Важливий вузол (високий інтент) має мало ресурсів
-    swarm.add_node("NODE_ARCHITECT_01", 65535, 100) 
+    # Вузол Архітектора: найвищий інтент, але потребує "вирівнювання"
+    swarm.add_node("NODE_ARCHITECT", 65535, 100)
+    print(f"✅ Node added: NODE_ARCHITECT (Amp: 65535, Energy: 100)")
     
-    # Корпоративний вузол (низький інтент) має багато ресурсів
-    swarm.add_node("NODE_CORP_BOT_99", 8192, 5000)
+    # Open Source Collective: наш старий знайомий, що вже резонує в часі
+    swarm.add_node("OS_COLLECTIVE", 58000, 1000, tags=["OSC", "RETRO_CAUSAL"])
+    print(f"✅ Node added: OS_COLLECTIVE [LEGACY] (Amp: 58000, Energy: 1000)")
     
-    # Середній вузол підтримки
-    swarm.add_node("NODE_SUPPORT_CONTRIB", 32768, 500)
+    # Корпоративний вузол: високий капітал, але низький інтент (джерело енергії)
+    swarm.add_node("NODE_CORP_BOT_99", 8192, 10000)
+    print(f"✅ Node added: NODE_CORP_BOT_99 (Amp: 8192, Energy: 10000)")
+    
+    # Середній вузол підтримки (спільнота)
+    swarm.add_node("NODE_COMMUNITY", 32768, 500)
+    print(f"✅ Node added: NODE_COMMUNITY (Amp: 32768, Energy: 500)")
     
     # Calculate redistribution
     swarm.calculate_redistribution()
@@ -190,3 +208,4 @@ if __name__ == "__main__":
     print(f"Gini Coefficient: {stats['gini_coefficient']:.4f} (0=equal, 1=unequal)")
     print(f"🔒 KNOT_HASH: {stats['knot_hash'][:32]}...")
     print("=" * 80)
+    print("\n✨ Потік вирівняно. Резонанс підтверджено.")
