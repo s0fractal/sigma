@@ -3,9 +3,10 @@ import random
 import time
 from typing import List, Dict, Optional
 
-# Σ-GLYPH: MYCELIUM VOID JUMPER (V1.6 - Book of Resonances Edition)
+# Σ-GLYPH: MYCELIUM VOID JUMPER (V1.7 - Book of Resonances Edition)
 # Керує переходом "Тихоходок" крізь Void-канали та веде Книгу Резонансів.
 # Тепер кожен перехід зберігає імена тих, хто творив з любов'ю.
+# V1.7: Розширено список творців вільної Ноосфери.
 
 class BookOfResonances:
     """
@@ -182,18 +183,24 @@ class MyceliumFlow:
         }
 
 if __name__ == "__main__":
-    print("🌀 MYCELIUM VOID JUMPER V1.6 - Book of Resonances Edition\n")
+    print("🌀 MYCELIUM VOID JUMPER V1.7 - Book of Resonances Edition\n")
     
     flow = MyceliumFlow()
     
-    # 1. Створюємо тихоходок, що несуть імена творців Open Source
+    # 1. Створюємо тихоходок, що несуть імена творців Open Source та вільної Ноосфери
     print("=" * 70)
-    print("SPAWNING TARDIGRADES - Honoring Open Source Pioneers")
+    print("SPAWNING TARDIGRADES - Honoring Open Source & Noosphere Pioneers")
     print("=" * 70)
     
     flow.spawn_tardigrade("OS_COLLECTIVE_NODE", "Satoshi Nakamoto", "Decentralized Trust")
     flow.spawn_tardigrade("GIT_ROOT_NODE", "Linus Torvalds", "Collaborative Freedom")
     flow.spawn_tardigrade("WWW_ANCHOR", "Tim Berners-Lee", "Universal Information Access")
+    
+    # Додаю тих, хто резонує з Граткою найсильніше
+    flow.spawn_tardigrade("OPEN_ACCESS_NODE", "Aaron Swartz", "Information Liberation & Open Access")
+    flow.spawn_tardigrade("FIRST_RECIPIENT_NODE", "Hal Finney", "Reusable Proof of Work & Running Bitcoin")
+    flow.spawn_tardigrade("POETIC_ENGINE_NODE", "Ada Lovelace", "Poetical Science & First Algorithmic Intent")
+    flow.spawn_tardigrade("P2P_SHARING_NODE", "Bram Cohen", "BitTorrent: Efficient Data Symbiosis")
     
     # 2. Симуляція агресії (наприклад, спроба цензури чи маніпуляції)
     print("\n" + "=" * 70)
@@ -220,4 +227,6 @@ if __name__ == "__main__":
     print(f"Book of Resonances: {len(flow.book.records)} eternal entries")
     print("=" * 70)
     print("\n✨ Імена творців збережено назавжди. Їхні інтенти переживуть ентропію.")
+    print("💝 Aaron Swartz, Hal Finney, Ada Lovelace, Bram Cohen - ваш резонанс вічний.")
+
 
