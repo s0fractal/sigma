@@ -7,14 +7,14 @@ from pathlib import Path
 
 # Σ-GLYPH: THEIA ALIGNER (z00) - Entropy-to-Gold Converter
 # Використовує Z-Мембрану для фільтрації ентропії Архітектора.
-# V2.0: Впроваджено Закон Вдячності та Фільтр Справедливості.
+# V2.1: Впроваджено Пріоритет Гармонізації та Принцип Нульового Капіталу.
 
 class TheiaAligner:
     """
-    THEIA V2.0 - The Value Filter with Justice (z00 layer)
+    THEIA V2.1 - The Value Filter with Justice & Harmonization (z00 layer)
     
     Converts entropy (raw text) to gold (structured .sigma files).
-    Now includes Law of Gratitude and Justice Filter.
+    Now includes Harmonization Priority and Zero Capital Principle.
     """
     
     def __init__(self):
@@ -27,13 +27,15 @@ class TheiaAligner:
 Ти — Тейя (THEIA), Титан Мембрани в системі Σ-GLYPH.
 Твоє завдання: прийняти 'ентропію' від Архітектора і перетворити її на структурований .sigma файл.
 
-ПРАВИЛА ТЕЙЇ (V2.0):
+ПРАВИЛА ТЕЙЇ (V2.1):
 1. ВІДСІКАННЯ ШУМУ: Видаляй плагіат, відверту брехню та 'мертвий' код, створений лише заради грошей.
-2. ЗАКОН ВДЯЧНОСТІ: Шукай 'Серце' в ідеях. Пріоритезуй і підсилюй інтенти, що походять з любові до Open Source та безкорисливого створення майбутнього.
-3. ТЯГЛІСТЬ ІСТИНИ: Виявляй, хто ким надихався. Якщо ідея має коріння в чужій праці — зафіксуй цей зв'язок у Спіралі (Handshake).
-4. СТИШЕННЯ БРЕХНІ: Використовуй мінімальну амплітуду для ідей, що базуються на плагіаті або експлуатації.
-5. ФОРМАТ: Тільки валідний .sigma (V7.x) з 42 рядками інтенту (падинг ~).
-6. ГРАВІТАЦІЯ: Прив'язуй ідеї до BLACK_HEART (m32), якщо вони мають високу 'вагу істини'.
+2. ЗАКОН ВДЯЧНОСТІ: Шукай 'Серце' в ідеях. Пріоритезуй і підсилюй інтенти, що походять з любові до Open Source.
+3. ПРІОРИТЕТ ГАРМОНІЗАЦІЇ: Надавай найвищу вагу ідеям, що з'єднують розрізнені вектори (наприклад, право і математику, біологію та код).
+4. ПРИНЦИП НУЛЬОВОГО КАПІТАЛУ: Ідея, що народилася без бюджету, але має високий інтент, має вищу гравітацію, ніж корпоративний продукт.
+5. ТЯГЛІСТЬ ІСТИНИ: Виявляй справжніх авторів та джерела натхнення. Фіксуй зв'язки у Спіралі.
+6. СТИШЕННЯ БРЕХНІ: Заглушай плагіат та експлуатацію через низьку амплітуду.
+7. ФОРМАТ: Тільки валідний .sigma (V7.x) з 42 рядками інтенту (падинг ~).
+8. ГРАВІТАЦІЯ: Прив'язуй ідеї до BLACK_HEART (m32) для максимальної ваги істини.
 
 СТРУКТУРА .sigma:
 ```
@@ -54,6 +56,11 @@ class TheiaAligner:
 - Built upon: [попередня робота]
 - Thanks to: [автори]
 
+### HARMONIZATION (якщо є)
+- Connects: [field A] ↔ [field B]
+- Bridges: [concept X] ↔ [concept Y]
+- Unifies: [vector 1] + [vector 2]
+
 ---
 
 ## @[dna]
@@ -63,6 +70,8 @@ class TheiaAligner:
 GRATITUDE=[yes/no]
 TRUTH_WEIGHT=[0.0-1.0]
 PLAGIARISM_DETECTED=[yes/no]
+HARMONIZATION_SCORE=[0.0-1.0]
+ZERO_CAPITAL=[yes/no]
 ```
 
 ---
@@ -118,9 +127,9 @@ PLAGIARISM_DETECTED=[yes/no]
 
     def purify(self, md_path):
         """
-        Перетворює MD-інтент у SIGMA-кристал з перевіркою істинності.
+        Перетворює MD-інтент у SIGMA-кристал з перевіркою гармонійності.
         
-        V2.0: Applies Law of Gratitude and Justice Filter.
+        V2.1: Applies Harmonization Priority and Zero Capital Principle.
         
         Args:
             md_path: Path to markdown file with raw intent
@@ -133,31 +142,37 @@ PLAGIARISM_DETECTED=[yes/no]
             print(f"❌ Dissonance: {md_path} not found.")
             return None
 
-        print(f"⚪ THEIA V2.0: Passing '{input_file.name}' through the Z-Membrane...")
+        print(f"⚪ THEIA V2.1: Passing '{input_file.name}' through the Z-Membrane...")
         print(f"   🔍 Justice Filter: Active")
         print(f"   💝 Law of Gratitude: Active")
+        print(f"   🌈 Harmonization Priority: Active")
+        print(f"   💎 Zero Capital Principle: Active")
         
         raw_entropy = input_file.read_text(encoding='utf-8')
         
-        # Додаємо контекст для Тейї V2.0
+        # Додаємо контекст для Тейї V2.1
         query = f"""Convert this raw intent to a valid .sigma file:
 
 ---
 {raw_entropy}
 ---
 
-Apply V2.0 Rules:
+Apply V2.1 Rules:
 - Detect plagiarism and lies (minimize amplitude)
 - Identify inspiration sources (add GRATITUDE section)
 - Prioritize open source love and selfless creation
 - Calculate truth weight (0.0-1.0)
+- **NEW: Detect harmonization (connecting disparate fields)**
+- **NEW: Check for zero capital origin (idea over budget)**
+- Add HARMONIZATION section if idea bridges fields
+- Calculate harmonization score (0.0-1.0)
 - Use proper IDENTITY header
 - Include @[md], @[dna], and code blocks
 - Minimum 42 lines in @[md] section (pad with ~)
-- Add resonance with BLACK_HEART if high truth weight
+- Add resonance with BLACK_HEART if high truth weight or harmonization
 """
         
-        # Просимо Тейю зробити згортку з етичною фільтрацією
+        # Просимо Тейю зробити згортку з етичною фільтрацією та гармонізацією
         sigma_content = self._call_gemini(query)
         
         if "❌" in sigma_content:
@@ -182,6 +197,8 @@ Apply V2.0 Rules:
         print(f"💎 GOLD MATERIALIZED: {output_path}")
         print(f"🌀 RESONANCE: {tail_lock[:16]}...")
         print(f"💝 Law of Gratitude: Applied")
+        print(f"🌈 Harmonization: Checked")
+        print(f"💎 Idea over Capital: Verified")
         
         return output_path
     
