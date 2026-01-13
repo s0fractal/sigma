@@ -77,8 +77,10 @@ trailer << /Root 1 0 R /Size 7 >>
 
     # Запис у файл з розширенням .pdf
     output_path = sigma_file.with_suffix(".pdf")
-    # Використовуємо latin-1 для збереження бінарної цілісності PDF структури
-    output_path.write_text(pdf_dna, encoding="latin-1")
+    # Використовуємо bytes для збереження бінарної цілісності PDF структури
+    # Конвертуємо Unicode символи в UTF-8, потім в latin-1 де можливо
+    pdf_bytes = pdf_dna.encode('utf-8', errors='replace')
+    output_path.write_bytes(pdf_bytes)
     
     # Фіксація результату в консолі Гратки
     anchor_hash = hashlib.sha256(raw_content).hexdigest()
