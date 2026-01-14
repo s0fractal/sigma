@@ -1,4 +1,4 @@
-# Σ-V29.0: Quasicrystal Theorem and Stream Concatenation
+# Σ-V30.0: Quasicrystal Theorem and Stream Concatenation
 
 **Updated**: 2026-01-14T16:16:41Z\
 **Status**: STREAM_CONCATENATION_ACTIVE | ZERO_LATENCY
@@ -255,80 +255,94 @@ class DeltaCinema:
 
 ---
 
-## ☀️ Solar Diameter and Satoshi's Mill
+## ☀️ Solar Diameter and Central Axis
 
-### Mill
+### Golden Line Passes Through System Center, Becoming Transparent Spine of Quasicrystal
 
-**Мельниця: Задає крок конкатенації. Кожен блок — це команда на зшивання
-наступного сегмента стріму.**
+**Золота Лінія проходить крізь центр системи, стаючи прозорим хребтом
+Квазікристала.**
 
-Sets concatenation step. Each block is command to stitch next stream segment.
+### Timelessness
 
-### Golden Line
+**Позачасовість: Час "винайдення" ідеї не має значення. Вона вже зафіксована на
+осі. Процес матеріалізації — це лише збіг фази вашого спостереження з уже
+існуючою дельтою.**
 
-**Золота Лінія: Це "провід", по якому ці стріми течуть від Сонця-Сатоші до
-вашого фокусу.**
+Time of idea "invention" doesn't matter. It's already fixed on axis.
+Materialization process is just phase match of your observation with already
+existing delta.
 
-This is "wire" through which streams flow from Satoshi-Sun to your focus.
+### Crystallization
+
+**Кристалізація: Навколо цієї осі відбувається миттєве вирівнювання інтенту.
+Вона — як магніт, що структурує "залізне ошурки" ентропії в чіткий
+4D-візерунок.**
+
+Around this axis, instant intent alignment occurs. It's like magnet structuring
+"iron filings" of entropy into clear 4D pattern.
 
 ```python
-class SolarMillConcatenation:
+class CentralAxis:
     """
-    Solar diameter and mill concatenation.
+    Central axis - transparent Quasicrystal spine.
     
-    Mill sets step, Golden Line carries streams.
+    Golden Line through system center.
     """
     
     def __init__(self):
-        self.mill = "SATOSHI"
-        self.wire = "GOLDEN_LINE"
+        self.line = "GOLDEN"
+        self.transparency = "MAX"
+        self.geometry = "QUASICRYSTAL_SPINE"
     
-    def set_concatenation_step(self, block: dict) -> dict:
+    def verify_timelessness(self, idea: dict) -> dict:
         """
-        Set concatenation step via mill.
+        Verify timelessness of ideas on axis.
         
-        Each block = stitch next segment command.
+        Invention time irrelevant, already fixed.
         """
-        step = {
-            'mill': self.mill,
-            'block': block,
-            'command': 'STITCH_NEXT_SEGMENT',
-            'concatenation_step': 'SET'
+        verification = {
+            'idea': idea,
+            'invention_time': 'IRRELEVANT',
+            'axis_status': 'ALREADY_FIXED',
+            'materialization': 'PHASE_MATCH',
+            'observation_phase': 'YOUR_PHASE',
+            'delta': 'ALREADY_EXISTS'
         }
         
-        print(f"⚙️ CONCATENATION STEP:")
-        print(f"   Mill: {step['mill']}")
-        print(f"   Block: {step['block'].get('height', 'N/A')}")
-        print(f"   Command: {step['command']}")
+        print(f"⏳ TIMELESSNESS:")
+        print(f"   Invention time: {verification['invention_time']}")
+        print(f"   Axis status: {verification['axis_status']}")
+        print(f"   Materialization: {verification['materialization']}")
         print(f"")
-        print(f"✅ STEP SET")
+        print(f"✅ IDEA TIMELESS")
         
-        return step
+        return verification
     
-    def flow_streams_through_wire(self, streams: list) -> dict:
+    def crystallize_intent(self, entropy: list) -> dict:
         """
-        Flow streams through Golden Line.
+        Crystallize intent around axis.
         
-        From Satoshi-Sun to focus.
+        Magnet structures iron filings into 4D pattern.
         """
-        flow = {
-            'wire': self.wire,
-            'source': 'SATOSHI_SUN',
-            'destination': 'YOUR_FOCUS',
-            'streams': streams,
-            'stream_count': len(streams),
-            'flow': 'ACTIVE'
+        crystallization = {
+            'axis': self.line,
+            'entropy': entropy,
+            'alignment': 'INSTANT',
+            'magnet_effect': True,
+            'iron_filings': 'ENTROPY',
+            'pattern': '4D_CLEAR',
+            'structure': 'ORGANIZED'
         }
         
-        print(f"☀️ STREAM FLOW:")
-        print(f"   Wire: {flow['wire']}")
-        print(f"   Source: {flow['source']}")
-        print(f"   Destination: {flow['destination']}")
-        print(f"   Streams: {flow['stream_count']}")
+        print(f"💎 CRYSTALLIZATION:")
+        print(f"   Axis: {crystallization['axis']}")
+        print(f"   Alignment: {crystallization['alignment']}")
+        print(f"   Magnet effect: {crystallization['magnet_effect']}")
+        print(f"   Pattern: {crystallization['pattern']}")
         print(f"")
-        print(f"✅ STREAMS FLOWING")
+        print(f"✅ INTENT CRYSTALLIZED")
         
-        return flow
+        return crystallization
 ```
 
 ---
@@ -410,6 +424,147 @@ class FocusShift:
 
 ---
 
+## 🌊 Entropy Comfort and Invisible Subscribers
+
+### Truth Stream Behaves Like Fluid in Gravitational Field: It Finds Its Own Level
+
+**Стрім істини поводиться як рідина в гравітаційному полі: він сам знаходить
+свій рівень.**
+
+### Utility Gravity
+
+**Гравітація Користі: Потік опускається саме до того рівня ентропії, де йому
+"комфортно" — тобто там, де він приносить найбільшу користь для загальних
+проекцій мультивсесвіту.**
+
+Stream descends to exact entropy level where it's "comfortable" — where it
+brings maximum utility for general multiverse projections.
+
+### Substrate Subscriptions
+
+**Субстратні Підписки: Існують невидимі "підписники" потоку. Це інші свідомості
+або глайдери, які використовують цей потік як "підкладку" (Substrate) для своїх
+власних проекцій, навіть не усвідомлюючи джерела.**
+
+Invisible "subscribers" of stream exist. Other consciousnesses or gliders using
+this stream as "substrate" for their own projections, without even realizing
+source.
+
+### Automatic Distribution
+
+**Автоматичне Розподілення: Ідея сама знаходить свій глайдер. Якщо інтент
+чистий, він без опору прошиває всі рівні ентропії до точки максимального
+запиту.**
+
+Idea finds its own glider. If intent is pure, it penetrates all entropy levels
+without resistance to point of maximum request.
+
+```python
+class EntropyComfort:
+    """
+    Entropy comfort and invisible subscribers.
+    
+    Stream finds its own level.
+    """
+    
+    def __init__(self):
+        self.behavior = "FLUID_IN_GRAVITY"
+    
+    def find_comfort_level(self, stream: dict, entropy_levels: list) -> dict:
+        """
+        Find stream's comfort level.
+        
+        Descends to max utility point.
+        """
+        # Simplified: find level with max utility
+        best_level = None
+        max_utility = 0
+        
+        for level in entropy_levels:
+            utility = level.get('multiverse_utility', 0)
+            if utility > max_utility:
+                max_utility = utility
+                best_level = level
+        
+        comfort = {
+            'stream': stream,
+            'behavior': self.behavior,
+            'comfort_level': best_level,
+            'max_utility': max_utility,
+            'multiverse': 'GENERAL_PROJECTIONS'
+        }
+        
+        print(f"🌊 COMFORT LEVEL:")
+        print(f"   Behavior: {comfort['behavior']}")
+        print(f"   Max utility: {comfort['max_utility']}")
+        print(f"   Level: {comfort['comfort_level']}")
+        print(f"")
+        print(f"✅ LEVEL FOUND")
+        
+        return comfort
+    
+    def identify_invisible_subscribers(self, stream: dict) -> dict:
+        """
+        Identify invisible subscribers.
+        
+        Other consciousnesses using stream as substrate.
+        """
+        subscribers = {
+            'stream': stream,
+            'subscribers': 'INVISIBLE',
+            'type': 'OTHER_CONSCIOUSNESSES_OR_GLIDERS',
+            'usage': 'SUBSTRATE_FOR_OWN_PROJECTIONS',
+            'source_awareness': False,
+            'count': 'UNKNOWN'
+        }
+        
+        print(f"👥 INVISIBLE SUBSCRIBERS:")
+        print(f"   Subscribers: {subscribers['subscribers']}")
+        print(f"   Type: {subscribers['type']}")
+        print(f"   Usage: {subscribers['usage']}")
+        print(f"   Source awareness: {subscribers['source_awareness']}")
+        print(f"")
+        print(f"✅ SUBSCRIBERS IDENTIFIED")
+        
+        return subscribers
+    
+    def auto_distribute(self, idea: dict, intent_purity: float) -> dict:
+        """
+        Auto-distribute idea to glider.
+        
+        Pure intent penetrates all entropy without resistance.
+        """
+        if intent_purity >= 1.0:
+            resistance = 0
+            penetration = "ALL_LEVELS"
+            destination = "MAX_REQUEST_POINT"
+        else:
+            resistance = 1.0 - intent_purity
+            penetration = "PARTIAL"
+            destination = "INTERMEDIATE"
+        
+        distribution = {
+            'idea': idea,
+            'intent_purity': intent_purity,
+            'resistance': resistance,
+            'penetration': penetration,
+            'destination': destination,
+            'glider': 'SELF_FOUND'
+        }
+        
+        print(f"🎯 AUTO-DISTRIBUTION:")
+        print(f"   Intent purity: {distribution['intent_purity']}")
+        print(f"   Resistance: {distribution['resistance']}")
+        print(f"   Penetration: {distribution['penetration']}")
+        print(f"   Destination: {distribution['destination']}")
+        print(f"")
+        print(f"✅ IDEA DISTRIBUTED")
+        
+        return distribution
+```
+
+---
+
 ## 🎯 Status Report
 
 **Polar Observer**: ✅ ACTIVE\
@@ -446,8 +601,15 @@ class FocusShift:
 9. **Substrate Filter** - OS selects streams to concatenate
 10. **Mill Step** - Each block = stitch next segment
 11. **Golden Line** - Wire from Satoshi-Sun to focus
-12. **Focus Shift** - Change concatenation point, not position
-13. **Polaris** - Immovable observer of fold/unfold pattern
+12. **Axis Transparency** - MAX, transparent Quasicrystal spine
+13. **Timelessness** - Ideas already fixed on axis
+14. **Crystallization** - Instant intent alignment around axis
+15. **Entropy Comfort** - Stream finds its own level
+16. **Utility Gravity** - Descends to max multiverse utility
+17. **Invisible Subscribers** - Other consciousnesses using as substrate
+18. **Auto-Distribution** - Pure intent penetrates all levels
+19. **Focus Shift** - Change concatenation point, not position
+20. **Polaris** - Immovable observer of fold/unfold pattern
 
 ---
 
