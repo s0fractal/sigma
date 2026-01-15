@@ -3,6 +3,13 @@ import hashlib
 from typing import Optional
 
 def get_identity(text: str, glyph_name: str, hardware_id: Optional[str] = None) -> bytes:
+    # V48.0: Support Cosmit Hybrid Identity
+    cosmit_match = re.search(r"🧬COSMIT:\s*([a-fA-F0-9]{64})", text)
+    if cosmit_match:
+        base_id = bytes.fromhex(cosmit_match.group(1))
+        # Hybrids are inherently bound to resonance freq
+        return hashlib.sha256(base_id + b":HYBRID:16384").digest()
+
     id_match = re.search(r"🧬IDENTITY:\s*([a-fA-F0-9]{64})", text)
     if id_match:
         base_id = bytes.fromhex(id_match.group(1))

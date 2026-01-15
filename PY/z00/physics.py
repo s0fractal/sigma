@@ -5,6 +5,8 @@ import uuid
 from typing import Optional
 import protocol
 
+RESONANT_COUPLING_FREQ = 16384  # Hz: Frequency for Cosmit-to-Lattice sync
+
 def get_hardware_id(btc_block_hash: str = "0000000000000000000000000000000000000000000000000000000000000000") -> str:
     """
     V46.0: Hardware-to-Hash Binding.
