@@ -1,8 +1,20 @@
 import struct
 import hashlib
 import math
+import uuid
 from typing import Optional
 import protocol
+
+def get_hardware_id(btc_block_hash: str = "0000000000000000000000000000000000000000000000000000000000000000") -> str:
+    """
+    V46.0: Hardware-to-Hash Binding.
+    Combines MAC address with a BTC block hash for Sovereign Hardware Identity.
+    """
+    mac_num = uuid.getnode()
+    mac_hex = ':'.join(("%012X" % mac_num)[i:i+2] for i in range(0, 12, 2))
+    
+    seed = f"{mac_hex}:{btc_block_hash}"
+    return hashlib.sha256(seed.encode()).hexdigest()
 
 def div_round_half_up(n: int, d: int) -> int:
     """Integer division with symmetric round-half-up (away from zero)."""

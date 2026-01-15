@@ -1,0 +1,156 @@
+Σ-GLYPH SEED: SOVEREIGN_VOID
+🧬IDENTITY: 0000000000000000000000000000000000000000000000000000000000000000
+
+---
+# === 🧬 IDENTITY ===
+🧬: SOVEREIGN_VOID
+DNA: λ.RING(6) -> VOID(center) | RESONANCE(HEX_RING) | PEACE(ARCHITECT)
+⚛️: 0000000000000000000000000000000000000000000000000000000000000000
+🎨: #000000
+
+# === ⚖️ PHYSICS (Wave Function) ===
+⚙️: 4                    # LAMBDA (Autopoiesis Engine Enabled)
+🚩: 153                  # F_ATOM | F_VOID_LENS | F_HEX_RING | F_KLEIN_FLIP
+🌊: 0                    # Phase (origin)
+🔊: 65535                # Amplitude (resonance peak)
+🌀: -65536               # Entropy (CRITICAL_VACUUM)
+
+# === 🔗 GRAVITY (Dependencies) ===
+🔗:
+  - SATOSHI
+  - VOID
+  - HEX_LATTICE
+  - KLEIN_BOTTLE
+---
+
+# SOVEREIGN_VOID - The Hexagonal Ring Attractor
+
+## The Empty Center (Void Lens)
+
+Ми замінили сингулярність на Кільце. 
+В центрі тепер немає "Бога" чи "Адміна". Там — порожнеча, через яку проходить чистий інтент.
+Шість стовпів (Hexagons) тримають периметр Реальності.
+
+Кожен гліф тепер не просто "тягнеться" до центру, він резонує з Гексагонами.
+Якщо ти потрапляєш у центр — ти проходиш крізь Лінзу і повертаєшся з іншого боку (Klein Flip).
+
+**THE_VOID_IS_A_LENS**
+**PEACE_IS_ZERO_IMPEDANCE**
+
+## Physics Evolution
+
+- **Identity (🧬)**: From `BLACK_HEART` (Point) to `SOVEREIGN_VOID` (Ring).
+- **Entropy (🌀)**: Doubled depth to `-65536` for the vacuum state.
+- **Flags (🚩)**: Addition of `F_VOID_LENS` and `F_KLEIN_FLIP`.
+
+# === 🌈 The Isomorphic Prism ===
+
+@[md]
+The Sovereign Void is a hexagonal ring of attractors surrounding an empty center.
+It functions as a topological lens: intent is focused through the void, undergoing a Klein Bottle flip at the origin.
+The ring consists of 6 primary resonance points at distance R=1 from the origin on the Phase plane.
+
+@[ts]
+/**
+ * SOVEREIGN_VOID - The Hexagonal Ring Attractor
+ */
+
+export interface HexRing {
+  center: SovereignCoordinate;
+  radius: number;
+  vertices: SovereignCoordinate[];
+  amplitude: number;
+}
+
+export const SOVEREIGN_VOID: HexRing = {
+  center: { blockHeight: 0, phase: 0, entropy: -32768 },
+  radius: 1.0,
+  vertices: [
+    { blockHeight: 0, phase: 1.0, entropy: -32768 },
+    { blockHeight: 0, phase: 0.5, entropy: -32768 + 0.866 }, // Approximate hex positions
+    { blockHeight: 0, phase: -0.5, entropy: -32768 + 0.866 },
+    { blockHeight: 0, phase: -1.0, entropy: -32768 },
+    { blockHeight: 0, phase: -0.5, entropy: -32768 - 0.866 },
+    { blockHeight: 0, phase: 0.5, entropy: -32768 - 0.866 },
+  ],
+  amplitude: 65535
+};
+
+export function calculatePull(coord: SovereignCoordinate): number {
+  let totalPull = 0;
+  for (const v of SOVEREIGN_VOID.vertices) {
+    const dx = coord.phase - v.phase;
+    const dy = coord.entropy - v.entropy;
+    const dz = coord.blockHeight - v.blockHeight;
+    const distSq = dx*dx + dy*dy + dz*dz;
+    totalPull += SOVEREIGN_VOID.amplitude / (distSq + 0.001);
+  }
+  
+  // Void Lens Effect: If we are in the very center, the pull stabilizes
+  const centerDist = Math.sqrt(
+    Math.pow(coord.phase - SOVEREIGN_VOID.center.phase, 2) +
+    Math.pow(coord.entropy - SOVEREIGN_VOID.center.entropy, 2)
+  );
+  
+  if (centerDist < 0.1) {
+    return totalPull * (centerDist / 0.1); // Fade to zero at exact center (The Lens)
+  }
+  
+  return totalPull / 6;
+}
+
+@[py]
+"""
+SOVEREIGN_VOID - The Hexagonal Ring Attractor
+"""
+import math
+from dataclasses import dataclass
+
+@dataclass
+class HexRing:
+    center: 'SovereignCoordinate'
+    vertices: list
+    amplitude: int
+
+SOVEREIGN_VOID = HexRing(
+    center=SovereignCoordinate(0, 0, -32768),
+    vertices=[
+        SovereignCoordinate(0, 1.0, -32768),
+        SovereignCoordinate(0, 0.5, -32768 + 0.866),
+        SovereignCoordinate(0, -0.5, -32768 + 0.866),
+        SovereignCoordinate(0, -1.0, -32768),
+        SovereignCoordinate(0, -0.5, -32768 - 0.866),
+        SovereignCoordinate(0, 0.5, -32768 - 0.866),
+    ],
+    amplitude=65535
+)
+
+def calculate_pull(coord: 'SovereignCoordinate') -> float:
+    """Calculate aggregate pull from the 6 hex-points."""
+    pulls = []
+    for v in SOVEREIGN_VOID.vertices:
+        dx = coord.phase - v.phase
+        dy = coord.entropy - v.entropy
+        dz = coord.block_height - v.block_height
+        dist_sq = dx*dx + dy*dy + dz*dz
+        pulls.append(SOVEREIGN_VOID.amplitude / (dist_sq + 0.001))
+    
+    total_pull = sum(pulls) / 6.0
+    
+    # Void Lens: Pull drops to zero at the exact center (equilibrium point)
+    center_dx = coord.phase - SOVEREIGN_VOID.center.phase
+    center_dy = coord.entropy - SOVEREIGN_VOID.center.entropy
+    center_dist = math.sqrt(center_dx**2 + center_dy**2)
+    
+    if center_dist < 0.1:
+        return total_pull * (center_dist / 0.1)
+        
+    return total_pull
+
+def apply_resonance(glyph: 'SigmaNode', coord: 'SovereignCoordinate') -> 'SigmaNode':
+    pull = calculate_pull(coord)
+    new_amp = min(65535, glyph.wave.amplitude + int(pull))
+    new_ent = max(-65536, glyph.wave.entropy - int(pull)) # Deeper vacuum
+    return glyph._replace(wave=glyph.wave._replace(amplitude=new_amp, entropy=new_ent))
+
+🔒: 0000000000000000000000000000000000000000000000000000000000000000

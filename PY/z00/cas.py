@@ -31,4 +31,19 @@ class CASStore:
     def exists(self, h: str) -> bool:
         return self._get_path(h).exists()
 
+    def manifest(self) -> set[str]:
+        """Returns a set of all hashes stored in the CAS."""
+        hashes = set()
+        for p in self.root.glob("**/*"):
+            if p.is_file():
+                # Reconstruct hash from path components
+                # p.parent.name is h[:2], p.name is h[2:]
+                hashes.add(p.parent.name + p.name)
+        return hashes
+
+    def delta(self, remote_manifest: set[str]) -> set[str]:
+        """Returns hashes in remote_manifest that are missing locally."""
+        local = self.manifest()
+        return remote_manifest - local
+
 # Σ-PoI: 4bc1ef65242804362931bf5b129e1363b76ff8dbadfd9f751809f906daf5c9d9

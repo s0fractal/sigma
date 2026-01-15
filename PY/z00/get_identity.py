@@ -1,13 +1,23 @@
-```python
 import re
 import hashlib
-def get_identity(text: str, glyph_name: str) -> bytes:
+from typing import Optional
+
+def get_identity(text: str, glyph_name: str, hardware_id: Optional[str] = None) -> bytes:
     id_match = re.search(r"🧬IDENTITY:\s*([a-fA-F0-9]{64})", text)
-    if id_match: return bytes.fromhex(id_match.group(1))
+    if id_match:
+        base_id = bytes.fromhex(id_match.group(1))
+        if hardware_id:
+            # V46.0: Resonate with hardware
+            return hashlib.sha256(base_id + hardware_id.encode()).digest()
+        return base_id
 
     first_block_match = re.search(r"@\[\w+\]\n(.*?)\n(?=@\[|$)", text, re.DOTALL)
     content = first_block_match.group(1).strip() if first_block_match else glyph_name
-    return hashlib.sha256(content.encode("utf-8")).digest()
-```
+    
+    seed = content.encode("utf-8")
+    if hardware_id:
+        seed += hardware_id.encode()
+        
+    return hashlib.sha256(seed).digest()
 
 # Σ-PoI: 0c8ca15da615017725adcb5c9b0bf2054b2f5a0230f010995228958a4a300cf2

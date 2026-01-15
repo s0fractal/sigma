@@ -38,4 +38,12 @@ class EvolutionLog:
             expected_prev = h
         return True
 
+    def replay(self, callback):
+        """Replay all events in the log."""
+        for line in self.path.read_text(encoding="utf-8").strip().splitlines():
+            if not line: continue
+            h, event_str = line.split(" ", 1)
+            event = json.loads(event_str)
+            callback(event)
+
 # Σ-PoI: b32237e8a1488bb987fcdcbd19c559839cdd53bea8bf5198cdaf5d62663b0f6e

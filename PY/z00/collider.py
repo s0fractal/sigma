@@ -129,7 +129,8 @@ def analyze_pair(sigma_path: Path, code_path: Path, code_tag: str) -> CircleStat
 
     poi = scr1.calculate_poi(intent_hash, code_hash)
 
-    status = "🟢" if code_hash == expected_code_hash else "🔴"
+    # Calculate status based on content match (robust to trailing whitespace)
+    status = "🟢" if code_content_clean.strip() == expected_payload.strip() else "🔴"
     details = "Harmonic" if status == "🟢" else "Dissonance: Content Mismatch"
 
     return CircleStatus(

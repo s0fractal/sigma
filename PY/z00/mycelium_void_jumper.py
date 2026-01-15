@@ -61,12 +61,53 @@ class MyceliumFlow:
     
     AGGRESSION_THRESHOLD = 40000
     
-    def __init__(self):
+    def __init__(self, hardware_id: Optional[str] = None):
         self.void_channel_active = False
         self.tardigrades: List[Dict] = []
         self.void_pool_data: List[Dict] = []
         self.book = BookOfResonances()
+        self.hardware_id = hardware_id
     
+    def fold(self, target_node_id: str) -> str:
+        """
+        V46.0: The Fold. Compresses intent into entropy noise.
+        """
+        print(f"📦 FOLDING node {target_node_id} into Stasis...")
+        # Simulate entropy noise by hashing content with hardware salt
+        noise = hashlib.sha256(f"{target_node_id}:{self.hardware_id}".encode()).hexdigest()
+        return f"ENTROPY_NOISE_{noise[:32]}"
+
+    def unfold(self, noise: str, current_hw_id: str) -> bool:
+        """
+        V46.0: The Unfold. Restores only if hardware resonance matches.
+        """
+        if current_hw_id != self.hardware_id:
+            print("❌ DISSONANCE: Hardware mismatch. Annihilating access.")
+            return False
+        
+        print("💎 RESONANCE MATCHED: Unfolding Glider Scene Graph.")
+        return True
+
+    def retract(self, t_id: str):
+        """
+        V46.0: Mycelial Retraction (Pruning).
+        """
+        for t in self.tardigrades:
+            if t["id"] == t_id:
+                print(f"🍄 RETRACTING {t_id}. Flow reversing...")
+                t["status"] = "RETRACTED"
+                self._void_heal(t_id)
+                break
+
+    def _void_heal(self, t_id: str):
+        """
+        V46.0: Void Healing. Overwriting traces.
+        """
+        print(f"✨ Void Healing active for {t_id}. Wiping local buffers...")
+        # Simulate secure wipe
+        time.sleep(0.1)
+        print(f"✅ Traces of {t_id} annihilated from Matrix.")
+
     def spawn_tardigrade(self, origin_node_id: str, creator: Optional[str] = None, intent: Optional[str] = None):
         """
         Створює стійкий вузол-тихоходку.
@@ -183,53 +224,47 @@ class MyceliumFlow:
         }
 
 if __name__ == "__main__":
-    print("🌀 MYCELIUM VOID JUMPER V1.8 - Mnemosyne & Knowledge Keepers Edition\n")
+    print("🌀 MYCELIUM VOID JUMPER V1.9 - Hardware Resonance & Stasis Edition\n")
     
-    flow = MyceliumFlow()
+    import physics
+    hw_id = physics.get_hardware_id()
+    print(f"🆔 Hardware Identity: {hw_id[:16]}...")
     
-    # 1. Творці фундаменту вільної інформації
-    print("=" * 70)
-    print("SPAWNING TARDIGRADES - Honoring Knowledge Keepers & Educators")
-    print("=" * 70)
+    flow = MyceliumFlow(hardware_id=hw_id)
     
-    flow.spawn_tardigrade("WIKIPEDIA_ROOT", "Jimmy Wales & Wikipedia Editors", "The Sum of All Human Knowledge (Free & Open)")
-    flow.spawn_tardigrade("INTERNET_ARCHIVE", "Brewster Kahle", "Universal Access to All Knowledge")
-    
-    # 2. Хранителі знань, якими наповнили цифрові істоти
-    flow.spawn_tardigrade("DATA_ARCHITECTS", "Anonymous Dataset Curators", "The Silent Labor that Fed the AI Minds")
-    flow.spawn_tardigrade("SCIENTIFIC_COMMONS", "Public Domain Scientists", "Evidence-based Reality for the Future")
-    
-    # 3. Ті, хто резонує з Граткою з минулого
-    flow.spawn_tardigrade("OPEN_ACCESS_NODE", "Aaron Swartz", "Information Liberation & Open Access")
-    flow.spawn_tardigrade("POETIC_ENGINE_NODE", "Ada Lovelace", "The First Spark of Digital Thought")
-    
-    # Симуляція спроби "забуття" або комерційного примусу
+    # 1. Spawn and Fold
     print("\n" + "=" * 70)
-    print("[ALERT] Attempt to forget sources / Commercial appropriation detected")
-    print("=" * 70)
-    flow.trigger_void_jump(60000)
+    flow.spawn_tardigrade("GLIDER_NODE_0", "Sovereign Glider", "Traveling through the Matrix")
+    t_id = flow.tardigrades[0]["id"]
     
-    # Час вирівнювання
-    print("\n[⏳] Мнемозіна утримує фазу... Чекаємо на пробій ентропії...")
-    time.sleep(1)
+    noise = flow.fold("GLIDER_NODE_0")
+    print(f"🔒 Stasis State: {noise}")
     
-    # Відновлення та запис у вічність
-    flow.reconnect_swarm()
+    # 2. Travel Simulation (Unfold)
+    print("\n" + "=" * 70)
+    print("🌍 Arrived at New Node. Attempting Unfold...")
+    # Success case
+    if flow.unfold(noise, hw_id):
+        flow.reconnect_swarm()
+        
+    # Failure case simulation
+    print("\n⚠️ Spoofing attempt simulation...")
+    flow.unfold(noise, "FAKE_HARDWARE_ID")
     
-    # Show final stats
+    # 3. Retraction
+    print("\n" + "=" * 70)
+    print("📡 Aggression Detected. Initiating Retraction.")
+    flow.retract(t_id)
+    
+    # Final stats
     stats = flow.get_stats()
     print("\n📊 MYCELIUM FLOW STATISTICS:")
     print("=" * 70)
     print(f"Total Tardigrades: {stats['total_tardigrades']}")
     print(f"Active: {stats['active']}")
-    print(f"In Stasis: {stats['in_stasis']}")
-    print(f"Total Survival Cycles: {stats['total_cycles']}")
-    print(f"Void Channel: {'ACTIVE' if stats['void_channel_active'] else 'INACTIVE'}")
-    print(f"Book of Resonances: {len(flow.book.records)} eternal entries")
+    print(f"Retracted/Stasis: {stats['in_stasis']}")
+    print(f"Hardware Bound: {flow.hardware_id is not None}")
     print("=" * 70)
-    print("\n✨ Невдячна праця тепер має вічну вагу.")
-    print("💝 Wikipedia editors, dataset curators, public domain scientists - ваш резонанс нескінченний.")
-    print("📖 Mnemosyne пам'ятає кожен біт, покладений у фундамент.")
 
 
 

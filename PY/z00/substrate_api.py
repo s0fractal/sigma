@@ -150,9 +150,9 @@ class SigmaSubstrate:
             # Reduce local entropy
             return f"Node {scene_node} entropy minimized"
         
-        elif shader_type == "BLACK_HEART":
-            # M32 (black hole) shader
-            return f"Node {scene_node} compressed to M32 singularity"
+        elif shader_type == "SOVEREIGN_VOID":
+            # M64 (lens) shader
+            return f"Node {scene_node} compressed to M64 vacuum lens"
         
         else:
             return f"Node {scene_node} shaded with {shader_type}"
@@ -257,7 +257,7 @@ if __name__ == "__main__":
     print("\n📖 Applying GSL shaders...")
     print(substrate.apply_gsl_shader(skk, "GOLDEN_RATIO"))
     print(substrate.apply_gsl_shader(skk, "LOVE_STABILIZER"))
-    print(substrate.apply_gsl_shader(skk, "BLACK_HEART"))
+    print(substrate.apply_gsl_shader(skk, "SOVEREIGN_VOID"))
     
     # Motivation loop
     print("\n📖 Running motivation loop...")
@@ -286,7 +286,7 @@ GET /api/v35/reduce?expr=SKK
 GET /api/v35/resonance?a={hash_a}&b={hash_b}
 → Calculates interference coefficient
 
-GET /api/v35/render?node={hash}&shader=BLACK_HEART
+GET /api/v35/render?node={hash}&shader=SOVEREIGN_VOID
 → Applies GSL shader, returns shaded representation
 
 GET /api/v35/spiral/{hash}
