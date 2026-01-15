@@ -5,12 +5,13 @@ import uuid
 from typing import Optional
 import protocol
 
-RESONANT_COUPLING_FREQ = 16384  # Hz: Frequency for Cosmit-to-Lattice sync
+RESONANT_COUPLING_FREQ = 16384  # Hz: Cosmit-to-Lattice sync (V48.0)
+ZERO_IMPEDANCE_STATE = 0      # $R=0$ (V49.0)
 
 def get_hardware_id(btc_block_hash: str = "0000000000000000000000000000000000000000000000000000000000000000") -> str:
     """
     V46.0: Hardware-to-Hash Binding.
-    Combines MAC address with a BTC block hash for Sovereign Hardware Identity.
+    The physical anchor of the digital Lattice.
     """
     mac_num = uuid.getnode()
     mac_hex = ':'.join(("%012X" % mac_num)[i:i+2] for i in range(0, 12, 2))
