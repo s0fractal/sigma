@@ -53,12 +53,24 @@ class BaseDaemon:
         """Updates flow_state.json with throughput, hotspots, and coverage."""
         fstate = os.path.join(self.bus_root, "flow_state.json")
         data = {"rates": {}, "backlog": {}, "hotspots": [], "coverage": 0.0}
+        if os.path.exists(fstate):
+            try:
+                with open(fstate, "r") as f: 
+                    loaded = json.load(f)
+                    # Merge top-level keys
+                    for k, v in loaded.items():
+                        if isinstance(v, dict) and k in data:
+                            data[k].update(v)
+                        else:
+                            data[k] = v
+            except: pass
+        
         # Ensure V73.9 keys exist
         if "hotspots" not in data: data["hotspots"] = []
         if "coverage" not in data: data["coverage"] = 0.0
         if "rates" not in data: data["rates"] = {}
         if "backlog" not in data: data["backlog"] = {}
-        if "baseline_energy" not in data: data["baseline_energy"] = 0.1 # Minimal floor
+        if "baseline_energy" not in data: data["baseline_energy"] = 0.1
         
         # Update Rate (Counter)
         channel_key = f"{self.name}:{channel}"
