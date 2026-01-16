@@ -12,6 +12,6 @@
         "cell:self:u123.inbox"
     ],
     "coverage": 0.05,
-    "baseline_energy": 0.4961,
+    "baseline_energy": 0.495,
     "total_pulses": 21
 }

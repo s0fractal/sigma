@@ -5,6 +5,7 @@ from kml_generator import KMLGenerator
 import os
 import ast
 import time
+import json
 
 class EthicsDaemon(BaseDaemon):
     """Journal -> Concord: The Pulse of Discernment."""
