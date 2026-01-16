@@ -1,16 +1,30 @@
 import xml.etree.ElementTree as ET
 from typing import List, Tuple
 import time
+from pathlib import Path
 
 class KMLGenerator:
     """Generates a privacy-first intent_world.kml for planetary visualization."""
-    def __init__(self, name: str = "Σ-Intent World"):
-        self.kml = ET.Element("kml", xmlns="http://www.opengis.net/kml/2.2")
-        self.document = ET.SubElement(self.kml, "Document")
+    # IntentAxisSeed: Deterministic vertical vector (UP)
+    INTENT_AXIS_SEED = {"heading": 0, "tilt": 0, "roll": 0}
+
+    def __init__(self, name: str = "Σ-Intent World", description: str = ""):
+        self.root = ET.Element("kml", xmlns="http://www.opengis.net/kml/2.2")
+        self.document = ET.SubElement(self.root, "Document")
         ET.SubElement(self.document, "name").text = name
-        
-        # Styles
+        if description: ET.SubElement(self.document, "description").text = description
         self._add_styles()
+
+    def set_view(self, lat: float, lon: float, alt: float, heading: float = 0, tilt: float = 0, range: float = 1000):
+        """Sets the default LookAt view (The Architect's Focus)."""
+        lookat = ET.SubElement(self.document, "LookAt")
+        ET.SubElement(lookat, "longitude").text = str(lon)
+        ET.SubElement(lookat, "latitude").text = str(lat)
+        ET.SubElement(lookat, "altitude").text = str(alt)
+        ET.SubElement(lookat, "heading").text = str(heading)
+        ET.SubElement(lookat, "tilt").text = str(tilt)
+        ET.SubElement(lookat, "range").text = str(range)
+        ET.SubElement(lookat, "altitudeMode").text = "relativeToGround"
 
     def _add_styles(self):
         # Resonance Style (Glow)
@@ -36,18 +50,83 @@ class KMLGenerator:
         ET.SubElement(icon, "color").text = "ff0000ff" # Red
         ET.SubElement(icon, "scale").text = "1.2"
 
-    def add_placemark(self, name: str, lat: float, lon: float, height: float = 0, 
-                      style: str = "#resonance_style", description: str = ""):
-        """Adds a localized frequency point."""
-        pm = ET.SubElement(self.document, "Placemark")
-        if name: ET.SubElement(pm, "name").text = name
-        if description: ET.SubElement(pm, "description").text = description
-        ET.SubElement(pm, "styleUrl").text = style
+        # Cloudy Style (MODEL/Unverified Geo)
+        style = ET.SubElement(self.document, "Style", id="cloudy_style")
+        icon = ET.SubElement(style, "IconStyle")
+        ET.SubElement(icon, "color").text = "88ffffff" # Translucent White
+        ET.SubElement(icon, "scale").text = "0.8"
+
+    def project_sigma_id(self, sigma_id: Tuple[int, str, str, str]) -> Tuple[float, float, float]:
+        """Projects ΣID (T,S,C,F) to Lens coordinates with Crystallization Height."""
+        T, S, C, F = sigma_id
         
+        # S (Shell) mapping to altitude
+        shell_alt = {
+            "cloud": 5000,
+            "sea": 1500,
+            "soil": 0
+        }
+        alt_base = shell_alt.get(str(S).lower(), 1000)
+        
+        # C (Cell) mapping
+        base_lat, base_lon = 46.6, 32.6
+        # If it's a self-cell, it might not have a lat/lon unless linked
+        # For the demo, we map cell IDs to offsets
+        lat_off = hash(C) % 100 * 0.001
+        lon_off = hash(F) % 100 * 0.001
+            
+        return base_lat + lat_off, base_lon + lon_off, alt_base + (T * 10)
+
+    def add_placemark(self, name: str, sigma_id: Tuple[int, str, str, str], 
+                      style: str = "#default", description: str = "", links: dict = None):
+        """Adds a placemark with Dual-Addressing support (V72.1)."""
+        lat, lon, alt = self.project_sigma_id(sigma_id)
+        
+        # Override with Geo-Link if available
+        if links and "geo" in links:
+             geo_data = links["geo"]
+             if isinstance(geo_data, list):
+                 # V72.1 Cluster: Pick first or average for the simple marker
+                 coord_str, _ = geo_data[0]
+                 coords = coord_str.split(",")
+             else:
+                 coords = geo_data.split(",")
+             lat, lon = float(coords[0]), float(coords[1])
+        elif links and "geo_model" in links:
+             # Virtual geo
+             coords = links["geo_model"].split(",")
+             lat, lon = float(coords[0]), float(coords[1])
+             style = "#cloudy_style" # Cloud/Model style
+
+        pm = ET.SubElement(self.document, "Placemark")
+        if name: ET.SubElement(pm, "name").text = str(name)
+        ET.SubElement(pm, "styleUrl").text = style
+        if description: ET.SubElement(pm, "description").text = description
+        
+        # Orient using the Frame (F) - Deterministic projection
+        lookat = ET.SubElement(pm, "LookAt")
+        ET.SubElement(lookat, "longitude").text = str(lon)
+        ET.SubElement(lookat, "latitude").text = str(lat)
+        ET.SubElement(lookat, "heading").text = str(self.INTENT_AXIS_SEED["heading"])
+        ET.SubElement(lookat, "tilt").text = str(self.INTENT_AXIS_SEED["tilt"])
+        ET.SubElement(lookat, "range").text = "500"
+
         point = ET.SubElement(pm, "Point")
-        ET.SubElement(point, "extrude").text = "1"
         ET.SubElement(point, "altitudeMode").text = "relativeToGround"
-        ET.SubElement(point, "coordinates").text = f"{lon},{lat},{height}"
+        ET.SubElement(point, "coordinates").text = f"{lon},{lat},{alt}"
+
+    def build_tile(self, cell_id: str, bucket_id: int, folder: str = "tiles"):
+        """Saves KML as a specific tile/chunk."""
+        path = Path(folder) / f"tile_{cell_id}_t{bucket_id}.kml"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        self.build_membrane(str(path))
+        return str(path)
+
+    def add_timespan(self, element, start: str, end: str = None):
+        """Adds temporal dimension (The Year/Block focus)."""
+        ts = ET.SubElement(element, "TimeSpan")
+        ET.SubElement(ts, "begin").text = start
+        if end: ET.SubElement(ts, "end").text = end
 
     def add_extruded_polygon(self, coords: List[Tuple[float, float]], height: float, 
                              name: str = "", style: str = "#antenna_style"):
@@ -80,25 +159,77 @@ class KMLGenerator:
         coord_str = " ".join([f"{lon},{lat},{height}" for lat, lon in coords])
         ET.SubElement(line, "coordinates").text = coord_str
 
+    def add_pain_channel(self, claim_sigma: Tuple[int, str, str, str], 
+                         trace_sigma: Tuple[int, str, str, str], 
+                         claim_geo: str, trace_geo: str, severity: float = 0.5, status: str = "OPEN"):
+        """Draws a 'Pain Channel' with Managed Optics (Color Shift)."""
+        pm = ET.SubElement(self.document, "Placemark")
+        ET.SubElement(pm, "name").text = f"PAIN_CHANNEL_{int(time.time())}"
+        
+        style = ET.SubElement(pm, "Style")
+        line = ET.SubElement(style, "LineStyle")
+        # Managed Optics: Purple (Search) -> Turquoise (Resolved)
+        color = "ff880088" if status == "OPEN" else "ffaaaa00" # ABGR: Purple vs Turquoise
+        ET.SubElement(line, "color").text = color
+        ET.SubElement(line, "width").text = str(int(severity * 12))
+        
+        ls = ET.SubElement(pm, "LineString")
+        ET.SubElement(ls, "extrude").text = "1"
+        ET.SubElement(ls, "tessellate").text = "1"
+        ET.SubElement(ls, "altitudeMode").text = "relativeToGround"
+        
+        # Points: Claim (Cloud) and Trace (Soil/Sea)
+        c_lat, c_lon = [float(x) for x in claim_geo.split(",")]
+        t_lat, t_lon = [float(x) for x in trace_geo.split(",")]
+        
+        c_alt = self.project_sigma_id(claim_sigma)[2]
+        t_alt = self.project_sigma_id(trace_sigma)[2]
+        
+        ET.SubElement(ls, "coordinates").text = f"{c_lon},{c_lat},{c_alt} {t_lon},{t_lat},{t_alt}"
+
+    def add_trace_cluster(self, center_geo: str, radius_deg: float = 0.05):
+        """Visualizes a cluster of traces as a protective envelope."""
+        pm = ET.SubElement(self.document, "Placemark")
+        ET.SubElement(pm, "name").text = "TRACE_CLUSTER_ENVELOPE"
+        
+        style = ET.SubElement(pm, "Style")
+        poly = ET.SubElement(style, "PolyStyle")
+        ET.SubElement(poly, "color").text = "4400ffaa" # Very translucent turquoise
+        ET.SubElement(poly, "fill").text = "1"
+        
+        lat, lon = [float(x) for x in center_geo.split(",")]
+        # Square approximation for the sphere/cluster for demo
+        coords = [
+            (lat-radius_deg, lon-radius_deg),
+            (lat+radius_deg, lon-radius_deg),
+            (lat+radius_deg, lon+radius_deg),
+            (lat-radius_deg, lon+radius_deg),
+            (lat-radius_deg, lon-radius_deg)
+        ]
+        
+        pg = ET.SubElement(pm, "Polygon")
+        ET.SubElement(pg, "altitudeMode").text = "relativeToGround"
+        outer = ET.SubElement(pg, "outerBoundaryIs")
+        lr = ET.SubElement(outer, "LinearRing")
+        coord_list = " ".join([f"{lo},{la},100" for la, lo in coords])
+        ET.SubElement(lr, "coordinates").text = coord_list
+
     def build_membrane(self, filename: str):
-        tree = ET.ElementTree(self.kml)
+        tree = ET.ElementTree(self.root)
         with open(filename, "wb") as f:
             tree.write(f, encoding="utf-8", xml_declaration=True)
         print(f"✅ KML Membrane materialized: {filename}")
 
 def test_kml_v01():
-    print("🌐 Testing Gateway KML v0.1...")
-    gen = KMLGenerator()
+    print("🌐 Testing Resonant KML v67.1...")
+    gen = KMLGenerator("Σ-Resonant Test", "Testing 4D focus.")
     
-    # Simulate a few resonance points (e.g. Dnieper Delta)
-    # Latitude/Longitude for Kherson/Delta area
-    gen.add_placemark("Resonance-High", 46.63, 32.61, 5000)
-    gen.add_placemark("Resonance-Mid", 46.5, 32.2, 2500)
+    # Polar Star View
+    gen.set_view(46.6, 32.6, 1000, heading=45, tilt=45)
     
-    # Simulate a Pain Marker (Doctor)
-    gen.add_placemark("PAIN-DISCREPANCY", 46.7, 32.8, 1000, style="#pain_style", 
-                      description="Trace Mismatch: Expected sediment, found void.")
-
+    # Resonant Placemark with orientation
+    gen.add_placemark("Resonance-Alpha", 46.63, 32.61, 500, heading=90, tilt=20)
+    
     gen.build_membrane("output.kml")
 
 if __name__ == "__main__":

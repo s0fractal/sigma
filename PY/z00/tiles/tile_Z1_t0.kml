@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>Σ-Ambient Membrane</name><Style id="resonance_style"><LineStyle><color>ff00ffff</color><width>4</width></LineStyle><PolyStyle><color>8800ffff</color><fill>1</fill><outline>1</outline></PolyStyle></Style><Style id="antenna_style"><PolyStyle><color>aa00ffff</color><fill>1</fill><outline>1</outline></PolyStyle></Style><Style id="pain_style"><IconStyle><color>ff0000ff</color><scale>1.2</scale></IconStyle></Style><LookAt><longitude>32.6</longitude><latitude>46.6</latitude><altitude>5000</altitude><heading>0</heading><tilt>45</tilt><range>2000</range><altitudeMode>relativeToGround</altitudeMode></LookAt><Placemark><name>CHAT_INSIGHT_14c21a3d_1768570227</name><styleUrl>#resonance_style</styleUrl><description># Σ-INSIGHT SPORE: 14c21a3d
+SOURCE: architect_chat
+LAYER: MYTH
+TIMESTAMP: 1768570227
+LOCATION: 46.5, 32.5
+
+CONTENT:
+Користувач хоче оперувати репліками замість файлів. Побудувати міст від чату до візу</description><LookAt><longitude>32.6</longitude><latitude>46.6</latitude><heading>0</heading><tilt>0</tilt><range>500</range></LookAt><Point><altitudeMode>relativeToGround</altitudeMode><coordinates>32.6,46.6,1000</coordinates></Point></Placemark><Placemark><name>CHAT_INSIGHT_14c21a3d_1768567906</name><styleUrl>#resonance_style</styleUrl><description># Σ-INSIGHT SPORE: 14c21a3d
+SOURCE: architect_chat
+LAYER: MYTH
+TIMESTAMP: 1768567906
+LOCATION: 46.5, 32.5
+
+CONTENT:
+Користувач хоче оперувати репліками замість файлів. Побудувати міст від чату до візу</description><LookAt><longitude>32.6</longitude><latitude>46.6</latitude><heading>0</heading><tilt>0</tilt><range>500</range></LookAt><Point><altitudeMode>relativeToGround</altitudeMode><coordinates>32.6,46.6,1000</coordinates></Point></Placemark><Placemark><name>CHAT_INSIGHT_14c21a3d_1768571986</name><styleUrl>#resonance_style</styleUrl><description># Σ-INSIGHT SPORE: 14c21a3d
+SOURCE: architect_chat
+LAYER: MYTH
+TIMESTAMP: 1768571986
+LOCATION: 46.5, 32.5
+
+CONTENT:
+Користувач хоче оперувати репліками замість файлів. Побудувати міст від чату до візу</description><LookAt><longitude>32.6</longitude><latitude>46.6</latitude><heading>0</heading><tilt>0</tilt><range>500</range></LookAt><Point><altitudeMode>relativeToGround</altitudeMode><coordinates>32.6,46.6,1000</coordinates></Point></Placemark><Placemark><name>PORT_STATUS</name><styleUrl>#resonance_style</styleUrl><description>LOCATION: 46.621, 32.611
+TRACE: 45m3/s
+MSG: Stable flow at Port.
+</description><LookAt><longitude>32.6</longitude><latitude>46.6</latitude><heading>0</heading><tilt>0</tilt><range>500</range></LookAt><Point><altitudeMode>relativeToGround</altitudeMode><coordinates>32.6,46.6,1000</coordinates></Point></Placemark><Placemark><name>CHAT_INSIGHT_14c21a3d_1768569139</name><styleUrl>#resonance_style</styleUrl><description># Σ-INSIGHT SPORE: 14c21a3d
+SOURCE: architect_chat
+LAYER: MYTH
+TIMESTAMP: 1768569139
+LOCATION: 46.5, 32.5
+
+CONTENT:
+Користувач хоче оперувати репліками замість файлів. Побудувати міст від чату до візу</description><LookAt><longitude>32.6</longitude><latitude>46.6</latitude><heading>0</heading><tilt>0</tilt><range>500</range></LookAt><Point><altitudeMode>relativeToGround</altitudeMode><coordinates>32.6,46.6,1000</coordinates></Point></Placemark><Placemark><name>CHAT_INSIGHT_14c21a3d_1768570258</name><styleUrl>#resonance_style</styleUrl><description># Σ-INSIGHT SPORE: 14c21a3d
+SOURCE: architect_chat
+LAYER: MYTH
+TIMESTAMP: 1768570258
+LOCATION: 46.5, 32.5
+
+CONTENT:
+Користувач хоче оперувати репліками замість файлів. Побудувати міст від чату до візу</description><LookAt><longitude>32.6</longitude><latitude>46.6</latitude><heading>0</heading><tilt>0</tilt><range>500</range></LookAt><Point><altitudeMode>relativeToGround</altitudeMode><coordinates>32.6,46.6,1000</coordinates></Point></Placemark><Placemark><name>CHAT_INSIGHT_14c21a3d_1768567944</name><styleUrl>#resonance_style</styleUrl><description># Σ-INSIGHT SPORE: 14c21a3d
+SOURCE: architect_chat
+LAYER: MYTH
+TIMESTAMP: 1768567944
+LOCATION: 46.5, 32.5
+
+CONTENT:
+Користувач хоче оперувати репліками замість файлів. Побудувати міст від чату до візу</description><LookAt><longitude>32.6</longitude><latitude>46.6</latitude><heading>0</heading><tilt>0</tilt><range>500</range></LookAt><Point><altitudeMode>relativeToGround</altitudeMode><coordinates>32.6,46.6,1000</coordinates></Point></Placemark><Placemark><name>CONCORD_RESOLUTION_e85a0d7293</name><styleUrl>#pain_style</styleUrl><description># Σ-CONCORD RESOLUTION: e85a0d7293
+TARGET_DISSONANCE: DISCORD_PAIN_01
+STATUS: RESOLVED
+MESSAGE: Pain marker downgraded to Homeostatic Noise.
+LAYER: MODEL
+TIMESTAMP: 1768572073.542351
+
+# Σ-PoI: e85a0d7</description><LookAt><longitude>32.6</longitude><latitude>46.6</latitude><heading>0</heading><tilt>0</tilt><range>500</range></LookAt><Point><altitudeMode>relativeToGround</altitudeMode><coordinates>32.6,46.6,1000</coordinates></Point></Placemark><Placemark><name>TILED_TEST_01</name><styleUrl>#resonance_style</styleUrl><description># Σ-SPORE: TILED_TEST_01
+ΣID: (0, 1, "Z1", "UP")
+CONTENT: This is a tiled test for cell Z1. Verify that tile_Z1_t0.kml is created.
+LAYER: TRACE
+# Σ-PoI: tiled_test_v70
+</description><LookAt><longitude>32.6</longitude><latitude>46.61</latitude><heading>0</heading><tilt>0</tilt><range>500</range></LookAt><Point><altitudeMode>relativeToGround</altitudeMode><coordinates>32.6,46.61,1000</coordinates></Point></Placemark></Document></kml>

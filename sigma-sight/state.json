@@ -1,0 +1,215 @@
+{
+  "status": "AMBIENT PULSE ACTIVE",
+  "metrics": {
+    "conductance": 0.9998,
+    "anchors": 1253,
+    "pain": 0.12
+  },
+  "spores": [
+    {
+      "id": "CHAT_INSIGHT_14c21a3d_1768569139",
+      "ts": "16:40:50",
+      "content": "# \u03a3-INSIGHT SPORE: 14c21a3d\nSOURCE: architect_chat\nLAYER: MYTH\nTIMESTAMP: 1768569139\nLOCATION: 46.5,",
+      "type": "trace",
+      "sigma_id": [
+        0,
+        1,
+        "Z0",
+        "UP"
+      ],
+      "links": {},
+      "discrepancy": null,
+      "pos": [
+        46.664,
+        32.658
+      ]
+    },
+    {
+      "id": "CHAT_INSIGHT_14c21a3d_1768570910",
+      "ts": "16:40:50",
+      "content": "# \u03a3-INSIGHT SPORE: 14c21a3d\nSOURCE: architect_chat\nLAYER: MYTH\nTIMESTAMP: 1768570910\nLOCATION: 46.5,",
+      "type": "trace",
+      "sigma_id": [
+        0,
+        1,
+        "Z0",
+        "UP"
+      ],
+      "links": {},
+      "discrepancy": null,
+      "pos": [
+        46.664,
+        32.658
+      ]
+    },
+    {
+      "id": "CHAT_INSIGHT_14c21a3d_1768571986",
+      "ts": "16:40:50",
+      "content": "# \u03a3-INSIGHT SPORE: 14c21a3d\nSOURCE: architect_chat\nLAYER: MYTH\nTIMESTAMP: 1768571986\nLOCATION: 46.5,",
+      "type": "trace",
+      "sigma_id": [
+        0,
+        1,
+        "Z0",
+        "UP"
+      ],
+      "links": {},
+      "discrepancy": null,
+      "pos": [
+        46.664,
+        32.658
+      ]
+    },
+    {
+      "id": "CONCORD_RESOLUTION_e85a0d7293",
+      "ts": "16:40:50",
+      "content": "# \u03a3-CONCORD RESOLUTION: e85a0d7293\nTARGET_DISSONANCE: DISCORD_PAIN_01\nSTATUS: RESOLVED\nMESSAGE: Pain",
+      "type": "anomaly",
+      "sigma_id": [
+        0,
+        1,
+        "Z0",
+        "UP"
+      ],
+      "links": {},
+      "discrepancy": null,
+      "pos": [
+        46.664,
+        32.658
+      ]
+    },
+    {
+      "id": "CHAT_INSIGHT_14c21a3d_1768570258",
+      "ts": "16:40:50",
+      "content": "# \u03a3-INSIGHT SPORE: 14c21a3d\nSOURCE: architect_chat\nLAYER: MYTH\nTIMESTAMP: 1768570258\nLOCATION: 46.5,",
+      "type": "trace",
+      "sigma_id": [
+        0,
+        1,
+        "Z0",
+        "UP"
+      ],
+      "links": {},
+      "discrepancy": null,
+      "pos": [
+        46.664,
+        32.658
+      ]
+    },
+    {
+      "id": "CHAT_INSIGHT_14c21a3d_1768567906",
+      "ts": "16:40:50",
+      "content": "# \u03a3-INSIGHT SPORE: 14c21a3d\nSOURCE: architect_chat\nLAYER: MYTH\nTIMESTAMP: 1768567906\nLOCATION: 46.5,",
+      "type": "trace",
+      "sigma_id": [
+        0,
+        1,
+        "Z0",
+        "UP"
+      ],
+      "links": {},
+      "discrepancy": null,
+      "pos": [
+        46.664,
+        32.658
+      ]
+    },
+    {
+      "id": "V72_1_SYMBOLIC",
+      "ts": "16:40:50",
+      "content": "# \u03a3-SPORE: SYMBOLIC_KYIV\n\u03a3ID: (30, \"cloud\", \"self:u123.myth.spirit\", \"user:u123\")\nGEO_MODEL: 45.42, ",
+      "type": "trace",
+      "sigma_id": [
+        30,
+        "cloud",
+        "self:u123.myth.spirit",
+        "user:u123"
+      ],
+      "links": {
+        "geo_model": "45.42, 30.52"
+      },
+      "discrepancy": null,
+      "pos": [
+        46.644,
+        32.67
+      ]
+    },
+    {
+      "id": "V72_1_CLUSTER",
+      "ts": "16:40:50",
+      "content": "# \u03a3-SPORE: CLUSTER_TRACES\n\u03a3ID: (35, \"soil\", \"self:u123.event.cluster42\", \"user:u123\")\nGEO: [(\"49.83,",
+      "type": "anomaly",
+      "sigma_id": [
+        35,
+        "soil",
+        "self:u123.event.cluster42",
+        "user:u123"
+      ],
+      "links": {
+        "geo": [
+          [
+            "49.83, 24.02",
+            1.0
+          ],
+          [
+            "49.84, 24.03",
+            0.5
+          ],
+          [
+            "49.82, 24.01",
+            0.8
+          ]
+        ],
+        "geo_model": "45.42, 30.52"
+      },
+      "discrepancy": {
+        "type": "ATTRIBUTION_MISMATCH",
+        "claim": "45.42, 30.52",
+        "trace_center": "49.82869565217391,24.018695652173914",
+        "severity": 1.0,
+        "status": "OPEN",
+        "claim_type": "literal"
+      },
+      "pos": [
+        46.694,
+        32.67
+      ]
+    },
+    {
+      "id": "CHAT_INSIGHT_14c21a3d_1768567944",
+      "ts": "16:40:50",
+      "content": "# \u03a3-INSIGHT SPORE: 14c21a3d\nSOURCE: architect_chat\nLAYER: MYTH\nTIMESTAMP: 1768567944\nLOCATION: 46.5,",
+      "type": "trace",
+      "sigma_id": [
+        0,
+        1,
+        "Z0",
+        "UP"
+      ],
+      "links": {},
+      "discrepancy": null,
+      "pos": [
+        46.664,
+        32.658
+      ]
+    },
+    {
+      "id": "PORT_STATUS",
+      "ts": "16:40:50",
+      "content": "LOCATION: 46.621, 32.611\nTRACE: 45m3/s\nMSG: Stable flow at Port.\n",
+      "type": "trace",
+      "sigma_id": [
+        0,
+        1,
+        "Z0",
+        "UP"
+      ],
+      "links": {},
+      "discrepancy": null,
+      "pos": [
+        46.664,
+        32.658
+      ]
+    }
+  ]
+}

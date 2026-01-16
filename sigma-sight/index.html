@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Σ-SIGMA // Sigma-Sight</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --accent-cyan: #00f3ff;
+            --accent-red: #ff3e3e;
+            --accent-gold: #ffbd3e;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Terminal Sidebar */
+        .sidebar {
+            width: 320px;
+            background: rgba(0, 0, 0, 0.8);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--accent-cyan);
+            margin: 0;
+            text-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .status-badge {
+            font-size: 0.7rem;
+            background: var(--accent-gold);
+            color: black;
+            padding: 2px 6px;
+            border-radius: 2px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .feed {
+            flex-grow: 1;
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .feed-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: var(--glass-bg);
+            border-left: 2px solid var(--accent-cyan);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .feed-item.pain { border-left-color: var(--accent-red); }
+        .feed-item.myth { border-left-color: var(--accent-gold); }
+
+        .feed-title {
+            font-weight: bold;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feed-ts { opacity: 0.4; font-size: 0.6rem; }
+
+        /* Main Viewport */
+        .main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .map-proxy {
+            flex-grow: 1;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .lattice-viz {
+            width: 400px;
+            height: 400px;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            position: relative;
+            animation: rotate 120s linear infinite;
+        }
+
+        .node {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 0 15px var(--accent-cyan);
+            transition: all 0.5s ease;
+        }
+
+        .node.pain {
+            background: var(--accent-red);
+            box-shadow: 0 0 15px var(--accent-red);
+        }
+
+        /* Bottom HUD */
+        .hud {
+            height: 100px;
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            gap: 60px;
+        }
+
+        .metric {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .metric-label { font-size: 0.6rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 2px; }
+        .metric-value { font-size: 1.5rem; font-family: 'JetBrains Mono', monospace; color: var(--accent-cyan); margin-top: 5px; }
+
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="header">
+            <h1>Σ-SIGMA SIGHT</h1>
+            <div id="hub-status" class="status-badge">METABOLIC STANDBY</div>
+        </div>
+        
+        <div class="feed" id="spore-feed">
+            <!-- Dynamic Spores here -->
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="map-proxy">
+            <div class="lattice-viz" id="lattice">
+                <!-- Dynamic Nodes here -->
+            </div>
+        </div>
+
+        <div class="hud">
+            <div class="metric">
+                <div class="metric-label">Conductance (C)</div>
+                <div id="m-conductance" class="metric-value">---</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Trace Anchors</div>
+                <div id="m-anchors" class="metric-value">---</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Pain Index (ΣP)</div>
+                <div id="m-pain" class="metric-value">---</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function updateDashboard() {
+            try {
+                const response = await fetch('state.json');
+                const state = await response.json();
+                
+                document.getElementById('hub-status').innerText = state.status;
+                document.getElementById('m-conductance').innerText = state.metrics.conductance.toFixed(4);
+                document.getElementById('m-anchors').innerText = state.metrics.anchors;
+                document.getElementById('m-pain').innerText = state.metrics.pain.toFixed(2);
+                document.getElementById('m-pain').style.color = state.metrics.pain > 0.5 ? 'var(--accent-red)' : 'var(--accent-cyan)';
+
+                // Update Feed
+                const feed = document.getElementById('spore-feed');
+                feed.innerHTML = state.spores.reverse().map(s => `
+                    <div class="feed-item ${s.type}">
+                        <div class="feed-title"><span>${s.id}</span> <span class="feed-ts">${s.ts}</span></div>
+                        <div style="font-size: 0.7rem; opacity: 0.8;">${s.content}</div>
+                    </div>
+                `).join('');
+
+                // Update Lattice
+                const lattice = document.getElementById('lattice');
+                lattice.innerHTML = state.spores.map(s => {
+                    // Random-ish position on circle for viz
+                    const angle = Math.random() * Math.PI * 2;
+                    const r = 100 + Math.random() * 80;
+                    const x = 200 + r * Math.cos(angle);
+                    const y = 200 + r * Math.sin(angle);
+                    return `<div class="node ${s.type}" style="top: ${y}px; left: ${x}px;"></div>`;
+                }).join('');
+
+            } catch (err) {
+                console.log("Waiting for state sync...");
+            }
+        }
+
+        setInterval(updateDashboard, 1000);
+        updateDashboard();
+    </script>
+</body>
+</html>

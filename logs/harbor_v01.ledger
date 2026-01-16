@@ -1,0 +1,4 @@
+{"ts": "2026-01-16T12:32:11Z", "soul_id": "sigma_agent_01", "incarnation_id": "9dc1e4e7ad7de966", "type": "REQUEST", "details": {"kind": "VIRTUAL_PULSE", "ttl": 24}, "digest": "d030ab5c21f76c5f7673c25a33e4e29ced4f5f843b5d863cb7162e42fc45734c"}
+{"ts": "2026-01-16T12:32:11Z", "soul_id": "sigma_agent_01", "incarnation_id": "9dc1e4e7ad7de966", "type": "GRANT", "details": {}, "digest": "a7650d075ff99a11867767d3cbe42f4bd893a6dad727eec5846dec6bd6e03ee9"}
+{"ts": "2026-01-16T12:32:11Z", "soul_id": "sigma_agent_01", "incarnation_id": "9dc1e4e7ad7de966", "type": "SNAPSHOT", "details": {"digest": "aec598ff8fa53a3be7932b54ea91e3d9896daca2fb2c36911fc159ac7af59fc2"}, "digest": "31d404b0a149ae2c7d401b05ccbe8e26b7c00950af18f8acaa039e2eb3ab4cf5"}
+{"ts": "2026-01-16T12:32:11Z", "soul_id": "sigma_agent_01", "incarnation_id": "9dc1e4e7ad7de966", "type": "RELEASE", "details": {}, "digest": "2ca743da4725e173c9d24c460273f06c775020ef6781da7089cee951b886f73a"}

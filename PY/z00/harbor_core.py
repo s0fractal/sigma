@@ -15,17 +15,18 @@ class IncarnationState(Enum):
     DELETED = "DELETED"
 
 class Soul:
-    """Represents a digital identity (Soul)."""
-    def __init__(self, soul_id: str, pubkey: str, genome_ref: str):
+    """A digital identity (The Architect's Impulse) with Mandatory Self-Cell."""
+    def __init__(self, soul_id: str, kind: str, sigma_id: Tuple[int, str, str, str] = (0, "cloud", "self:void", "global")):
         self.soul_id = soul_id
-        self.pubkey = pubkey
-        self.genome_ref = genome_ref
+        self.kind = kind
+        self.sigma_id = sigma_id # (T, S, C_self, F)
+        self.incarnations = []
 
     def to_dict(self) -> dict:
         return {
             "soul_id": self.soul_id,
-            "pubkey": self.pubkey,
-            "genome_ref": self.genome_ref
+            "kind": self.kind,
+            "sigma_id": self.sigma_id
         }
 
 class Incarnation:

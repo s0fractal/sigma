@@ -1,0 +1,14 @@
+# Σ-METABOLIC RECIPE: MISMATCH_1768574490
+DOMAIN: Ethics.Spatial.V72.1
+DEFICIT: ATTRIBUTION_MISMATCH
+CLAIM_TYPE: literal
+STATUS: RESOLVED_BY_STRONG_PAIR
+SEVERITY: 1.00
+
+REMEDY:
+1. Conduct a Minimal Test: Seek 3rd anchor or validate STRON_PAIR.
+2. If Strong Pair found (Confidence > 0.9), transition to RESOLVED_BY_STRONG_PAIR.
+3. If Symbolic, retain as MYTH and Dismiss Pain.
+
+# Σ-PoI: 8865498468e7ea57
+SIGMA_PRESCRIPTION_LOCKED
