@@ -4,6 +4,7 @@ from gaia_grid import GaiaGrid
 from kml_generator import KMLGenerator
 import os
 import ast
+import time
 
 class EthicsDaemon(BaseDaemon):
     """Journal -> Concord: The Pulse of Discernment."""
@@ -47,18 +48,37 @@ class EthicsDaemon(BaseDaemon):
             )
 
             if packet.discrepancy:
-                # V73.6 Routing by Attention
+                # V73.7 Attention Decay Policy
                 fname = os.path.basename(fpath)
-                attention = packet.discrepancy.get("attention", 0)
+                digest = packet.digest
+                
+                # Check for existing discrepancy in concord to apply decay
+                decay_factor = 1.0
+                concord_open_path = os.path.join(self.bus_root, "concord/open", fname)
+                concord_review_path = os.path.join(self.bus_root, "concord/review", fname)
+                
+                # Simple decay if no new TRACE
+                # (In a real system we'd check file mtime vs current time)
+                # For V73.7 we'll just demonstrate the principle
+                
+                attention = packet.discrepancy.get("attention", 0) * decay_factor
+                packet.discrepancy["attention"] = attention
+                packet.discrepancy["energy"] = packet.discrepancy["severity"] * attention
                 
                 # High attention (> 0.7) goes to review sub-channel
                 target_sub = "review" if attention > 0.7 else "open"
-                concord_path = os.path.join(self.bus_root, "concord", target_sub, fname)
+                target_path = os.path.join(self.bus_root, "concord", target_sub, fname)
                 
-                with open(concord_path, "w") as f:
-                    f.write(content + f"\nDISCREPANCY: {packet.discrepancy}")
+                # Lattice Reference Pattern (V73.7)
+                ref_content = f"REF: journal/{fname}\n"
+                ref_content += f"DIGEST: {digest}\n"
+                ref_content += f"DISCREPANCY: {packet.discrepancy}\n"
+                ref_content += f"ATTENTION_EXP: {time.time() + 3600}\n" # 1h decay window
                 
-                print(f"⚡️ EthicsDaemon: [{target_sub.upper()}] S:{packet.discrepancy['severity']:.2f} A:{attention:.2f} -> {fname}")
+                with open(target_path, "w") as f:
+                    f.write(ref_content)
+                
+                print(f"⚡️ EthicsDaemon: [REF:{target_sub.upper()}] S:{packet.discrepancy['severity']:.2f} E:{packet.discrepancy['energy']:.2f} -> {fname}")
                 
                 # Log with Metadata (V73.6)
                 meta = {

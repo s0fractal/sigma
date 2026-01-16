@@ -98,6 +98,7 @@ class RealityPacket:
             
             impact_factor = 1.2 if self.layer == TruthLayer.TRACE else 1.0
             attention = severity * impact_factor
+            energy = severity * attention
 
             if severity > 0.2: # Threshold
                 self.discrepancy = {
@@ -107,10 +108,12 @@ class RealityPacket:
                     "cluster": self.trace_cluster,
                     "severity": min(1.0, severity),
                     "attention": min(1.0, attention),
+                    "energy": min(1.0, energy),
                     "status": "OPEN",
-                    "claim_type": self.claim_type
+                    "claim_type": self.claim_type,
+                    "last_trace_mtime": time.time()
                 }
-                print(f"🔮 Ethics: V73.6 Mismatch -> S:{severity:.2f} A:{attention:.2f}")
+                print(f"🔮 Ethics: V73.7 Mismatch -> S:{severity:.2f} A:{attention:.2f} E:{energy:.2f}")
 
     def _generate_digest(self) -> str:
         # This method is no longer called by __init__ based on the provided snippet.

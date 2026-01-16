@@ -82,10 +82,11 @@ class BaseDaemon:
                     data["hotspots"].append(metadata["hotspot"])
                     data["hotspots"] = data["hotspots"][-5:] # Keep top 5
             if "has_trace" in metadata:
-                # Weighted moving average for coverage
+                # V73.7 Rolling Coverage (Alpha=0.05 for stability)
                 prev_cov = data.get("coverage", 0.0)
                 is_trace = 1.0 if metadata["has_trace"] else 0.0
-                data["coverage"] = (prev_cov * 0.9) + (is_trace * 0.1)
+                # Smooth the signal to avoid hysterical fluctuations
+                data["coverage"] = round((prev_cov * 0.95) + (is_trace * 0.05), 4)
             
         with open(fstate, "w") as f:
             json.dump(data, f, indent=4)
