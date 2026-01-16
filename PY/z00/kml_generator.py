@@ -161,17 +161,25 @@ class KMLGenerator:
 
     def add_pain_channel(self, claim_sigma: Tuple[int, str, str, str], 
                          trace_sigma: Tuple[int, str, str, str], 
-                         claim_geo: str, trace_geo: str, severity: float = 0.5, status: str = "OPEN"):
-        """Draws a 'Pain Channel' with Managed Optics (Color Shift)."""
+                         claim_geo: str, trace_geo: str, 
+                         severity: float = 0.5, attention: float = 0.5, energy: float = 0.5,
+                         status: str = "OPEN"):
+        """V73.8: Visual semantics (Width=Energy, Opacity=Attention)."""
         pm = ET.SubElement(self.document, "Placemark")
-        ET.SubElement(pm, "name").text = f"PAIN_CHANNEL_{int(time.time())}"
+        ET.SubElement(pm, "name").text = f"PAIN:{status}"
         
         style = ET.SubElement(pm, "Style")
         line = ET.SubElement(style, "LineStyle")
-        # Managed Optics: Purple (Search) -> Turquoise (Resolved)
-        color = "ff880088" if status == "OPEN" else "ffaaaa00" # ABGR: Purple vs Turquoise
-        ET.SubElement(line, "color").text = color
-        ET.SubElement(line, "width").text = str(int(severity * 12))
+        
+        # Color Logic (AABBGGRR)
+        base_color = "0000ff" # Red
+        if status == "RESOLVED": base_color = "00ff00" # Green
+        elif status == "COOLED": base_color = "aaaaaa" # Grey
+        
+        # Map Attention to Opacity (88 to ff)
+        alpha = hex(int(136 + (attention * 119)))[2:].zfill(2)
+        ET.SubElement(line, "color").text = f"{alpha}{base_color}"
+        ET.SubElement(line, "width").text = str(2 + (energy * 10))
         
         ls = ET.SubElement(pm, "LineString")
         ET.SubElement(ls, "extrude").text = "1"

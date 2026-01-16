@@ -5,11 +5,11 @@ geo_claim: 49.85, 24.04
 CONTENT: Low Energy Minor
 
 DIGEST: 13142552cd59b5a4
-SOURCE: daemon:normalizer</description><LookAt><longitude>32.619</longitude><latitude>46.658</latitude><heading>0</heading><tilt>0</tilt><range>500</range></LookAt><Point><altitudeMode>relativeToGround</altitudeMode><coordinates>32.619,46.658,176859570</coordinates></Point></Placemark><Placemark><name>V73_8_SYMBOL.sigma</name><styleUrl>#default</styleUrl><description>ΣID: (17685807, 'sea', 'self:u123.inbox', 'user:u123')
+SOURCE: daemon:normalizer</description><LookAt><longitude>32.695</longitude><latitude>46.662</latitude><heading>0</heading><tilt>0</tilt><range>500</range></LookAt><Point><altitudeMode>relativeToGround</altitudeMode><coordinates>32.695,46.662,176859570</coordinates></Point></Placemark><Placemark><name>V73_8_SYMBOL.sigma</name><styleUrl>#default</styleUrl><description>ΣID: (17685807, 'sea', 'self:u123.inbox', 'user:u123')
 geo_trace: 50.45, 30.52
 geo_claim: 44.83, 24.02
 CLAIM_TYPE: symbolic
 CONTENT: Symbol Case
 
 DIGEST: 59094a010a8df4e7
-SOURCE: daemon:normalizer</description><LookAt><longitude>32.619</longitude><latitude>46.658</latitude><heading>0</heading><tilt>0</tilt><range>500</range></LookAt><Point><altitudeMode>relativeToGround</altitudeMode><coordinates>32.619,46.658,176859570</coordinates></Point></Placemark></Document></kml>
+SOURCE: daemon:normalizer</description><LookAt><longitude>32.695</longitude><latitude>46.662</latitude><heading>0</heading><tilt>0</tilt><range>500</range></LookAt><Point><altitudeMode>relativeToGround</altitudeMode><coordinates>32.695,46.662,176859570</coordinates></Point></Placemark></Document></kml>
