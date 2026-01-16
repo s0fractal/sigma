@@ -22,11 +22,14 @@ class EthicsDaemon(BaseDaemon):
         
         # Load flow state for baseline (V73.9)
         baseline = 0.1
+        total_pulses = 0
         fstate_path = os.path.join(self.bus_root, "flow_state.json")
         if os.path.exists(fstate_path):
             try:
                 with open(fstate_path, "r") as f:
-                    baseline = json.load(f).get("baseline_energy", 0.1)
+                    fstate = json.load(f)
+                    baseline = fstate.get("baseline_energy", 0.1)
+                    total_pulses = fstate.get("total_pulses", 0)
             except: pass
 
         # 1. First pass: Parse and calculate current energy
@@ -63,10 +66,13 @@ class EthicsDaemon(BaseDaemon):
                 # Apply V73.8 Decay
                 packet.apply_metabolic_decay(time.time())
                 
-                # V73.9: Auto-Cooling based on Baseline
+                # V73.9.1: Auto-Cooling with Warm-up & Quiet State Semantics
                 energy = packet.discrepancy.get("energy", 0)
-                if energy < (baseline * 0.5):
+                if total_pulses > 10 and energy < (baseline * 0.5):
                     packet.discrepancy["status"] = "COOLED"
+                    packet.discrepancy["attention"] = 0.0
+                    packet.discrepancy["energy"] = 0.0
+                    packet.discrepancy["cool_reason"] = "baseline_below_threshold"
                     print(f"❄️ Ethics: Auto-cooling minor noise ({energy:.2f} < {baseline*0.5:.2f}) -> {os.path.basename(fpath)}")
                 
                 spores_to_process.append((fpath, mtime, packet))
@@ -85,15 +91,14 @@ class EthicsDaemon(BaseDaemon):
             current_energy += energy
             fname = os.path.basename(fpath)
             attention = packet.discrepancy.get("attention", 0)
-            status = packet.discrepancy.get("status", "OPEN")
-            
-            # Skip escalation if cooled but still log for metrics (V73.9)
+            # Transition to escalation (V73.9.1: COOLED items flow as quiet refs)
+            target_sub = "open"
             if status == "COOLED":
-                self._set_checkpoint("journal", mtime)
-                continue
+                # Escalate as a quiet reference to 'open', but with zero attention
+                target_sub = "open"
+            else:
+                target_sub = "review" if attention > 0.7 else "open"
 
-            # Lattice Reference Pattern (V73.7)
-            target_sub = "review" if attention > 0.7 else "open"
             target_path = os.path.join(self.bus_root, "concord", target_sub, fname)
             
             ref_content = f"REF: journal/{fname}\n"
@@ -104,7 +109,8 @@ class EthicsDaemon(BaseDaemon):
             with open(target_path, "w") as f:
                 f.write(ref_content)
             
-            print(f"⚡️ Ethics: [REF:{target_sub.upper()}] E:{energy:.2f} -> {fname}")
+            pfx = "❄️" if status == "COOLED" else "⚡️"
+            print(f"{pfx} Ethics: [REF:{target_sub.upper()}] E:{energy:.2f} -> {fname}")
             
             # Log with Metadata (V73.9 includes energy for baseline)
             meta = {

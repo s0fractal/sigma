@@ -65,12 +65,13 @@ class BaseDaemon:
                             data[k] = v
             except: pass
         
-        # Ensure V73.9 keys exist
+        # Ensure V73.9.1 keys exist
         if "hotspots" not in data: data["hotspots"] = []
         if "coverage" not in data: data["coverage"] = 0.0
         if "rates" not in data: data["rates"] = {}
         if "backlog" not in data: data["backlog"] = {}
         if "baseline_energy" not in data: data["baseline_energy"] = 0.1
+        if "total_pulses" not in data: data["total_pulses"] = 0
         
         # Update Rate (Counter)
         channel_key = f"{self.name}:{channel}"
@@ -99,7 +100,11 @@ class BaseDaemon:
                 prev_baseline = data.get("baseline_energy", 0.1)
                 energy = metadata["energy"]
                 # High inertia: it takes many pulses to change the system's "normality"
-                data["baseline_energy"] = round((prev_baseline * 0.99) + (energy * 0.01), 4)
+                new_baseline = (prev_baseline * 0.99) + (energy * 0.01)
+                # V73.9.1: Clamping [0.1, 10.0]
+                data["baseline_energy"] = round(max(0.1, min(10.0, new_baseline)), 4)
+            
+            data["total_pulses"] = data.get("total_pulses", 0) + 1
             
         with open(fstate, "w") as f:
             json.dump(data, f, indent=4)
