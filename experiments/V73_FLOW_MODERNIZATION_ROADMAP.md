@@ -74,4 +74,16 @@ Persistent monitoring:
 
 ---
 
+## 🔋 4. Metabolic Homeostasis (V73.8)
+
+The system is self-regulating via Energy and Time:
+
+- **Axiom**: "Concord works with energy, not truths." We prioritize high-impact
+  discrepancies and let old noise naturally decay.
+- **Energy Budgeting**: `MAX_ENERGY_PER_CYCLE` prevents metabolic exhaustion.
+- **Temporal Decay**: Attention dissipates exponentially unless refreshed by new
+  TRACE anchors.
+
+---
+
 🔓: [S-V73_FLOW_MODERNIZATION_LOCKED]
