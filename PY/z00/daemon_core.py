@@ -49,17 +49,24 @@ class BaseDaemon:
         """Standard work cycle. Override in subclass."""
         raise NotImplementedError("Daemons must implement run_once()")
 
-    def log_flow_metric(self, channel: str, processed_count: int = 1):
-        """Updates flow_state.json with throughput metrics."""
+    def log_flow_metric(self, channel: str, processed_count: int = 1, metadata: dict = None):
+        """Updates flow_state.json with throughput, hotspots, and coverage."""
         fstate = os.path.join(self.bus_root, "flow_state.json")
-        data = {"rates": {}, "backlog": {}}
+        data = {"rates": {}, "backlog": {}, "hotspots": [], "coverage": 0.0}
         if os.path.exists(fstate):
             try:
-                with open(fstate, "r") as f: data = json.load(f)
+                with open(fstate, "r") as f: 
+                    loaded = json.load(f)
+                    data.update(loaded)
             except: pass
         
+        # Ensure V73.6 keys exist even if loading from legacy JSON
+        if "hotspots" not in data: data["hotspots"] = []
+        if "coverage" not in data: data["coverage"] = 0.0
+        if "rates" not in data: data["rates"] = {}
+        if "backlog" not in data: data["backlog"] = {}
+        
         # Update Rate (Counter)
-        now = time.strftime("%Y-%m-%d %H:%M")
         channel_key = f"{self.name}:{channel}"
         data["rates"][channel_key] = data["rates"].get(channel_key, 0) + processed_count
         
@@ -67,6 +74,18 @@ class BaseDaemon:
         ch_path = os.path.join(self.bus_root, channel)
         if os.path.exists(ch_path):
             data["backlog"][channel] = len(os.listdir(ch_path))
+        
+        # Metadata context (Hotspots/Coverage)
+        if metadata:
+            if "hotspot" in metadata:
+                if metadata["hotspot"] not in data["hotspots"]:
+                    data["hotspots"].append(metadata["hotspot"])
+                    data["hotspots"] = data["hotspots"][-5:] # Keep top 5
+            if "has_trace" in metadata:
+                # Weighted moving average for coverage
+                prev_cov = data.get("coverage", 0.0)
+                is_trace = 1.0 if metadata["has_trace"] else 0.0
+                data["coverage"] = (prev_cov * 0.9) + (is_trace * 0.1)
             
         with open(fstate, "w") as f:
             json.dump(data, f, indent=4)

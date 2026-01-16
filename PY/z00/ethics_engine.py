@@ -91,11 +91,14 @@ class RealityPacket:
             # Geodesic-ish distance (Pain calculation)
             dist = ((center_lat - c_lat)**2 + (center_lon - c_lon)**2)**0.5
             
-            # Severity Logic
+            # Severity & Attention Logic (V73.6)
             severity = dist * self.trace_cluster["confidence"]
             if self.claim_type == "symbolic":
                 severity *= 0.3 # Reduce pain for symbols
             
+            impact_factor = 1.2 if self.layer == TruthLayer.TRACE else 1.0
+            attention = severity * impact_factor
+
             if severity > 0.2: # Threshold
                 self.discrepancy = {
                     "type": "ATTRIBUTION_MISMATCH",
@@ -103,10 +106,11 @@ class RealityPacket:
                     "trace_center": self.trace_cluster["center"],
                     "cluster": self.trace_cluster,
                     "severity": min(1.0, severity),
+                    "attention": min(1.0, attention),
                     "status": "OPEN",
                     "claim_type": self.claim_type
                 }
-                print(f"🔮 Ethics: V73.3 Discrepancy -> {self.claim_type}:{severity:.2f}")
+                print(f"🔮 Ethics: V73.6 Mismatch -> S:{severity:.2f} A:{attention:.2f}")
 
     def _generate_digest(self) -> str:
         # This method is no longer called by __init__ based on the provided snippet.

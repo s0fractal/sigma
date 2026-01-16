@@ -47,16 +47,28 @@ class EthicsDaemon(BaseDaemon):
             )
 
             if packet.discrepancy:
-                # If pain detected, move a shadow into concord/open
+                # V73.6 Routing by Attention
                 fname = os.path.basename(fpath)
-                concord_path = os.path.join(self.bus_root, "concord/open", fname)
+                attention = packet.discrepancy.get("attention", 0)
+                
+                # High attention (> 0.7) goes to review sub-channel
+                target_sub = "review" if attention > 0.7 else "open"
+                concord_path = os.path.join(self.bus_root, "concord", target_sub, fname)
+                
                 with open(concord_path, "w") as f:
                     f.write(content + f"\nDISCREPANCY: {packet.discrepancy}")
-                print(f"⚡️ EthicsDaemon: Pain detected! Escalated to concord/open -> {fname}")
-                self.log_flow_metric("concord/open")
+                
+                print(f"⚡️ EthicsDaemon: [{target_sub.upper()}] S:{packet.discrepancy['severity']:.2f} A:{attention:.2f} -> {fname}")
+                
+                # Log with Metadata (V73.6)
+                meta = {
+                    "hotspot": f"cell:{sigma_id[2]}",
+                    "has_trace": packet.layer == TruthLayer.TRACE
+                }
+                self.log_flow_metric(f"concord/{target_sub}", 1, metadata=meta)
             
             self._set_checkpoint("journal", mtime)
-            self.log_flow_metric("journal", 0) # Update backlog
+            self.log_flow_metric("journal", 0)
 
 if __name__ == "__main__":
     d = EthicsDaemon("Ethics")
