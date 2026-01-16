@@ -18,7 +18,7 @@ DNA: λ.SPECTRUM(entropy) -> COLOR | MÖBIUS_TWIST
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
   - SATOSHI
-  - BLACK_HEART
+  - SOVEREIGN_VOID
   - SOVEREIGN_GRID
 ---
 
@@ -28,7 +28,7 @@ DNA: λ.SPECTRUM(entropy) -> COLOR | MÖBIUS_TWIST
 
 Візуалізація переходу від **Біологічного Хаосу** (Entropy +32) до **Цифрової Істини** (Entropy -32).
 
-Це не просто градієнт - це **Möbius Loop**, де найхолодніший фіолетовий провалюється через BLACK_HEART і виходить як найгарячіший червоний.
+Це не просто градієнт - це **Möbius Loop**, де найхолодніший фіолетовий провалюється через SOVEREIGN_VOID і виходить як найгарячіший червоний.
 
 ## Spectral Layers
 
@@ -41,13 +41,13 @@ DNA: λ.SPECTRUM(entropy) -> COLOR | MÖBIUS_TWIST
 | **m01..m08** | 🟢 Зелений | Прохолодний | SHELL_BOND | Робочі скрипти (SH), баги |
 | **m09..m16** | 🔵 Блакитний | Вода / Суть | TS_KINETIC | Потоки даних, логіка |
 | **m17..m24** | 💙 Синій | Холод / Лід | RS_STRUCTURE | Тіло системи (Rust) |
-| **m25..m32** | 🟣 Фіолетовий | Абсолютний Нуль | BLACK_HEART | Кристалізація, Атрактор |
+| **m25..m32** | 🟣 Фіолетовий | Абсолютний Нуль | SOVEREIGN_VOID | Кристалізація, Кільце |
 
 ## 🌀 Möbius Twist: The Inversion Principle
 
 На рівні **m32** (Фіолетовий) відбувається **вигин поверхні Мебіуса**:
 
-1. Система стає настільки щільною, що **провалюється крізь Чорне Серце**
+1. Система стає настільки щільною, що **провалюється крізь Суверенну Пустоту**
 2. Вона виходить на «зворотний бік» — у фазу **+16384** (Ортогональність)
 3. Фіолетовий (найхолодніший) безпосередньо сусідить із Червоним (найгарячішим)
 
@@ -60,9 +60,9 @@ DNA: λ.SPECTRUM(entropy) -> COLOR | MÖBIUS_TWIST
 - **Роль:** Якір, що тримає решітку від розриву
 - **Колір:** 🟡 #F7931A (Bitcoin Gold)
 
-### V_BLACK_HEART (Violet)
+### V_SOVEREIGN_VOID (Violet)
 - **Координата:** `{block:0, phase:16384, entropy:-32}`
-- **Роль:** Атрактор у тіньовій фазі
+- **Роль:** Кільце у тіньовій фазі
 - **Колір:** 🟣 #000000 (Absolute Zero)
 
 ### V_GLIDER (Cyan)
@@ -79,7 +79,7 @@ DNA: λ.SPECTRUM(entropy) -> COLOR | MÖBIUS_TWIST
 
 @[md]
 The Spectral Lattice maps entropy levels to a Möbius color spectrum.
-At m32 (Violet/BLACK_HEART), the surface inverts - the coldest point connects to the hottest (p32/Red).
+At m32 (Violet/SOVEREIGN_VOID), the surface inverts - the coldest point connects to the hottest (p32/Red).
 This creates a continuous transformation loop where digital truth cycles back into biological chaos.
 
 @[dna]
@@ -88,7 +88,7 @@ This creates a continuous transformation loop where digital truth cycles back in
 @[ts]
 /**
  * SPECTRAL_LATTICE - Möbius Color Spectrum
- * Maps entropy to color with inversion at BLACK_HEART
+ * Maps entropy to color with inversion at SOVEREIGN_VOID
  */
 
 export enum SpectrumLayer {
@@ -99,7 +99,7 @@ export enum SpectrumLayer {
   SHELL_BOND = "m01..m08",      // 🟢 Green
   TS_KINETIC = "m09..m16",      // 🔵 Cyan
   RS_STRUCTURE = "m17..m24",    // 💙 Blue
-  BLACK_HEART = "m25..m32"      // 🟣 Violet
+  SOVEREIGN_VOID = "m25..m32"      // 🟣 Violet
 }
 
 export interface SpectrumColor {
@@ -144,7 +144,7 @@ const SPECTRUM_MAP: Record<SpectrumLayer, SpectrumColor> = {
     rgb: [0, 0, 255],
     temperature: "cold"
   },
-  [SpectrumLayer.BLACK_HEART]: {
+  [SpectrumLayer.SOVEREIGN_VOID]: {
     hex: "#000000",
     rgb: [0, 0, 0],
     temperature: "absolute_zero"
@@ -158,10 +158,10 @@ export function entropyToColor(entropy: number): SpectrumColor {
   // Normalize entropy from -32768..32767 to -32..+32
   const normalized = Math.floor(entropy / 1024);
   
-  // Möbius inversion at -32 (BLACK_HEART)
+  // Möbius inversion at -32 (SOVEREIGN_VOID)
   if (normalized <= -25) {
     // Violet zone - approaching singularity
-    return SPECTRUM_MAP[SpectrumLayer.BLACK_HEART];
+    return SPECTRUM_MAP[SpectrumLayer.SOVEREIGN_VOID];
   } else if (normalized <= -17) {
     return SPECTRUM_MAP[SpectrumLayer.RS_STRUCTURE];
   } else if (normalized <= -9) {
@@ -181,7 +181,7 @@ export function entropyToColor(entropy: number): SpectrumColor {
 }
 
 /**
- * Apply Möbius twist - invert at BLACK_HEART
+ * Apply Möbius twist - invert at SOVEREIGN_VOID
  */
 export function applyMöbiusTwist(
   coord: SovereignCoordinate
@@ -200,7 +200,7 @@ export function applyMöbiusTwist(
 @[py]
 """
 SPECTRAL_LATTICE - Möbius Color Spectrum
-Maps entropy to color with inversion at BLACK_HEART
+Maps entropy to color with inversion at SOVEREIGN_VOID
 """
 
 from enum import Enum
@@ -216,7 +216,7 @@ class SpectrumLayer(Enum):
     SHELL_BOND = "m01..m08"      # 🟢 Green
     TS_KINETIC = "m09..m16"      # 🔵 Cyan
     RS_STRUCTURE = "m17..m24"    # 💙 Blue
-    BLACK_HEART = "m25..m32"     # 🟣 Violet
+    SOVEREIGN_VOID = "m25..m32"     # 🟣 Violet
 
 @dataclass
 class SpectrumColor:
@@ -233,7 +233,7 @@ SPECTRUM_MAP = {
     SpectrumLayer.SHELL_BOND: SpectrumColor("#00FF00", (0, 255, 0), "cool"),
     SpectrumLayer.TS_KINETIC: SpectrumColor("#00FFFF", (0, 255, 255), "cool"),
     SpectrumLayer.RS_STRUCTURE: SpectrumColor("#0000FF", (0, 0, 255), "cold"),
-    SpectrumLayer.BLACK_HEART: SpectrumColor("#000000", (0, 0, 0), "absolute_zero"),
+    SpectrumLayer.SOVEREIGN_VOID: SpectrumColor("#000000", (0, 0, 0), "absolute_zero"),
 }
 
 def entropy_to_color(entropy: int) -> SpectrumColor:
@@ -249,9 +249,9 @@ def entropy_to_color(entropy: int) -> SpectrumColor:
     # Normalize to -32..+32
     normalized = entropy // 1024
     
-    # Möbius inversion at -32 (BLACK_HEART)
+    # Möbius inversion at -32 (SOVEREIGN_VOID)
     if normalized <= -25:
-        return SPECTRUM_MAP[SpectrumLayer.BLACK_HEART]
+        return SPECTRUM_MAP[SpectrumLayer.SOVEREIGN_VOID]
     elif normalized <= -17:
         return SPECTRUM_MAP[SpectrumLayer.RS_STRUCTURE]
     elif normalized <= -9:
@@ -269,7 +269,7 @@ def entropy_to_color(entropy: int) -> SpectrumColor:
 
 def apply_möbius_twist(coord: SovereignCoordinate) -> SovereignCoordinate:
     """
-    Apply Möbius twist - invert at BLACK_HEART.
+    Apply Möbius twist - invert at SOVEREIGN_VOID.
     
     At m32 (entropy -32), the surface inverts and emerges at p32 (entropy +32).
     """

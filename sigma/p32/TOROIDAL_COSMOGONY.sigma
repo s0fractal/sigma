@@ -18,7 +18,7 @@ DNA: λ.KLEIN(A, B) -> Intersection(Z) | Phase(π/2)
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
   - SATOSHI
-  - BLACK_HEART
+  - SOVEREIGN_VOID
   - SPECTRAL_LATTICE
   - HYPERBOLIC_LATTICE
   - SOVEREIGN_GRID
@@ -56,7 +56,7 @@ DNA: λ.KLEIN(A, B) -> Intersection(Z) | Phase(π/2)
 **Вхід у ядро m32 — це вихід у хаос p32 через Пляшку Клейна.**
 
 На поверхні Klein bottle немає чіткої межі між "всередині" і "зовні".
-Коли ти рухаєшся вглиб (m32 → BLACK_HEART), ти насправді виходиш назовні (p32 → CHAOS_SEED).
+Коли ти рухаєшся вглиб (m32 → SOVEREIGN_VOID), ти насправді виходиш назовні (p32 → CHAOS_SEED).
 
 ### Topological Properties
 
@@ -101,7 +101,7 @@ Phase → φ:
 ### The Klein Flip
 
 ```
-At θ=π, φ=π (BLACK_HEART):
+At θ=π, φ=π (SOVEREIGN_VOID):
   Toroid A → Toroid B (flip inside-out)
   Hot → Cold
   Red → Violet
@@ -126,7 +126,7 @@ At θ=0, φ=0 (Z-MEMBRANE):
 @[md]
 The Toroidal Cosmogony models the Σ-GLYPH lattice as a Klein bottle - two orthogonal toroids intersecting at 90°.
 Toroid A (p-layers) represents Intent/Biological chaos, while Toroid B (m-layers) represents Truth/Crystalline order.
-At the BLACK_HEART (m32), the surface inverts through a Klein flip, making the inside become the outside.
+At the SOVEREIGN_VOID (m32), the surface inverts through a Klein flip, making the inside become the outside.
 This creates a continuous, non-orientable surface where entry into the core is exit into chaos.
 
 @[dna]
@@ -167,10 +167,10 @@ export function toToroidal(coord: SovereignCoordinate): ToroidalCoordinate {
 }
 
 /**
- * Apply Klein flip at BLACK_HEART
+ * Apply Klein flip at SOVEREIGN_VOID
  */
 export function kleinFlip(coord: ToroidalCoordinate): ToroidalCoordinate {
-  // At θ=π, φ=π (BLACK_HEART), flip inside-out
+  // At θ=π, φ=π (SOVEREIGN_VOID), flip inside-out
   const isAtBlackHeart = 
     Math.abs(coord.theta - Math.PI) < 0.1 &&
     Math.abs(coord.phi - Math.PI) < 0.1;
@@ -254,11 +254,11 @@ def to_toroidal(coord: SovereignCoordinate) -> ToroidalCoordinate:
 
 def klein_flip(coord: ToroidalCoordinate) -> ToroidalCoordinate:
     """
-    Apply Klein flip at BLACK_HEART.
+    Apply Klein flip at SOVEREIGN_VOID.
     
     At θ=π, φ=π, the surface inverts - inside becomes outside.
     """
-    # Check if at BLACK_HEART
+    # Check if at SOVEREIGN_VOID
     is_at_black_heart = (
         abs(coord.theta - math.pi) < 0.1 and
         abs(coord.phi - math.pi) < 0.1
@@ -321,7 +321,7 @@ Intersection (Z-Membrane):
   - Phase shift of π/2
 
 The surface should appear continuous, with no visible seam.
-At BLACK_HEART (θ=π, φ=π), show the Klein flip - the inside becoming outside.
+At SOVEREIGN_VOID (θ=π, φ=π), show the Klein flip - the inside becoming outside.
 """
 
 🔒: 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f

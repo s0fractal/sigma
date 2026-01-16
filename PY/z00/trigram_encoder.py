@@ -13,38 +13,59 @@ from trigram_reducer import Atom, App, Node, ATOM_ENCODING, TRIGRAM_TO_ATOM
 import hashlib
 
 
-# ============================================================================
-# Encoding: AST → Bitstream
-# ============================================================================
+import json
 
-def encode_to_bits(node: Node) -> str:
+def encode_to_bits(node: Node, shell: Optional[dict] = None) -> str:
     """
     Encode AST to bitstream.
     
     Format:
     - Atom: 0 + trigram (4 bits total)
     - App: 1 + encode(left) + encode(right)
+    - V52.1: If shell provided, prefix with 11 (Semantic Marker) + len(shell_bits) + shell_bits
     
     Example:
     - I → "0000"
     - K → "0001"
     - (K I) → "1" + "0001" + "0000" = "100010000"
     """
+    base_bits = ""
     if isinstance(node, Atom):
-        return "0" + node.trigram
+        base_bits = "0" + node.trigram
     else:  # App
-        return "1" + encode_to_bits(node.left) + encode_to_bits(node.right)
-
-
-def decode_from_bits(bits: str, pos: int = 0) -> tuple[Node, int]:
-    """
-    Decode bitstream to AST.
+        base_bits = "1" + encode_to_bits(node.left) + encode_to_bits(node.right)
+        
+    if shell:
+        # 11 is the Semantic Marker (Interlingua Anchor)
+        shell_str = json.dumps(shell, sort_keys=True)
+        shell_hex = shell_str.encode().hex()
+        shell_bits = bin(int(shell_hex, 16))[2:].zfill(len(shell_hex) * 4)
+        # Prefix with 11 + 16-bit length of shell
+        return f"11{len(shell_bits):016b}{shell_bits}{base_bits}"
     
-    Returns: (node, next_position)
+    return base_bits
+
+
+def decode_from_bits(bits: str, pos: int = 0) -> tuple[Node, int, Optional[dict]]:
+    """
+    Decode bitstream to AST and optional Semantic Shell.
+    
+    Returns: (node, next_position, shell)
     """
     if pos >= len(bits):
         raise ValueError("Unexpected end of bitstream")
     
+    # Check for Semantic Marker (11)
+    if bits[pos:pos+2] == "11":
+        shell_len = int(bits[pos+2:pos+18], 2)
+        shell_bits = bits[pos+18:pos+18+shell_len]
+        shell_hex = hex(int(shell_bits, 2))[2:].rstrip('L')
+        if len(shell_hex) % 2 != 0: shell_hex = '0' + shell_hex
+        shell_bytes = bytes.fromhex(shell_hex)
+        shell = json.loads(shell_bytes.decode())
+        node, next_pos, _ = decode_from_bits(bits, pos + 18 + shell_len)
+        return node, next_pos, shell
+        
     marker = bits[pos]
     
     if marker == "0":
@@ -55,13 +76,13 @@ def decode_from_bits(bits: str, pos: int = 0) -> tuple[Node, int]:
         if trigram not in TRIGRAM_TO_ATOM:
             raise ValueError(f"Invalid trigram: {trigram}")
         name = TRIGRAM_TO_ATOM[trigram]
-        return Atom(trigram, name), pos + 4
+        return Atom(trigram, name), pos + 4, None
     
     elif marker == "1":
         # App: recursively decode left and right
-        left, pos = decode_from_bits(bits, pos + 1)
-        right, pos = decode_from_bits(bits, pos)
-        return App(left, right), pos
+        left, pos, _ = decode_from_bits(bits, pos + 1)
+        right, pos, _ = decode_from_bits(bits, pos)
+        return App(left, right), pos, None
     
     else:
         raise ValueError(f"Invalid marker bit: {marker}")
@@ -103,14 +124,15 @@ def to_canonical_string(node: Node) -> str:
 # Hash Identity (PoI)
 # ============================================================================
 
-def compute_hash(node: Node) -> str:
+def compute_hash(node: Node, shell: Optional[dict] = None) -> str:
     """
     Compute hash identity for AST.
     
     Uses SHA-256 of canonical bitstream.
     This is the Proof-of-Intent (PoI) for the program.
+    If shell is provided, the PoI incorporates the Masterman vector.
     """
-    bits = encode_to_bits(node)
+    bits = encode_to_bits(node, shell)
     hash_bytes = hashlib.sha256(bits.encode()).digest()
     return hash_bytes.hex()
 

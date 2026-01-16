@@ -15,7 +15,7 @@ import collider
 import shutil
 
 # Σ-GLYPH CONFORMANCE SUITE (Python)
-# V2.4.0 - Core Determinism Stabilization
+# V55.0 - Crystalline Conformance secured
 
 def load_vectors():
     vec_path = protocol.ROOT / "PY" / "z00" / "vectors.json"
@@ -282,6 +282,49 @@ def test_collider(vectors):
     if test_root.exists(): shutil.rmtree(test_root)
     return errors == 0
 
+def test_semantic_akasha():
+    print("🧪 Testing Semantic Akasha (V52.0)...")
+    import akasha
+    ak_root = protocol.ROOT / "test_akasha"
+    if ak_root.exists(): shutil.rmtree(ak_root)
+    store = akasha.SemanticAkasha(ak_root)
+    
+    shell = {"root": "EMPTY_CENTER", "logic": "SGL"}
+    h = store.put_with_semantics(b"PURE_INTENT", shell)
+    
+    # Verify shell retrieval
+    shell_retrieved = store.get_shell(h)
+    if shell_retrieved != shell:
+        print(f"   [FAIL] Shell retrieval mismatch for {h}")
+        return False
+    
+    # Verify resonance
+    matches = store.find_by_resonance(shell, threshold=1.0)
+    if not any(m[0] == h for m in matches):
+        print(f"   [FAIL] Semantic resonance search failed to find {h}")
+        return False
+        
+    print("   [PASS] Semantic Akasha verified.")
+    if ak_root.exists(): shutil.rmtree(ak_root)
+    return True
+
+def test_semantic_encoder():
+    print("🧪 Testing Semantic Trigram Encoder (V52.1)...")
+    import trigram_encoder
+    import trigram_reducer
+    node = trigram_reducer.App(trigram_reducer.K, trigram_reducer.I)
+    shell = {"focus": "TRANSMUTATION"}
+    
+    bits = trigram_encoder.encode_to_bits(node, shell)
+    node_dec, _, shell_dec = trigram_encoder.decode_from_bits(bits)
+    
+    if node_dec != node or shell_dec != shell:
+        print("   [FAIL] Semantic encoder roundtrip failed.")
+        return False
+        
+    print("   [PASS] Semantic Trigram Encoder verified.")
+    return True
+
 if __name__ == "__main__":
     v = load_vectors()
     success = (
@@ -294,7 +337,9 @@ if __name__ == "__main__":
         test_cas(v) and
         test_replay() and
         test_wire(v) and
-        test_collider(v)
+        test_collider(v) and
+        test_semantic_akasha() and
+        test_semantic_encoder()
     )
     if not success: sys.exit(1)
-    print("\n✅ PYTHON CORE CONFORMANCE SECURED (V2.4.0).")
+    print("\n✅ CRYSTALLINE CONFORMANCE SECURED (V55.0).")

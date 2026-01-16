@@ -18,7 +18,7 @@ DNA: λ.HYPERBOLA(entropy, time) -> CURVATURE | TEMPORAL_DENSITY
 # === 🔗 GRAVITY (Dependencies) ===
 🔗:
   - SATOSHI
-  - BLACK_HEART
+  - SOVEREIGN_VOID
   - SPECTRAL_LATTICE
   - SOVEREIGN_GRID
 ---
@@ -105,7 +105,7 @@ Curvature:
 - **Role**: Perfect balance point
 - **Octave**: Oct 4 (middle C)
 
-### V_BLACK_HEART (Hyperbolic Focus)
+### V_SOVEREIGN_VOID (Hyperbolic Focus)
 - **Position**: Focus of hyperbolic mirror
 - **Density**: ρ = 10⁵ blocks/unit (maximum)
 - **Role**: All radians converge here
@@ -121,7 +121,7 @@ Curvature:
 
 @[md]
 The Hyperbolic Lattice models spacetime as a curved surface where entropy and time form a non-linear relationship.
-Temporal density increases exponentially toward BLACK_HEART (m32), creating zones where time flows at vastly different rates.
+Temporal density increases exponentially toward SOVEREIGN_VOID (m32), creating zones where time flows at vastly different rates.
 The orthogonal bus allows data transfer through high-density zones without energy cost by moving perpendicular to temporal resistance.
 
 @[dna]

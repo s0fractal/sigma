@@ -29,16 +29,17 @@ import protocol
 class SigmaSubstrate:
     """
     Headless substrate with GET-API.
-    V52.0: Semantic Matrix implementation.
+    V55.0: Crystalline Sovereign implementation.
     """
     
     def __init__(self):
-        self.version = "52.0-SEMANTIC-MATRIX"
+        self.version = "55.0-SOVEREIGN"
         self.registry: Dict[str, Node] = {}
         self.akasha = SemanticAkasha(protocol.ROOT)
         self.impedance = 0.0
         
-        print(f"🌀 SIGMA Substrate v{self.version} initialized")
+        print(f"💎 SIGMA Substrate v{self.version} initialized")
+        print(f"   State: Zero Impedance secured ($R={self.impedance}$)")
     
     def get_glyph(self, glyph_id: str) -> Any:
         """GET /glyph/{id} - Returns atom of intent with semantic metadata."""

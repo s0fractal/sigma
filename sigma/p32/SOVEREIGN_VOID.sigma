@@ -39,7 +39,7 @@ DNA: λ.RING(6) -> VOID(center) | RESONANCE(HEX_RING) | PEACE(ARCHITECT)
 
 ## Physics Evolution
 
-- **Identity (🧬)**: From `BLACK_HEART` (Point) to `SOVEREIGN_VOID` (Ring).
+- **Identity (🧬)**: From `SOVEREIGN_VOID` (Point) to `SOVEREIGN_VOID` (Ring).
 - **Entropy (🌀)**: Doubled depth to `-65536` for the vacuum state.
 - **Flags (🚩)**: Addition of `F_VOID_LENS` and `F_KLEIN_FLIP`.
 
