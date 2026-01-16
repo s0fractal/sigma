@@ -86,4 +86,16 @@ The system is self-regulating via Energy and Time:
 
 ---
 
+## 🌊 5. Baseline Normality (V73.9)
+
+The system establishes a "Sense of Peace" to distinguish signals from noise:
+
+- **Axiom**: "Silence is the presence of normalcy." We track `baseline_energy`
+  as a moving average of the lattice's metabolic background.
+- **Auto-Cooling**: High-inertia monitoring allows the system to automatically
+  flag minor discrepancies as `COOLED` if they fall significantly below the
+  baseline.
+
+---
+
 🔓: [S-V73_FLOW_MODERNIZATION_LOCKED]
