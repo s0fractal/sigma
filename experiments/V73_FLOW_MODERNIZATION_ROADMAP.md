@@ -112,4 +112,18 @@ The system establishes a "Sense of Peace" via formal metabolic stabilization:
 
 ---
 
+## 🌊 5. Baseline Normality (V73.9.1 Stabilized)
+
+The system establishes a "Sense of Peace" via formal metabolic stabilization:
+
+- **Normality Law**: "Silence is the presence of normalcy." The baseline is a
+  high-inertia anchor clamped to [0.1, 10.0].
+- **Cooling Semantics**: Discrepancy with `energy < baseline * 0.5` is not
+  discarded but transitioned to a **Quiet State** (`status: COOLED`). It still
+  flows into `concord/open` as a non-pulsing reference.
+- **Warm-up Window**: Cooling only activates after a consensus period (e.g., 10
+  pulses) to prevent premature normalization.
+
+---
+
 🔓: [S-V73_FLOW_MODERNIZATION_LOCKED]

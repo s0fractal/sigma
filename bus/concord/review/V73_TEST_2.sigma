@@ -1,0 +1,4 @@
+REF: journal/V73_TEST_2.sigma
+DIGEST: e9178ae7f0bc7d44cfd884bebf397a761c49b9c2627a521b4973abee9331134a
+DISCREPANCY: {'type': 'ATTRIBUTION_MISMATCH', 'claim': '45.42, 30.52', 'trace_center': '49.83,24.02', 'cluster': {'center': '49.83,24.02', 'radius': 0, 'confidence': 1.0}, 'severity': 1.0, 'attention': 0.9999999995364083, 'energy': 0.9999999995364083, 'status': 'OPEN', 'claim_type': 'literal', 'last_trace_mtime': 1768582270.97136, 'tau': 21600}
+ATTENTION_EXP: 1768585870.995629

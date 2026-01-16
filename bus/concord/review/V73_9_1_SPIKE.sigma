@@ -1,4 +1,4 @@
 REF: journal/V73_9_1_SPIKE.sigma
-DIGEST: 310f762f0097b3ad1af8eec8872870bb064c54d6181fb0941e51b1ddd578eb7c
-DISCREPANCY: {'type': 'ATTRIBUTION_MISMATCH', 'claim': '10.0, 10.0', 'trace_center': '49.83,24.02', 'cluster': {'center': '49.83,24.02', 'radius': 0, 'confidence': 1.0}, 'severity': 1.0, 'attention': 0.9999999975937384, 'energy': 0.9999999975937384, 'status': 'OPEN', 'claim_type': 'literal', 'last_trace_mtime': 1768582155.75828, 'tau': 21600}
-ATTENTION_EXP: 1768585755.766162
+DIGEST: d9b59e0aecb85eb3af8641cfba82c5ce040ea847e23ba3c27562eb83f1cffb14
+DISCREPANCY: {'type': 'ATTRIBUTION_MISMATCH', 'claim': '10.0, 10.0', 'trace_center': '49.83,24.02', 'cluster': {'center': '49.83,24.02', 'radius': 0, 'confidence': 1.0}, 'severity': 1.0, 'attention': 0.9999999998233936, 'energy': 0.9999999998233936, 'status': 'OPEN', 'claim_type': 'literal', 'last_trace_mtime': 1768582270.974669, 'tau': 21600}
+ATTENTION_EXP: 1768585870.976426

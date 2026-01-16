@@ -1,7 +1,7 @@
-ΣID: (17685821, 'sea', 'self:u123.inbox', 'user:u123')
+ΣID: (17685822, 'sea', 'self:u123.inbox', 'user:u123')
 geo_trace: 49.83, 24.02
-geo_claim: 49.84, 24.03
+geo_claim: 50.13, 24.02
 CONTENT: QUIET NOISE
 
-DIGEST: 4905179dcca4d19b
+DIGEST: 67df245e4fcb6ae4
 SOURCE: daemon:normalizer

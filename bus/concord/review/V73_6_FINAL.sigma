@@ -1,8 +1,4 @@
-ΣID: (17685798, 'sea', 'self:u123.inbox', 'user:u123')
-geo_trace: 49.83, 24.02
-geo_claim: 45.42, 30.52
-CONTENT: V73.4 Purity Test
-
-DIGEST: afb95da40c8f9639
-SOURCE: daemon:normalizer
-DISCREPANCY: {'type': 'ATTRIBUTION_MISMATCH', 'claim': '45.42, 30.52', 'trace_center': '49.83,24.02', 'cluster': {'center': '49.83,24.02', 'radius': 0, 'confidence': 1.0}, 'severity': 1.0, 'attention': 1.0, 'status': 'OPEN', 'claim_type': 'literal'}
+REF: journal/V73_6_FINAL.sigma
+DIGEST: f6f7274c97946f134153b57ceb22b0c464564bfde8767dad2da14265df0102a6
+DISCREPANCY: {'type': 'ATTRIBUTION_MISMATCH', 'claim': '45.42, 30.52', 'trace_center': '49.83,24.02', 'cluster': {'center': '49.83,24.02', 'radius': 0, 'confidence': 1.0}, 'severity': 1.0, 'attention': 0.9999999997682042, 'energy': 0.9999999997682042, 'status': 'OPEN', 'claim_type': 'literal', 'last_trace_mtime': 1768582270.972123, 'tau': 21600}
+ATTENTION_EXP: 1768585870.982801

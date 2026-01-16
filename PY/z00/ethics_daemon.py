@@ -8,7 +8,7 @@ import time
 
 class EthicsDaemon(BaseDaemon):
     """Journal -> Concord: The Pulse of Discernment."""
-    MAX_ENERGY_PER_CYCLE = 5.0 # V73.8 Homeostasis limit
+    MAX_ENERGY_PER_CYCLE = float(os.getenv("SIGMA_ENERGY_BUDGET", 5.0))
 
     def __init__(self, name: str):
         super().__init__(name)
