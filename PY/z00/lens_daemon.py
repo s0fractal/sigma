@@ -58,8 +58,12 @@ class LensDaemon(BaseDaemon):
                         claim_sigma = (sigma_id[0], "cloud", sigma_id[2], sigma_id[3])
                         self.kml.add_pain_channel(
                             claim_sigma, sigma_id,
-                            d["claim"], d["trace_center"],
-                            severity=d.get("severity", 0.5)
+                            claim_geo=d["claim"], 
+                            trace_geo=d["trace_center"],
+                            severity=d.get("severity", 0.5),
+                            attention=d.get("attention", 0.5),
+                            energy=d.get("energy", 0.5),
+                            status=d.get("status", "OPEN")
                         )
                 except: pass
 
