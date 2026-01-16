@@ -1,6 +1,7 @@
 {
     "rates": {
-        "Normalizer:journal": 2
+        "Normalizer:journal": 1,
+        "Ethics:journal": 0
     },
     "backlog": {
         "journal": 18

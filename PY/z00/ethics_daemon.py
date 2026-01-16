@@ -91,6 +91,8 @@ class EthicsDaemon(BaseDaemon):
             current_energy += energy
             fname = os.path.basename(fpath)
             attention = packet.discrepancy.get("attention", 0)
+            status = packet.discrepancy.get("status", "OPEN")
+
             # Transition to escalation (V73.9.1: COOLED items flow as quiet refs)
             target_sub = "open"
             if status == "COOLED":
