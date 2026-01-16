@@ -68,6 +68,7 @@ class EthicsDaemon(BaseDaemon):
                 
                 # V73.9.1: Auto-Cooling with Warm-up & Quiet State Semantics
                 energy = packet.discrepancy.get("energy", 0)
+                print(f"DEBUG: P:{total_pulses} E:{energy:.3f} B:{baseline:.3f} Thr:{(baseline*0.5):.3f}")
                 if total_pulses > 10 and energy < (baseline * 0.5):
                     packet.discrepancy["status"] = "COOLED"
                     packet.discrepancy["attention"] = 0.0

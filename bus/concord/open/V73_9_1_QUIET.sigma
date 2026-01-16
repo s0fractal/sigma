@@ -1,4 +1,4 @@
 REF: journal/V73_9_1_QUIET.sigma
-DIGEST: 31336d10e477d6f8a59a0af778612973d2a0b83847b393423564e80c00f6db40
-DISCREPANCY: {'type': 'ATTRIBUTION_MISMATCH', 'claim': '50.13, 24.02', 'trace_center': '49.83,24.02', 'cluster': {'center': '49.83,24.02', 'radius': 0, 'confidence': 1.0}, 'severity': 0.30000000000000426, 'attention': 0.3599999998529803, 'energy': 0.10799999995589563, 'status': 'OPEN', 'claim_type': 'literal', 'last_trace_mtime': 1768582270.9752052, 'tau': 21600}
-ATTENTION_EXP: 1768585870.997393
+DIGEST: 5a2c0cce15005677b85e1bf70f155686b380403dee199377d867e83520f09115
+DISCREPANCY: {'type': 'ATTRIBUTION_MISMATCH', 'claim': '50.13, 24.02', 'trace_center': '49.83,24.02', 'cluster': {'center': '49.83,24.02', 'radius': 0, 'confidence': 1.0}, 'severity': 0.30000000000000426, 'attention': 0.3599999992132238, 'energy': 0.10799999976396867, 'status': 'OPEN', 'claim_type': 'literal', 'last_trace_mtime': 1768582299.6560268, 'tau': 21600}
+ATTENTION_EXP: 1768585899.659026
