@@ -23,27 +23,38 @@ except ImportError:
     def encode_to_bits(x): return bin(int(compute_hash(x), 16))[2:]
 
 
+from akasha import SemanticAkasha
+import protocol
+
 class SigmaSubstrate:
     """
     Headless substrate with GET-API.
-    Zero Impedance implementation.
+    V52.0: Semantic Matrix implementation.
     """
     
     def __init__(self):
-        self.version = "49.0-ZERO-IMPEDANCE"
-        self.registry: Dict[str, Node] = {}  # Hash-addressed glyph storage
-        self.impedance = 0.0  # $R=0$
+        self.version = "52.0-SEMANTIC-MATRIX"
+        self.registry: Dict[str, Node] = {}
+        self.akasha = SemanticAkasha(protocol.ROOT)
+        self.impedance = 0.0
         
         print(f"🌀 SIGMA Substrate v{self.version} initialized")
-        print(f"   State: Zero Impedance ($R={self.impedance}$)")
     
     def get_glyph(self, glyph_id: str) -> Any:
-        """GET /glyph/{id} - Returns atom of intent."""
-        if glyph_id in self.registry:
-            glyph = self.registry[glyph_id]
-            return glyph
-        else:
-            return "404: Dissonance Not Found"
+        """GET /glyph/{id} - Returns atom of intent with semantic metadata."""
+        glyph = self.registry.get(glyph_id)
+        if not glyph: return "404: Dissonance Not Found"
+        
+        shell = self.akasha.get_shell(glyph_id)
+        return {"node": glyph, "shell": shell}
+
+    def calculate_semantic_resonance(self, hash_a: str, hash_b: str) -> float:
+        """GET /semantic_resonance/{a}/{b} - Masterman Vector similarity."""
+        shell_a = self.akasha.get_shell(hash_a)
+        shell_b = self.akasha.get_shell(hash_b)
+        
+        if not shell_a or not shell_b: return 0.0
+        return self.akasha._calculate_vector_resonance(shell_a, shell_b)
     
     def reduce_expression(self, expression: str) -> Node:
         """GET /reduce/{expr} - Runs Satoshi's Mill."""

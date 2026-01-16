@@ -151,5 +151,59 @@ class AkashaStore:
         Returns:
             True if blob file exists, False otherwise
         """
-        blob_path = self._blob_path(hash_hex)
-        return blob_path.exists()
+import json
+
+class SemanticAkasha(AkashaStore):
+    """
+    V52.0: Masterman Linguistic Matrix.
+    Indexes blobs via "Semantic Shells" (linguistic vectors).
+    """
+
+    def __init__(self, root: Path):
+        super().__init__(root)
+        self.index_path = self.root.parent / "semantic_index.json"
+        self.index = self._load_index()
+
+    def _load_index(self) -> dict:
+        if self.index_path.exists():
+            try:
+                return json.loads(self.index_path.read_text())
+            except:
+                return {}
+        return {}
+
+    def _save_index(self):
+        self.index_path.write_text(json.dumps(self.index, indent=2))
+
+    def put_with_semantics(self, data: bytes, shell: dict) -> str:
+        """Stores blob and associates it with a Masterman Semantic Shell."""
+        blob_hash = self.put(data)
+        self.index[blob_hash] = shell
+        self._save_index()
+        return blob_hash
+
+    def get_shell(self, hash_hex: str) -> Optional[dict]:
+        """Retrieves the linguistic vector for a given hash."""
+        return self.index.get(hash_hex)
+
+    def find_by_resonance(self, target_vector: dict, threshold: float = 0.5) -> list:
+        """
+        Finds hashes with high semantic resonance to a target vector.
+        Simplified: matches keys in the shell dictionary.
+        """
+        matches = []
+        for h, shell in self.index.items():
+            # Masterman Fan Logic (simplified)
+            score = self._calculate_vector_resonance(shell, target_vector)
+            if score >= threshold:
+                matches.append((h, score))
+        return sorted(matches, key=lambda x: x[1], reverse=True)
+
+    def _calculate_vector_resonance(self, shell_a: dict, shell_b: dict) -> float:
+        """Linguistic vector similarity (Masterman Fan)."""
+        keys_a = set(shell_a.keys())
+        keys_b = set(shell_b.keys())
+        intersection = keys_a.intersection(keys_b)
+        union = keys_a.union(keys_b)
+        if not union: return 0.0
+        return len(intersection) / len(union)
