@@ -1,0 +1,4 @@
+REF: journal/V73_9_HIGH.sigma
+DIGEST: 842a6a9cd05d7d2368b9293167c92e7c25d9254979a935a7e4fea000552e3385
+DISCREPANCY: {'type': 'ATTRIBUTION_MISMATCH', 'claim': '10.0, 10.0', 'trace_center': '49.83,24.02', 'cluster': {'center': '49.83,24.02', 'radius': 0, 'confidence': 1.0}, 'severity': 1.0, 'attention': 0.99999999958056, 'energy': 0.99999999958056, 'status': 'OPEN', 'claim_type': 'literal', 'last_trace_mtime': 1768581244.676197, 'tau': 21600}
+ATTENTION_EXP: 1768584844.6771939

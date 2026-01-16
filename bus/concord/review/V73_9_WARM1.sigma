@@ -1,0 +1,4 @@
+REF: journal/V73_9_WARM1.sigma
+DIGEST: 31bc52691158b5518a5e5726c3c0fcda9e9f103a3bb81fcf59c72d4dd90764f0
+DISCREPANCY: {'type': 'ATTRIBUTION_MISMATCH', 'claim': '47.42, 28.52', 'trace_center': '49.83,24.02', 'cluster': {'center': '49.83,24.02', 'radius': 0, 'confidence': 1.0}, 'severity': 1.0, 'attention': 0.9999999991721578, 'energy': 0.9999999991721578, 'status': 'OPEN', 'claim_type': 'literal', 'last_trace_mtime': 1768581244.675348, 'tau': 21600}
+ATTENTION_EXP: 1768584844.6780102

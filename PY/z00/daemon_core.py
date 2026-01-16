@@ -53,18 +53,12 @@ class BaseDaemon:
         """Updates flow_state.json with throughput, hotspots, and coverage."""
         fstate = os.path.join(self.bus_root, "flow_state.json")
         data = {"rates": {}, "backlog": {}, "hotspots": [], "coverage": 0.0}
-        if os.path.exists(fstate):
-            try:
-                with open(fstate, "r") as f: 
-                    loaded = json.load(f)
-                    data.update(loaded)
-            except: pass
-        
-        # Ensure V73.6 keys exist even if loading from legacy JSON
+        # Ensure V73.9 keys exist
         if "hotspots" not in data: data["hotspots"] = []
         if "coverage" not in data: data["coverage"] = 0.0
         if "rates" not in data: data["rates"] = {}
         if "backlog" not in data: data["backlog"] = {}
+        if "baseline_energy" not in data: data["baseline_energy"] = 0.1 # Minimal floor
         
         # Update Rate (Counter)
         channel_key = f"{self.name}:{channel}"
@@ -85,8 +79,12 @@ class BaseDaemon:
                 # V73.7 Rolling Coverage (Alpha=0.05 for stability)
                 prev_cov = data.get("coverage", 0.0)
                 is_trace = 1.0 if metadata["has_trace"] else 0.0
-                # Smooth the signal to avoid hysterical fluctuations
-                data["coverage"] = round((prev_cov * 0.95) + (is_trace * 0.05), 4)
+            if "energy" in metadata:
+                # V73.9: Rolling Baseline Energy (Alpha=0.01 for deep inertia)
+                prev_baseline = data.get("baseline_energy", 0.1)
+                energy = metadata["energy"]
+                # High inertia: it takes many pulses to change the system's "normality"
+                data["baseline_energy"] = round((prev_baseline * 0.99) + (energy * 0.01), 4)
             
         with open(fstate, "w") as f:
             json.dump(data, f, indent=4)

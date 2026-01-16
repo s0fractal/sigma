@@ -20,6 +20,15 @@ class EthicsDaemon(BaseDaemon):
         journal_files = self.scan_channel("journal")
         spores_to_process = []
         
+        # Load flow state for baseline (V73.9)
+        baseline = 0.1
+        fstate_path = os.path.join(self.bus_root, "flow_state.json")
+        if os.path.exists(fstate_path):
+            try:
+                with open(fstate_path, "r") as f:
+                    baseline = json.load(f).get("baseline_energy", 0.1)
+            except: pass
+
         # 1. First pass: Parse and calculate current energy
         for fpath, mtime in journal_files:
             with open(fpath, "r") as f:
@@ -53,6 +62,13 @@ class EthicsDaemon(BaseDaemon):
             if packet.discrepancy:
                 # Apply V73.8 Decay
                 packet.apply_metabolic_decay(time.time())
+                
+                # V73.9: Auto-Cooling based on Baseline
+                energy = packet.discrepancy.get("energy", 0)
+                if energy < (baseline * 0.5):
+                    packet.discrepancy["status"] = "COOLED"
+                    print(f"❄️ Ethics: Auto-cooling minor noise ({energy:.2f} < {baseline*0.5:.2f}) -> {os.path.basename(fpath)}")
+                
                 spores_to_process.append((fpath, mtime, packet))
         
         # 2. Sort by Energy (Highest First)
@@ -69,7 +85,13 @@ class EthicsDaemon(BaseDaemon):
             current_energy += energy
             fname = os.path.basename(fpath)
             attention = packet.discrepancy.get("attention", 0)
+            status = packet.discrepancy.get("status", "OPEN")
             
+            # Skip escalation if cooled but still log for metrics (V73.9)
+            if status == "COOLED":
+                self._set_checkpoint("journal", mtime)
+                continue
+
             # Lattice Reference Pattern (V73.7)
             target_sub = "review" if attention > 0.7 else "open"
             target_path = os.path.join(self.bus_root, "concord", target_sub, fname)
@@ -84,8 +106,12 @@ class EthicsDaemon(BaseDaemon):
             
             print(f"⚡️ Ethics: [REF:{target_sub.upper()}] E:{energy:.2f} -> {fname}")
             
-            # Log with Metadata
-            meta = {"hotspot": f"cell:{packet.sigma_id[2]}", "has_trace": packet.layer == TruthLayer.TRACE}
+            # Log with Metadata (V73.9 includes energy for baseline)
+            meta = {
+                "hotspot": f"cell:{packet.sigma_id[2]}", 
+                "has_trace": packet.layer == TruthLayer.TRACE,
+                "energy": energy
+            }
             self.log_flow_metric(f"concord/{target_sub}", 1, metadata=meta)
             self._set_checkpoint("journal", mtime)
 
