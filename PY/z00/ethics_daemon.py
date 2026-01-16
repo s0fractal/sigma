@@ -41,7 +41,7 @@ class EthicsDaemon(BaseDaemon):
 
             packet = RealityPacket(
                 content=content,
-                layer=TruthLayer.TRACE if "TRACE" in content or "GEO:" in content else TruthLayer.MODEL,
+                layer=TruthLayer.TRACE if any(x in content for x in ["TRACE", "GEO:", "geo_trace:"]) else TruthLayer.MODEL,
                 sigma_id=sigma_id,
                 links=links
             )
