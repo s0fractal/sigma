@@ -1,0 +1,11 @@
+{
+    "rates": {
+        "Normalizer:journal": 4,
+        "Ethics:concord/open": 3,
+        "Ethics:journal": 0
+    },
+    "backlog": {
+        "journal": 3,
+        "concord/open": 3
+    }
+}

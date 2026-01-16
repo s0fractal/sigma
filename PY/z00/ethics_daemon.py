@@ -1,0 +1,63 @@
+from daemon_core import BaseDaemon
+from ethics_engine import EthicsEngine, TruthLayer, RealityPacket
+from gaia_grid import GaiaGrid
+from kml_generator import KMLGenerator
+import os
+import ast
+
+class EthicsDaemon(BaseDaemon):
+    """Journal -> Concord: The Pulse of Discernment."""
+    def __init__(self, name: str):
+        super().__init__(name)
+        self.engine = EthicsEngine()
+        self.grid = GaiaGrid()
+        self.kml = KMLGenerator()
+
+    def run_once(self):
+        journal_files = self.scan_channel("journal")
+        for fpath, mtime in journal_files:
+            print(f"🔮 EthicsDaemon: Scanning {os.path.basename(fpath)}")
+            with open(fpath, "r") as f:
+                content = f.read()
+
+            # Parse for RealityPacket (V73.3 Canonical)
+            links = {}
+            if "geo_trace:" in content:
+                val = content.split("geo_trace:")[1].split("\n")[0].strip()
+                try: links["geo_trace"] = ast.literal_eval(val)
+                except: links["geo_trace"] = val
+            elif "GEO:" in content:
+                links["geo_trace"] = content.split("GEO:")[1].split("\n")[0].strip()
+
+            if "geo_claim:" in content:
+                links["geo_claim"] = content.split("geo_claim:")[1].split("\n")[0].strip()
+            elif "GEO_MODEL:" in content:
+                links["geo_claim"] = content.split("GEO_MODEL:")[1].split("\n")[0].strip()
+            
+            sigma_id = (0, "sea", "void", "global")
+            if "ΣID:" in content:
+                val = content.split("ΣID:")[1].split("\n")[0].strip()
+                sigma_id = ast.literal_eval(val)
+
+            packet = RealityPacket(
+                content=content,
+                layer=TruthLayer.TRACE if "TRACE" in content or "GEO:" in content else TruthLayer.MODEL,
+                sigma_id=sigma_id,
+                links=links
+            )
+
+            if packet.discrepancy:
+                # If pain detected, move a shadow into concord/open
+                fname = os.path.basename(fpath)
+                concord_path = os.path.join(self.bus_root, "concord/open", fname)
+                with open(concord_path, "w") as f:
+                    f.write(content + f"\nDISCREPANCY: {packet.discrepancy}")
+                print(f"⚡️ EthicsDaemon: Pain detected! Escalated to concord/open -> {fname}")
+                self.log_flow_metric("concord/open")
+            
+            self._set_checkpoint("journal", mtime)
+            self.log_flow_metric("journal", 0) # Update backlog
+
+if __name__ == "__main__":
+    d = EthicsDaemon("Ethics")
+    d.run_once()

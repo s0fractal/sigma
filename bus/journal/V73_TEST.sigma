@@ -1,0 +1,9 @@
+ΣID: (17685780, 'sea', 'self:u123.inbox', 'user:u123')
+# RAW SPORE
+GEO: 49.83, 24.02
+GEO_MODEL: 45.42, 30.52
+CONTENT: Проста перевірка потоку V73.0.
+LAYER: TRACE
+
+DIGEST: 8bcdfb0071cad8a5
+SOURCE: daemon:normalizer

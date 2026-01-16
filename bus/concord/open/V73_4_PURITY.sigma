@@ -1,0 +1,8 @@
+ΣID: (17685798, 'sea', 'self:u123.inbox', 'user:u123')
+geo_trace: 49.83, 24.02
+geo_claim: 45.42, 30.52
+CONTENT: V73.4 Purity Test
+
+DIGEST: afb95da40c8f9639
+SOURCE: daemon:normalizer
+DISCREPANCY: {'type': 'ATTRIBUTION_MISMATCH', 'claim': '45.42, 30.52', 'trace_center': '49.83,24.02', 'cluster': {'center': '49.83,24.02', 'radius': 0, 'confidence': 1.0}, 'severity': 1.0, 'status': 'OPEN', 'claim_type': 'literal'}

@@ -27,14 +27,44 @@ class RealityPacket:
         # Law Enforcement
         self.discrepancy = None
         
-        # Multi-Trace Aggregation
-        geo_traces = self.links.get("geo", [])
-        if isinstance(geo_traces, str): # Backward compatibility
-            geo_traces = [(geo_traces, 1.0)]
-            self.links["geo"] = geo_traces
+        # Multi-Trace Aggregation & Hardening (V73.3)
+        raw_geo = self.links.get("geo_trace", self.links.get("geo", []))
+        geo_traces = []
+        
+        def parse_coord(s):
+            try:
+                lat, lon = [float(x.strip()) for x in s.split(",")]
+                # Heuristic Swap: if |lat| > 90 and |lon| <= 90, it's likely (lon, lat)
+                if abs(lat) > 90 and abs(lon) <= 90:
+                    lat, lon = lon, lat
+                # Final Bounds Check
+                if abs(lat) > 90 or abs(lon) > 180:
+                    return None
+                return lat, lon
+            except: return None
 
-        # Mismatch Calculation (V72.1 Refined)
-        if geo_traces and "geo_model" in self.links:
+        if isinstance(raw_geo, str):
+            c = parse_coord(raw_geo)
+            if c: geo_traces = [(f"{c[0]},{c[1]}", 1.0)]
+        elif isinstance(raw_geo, (tuple, list)) and len(raw_geo) == 2 and isinstance(raw_geo[0], (int, float)):
+            c = parse_coord(f"{raw_geo[0]},{raw_geo[1]}")
+            if c: geo_traces = [(f"{c[0]},{c[1]}", 1.0)]
+        elif isinstance(raw_geo, list):
+            for item in raw_geo:
+                if isinstance(item, tuple) and len(item) == 2:
+                    c = parse_coord(str(item[0]))
+                    w = float(item[1]) if isinstance(item[1], (int, float)) else 1.0
+                    if c: geo_traces.append((f"{c[0]},{c[1]}", max(0, min(1, w))))
+                elif isinstance(item, str):
+                    c = parse_coord(item)
+                    if c: geo_traces.append((f"{c[0]},{c[1]}", 1.0))
+        
+        self.links["geo_trace"] = geo_traces
+        self.trace_cluster = {"center": None, "radius": 0, "confidence": 0}
+
+        # Mismatch Calculation (V73.3 Refined)
+        claim_geo = self.links.get("geo_claim", self.links.get("geo_model"))
+        if geo_traces and claim_geo:
             # Calculate Cluster Center
             avg_lat, avg_lon, total_w = 0, 0, 0
             for coord, weight in geo_traces:
@@ -44,28 +74,39 @@ class RealityPacket:
                 total_w += weight
             
             center_lat, center_lon = avg_lat/total_w, avg_lon/total_w
+            self.trace_cluster["center"] = f"{center_lat},{center_lon}"
             
+            # Simple Radius (max dist from center)
+            max_r = 0
+            for coord, _ in geo_traces:
+                lat, lon = [float(x) for x in coord.split(",")]
+                d = ((lat - center_lat)**2 + (lon - center_lon)**2)**0.5
+                if d > max_r: max_r = d
+            self.trace_cluster["radius"] = max_r
+            self.trace_cluster["confidence"] = min(1.0, total_w / max(1, len(geo_traces)))
+
             # Claim point
-            m_lat, m_lon = [float(x) for x in self.links["geo_model"].split(",")]
+            c_lat, c_lon = parse_coord(claim_geo)
             
-            # Geodesic-ish distance
-            dist = ((center_lat - m_lat)**2 + (center_lon - m_lon)**2)**0.5
+            # Geodesic-ish distance (Pain calculation)
+            dist = ((center_lat - c_lat)**2 + (center_lon - c_lon)**2)**0.5
             
             # Severity Logic
-            severity = dist * (total_w / max(1, len(geo_traces)))
+            severity = dist * self.trace_cluster["confidence"]
             if self.claim_type == "symbolic":
                 severity *= 0.3 # Reduce pain for symbols
             
             if severity > 0.2: # Threshold
                 self.discrepancy = {
                     "type": "ATTRIBUTION_MISMATCH",
-                    "claim": self.links["geo_model"],
-                    "trace_center": f"{center_lat},{center_lon}",
+                    "claim": claim_geo,
+                    "trace_center": self.trace_cluster["center"],
+                    "cluster": self.trace_cluster,
                     "severity": min(1.0, severity),
                     "status": "OPEN",
                     "claim_type": self.claim_type
                 }
-                print(f"🔮 Ethics: V72.1 Discrepancy -> {self.claim_type}:{severity:.2f}")
+                print(f"🔮 Ethics: V73.3 Discrepancy -> {self.claim_type}:{severity:.2f}")
 
     def _generate_digest(self) -> str:
         # This method is no longer called by __init__ based on the provided snippet.

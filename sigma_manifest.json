@@ -1,0 +1,51 @@
+{
+    "version_tag": "V20260116.1810",
+    "base_ref": "HEAD",
+    "changes": [
+        {
+            "path": "PY/z00/ethics_engine.py",
+            "status": "modified"
+        },
+        {
+            "path": "sigma_full_codebase.txt",
+            "status": "modified"
+        },
+        {
+            "path": "PY/z00/daemon_core.py",
+            "status": "added"
+        },
+        {
+            "path": "PY/z00/delta_gen.py",
+            "status": "added"
+        },
+        {
+            "path": "PY/z00/ethics_daemon.py",
+            "status": "added"
+        },
+        {
+            "path": "PY/z00/flow_bus.py",
+            "status": "added"
+        },
+        {
+            "path": "PY/z00/lens_daemon.py",
+            "status": "added"
+        },
+        {
+            "path": "PY/z00/normalizer_daemon.py",
+            "status": "added"
+        },
+        {
+            "path": "bus/",
+            "status": "added"
+        },
+        {
+            "path": "experiments/V73_FLOW_MODERNIZATION_ROADMAP.md",
+            "status": "added"
+        },
+        {
+            "path": "sigma_manifest.json",
+            "status": "added"
+        }
+    ],
+    "new_behavior": "HARDENED FLOWBUS (V73.4): Strict geo-validation, canonical naming (geo_trace/geo_claim), formal trace-cluster derivatives, and atomic journal journaling."
+}
