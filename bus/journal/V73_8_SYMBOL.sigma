@@ -1,0 +1,8 @@
+ΣID: (17685807, 'sea', 'self:u123.inbox', 'user:u123')
+geo_trace: 50.45, 30.52
+geo_claim: 44.83, 24.02
+CLAIM_TYPE: symbolic
+CONTENT: Symbol Case
+
+DIGEST: 59094a010a8df4e7
+SOURCE: daemon:normalizer

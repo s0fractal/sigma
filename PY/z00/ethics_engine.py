@@ -111,9 +111,25 @@ class RealityPacket:
                     "energy": min(1.0, energy),
                     "status": "OPEN",
                     "claim_type": self.claim_type,
-                    "last_trace_mtime": time.time()
+                    "last_trace_mtime": time.time(),
+                    "tau": 21600 # 6h half-life-ish
                 }
                 print(f"🔮 Ethics: V73.7 Mismatch -> S:{severity:.2f} A:{attention:.2f} E:{energy:.2f}")
+
+    def apply_metabolic_decay(self, timestamp: float):
+        """V73.8: Exponential attention decay."""
+        if not self.discrepancy or "last_trace_mtime" not in self.discrepancy:
+            return
+        
+        import math
+        dt = timestamp - self.discrepancy["last_trace_mtime"]
+        decay = math.exp(-dt / self.discrepancy.get("tau", 21600))
+        
+        self.discrepancy["attention"] *= decay
+        self.discrepancy["energy"] = self.discrepancy["severity"] * self.discrepancy["attention"]
+        
+        if self.discrepancy["energy"] < 0.01:
+            self.discrepancy["status"] = "COOLED"
 
     def _generate_digest(self) -> str:
         # This method is no longer called by __init__ based on the provided snippet.

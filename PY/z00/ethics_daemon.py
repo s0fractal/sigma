@@ -8,6 +8,8 @@ import time
 
 class EthicsDaemon(BaseDaemon):
     """Journal -> Concord: The Pulse of Discernment."""
+    MAX_ENERGY_PER_CYCLE = 5.0 # V73.8 Homeostasis limit
+
     def __init__(self, name: str):
         super().__init__(name)
         self.engine = EthicsEngine()
@@ -16,12 +18,13 @@ class EthicsDaemon(BaseDaemon):
 
     def run_once(self):
         journal_files = self.scan_channel("journal")
+        spores_to_process = []
+        
+        # 1. First pass: Parse and calculate current energy
         for fpath, mtime in journal_files:
-            print(f"🔮 EthicsDaemon: Scanning {os.path.basename(fpath)}")
             with open(fpath, "r") as f:
                 content = f.read()
 
-            # Parse for RealityPacket (V73.3 Canonical)
             links = {}
             if "geo_trace:" in content:
                 val = content.split("geo_trace:")[1].split("\n")[0].strip()
@@ -46,49 +49,47 @@ class EthicsDaemon(BaseDaemon):
                 sigma_id=sigma_id,
                 links=links
             )
-
-            if packet.discrepancy:
-                # V73.7 Attention Decay Policy
-                fname = os.path.basename(fpath)
-                digest = packet.digest
-                
-                # Check for existing discrepancy in concord to apply decay
-                decay_factor = 1.0
-                concord_open_path = os.path.join(self.bus_root, "concord/open", fname)
-                concord_review_path = os.path.join(self.bus_root, "concord/review", fname)
-                
-                # Simple decay if no new TRACE
-                # (In a real system we'd check file mtime vs current time)
-                # For V73.7 we'll just demonstrate the principle
-                
-                attention = packet.discrepancy.get("attention", 0) * decay_factor
-                packet.discrepancy["attention"] = attention
-                packet.discrepancy["energy"] = packet.discrepancy["severity"] * attention
-                
-                # High attention (> 0.7) goes to review sub-channel
-                target_sub = "review" if attention > 0.7 else "open"
-                target_path = os.path.join(self.bus_root, "concord", target_sub, fname)
-                
-                # Lattice Reference Pattern (V73.7)
-                ref_content = f"REF: journal/{fname}\n"
-                ref_content += f"DIGEST: {digest}\n"
-                ref_content += f"DISCREPANCY: {packet.discrepancy}\n"
-                ref_content += f"ATTENTION_EXP: {time.time() + 3600}\n" # 1h decay window
-                
-                with open(target_path, "w") as f:
-                    f.write(ref_content)
-                
-                print(f"⚡️ EthicsDaemon: [REF:{target_sub.upper()}] S:{packet.discrepancy['severity']:.2f} E:{packet.discrepancy['energy']:.2f} -> {fname}")
-                
-                # Log with Metadata (V73.6)
-                meta = {
-                    "hotspot": f"cell:{sigma_id[2]}",
-                    "has_trace": packet.layer == TruthLayer.TRACE
-                }
-                self.log_flow_metric(f"concord/{target_sub}", 1, metadata=meta)
             
+            if packet.discrepancy:
+                # Apply V73.8 Decay
+                packet.apply_metabolic_decay(time.time())
+                spores_to_process.append((fpath, mtime, packet))
+        
+        # 2. Sort by Energy (Highest First)
+        spores_to_process.sort(key=lambda x: x[2].discrepancy.get("energy", 0), reverse=True)
+        
+        # 3. Process within Energy Budget
+        current_energy = 0
+        for fpath, mtime, packet in spores_to_process:
+            energy = packet.discrepancy.get("energy", 0)
+            if current_energy + energy > self.MAX_ENERGY_PER_CYCLE:
+                print(f"⚠️ Ethics: Energy budget exceeded ({current_energy:.2f}/{self.MAX_ENERGY_PER_CYCLE}). Deferring {os.path.basename(fpath)}")
+                continue
+            
+            current_energy += energy
+            fname = os.path.basename(fpath)
+            attention = packet.discrepancy.get("attention", 0)
+            
+            # Lattice Reference Pattern (V73.7)
+            target_sub = "review" if attention > 0.7 else "open"
+            target_path = os.path.join(self.bus_root, "concord", target_sub, fname)
+            
+            ref_content = f"REF: journal/{fname}\n"
+            ref_content += f"DIGEST: {packet.digest}\n"
+            ref_content += f"DISCREPANCY: {packet.discrepancy}\n"
+            ref_content += f"ATTENTION_EXP: {time.time() + 3600}\n"
+            
+            with open(target_path, "w") as f:
+                f.write(ref_content)
+            
+            print(f"⚡️ Ethics: [REF:{target_sub.upper()}] E:{energy:.2f} -> {fname}")
+            
+            # Log with Metadata
+            meta = {"hotspot": f"cell:{packet.sigma_id[2]}", "has_trace": packet.layer == TruthLayer.TRACE}
+            self.log_flow_metric(f"concord/{target_sub}", 1, metadata=meta)
             self._set_checkpoint("journal", mtime)
-            self.log_flow_metric("journal", 0)
+
+        self.log_flow_metric("journal", 0)
 
 if __name__ == "__main__":
     d = EthicsDaemon("Ethics")

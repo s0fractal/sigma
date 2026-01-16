@@ -1,17 +1,18 @@
 {
     "rates": {
-        "Normalizer:journal": 10,
+        "Normalizer:journal": 13,
         "Ethics:concord/open": 3,
         "Ethics:journal": 0,
-        "Ethics:concord/review": 4
+        "Ethics:concord/review": 6,
+        "Lens:KML": 2
     },
     "backlog": {
-        "journal": 7,
+        "journal": 10,
         "concord/open": 3,
-        "concord/review": 4
+        "concord/review": 6
     },
     "hotspots": [
         "cell:self:u123.inbox"
     ],
-    "coverage": 0.145
+    "coverage": 0.2283
 }
