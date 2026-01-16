@@ -1,4 +1,4 @@
 REF: journal/V73_9_HIGH.sigma
-DIGEST: 8a4bf0a9786eb3b8b3af806ccb6bce048066d1edb654ae579a29de16516fe28a
-DISCREPANCY: {'type': 'ATTRIBUTION_MISMATCH', 'claim': '10.0, 10.0', 'trace_center': '49.83,24.02', 'cluster': {'center': '49.83,24.02', 'radius': 0, 'confidence': 1.0}, 'severity': 1.0, 'attention': 0.9999999996357494, 'energy': 0.9999999996357494, 'status': 'OPEN', 'claim_type': 'literal', 'last_trace_mtime': 1768581257.511872, 'tau': 21600}
-ATTENTION_EXP: 1768584857.51215
+DIGEST: 8b89ee137d7e9b18e98d9a34367a3dbc8fd99da533642620e476e72c95c39f31
+DISCREPANCY: {'type': 'ATTRIBUTION_MISMATCH', 'claim': '10.0, 10.0', 'trace_center': '49.83,24.02', 'cluster': {'center': '49.83,24.02', 'radius': 0, 'confidence': 1.0}, 'severity': 1.0, 'attention': 0.99999999958056, 'energy': 0.99999999958056, 'status': 'OPEN', 'claim_type': 'literal', 'last_trace_mtime': 1768581276.383522, 'tau': 21600}
+ATTENTION_EXP: 1768584876.38482

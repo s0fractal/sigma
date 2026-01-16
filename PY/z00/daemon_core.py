@@ -79,6 +79,9 @@ class BaseDaemon:
                 # V73.7 Rolling Coverage (Alpha=0.05 for stability)
                 prev_cov = data.get("coverage", 0.0)
                 is_trace = 1.0 if metadata["has_trace"] else 0.0
+                # Smooth the signal to avoid hysterical fluctuations
+                data["coverage"] = round((prev_cov * 0.95) + (is_trace * 0.05), 4)
+
             if "energy" in metadata:
                 # V73.9: Rolling Baseline Energy (Alpha=0.01 for deep inertia)
                 prev_baseline = data.get("baseline_energy", 0.1)
