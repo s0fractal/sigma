@@ -34,11 +34,22 @@ def generate_git_delta(behavior_msg, output_dir="/Users/s0fractal/SIGMA/txt"):
     # 3. Get Unified Diff
     diff_res = run_cmd(f"git show --unified=3 {ref}")
 
-    # 4. Materialize Text Manifest
+    # 4. Materialize Text Manifest (V74: Topological Persistence)
+    # We now REQUIRE a Loss Ledger to be provided or at least templated.
+    loss_ledger = os.getenv("SIGMA_LOSS", "REMOVED: []\n  PRESERVED: []\n  REASON: []\n  COUNTEREXAMPLE: []")
+    prohibition = os.getenv("SIGMA_PROHIBIT", "[]")
+
     with open(output_path, "w") as f:
         f.write(f"# Σ-DELTA: {version_tag}\n")
         f.write(f"BEHAVIOR: {behavior_msg}\n")
         f.write(f"COMMIT: {run_cmd('git rev-parse HEAD').stdout.strip()}\n\n")
+        
+        f.write("## 🧵 LOSS_LEDGER\n")
+        f.write(f"{loss_ledger}\n\n")
+        
+        f.write("## 🚫 PROHIBITION\n")
+        f.write(f"{prohibition}\n\n")
+        
         f.write("## CHANGELOG\n")
         f.write(files_res.stdout)
         f.write("\n## UNIFIED DIFF\n")
