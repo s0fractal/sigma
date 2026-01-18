@@ -64,12 +64,16 @@ class EthicsDaemon(BaseDaemon):
             )
             
             if packet.discrepancy:
-                # Apply V73.8 Decay
-                packet.apply_metabolic_decay(time.time())
+                # V75: Use Local Clock for decay/persistence
+                t_i = self.local_clock
+                packet.apply_metabolic_decay(t_i)
+                
+                # V20260117.0345 Update: Debug was removed, and price added.
+                energy = packet.discrepancy.get("energy", 0)
+                # Integration Cost (IC): Energy to reconcile
+                packet.discrepancy["ic"] = energy * 1.5 
                 
                 # V73.9.1: Auto-Cooling with Warm-up & Quiet State Semantics
-                energy = packet.discrepancy.get("energy", 0)
-                print(f"DEBUG: P:{total_pulses} E:{energy:.3f} B:{baseline:.3f} Thr:{(baseline*0.5):.3f}")
                 if total_pulses > 10 and energy < (baseline * 0.5):
                     packet.discrepancy["status"] = "COOLED"
                     packet.discrepancy["attention"] = 0.0
@@ -108,7 +112,8 @@ class EthicsDaemon(BaseDaemon):
             ref_content = f"REF: journal/{fname}\n"
             ref_content += f"DIGEST: {packet.digest}\n"
             ref_content += f"DISCREPANCY: {packet.discrepancy}\n"
-            ref_content += f"ATTENTION_EXP: {time.time() + 3600}\n"
+            ref_content += f"LOCAL_T: {self.local_clock}\n"
+            ref_content += f"ATTENTION_EXP: {self.local_clock + 10.0}\n"
             
             with open(target_path, "w") as f:
                 f.write(ref_content)

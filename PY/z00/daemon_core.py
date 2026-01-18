@@ -10,6 +10,18 @@ class BaseDaemon:
         self.name = name
         self.bus_root = bus_root
         self.checkpoint_file = os.path.join(bus_root, "checkpoint.json")
+        self.local_clock = self._load_local_clock()
+
+    def _load_local_clock(self) -> float:
+        """V75: Load t_i from decentralized state."""
+        fstate = os.path.join(self.bus_root, "flow_state.json")
+        if os.path.exists(fstate):
+            try:
+                with open(fstate, "r") as f:
+                    data = json.load(f)
+                    return data.get("clocks", {}).get(self.name, 0.0)
+            except: pass
+        return 0.0
 
     def _get_checkpoint(self, channel: str) -> int:
         if not os.path.exists(self.checkpoint_file):
@@ -72,6 +84,7 @@ class BaseDaemon:
         if "backlog" not in data: data["backlog"] = {}
         if "baseline_energy" not in data: data["baseline_energy"] = 0.1
         if "total_pulses" not in data: data["total_pulses"] = 0
+        if "total_lattice_energy" not in data: data["total_lattice_energy"] = 0.1
         
         # Update Rate (Counter)
         channel_key = f"{self.name}:{channel}"
@@ -103,9 +116,36 @@ class BaseDaemon:
                 new_baseline = (prev_baseline * 0.99) + (energy * 0.01)
                 # V73.9.1: Clamping [0.1, 10.0]
                 data["baseline_energy"] = round(max(0.1, min(10.0, new_baseline)), 4)
-            
+                
+                # V75: Update Total Lattice Energy (Rolling)
+                prev_total = data.get("total_lattice_energy", 0.1)
+                data["total_lattice_energy"] = round((prev_total * 0.9) + (energy * 0.1), 4)
+
             data["total_pulses"] = data.get("total_pulses", 0) + 1
-            
+
+        # V75: Update Local Clock (t_i)
+        # t_i = f(processed_count, intensity)
+        if "clocks" not in data: data["clocks"] = {}
+        prev_t = data["clocks"].get(self.name, 0.0)
+        # Local time advances based on pulse energy and work, not global ticks
+        tick = 0.1 * processed_count
+        energy = metadata.get("energy", 0) if metadata else 0
+        tick += 0.05 * energy
+        
+        # A2: Dominance -> Dephasing
+        total_e = data.get("total_lattice_energy", 0.1)
+        # Dominance D = cell_energy / total_lattice_energy
+        # (Using energy of current pulse as a proxy for hotspot dominance)
+        D = energy / max(0.1, total_e)
+        if D > 0.4:
+            import random
+            jitter = random.uniform(-0.1, 0.1) * (D - 0.4)
+            tick += jitter
+            print(f"🌀 Temporal Drift: D={D:.2f} > 0.4. Jittering clock for {self.name}")
+
+        data["clocks"][self.name] = round(prev_t + tick, 4)
+        self.local_clock = data["clocks"][self.name]
+
         with open(fstate, "w") as f:
             json.dump(data, f, indent=4)
 

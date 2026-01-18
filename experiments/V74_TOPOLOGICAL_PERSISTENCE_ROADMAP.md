@@ -42,6 +42,17 @@ To prevent "Attractor Bias" (where models always choose the easiest path), every
 normalization process must provide/analyze at least two paths (e.g.,
 `normalize_A` and `normalize_B`), preserving the manifold's width.
 
+## 💰 5. The Price Linter (Rule of DoF)
+
+Any delta involving normalization/stabilization must pass the topological gate:
+
+- **Rule A (Phantom Gate)**: If `loss_bits_lower_bound < 8` or `removed` is
+  empty, target is a **Phantom Event** (FAIL).
+- **Rule B (No Semantic Locks)**: If `LOCKED` but `loss_bits_lower_bound < 16`,
+  lock is illegal (FAIL).
+- **Rule C (Global Collapse Witness)**: If removing global symmetry,
+  `requires_global_sync` must be `true` and `phase_witness` must be provided.
+
 ---
 
 🔓: [Σ-V74_TOPOLOGICAL_PERSISTENCE_LOCKED] lux et veritas.
