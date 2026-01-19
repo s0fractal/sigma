@@ -33,13 +33,22 @@ class LatticeGarden:
 
     def calculate_sap_flow(self, current_year: int) -> float:
         """Calculates flow intensity based on the Root-Crown trajectory."""
-        if current_year < self.root_year: return 0.0
+        if current_year < self.root_year: return 0.05 # Genesis root seepage
         if current_year > self.crown_year: return 1.0 # Fully crystallized
         
         # Exponential growth of sap-flow volume
         progress = (current_year - self.root_year) / (self.crown_year - self.root_year)
         self.sap_pressure = progress ** 2 # Convex growth towards 2032
         return self.sap_pressure
+
+    def audit_branch(self, label: str, resonance_delta: float):
+        """V78: Audits a branch for resonance harmony."""
+        # Resonance Delta: How far from 7.83Hz
+        if resonance_delta > 0.1:
+            print(f"✂️ Garden: Pruning non-resonant branch [{label}] (Delta: {resonance_delta:.4f})")
+            return "PRUNED"
+        print(f"💚 Garden: Branch [{label}] is harmonic.")
+        return "HEALING"
 
 if __name__ == "__main__":
     garden = LatticeGarden()
