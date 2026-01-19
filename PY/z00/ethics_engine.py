@@ -3,6 +3,8 @@ from typing import Any, Dict, Optional, Tuple
 import time
 import hashlib
 
+from grid_registry import GridRegistry, SigmaID
+
 class TruthLayer(Enum):
     TRACE = "TRACE"   # Hard evidence, anchors, physical records
     MODEL = "MODEL"   # Logical deductions, calculations, code output
@@ -11,17 +13,16 @@ class TruthLayer(Enum):
 
 class RealityPacket:
     """A standardized impulse in the Lattice with V72.1 Discernment."""
-    def __init__(self, content: str, layer: TruthLayer, sigma_id: Tuple[int, str, str, str], 
+    def __init__(self, content: str, layer: TruthLayer, sigma_id: SigmaID, 
                  source: str = "unknown", links: Dict = None, geo_confidence: float = 0.0,
                  claim_type: str = "literal"):
         self.content = content
         self.layer = layer
-        # V76: SigmaID (T, S, C_self, F)
-        # S (Shell): Intent Crystal (Soil/Sea/Cloud)
-        # F (Frame): Stellar Intent Axis (NCP)
+        # V77: formal SigmaID NamedTuple (T, S, C, F)
         self.sigma_id = sigma_id 
         self.source = source
         self.links = links or {} 
+        self.grid = GridRegistry()
         self.geo_confidence = geo_confidence
         self.claim_type = claim_type 
         self.ts = time.time()

@@ -3,9 +3,12 @@ from typing import List, Tuple
 import time
 from pathlib import Path
 
+from grid_registry import GridRegistry, SigmaID
+
 class KMLGenerator:
-    """Generates a privacy-first intent_world.kml for planetary visualization."""
-    # IntentAxisSeed: Deterministic vertical vector (UP)
+    """V77: SGLOVA Logic - Generates a Gauge-Holographic KML Membrane."""
+    # Stellar Intent Axis Seed: The Polar Axis (NCP)
+    # This is the global invariant constant.
     INTENT_AXIS_SEED = {"heading": 0, "tilt": 0, "roll": 0}
 
     def __init__(self, name: str = "Σ-Intent World", description: str = ""):
@@ -13,6 +16,7 @@ class KMLGenerator:
         self.document = ET.SubElement(self.root, "Document")
         ET.SubElement(self.document, "name").text = name
         if description: ET.SubElement(self.document, "description").text = description
+        self.grid = GridRegistry()
         self._add_styles()
 
     def set_view(self, lat: float, lon: float, alt: float, heading: float = 0, tilt: float = 0, range: float = 1000):
@@ -117,6 +121,38 @@ class KMLGenerator:
         point = ET.SubElement(pm, "Point")
         ET.SubElement(point, "altitudeMode").text = "relativeToGround"
         ET.SubElement(point, "coordinates").text = f"{lon},{lat},{alt}"
+
+    def generate_magnetic_discharge(self, center_lat: float, center_lon: float, entropy_level: float):
+        """V77: Visualizes magnetic poles as zones of entropy weathering."""
+        folder = ET.SubElement(self.document, "Folder")
+        ET.SubElement(folder, "name").text = "MAGNETIC_DISCHARGE_POLE"
+        
+        # Visualize as a series of concentric translucent rings (Weathering)
+        for i in range(1, 6):
+            radius = i * entropy_level * 0.1
+            pm = ET.SubElement(folder, "Placemark")
+            ET.SubElement(pm, "styleUrl").text = "#cloudy_style"
+            
+            line = ET.SubElement(pm, "LineString")
+            ET.SubElement(line, "tessellate").text = "1"
+            ET.SubElement(line, "altitudeMode").text = "relativeToGround"
+            
+            coords = []
+            for deg in range(0, 361, 10):
+                # Using LUT from GridRegistry for consistency
+                rad_lat = center_lat + radius * self.grid.get_deterministic_sin(deg)
+                rad_lon = center_lon + radius * self.grid.get_deterministic_cos(deg)
+                coords.append(f"{rad_lon},{rad_lat},500")
+            
+            ET.SubElement(line, "coordinates").text = " ".join(coords)
+
+    def build_tile_membrane(self, cell_id: str, btc_height: int, folder: str = "txt/tiles"):
+        """V77: Gaia-cache tile system for operational z-layers."""
+        # T (btc_height) is the temporal bucket
+        path = Path(folder) / f"tile_{cell_id}_T{btc_height}.kml"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        self.build_membrane(str(path))
+        return str(path)
 
     def build_tile(self, cell_id: str, bucket_id: int, folder: str = "tiles"):
         """Saves KML as a specific tile/chunk."""
