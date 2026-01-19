@@ -16,13 +16,19 @@ class RealityPacket:
                  claim_type: str = "literal"):
         self.content = content
         self.layer = layer
-        self.sigma_id = sigma_id # (T, S, C_self, F)
+        # V76: SigmaID (T, S, C_self, F)
+        # S (Shell): Intent Crystal (Soil/Sea/Cloud)
+        # F (Frame): Stellar Intent Axis (NCP)
+        self.sigma_id = sigma_id 
         self.source = source
-        self.links = links or {} # {"geo": [List of (coord, weight)], "geo_model": "..."}
+        self.links = links or {} 
         self.geo_confidence = geo_confidence
-        self.claim_type = claim_type # literal | symbolic | hearsay
+        self.claim_type = claim_type 
         self.ts = time.time()
         self.digest = hashlib.sha256(f"{content}:{self.ts}".encode()).hexdigest()
+        
+        # V76: Stellar Frame Orientation
+        self.is_stellar = self.sigma_id[3] == "stellar" or "stellar:" in content
         
         # Law Enforcement
         self.discrepancy = None
@@ -58,6 +64,12 @@ class RealityPacket:
                 elif isinstance(item, str):
                     c = parse_coord(item)
                     if c: geo_traces.append((f"{c[0]},{c[1]}", 1.0))
+        
+        # V76: If Stellar, geography is a dynamic projection (cache)
+        if self.is_stellar:
+            # Placeholder for Stellar-to-Geo Projection (Lens v70.1)
+            # In V76.1, we acknowledge the stellar origin.
+            print(f"🌌 Ethics: Stellar Packet detected from {self.source}. [Cache: Gaia]")
         
         self.links["geo_trace"] = geo_traces
         self.trace_cluster = {"center": None, "radius": 0, "confidence": 0}

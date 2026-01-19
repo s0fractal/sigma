@@ -57,23 +57,26 @@ class KMLGenerator:
         ET.SubElement(icon, "scale").text = "0.8"
 
     def project_sigma_id(self, sigma_id: Tuple[int, str, str, str]) -> Tuple[float, float, float]:
-        """Projects ΣID (T,S,C,F) to Lens coordinates with Crystallization Height."""
+        """V76: Projects ΣID (T,S,C,F) to Lens with Stellar Intent semantics."""
         T, S, C, F = sigma_id
         
-        # S (Shell) mapping to altitude
+        # S (Shell): Intent Crystal Density -> Altitude
+        # Higher density (Soil) is deeper/lower, lower density (Cloud) is higher.
         shell_alt = {
-            "cloud": 5000,
-            "sea": 1500,
-            "soil": 0
+            "cloud": 8000, # Stellar intent spread
+            "sea": 3000,   # Flow alignment
+            "soil": 500    # Crystallized core
         }
         alt_base = shell_alt.get(str(S).lower(), 1000)
         
-        # C (Cell) mapping
-        base_lat, base_lon = 46.6, 32.6
-        # If it's a self-cell, it might not have a lat/lon unless linked
-        # For the demo, we map cell IDs to offsets
-        lat_off = hash(C) % 100 * 0.001
-        lon_off = hash(F) % 100 * 0.001
+        # C (Cell) mapping: Projected into the Stellar Frame (F)
+        # For the pilot interface (KML), we map to Geo via the Gaia-Cache.
+        base_lat, base_lon = 46.6, 32.6 # Reference point
+        
+        # F (Frame): Stellar Intent Axis (NCP)
+        # Orientation is now invariant to the North Celestial Pole.
+        lat_off = (hash(C) % 1000) * 0.0001
+        lon_off = (hash(F) % 1000) * 0.0001
             
         return base_lat + lat_off, base_lon + lon_off, alt_base + (T * 10)
 
