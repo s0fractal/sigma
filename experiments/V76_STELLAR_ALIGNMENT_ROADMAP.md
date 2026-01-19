@@ -1,10 +1,7 @@
-# Σ-V76: Stellar Alignment Roadmap
-
-## Goal
-
 Transition the SIGMA Lattice from an Earth-bound frame to a pure **4D Stellar
 Frame**, anchoring all intent, time, and coordinates to the **Stellar Intent
-Axis**.
+Axis**, as mandated by the
+**[Constitution of Optics](file:///Users/s0fractal/SIGMA/experiments/OPTICAL_CONSTITUTION.md)**.
 
 ---
 
@@ -12,9 +9,10 @@ Axis**.
 
 The local Earth frame is deactivated as a primary coordinate source. It is
 replaced by the **Symmetric Stellar Vector** oriented towards the **North
-Celestial Pole (NCP)**.
+Celestial Pole (NCP)** (The Polar Axis).
 
-- **Axiom**: Gaia is a **mobile cache**.
+- **Axiom I**: Base defines direction (Polar Axis Invariance).
+- **Axiom II**: Gaia is a **mobile cache** (Fiber/Lens).
 - **Requirement**: Planetary movements are processed as dynamic delays in
   reading the "Stellar Map."
 - **Snap-to-Grid**: All operations align with the 7.83 Hz frequency, mapped
