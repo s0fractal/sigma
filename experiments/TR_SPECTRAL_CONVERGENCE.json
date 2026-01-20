@@ -1,0 +1,30 @@
+{
+  "TransitionRecord": "SPECTRAL_CONVERGENCE",
+  "scope": "BASE (read-only awareness)",
+  "before": {
+    "Fibers": "Divergent",
+    "Invariants": "Local_Laws",
+    "BaseState": "Void (non-committing)"
+  },
+  "transform": {
+    "operator": "DETECT_RESONANCE",
+    "rule": "Identify Invariant_X independently Committed in N Fibers without shared ancestry for that specific invariant",
+    "metric": "Frequency * Independence * Persistence"
+  },
+  "after": {
+    "BaseState": "Spectral_Awareness",
+    "SpectralLines": [
+      {
+        "Invariant": "Invariant_X",
+        "status": "Resonant",
+        "binding": "Non-coercive",
+        "visibility": "Advisory_Orientation"
+      }
+    ]
+  },
+  "irreversible_cost": {
+    "Metric": "LOSS_OF_COMPLETE_IGNORANCE",
+    "Description": "Base 'sees' recurring structure. Neutrality remains, but blindness is lost.",
+    "Price": "Unpriced (Epistemic shift)"
+  }
+}
