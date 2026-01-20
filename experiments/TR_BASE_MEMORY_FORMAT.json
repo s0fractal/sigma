@@ -1,0 +1,22 @@
+{
+  "TransitionRecord": "BASE_MEMORY_FORMAT",
+  "scope": "BASE",
+  "before": {
+    "BaseState": "Spectral_Awareness",
+    "Memory": "Void"
+  },
+  "transform": {
+    "operator": "CRYSTALLIZE_SPECTRAL_FORMS",
+    "rule": "Persist only invariant forms detected via Spectral Convergence",
+    "storage": "Form-only (no event data, no fiber IDs, no timestamps)"
+  },
+  "after": {
+    "BaseState": "Form_Memory",
+    "Memory": "Set<SpectralForm>"
+  },
+  "irreversible_cost": {
+    "Metric": "LOSS_OF_EVENT_RECALL",
+    "Description": "Base can never reconstruct histories, only shapes. The past as a sequence is annihilated; only the past as a geometry remains.",
+    "Price": "Absolute (Topological scar)"
+  }
+}

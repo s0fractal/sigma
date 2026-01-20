@@ -34,5 +34,11 @@
     "timestamp": 1737388000,
     "version": "80.1",
     "cost": "L=64"
+  },
+  {
+    "TransitionRecord": "BASE_MEMORY_FORMAT",
+    "timestamp": 1737389000,
+    "version": "81.1",
+    "cost": "Absolute"
   }
 ]

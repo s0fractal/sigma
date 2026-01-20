@@ -1,14 +1,15 @@
-from typing import List, Dict
 from threshold_engine import ThresholdEngine
+from spectral_memory import SpectralMemory
 
 class SpectralObserver:
-    """V79: SGLOVA Spectral Observer - Detects unforced alignment across Fibers."""
+    """V79 + V81: SGLOVA Spectral Observer - Detects and Crystallizes alignment."""
     
     RESONANCE_THRESHOLD = 3 # Minimum independent Fibers to form a Spectral Line
     
     def __init__(self):
         self.fibers: Dict[str, ThresholdEngine] = {}
-        self.spectral_lines: Dict[str, Dict] = {} # Invariant -> {count, fibers, status}
+        self.spectral_lines: Dict[str, Dict] = {} 
+        self.memory = SpectralMemory() # V81 Form Memory
 
     def register_fiber(self, engine: ThresholdEngine):
         """Registers a Fiber for spectral monitoring."""
@@ -35,6 +36,9 @@ class SpectralObserver:
                     "status": "RESONANT"
                 }
                 print(f"  ✨ SPECTRAL LINE DETECTED: [{law}] (Resonance: {count})")
+                
+                # V81: Crystallize into Form Memory (Strips history)
+                self.memory.crystallize_form(law, {"count": count})
             else:
                 print(f"  .. Trace: [{law}] seen in {count} fiber(s). (Sub-resonant)")
 
