@@ -28,5 +28,11 @@
     "timestamp": 1737387000,
     "version": "78.4",
     "cost": "L=128"
+  },
+  {
+    "TransitionRecord": "SPECTRAL_PRESSURE",
+    "timestamp": 1737388000,
+    "version": "80.1",
+    "cost": "L=64"
   }
 ]

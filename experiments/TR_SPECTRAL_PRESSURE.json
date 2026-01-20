@@ -1,0 +1,31 @@
+{
+  "TransitionRecord": "SPECTRAL_PRESSURE",
+  "scope": "LATTICE",
+  "before": {
+    "BaseState": "Spectral_Awareness",
+    "Fibers": "Sovereign",
+    "ActionCost": "Local (Fiber-defined)"
+  },
+  "transform": {
+    "operator": "APPLY_SPECTRAL_GRADIENT",
+    "rule": "Adjust ActionCost based on SpectralLines without blocking actions",
+    "gradient": {
+      "aligned": "Cost -= α · ResonanceStrength",
+      "contrarian": "Cost += β · SpectralTension"
+    },
+    "bounds": {
+      "no_infinite_penalty": true,
+      "no_free_actions": true
+    }
+  },
+  "after": {
+    "ActionCost": "Local × SpectralGradient",
+    "Freedom": "Preserved",
+    "Visibility": "SpectralTension surfaced"
+  },
+  "irreversible_cost": {
+    "Metric": "LOSS_OF_COST_NEUTRALITY",
+    "Description": "Actions are no longer cost-isotropic relative to spectrum. Resonance has gravity.",
+    "Price": "L=64 (systemic)"
+  }
+}

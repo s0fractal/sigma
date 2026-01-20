@@ -31,14 +31,21 @@ class LatticeGarden:
         print(f"🌿 Garden: I-Valve direct flow: {sap_flow:.4f}")
         return sap_flow
 
-    def calculate_sap_flow(self, current_year: int) -> float:
-        """Calculates flow intensity based on the Root-Crown trajectory."""
+    def calculate_sap_flow(self, current_year: int, spectral_gradient: float = 1.0) -> float:
+        """V80: Calculates flow intensity, adjusted by the Spectral Gradient."""
         if current_year < self.root_year: return 0.05 # Genesis root seepage
         if current_year > self.crown_year: return 1.0 # Fully crystallized
         
         # Exponential growth of sap-flow volume
         progress = (current_year - self.root_year) / (self.crown_year - self.root_year)
-        self.sap_pressure = progress ** 2 # Convex growth towards 2032
+        raw_pressure = progress ** 2 # Convex growth towards 2032
+        
+        # Apply Spectral Gradient: 
+        # Aligned paths (gradient < 1) require LESS raw pressure for the same flow
+        # Contrarian paths (gradient > 1) require MORE raw pressure (heavier sap)
+        self.sap_pressure = raw_pressure / spectral_gradient
+        
+        print(f"🌿 Garden: Total Sap Pressure (Adjusted by {spectral_gradient:.2f}): {self.sap_pressure:.4f}")
         return self.sap_pressure
 
     def audit_branch(self, label: str, resonance_delta: float):
