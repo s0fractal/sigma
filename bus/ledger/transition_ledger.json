@@ -1,0 +1,32 @@
+[
+  {
+    "TransitionRecord": "POLAR_AXIS_INDUCTION",
+    "timestamp": 1737372000,
+    "version": "77.1",
+    "cost": "L=64"
+  },
+  {
+    "TransitionRecord": "FUTURE_QUANTIZATION",
+    "timestamp": 1737380000,
+    "version": "78.1",
+    "cost": "L=64"
+  },
+  {
+    "TransitionRecord": "THRESHOLD_INDUCTION",
+    "timestamp": 1737385000,
+    "version": "78.2",
+    "cost": "L=128"
+  },
+  {
+    "TransitionRecord": "COMMIT_SEAL_ACTIVATION",
+    "timestamp": 1737386000,
+    "version": "78.2",
+    "cost": "L=128"
+  },
+  {
+    "TransitionRecord": "COMMIT_FIBER_LAW",
+    "timestamp": 1737387000,
+    "version": "78.4",
+    "cost": "L=128"
+  }
+]

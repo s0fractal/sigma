@@ -1,0 +1,22 @@
+{
+  "TransitionRecord": "FORK_SEMANTICS",
+  "scope": "FIBER",
+  "trigger": "Law_Violation_Annihilation",
+  "before": {
+    "FiberState": "Law-Constrained"
+  },
+  "transform": {
+    "operator": "FORK",
+    "effect": "Create_New_Fiber_Identity",
+    "rule": "Child fiber inherits current Trace but resets local Laws. Parent fiber remains constrained."
+  },
+  "after": {
+    "FiberState": "New_Plastic_Fiber",
+    "parent_link": "Identity_Trace"
+  },
+  "irreversible_cost": {
+    "Metric": "IDENTITY_DIVERGENCE",
+    "Description": "Divergence from the committed trajectory of the parent. The parent's 'shram' stays with the parent.",
+    "Price": "L=64 (fixed in Fork-History)"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "TransitionRecord": "COMMIT_FIBER_LAW",
+  "scope": "FIBER",
+  "precondition": {
+    "Threshold": "L_complexity >= 128",
+    "OperatorFamily": "Seal, Commit enabled"
+  },
+  "before": {
+    "FiberState": "Plastic_Action_Space",
+    "laws": [],
+    "reducibility": "All actions reducible to base combinators"
+  },
+  "transform": {
+    "operator": "COMMIT",
+    "effect": "Promote_Invariant_To_Law",
+    "rule": "Invariant becomes mandatory for all future transitions in this Fiber"
+  },
+  "after": {
+    "FiberState": "Law-Constrained_Action_Space",
+    "laws": ["Invariant_X"],
+    "reducibility": "Certain actions require Law_X compliance"
+  },
+  "irreversible_cost": {
+    "Metric": "LOSS_OF_LAW_FREE_EVOLUTION",
+    "Description": "Fiber can no longer explore trajectories violating committed laws without a Fork or Counter-Commit.",
+    "Price": "L=128 (fixed in Fiber-History)"
+  }
+}

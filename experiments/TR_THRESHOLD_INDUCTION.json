@@ -1,0 +1,34 @@
+{
+  "TransitionRecord": "THRESHOLD_INDUCTION",
+  "before": {
+    "SpaceOfPossibilities": "Continuous_Action_Space",
+    "operators": ["S", "K", "I", "Reduce", "Align"],
+    "invariant": "All operators preserve action alphabet",
+    "metric": "Smooth (no phase changes)"
+  },
+  "transform": {
+    "operator": "INTRODUCE_THRESHOLD",
+    "threshold": {
+      "name": "L",
+      "rule": "Enable(OperatorFamily_X) iff Complexity(Trace, scope) >= L"
+    },
+    "scope": "local|fiber|base",
+    "note": "Threshold is evaluated on the Kolmogorov complexity of the Trace history"
+  },
+  "after": {
+    "SpaceOfPossibilities": "Phase_Segmented_Action_Space",
+    "operators": ["S", "K", "I", "Reduce", "Align", "OperatorFamily_X"],
+    "new_action_types": [
+      "Commit",
+      "Seal",
+      "Freeze",
+      "Fork-Then-Prove"
+    ],
+    "metric": "Piecewise (phase-dependent)"
+  },
+  "irreversible_cost": {
+    "Metric": "ACTION_ALPHABET_PHASE_CHANGE",
+    "Value": "Introduction of non-smooth operator availability. Action-space is now quantized by complexity thresholds.",
+    "Price": "L=128 (burned into Trace as a topological boundary)"
+  }
+}
