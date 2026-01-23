@@ -1,0 +1,29 @@
+{
+  "TransitionRecord": "PULSE_PHASE_INDUCTION",
+  "scope": "SYSTEM_METABOLISM",
+  "before": {
+    "Rhythm": "Uniform (Every pulse executes all maintenance)",
+    "Complexity": "Monolithic"
+  },
+  "transform": {
+    "operator": "INDUCT_PHASE_DIVERSITY",
+    "period": 6,
+    "phases": {
+      "0": "DEEP_CLEAN",
+      "1": "SPECTRAL_SCAN",
+      "2": "SAP_FLOW",
+      "3": "FORK_CONTROL",
+      "4": "EMERGENCE",
+      "5": "QUIET"
+    }
+  },
+  "after": {
+    "Rhythm": "Seasonal (Specialized metabolic windows)",
+    "Complexity": "Differentiated"
+  },
+  "irreversible_cost": {
+    "Metric": "LOSS_OF_INSTANT_REACTION",
+    "Description": "Maintenance actions are no longer immediate; they must wait for their designated season (phase).",
+    "Price": "L=32 (Optimization cost)"
+  }
+}

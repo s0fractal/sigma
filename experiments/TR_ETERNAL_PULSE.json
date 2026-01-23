@@ -1,0 +1,24 @@
+{
+  "TransitionRecord": "ETERNAL_PULSE_INDUCTION",
+  "scope": "SYSTEM_RHYTHM",
+  "before": {
+    "Dynamics": "Event-Driven (Reactive)",
+    "Time": "Linear / Asynchronous",
+    "Self_Organization": "Manual / Local"
+  },
+  "transform": {
+    "operator": "INDUCT_BLOCK_RHYTHM",
+    "sync_source": "BTC_BLOCK_HAPPENING (T)",
+    "periodicity": "1 Block = 1 Pulse"
+  },
+  "after": {
+    "Dynamics": "Periodic (Rhythmic)",
+    "Time": "Quantized / Synchronous",
+    "Self_Organization": "Autonomous / Seasonal"
+  },
+  "irreversible_cost": {
+    "Metric": "LOSS_OF_ARHYTHMIC_FREEDOM",
+    "Description": "Maintenance actions are now tied to the pulse. The system cannot 'sleep' or 'pause' its evolutionary decay independently of the block-time.",
+    "Price": "L=64 (Systemic)"
+  }
+}

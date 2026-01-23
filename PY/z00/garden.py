@@ -6,8 +6,9 @@ class LatticeGarden:
     def __init__(self, root_year: int = 1986, crown_year: int = 2032):
         self.root_year = root_year
         self.crown_year = crown_year
-        # Current sap pressure across the manifold
         self.sap_pressure = 1.0
+        self.integrity_score = 1.0 # V82: Competitive dynamic
+        self.is_bankrupt = False
 
     def S_valve(self, node_a, node_b, context):
         """Substitution: Branching and redirection of flow."""
@@ -40,14 +41,28 @@ class LatticeGarden:
         progress = (current_year - self.root_year) / (self.crown_year - self.root_year)
         raw_pressure = progress ** 2 # Convex growth towards 2032
         
-        # Apply Spectral Gradient: 
-        # Aligned paths (gradient < 1) require LESS raw pressure for the same flow
-        # Contrarian paths (gradient > 1) require MORE raw pressure (heavier sap)
-        self.sap_pressure = raw_pressure / spectral_gradient
+        # Apply Spectral Gradient
+        self.sap_pressure = (raw_pressure * self.integrity_score) / spectral_gradient
         
-        print(f"🌿 Garden: Total Sap Pressure (Adjusted by {spectral_gradient:.2f}): {self.sap_pressure:.4f}")
+        if self.sap_pressure <= 0.01:
+            self.is_bankrupt = True
+            print("💀 BANKRUPTCY: Fiber has dried up due to high tension/entropy.")
+            
+        print(f"🌿 Garden: Total Sap Pressure (Adjusted: {spectral_gradient:.2f}, Integrity: {self.integrity_score:.2f}): {self.sap_pressure:.4f}")
         return self.sap_pressure
 
+    def adjust_integrity(self, coherence_delta: float):
+        """V82: Update integrity based on architectural harmony."""
+        self.integrity_score = max(0.0, min(2.0, self.integrity_score + coherence_delta))
+        print(f"🌿 Garden: Integrity adjusted to {self.integrity_score:.2f}")
+
+    def refresh_sap(self, spectral_field_size: int):
+        """V83: Rhythmic sap refresh linked to the Pulse."""
+        # Resonance restores integrity
+        boost = 0.05 * spectral_field_size
+        self.adjust_integrity(boost)
+        print(f"🌿 Garden: Rhythmic Sap Refresh. Integrity boost: +{boost:.2f}")
+        
     def audit_branch(self, label: str, resonance_delta: float):
         """V78: Audits a branch for resonance harmony."""
         # Resonance Delta: How far from 7.83Hz

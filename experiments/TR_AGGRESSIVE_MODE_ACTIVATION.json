@@ -1,0 +1,27 @@
+{
+    "TransitionRecord": "AGGRESSIVE_MODE_ACTIVATION",
+    "scope": "LATTICE_ECOSYSTEM",
+    "before": {
+        "SystemState": "Controlled_Growth",
+        "AgentInflux": "Manual/Static",
+        "EntropyDecay": "None",
+        "SapFlow": "Resource-neutral"
+    },
+    "transform": {
+        "operator": "ACTIVATE_AGGRESSIVE_COLONIZATION",
+        "config": {
+            "fork_rate_target": "high",
+            "decay_half_life": "short",
+            "sap_bankruptcy": true
+        }
+    },
+    "after": {
+        "SystemState": "Competitive_Evolution",
+        "Operators": ["Spawn", "Decay", "Survive", "Heal"]
+    },
+    "irreversible_cost": {
+        "Metric": "LOSS_OF_STATE_STABILITY",
+        "Description": "Stability is replaced by dynamic equilibrium. The system can no longer be frozen in a 'safe' state.",
+        "Price": "L=128 (Systemic)"
+    }
+}

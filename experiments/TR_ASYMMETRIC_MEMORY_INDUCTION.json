@@ -1,0 +1,21 @@
+{
+  "TransitionRecord": "ASYMMETRIC_MEMORY_INDUCTION",
+  "scope": "BASE_MEMORY",
+  "before": {
+    "memory": "Uniform Trace Log (Uniform crystallization)"
+  },
+  "transform": {
+    "rule": "Memory_Write = f(Pulse_Phase)",
+    "operator": "PULSE_PHASE_SPECIALIZATION",
+    "constraint": "No phase writes a full history; Base only retains specialized imprints"
+  },
+  "after": {
+    "memory": "Phase-Specialized Imprint Landscape",
+    "forms": ["Scar", "Pattern", "Channel", "FaultLine", "Seed", "Void"]
+  },
+  "irreversible_cost": {
+    "Metric": "LOSS_OF_TOTAL_RECALL",
+    "Description": "Recall is now context-dependent. What is not imprinted in its designated season is lost as noise.",
+    "Price": "L=64 (Ontological pruning)"
+  }
+}

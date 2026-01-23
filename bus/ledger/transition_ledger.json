@@ -40,5 +40,11 @@
     "timestamp": 1737389000,
     "version": "81.1",
     "cost": "Absolute"
+  },
+  {
+    "TransitionRecord": "AGGRESSIVE_MODE_ACTIVATION",
+    "timestamp": 1737390000,
+    "version": "82.1",
+    "cost": "L=128"
   }
 ]

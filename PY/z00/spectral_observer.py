@@ -56,7 +56,14 @@ class SpectralObserver:
                 print(f"⚠️ TENSION: Fiber [{fiber_id}] is CONTRARIAN to Spectral Line [{resonant_law}].")
                 return 1.0
         
-        return 0.5
+    def selective_merge(self, law_A: str, law_B: str):
+        """Layer 4: Hybridize two resonant forms into a new Spectral identity."""
+        if law_A in self.spectral_lines and law_B in self.spectral_lines:
+            hybrid_law = f"HYBRID_{law_A}_{law_B}"
+            print(f"🩹 Healing: Creating selective hybrid [{hybrid_law}]...")
+            self.memory.crystallize_form(hybrid_law, {"count": 1, "persistence": 1.0})
+            return hybrid_law
+        return None
 
 if __name__ == "__main__":
     observer = SpectralObserver()
