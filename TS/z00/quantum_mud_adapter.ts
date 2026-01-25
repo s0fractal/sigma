@@ -17,8 +17,8 @@ export interface Perturbations {
   thetaNoise: number;
 }
 
-const MAX_PRESSURE_DELTA = 5000;
-const MAX_SAP_DELTA = 2000;
+const MAX_PRESSURE_DELTA = 1000; // Aligned with the formula (m.cpuUsage * 700 + m.ioWait * 300)
+const MAX_SAP_DELTA = 500;
 
 /**
  * Normalizes input metrics to SIGMA perturbations.
@@ -29,11 +29,13 @@ export function metricsToPerturbations(m: SystemMetrics): Perturbations {
   // Hard Clamping to prevent external "God-mode" spikes
   const pressure = Math.min(MAX_PRESSURE_DELTA, (m.cpuUsage * 0.7 + m.ioWait * 0.3) * 1000);
   const sap = Math.min(MAX_SAP_DELTA, m.netLatency * 500);
-  const noise = Math.floor(m.entropySource / 1024) % 65536;
+  
+  // Full toroidal noise: 0..65535 jitter
+  const noise = Math.floor(m.entropySource) % 65536;
 
   return {
-    deltaPressure: pressure,
-    deltaSap: sap,
+    deltaPressure: Math.round(pressure),
+    deltaSap: Math.round(sap),
     thetaNoise: noise
   };
 }

@@ -34,4 +34,6 @@ environment through physical perturbations.
 
 ## Status
 
-⏳ IMPLEMENTING `quantum_mud_adapter.ts`.
+✅ IMPLEMENTED: `quantum_mud_adapter.ts`, `quarantine_fiber.ts`. ✅ VERIFIED:
+`mud_harness.ts` confirms Season Gate and K-Survival invariants. ✅ ARMORED:
+Hard clamping and zero-semantic leakage enforced.

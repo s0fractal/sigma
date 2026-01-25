@@ -17,6 +17,15 @@ export enum Flags {
   F_INCOMPLETE = 0x20, // Incomplete Projection (missing op/context)
 }
 
+export enum Season {
+  DEEP_CLEAN = 0,
+  SPECTRAL_SCAN = 1,
+  SAP_FLOW = 2,
+  FORK_CONTROL = 3,
+  EMERGENCE = 4,
+  QUIET = 5
+}
+
 export interface WaveVectorQ {
   theta1: number; // uint16: Resonance Angle (External/Time)
   theta2: number; // uint16: Morphism Angle (Internal/Transformation)
