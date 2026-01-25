@@ -10,6 +10,7 @@ import { SystemMetrics, metricsToPerturbations, Perturbations } from "./quantum_
 export class QuarantineFiber {
   private survivalCycles: Map<string, number> = new Map();
   private rateLimitCounter = 0;
+  private breachCounter = 0; // NEW: Tracks invariant violations
   private MAX_PULSE_RATE = 5; // Max 5 perturbations per season window
   private K_THRESHOLD = 3;
 
@@ -52,8 +53,13 @@ export class QuarantineFiber {
     // Hard Invariant Check: Mud MUST NOT decrease entropy (increase invariance)
     if (core.en < prevEn) {
         console.error("❌ INVARIANT BREACH: External noise attempted to decrease entropy!");
+        this.breachCounter++; 
         core.en = prevEn; // Force rollback
     }
+  }
+
+  public getAnomalyCount(): number {
+    return this.breachCounter;
   }
 
   private trackSurvival(metricId: string, isSignificant: boolean): void {
