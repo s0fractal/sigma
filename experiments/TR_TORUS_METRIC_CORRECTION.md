@@ -22,4 +22,5 @@ Enforce toroidal wrap-around metrics for all angular calculations, preventing
 
 ## Status
 
-✅ IMPLEMENTED in `TS/z00/physics.ts`: `wrapDeltaU16`, `toroidalDistance`.
+✅ IMPLEMENTED in `TS/z00/physics.ts`: `wrapDeltaU16`, `toroidalDistance`. ✅
+VERIFIED in `TS/z00/physics_fuzz_test.ts` (1000+ iterations).

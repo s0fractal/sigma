@@ -19,6 +19,8 @@ in-memory `SigmaNode` and the persistent `.qwave` record format.
    checked.
 4. **Flag Preservation**: `F_V2` and `F_PORTAL` MUST be mapped to the `QWave`
    flag field.
+5. **Completeness Guard**: If `op` is missing during `QWave -> Sigma`, the node
+   MUST be marked with `F_INCOMPLETE` (0x20).
 
 ## Round-Trip Stability
 
@@ -28,8 +30,9 @@ Test Case: `node == qWaveToSigma(sigmaToQWave(node))`
 - ✅ `theta2`: Stable
 - ✅ `prob`: Stable
 - ✅ `en`: Stable
-- ⚠️ `op`: Requires external preservation.
+- ⚠️ `op`: Requires external preservation. Marked as `F_INCOMPLETE` if lost.
 
 ## Status
 
-✅ IMPLEMENTED in `TS/z00/projection_map.ts`.
+✅ IMPLEMENTED in `TS/z00/projection_map.ts`. ✅ GUARDED: `F_INCOMPLETE` flag
+for bit-exact fail-soft.
