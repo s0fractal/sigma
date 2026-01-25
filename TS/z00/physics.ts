@@ -91,7 +91,7 @@ export function integrateProb(p1: number, p2: number): number {
   const v1 = p1 / 65535;
   const v2 = p2 / 65535;
   const den = v1 * v2 + (1 - v1) * (1 - v2);
-  if (den === 0) return 32768; // Undefined case
+  if (den === 0) return 0; // Strict Reality Collapse Policy
   const P = (v1 * v2) / den;
   return Math.round(P * 65535);
 }
@@ -127,6 +127,7 @@ export function entropyToStratum(entropy: number): string {
   const prefix = entropy < 0 ? "m" : "p";
   const absEn = Math.abs(entropy);
   let depth = Math.floor(absEn / 1024);
+  if (prefix === "m" && depth === 0) depth = 1; // Fix: m/01 baseline for neg entropy
   if (depth > 32) depth = 32;
 
   const pathParts: string[] = [prefix];
