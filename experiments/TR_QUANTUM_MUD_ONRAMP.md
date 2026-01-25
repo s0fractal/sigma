@@ -13,13 +13,15 @@ environment through physical perturbations.
 2. **Perturbation-only**: External data MUST be mapped only to mathematical
    offsets (`ΔSap`, `ΔPressure`, `ΔThetaNoise`). No semantic facts (text, ID,
    labels) are allowed.
-3. **Season Gate**: Injections are strictly permitted ONLY during the
+3. **Hard Bounding**: All perturbations MUST be clamped to prevent external
+   "God-mode" overrides. Max bounds defined in `quantum_mud_adapter.ts`.
+4. **Season Gate**: Injections are strictly permitted ONLY during the
    `EMERGENCE` season. In `DEEP_CLEAN` and `QUIET` phases, the adapter is
    physically decoupled.
-4. **Survival Rule (K-Cycles)**: An external perturbation MUST persist and
+5. **Survival Rule (K-Cycles)**: An external perturbation MUST persist and
    remain consistent for $K$ pulses ($K \ge 3$) before generating any structural
    branch in the `p`-stratum (Entropy).
-5. **Rate Limiting**: Hard quotas on the frequency and magnitude of external
+6. **Rate Limiting**: Hard quotas on the frequency and magnitude of external
    z-axis shifts.
 
 ## Protocol for Mud Integration
