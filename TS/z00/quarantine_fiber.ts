@@ -42,11 +42,18 @@ export class QuarantineFiber {
    * NO WRITE ACCESS to m-stratum is implied by the coreState mutation here.
    */
   private applyPerturbationsToP(core: WaveVectorQ, p: Perturbations): void {
+    const prevEn = core.en;
     // Perturbations only affect p-stratum characteristics (Sap, Pressure, Phase Jitter)
     // They cannot directly decrease EN (increase invariance)
     core.theta1 = (core.theta1 + p.thetaNoise) % 65536;
     core.prob = Math.max(0, core.prob - p.deltaSap); // Instability decreases probability density
     // Spectral Pressure (cost) is handled by the executor, here we just observe the 'heat'
+
+    // Hard Invariant Check: Mud MUST NOT decrease entropy (increase invariance)
+    if (core.en < prevEn) {
+        console.error("❌ INVARIANT BREACH: External noise attempted to decrease entropy!");
+        core.en = prevEn; // Force rollback
+    }
   }
 
   private trackSurvival(metricId: string, isSignificant: boolean): void {
