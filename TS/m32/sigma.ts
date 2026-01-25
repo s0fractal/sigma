@@ -21,9 +21,10 @@ export enum Flags {
 }
 
 export interface WaveVectorQ {
-  ph: number; // uint16
-  am: number; // uint16
-  en: number; // int16
+  theta1: number; // uint16: Resonance Angle (External/Time)
+  theta2: number; // uint16: Morphism Angle (Internal/Transformation)
+  prob: number;   // uint16: Probability (Density of reality)
+  en: number;     // int16: Structural entropy (determines nested depth)
 }
 
 export interface SigmaNode {
@@ -83,13 +84,14 @@ export function parseNode(data: Uint8Array): SigmaNode {
   const op = dv.getUint8(0) as OpCode;
   const flags = dv.getUint8(1);
   const wave: WaveVectorQ = {
-    ph: dv.getUint16(2, false),
-    am: dv.getUint16(4, false),
-    en: dv.getInt16(6, false),
+    theta1: dv.getUint16(2, false),
+    theta2: dv.getUint16(4, false),
+    prob: dv.getUint16(6, false),
+    en: dv.getInt16(8, false),
   };
 
   const node: SigmaNode = { op, flags, wave };
-  let offset = 8;
+  let offset = 10;
   if (flags & Flags.F_ATOM) {
     node.atom = data.slice(offset, offset + 32);
     offset += 32;
