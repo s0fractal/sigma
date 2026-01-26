@@ -6,6 +6,7 @@
 
 import { Season, WaveVectorQ } from "./physics.ts";
 import { SystemMetrics, metricsToPerturbations, Perturbations } from "./quantum_mud_adapter.ts";
+import { tokenToPerturbations } from "./semantic_perturbation_adapter.ts";
 
 export class QuarantineFiber {
   private survivalCycles: Map<string, number> = new Map();
@@ -19,21 +20,32 @@ export class QuarantineFiber {
    */
   processMetrics(metrics: SystemMetrics, currentSeason: Season, coreState: WaveVectorQ): void {
     if (currentSeason !== Season.EMERGENCE) {
-      // Direct decoupling: In non-emergence seasons, noise is discarded and counter reset.
       this.rateLimitCounter = 0;
       return;
     }
-
-    if (this.rateLimitCounter >= this.MAX_PULSE_RATE) {
-        return; // Hard rate limit hit
-    }
+    if (this.rateLimitCounter >= this.MAX_PULSE_RATE) return;
 
     const p = metricsToPerturbations(metrics);
-    this.trackSurvival("system_load", p.deltaPressure > 100);
-    
-    // Log sifting
-    if (this.isSifted("system_load")) {
-        this.applyPerturbationsToP(coreState, p);
+    this.trackAndApply(coreState, "system_load", p, p.deltaPressure > 100);
+  }
+
+  /**
+   * Processes a semantic stimulus through the Season Gate.
+   * "Shadow Semantics" - perceptions without commitments.
+   */
+  processToken(token: string, currentSeason: Season, coreState: WaveVectorQ): void {
+    if (currentSeason !== Season.EMERGENCE) return;
+    if (this.rateLimitCounter >= this.MAX_PULSE_RATE) return;
+
+    const p = tokenToPerturbations(token);
+    // Survival is based on token hash persistence across pulses
+    this.trackAndApply(coreState, `token_${token}`, p, true);
+  }
+
+  private trackAndApply(core: WaveVectorQ, id: string, p: Perturbations, isSignificant: boolean): void {
+    this.trackSurvival(id, isSignificant);
+    if (this.isSifted(id)) {
+        this.applyPerturbationsToP(core, p);
         this.rateLimitCounter++;
     }
   }
